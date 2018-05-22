@@ -35,6 +35,6 @@ When the build completes, and the changes are committed and pushed successfully,
 For full details, see [Sonatype's documentation for using Maven to publish releases](http://central.sonatype.org/pages/apache-maven.html).
 
 ### Release Notes
-#### 3.12.0 
-  * First release.
+#### 3.12.1 
+  * First real release.
    
