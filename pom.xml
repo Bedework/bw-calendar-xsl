@@ -5,6 +5,7 @@
   <groupId>org.bedework.bwxsl</groupId>
 	<artifactId>bw-calendar-xsl</artifactId>
 	<packaging>war</packaging>
+  <name>bw-calendar-xsl</name>
   <description>Quickstart XSL stylesheets</description>
   <url>https://github.com/Bedework/bw-calendar-xsl</url>
 
