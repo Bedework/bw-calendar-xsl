@@ -9,7 +9,7 @@ var tzsdebug = true;
  * @constructor
  */
 TzHandler = function() {
-  this.url = "/tzsvr";
+  this.url = "/tzsvr/zones/";
   this.fetchingStatus = "FETCHING";
   this.errorStatus = "ERROR";
   this.okStatus = "OK";
@@ -28,11 +28,16 @@ TzHandler.prototype.get = function(tzid, year) {
   exp = new TzExpanded(tzid);
   tzsExpanded[tzid] = exp;
 
+
+  var start = year.toString() + "-01-01T00:00:00Z";
+  var end = (Number(year) + 1).toString() + "-01-01T00:00:00Z";
+  var encTz = tzid.replace(/\//g, "%2f")
+
   //alert("about to fetch tz " + tzid);
 
     var tzreq = $.ajax({
-      url: this.url,
-      data: { "action": "expand", "tzid": tzid, "start": year },
+      url: this.url + encTz + "/observances",
+      data: { "start": start, "end": end },
       async: false
     })
     .done(function(data) {
