@@ -27,16 +27,16 @@
 
     <!-- note: the non-breaking spaces in the script bodies below are to avoid
          losing the script closing tags (which avoids browser problems) -->
-    <script type="text/javascript" src="/bedework-common/javascript/jquery/jquery-1.3.2.min.js"><xsl:text> </xsl:text></script>
-    <script type="text/javascript" src="/bedework-common/javascript/jquery/jquery-ui-1.7.1.custom.min.js"><xsl:text> </xsl:text></script>
-    <link rel="stylesheet" href="/bedework-common/javascript/jquery/css/custom-theme/jquery-ui-1.7.1.custom.css"/>
-    <link rel="stylesheet" href="/bedework-common/javascript/jquery/css/custom-theme/bedeworkJquery.css"/>
+    <script type="text/javascript" src="/approots/bedework-common/javascript/jquery/jquery-1.3.2.min.js"><xsl:text> </xsl:text></script>
+    <script type="text/javascript" src="/approots/bedework-common/javascript/jquery/jquery-ui-1.7.1.custom.min.js"><xsl:text> </xsl:text></script>
+    <link rel="stylesheet" href="/approots/bedework-common/javascript/jquery/css/custom-theme/jquery-ui-1.7.1.custom.css"/>
+    <link rel="stylesheet" href="/approots/bedework-common/javascript/jquery/css/custom-theme/bedeworkJquery.css"/>
 
     <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js"><xsl:text> </xsl:text></script>
 
     <xsl:if test="/bedework/page='addEvent' or /bedework/page='editEvent'">
-      <script type="text/javascript" src="/bedework-common/javascript/bedework/bwClock.js">&#160;</script>
-      <link rel="stylesheet" href="/bedework-common/javascript/bedework/bwClock.css"/>
+      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bwClock.js">&#160;</script>
+      <link rel="stylesheet" href="/approots/bedework-common/javascript/bedework/bwClock.css"/>
       <script type="text/javascript">
         <xsl:comment>
         
@@ -112,8 +112,8 @@
         </xsl:comment>
       </script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js">&#160;</script>
-      <script type="text/javascript" src="/bedework-common/javascript/bedework/bedeworkXProperties.js">&#160;</script>
-      <script type="text/javascript" src="/bedework-common/javascript/bedework/bedeworkUtil.js">&#160;</script>
+      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bedeworkXProperties.js">&#160;</script>
+      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bedeworkUtil.js">&#160;</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/modernizr-2.6.2-input.min.js">&#160;</script>
     </xsl:if>
     <script type="text/javascript">

@@ -34,7 +34,7 @@
   <!-- ========================================================= -->
 
   <!-- DEFINE INCLUDES -->
-  <xsl:include href="/bedework-common/default/default/util.xsl"/>
+  <xsl:include href="/approots/bedework-common/default/default/util.xsl"/>
 
   <!-- include the language string libraries -->
   <xsl:include href="./globals.xsl" />
