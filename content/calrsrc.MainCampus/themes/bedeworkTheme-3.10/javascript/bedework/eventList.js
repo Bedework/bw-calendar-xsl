@@ -451,7 +451,7 @@ function insertBwEvents(outputContainerID,bwObject,options,action) {
       }
 
       // add locations
-      if (bwListOptions.displayLocationInList && event.location.address != 'deleted') {
+      if (bwListOptions.displayLocationInList && event.location.address != 'deleted' && event.location.address != '') {
         output += "<div class=\"bwLoc\">";
         output += "<span class=\"bwLocTitle\">" + bwListOptions.locationTitle + "</span> ";
         output += event.location.address + "</div>";

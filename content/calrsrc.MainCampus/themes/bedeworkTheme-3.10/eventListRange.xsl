@@ -246,6 +246,7 @@
           </a>
         </li>
 
+        <xsl:if test="location/address != ''">
           <li>
             <span class="bwFieldName"><xsl:copy-of select="$bwStr-LsVw-Location"/><xsl:text> </xsl:text></span>
             <xsl:choose>
@@ -262,6 +263,7 @@
               </xsl:otherwise>
             </xsl:choose>
           </li>
+        </xsl:if>
 
         <!-- items to display only in detail mode -->
         <xsl:if test="/bedework/appvar[key='summaryMode']/value='details'">

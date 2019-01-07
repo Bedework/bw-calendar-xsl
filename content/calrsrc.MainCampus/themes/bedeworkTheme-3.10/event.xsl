@@ -257,6 +257,7 @@
         </div>
       </div>
 
+      <xsl:if test="location/address != 'deleted'">
       <div class="eventWhere">
         <span class="infoTitle"><xsl:copy-of select="$bwStr-SgEv-Where"/><xsl:text> </xsl:text></span>
         <div class="sub-info">
@@ -267,26 +268,53 @@
             <xsl:otherwise>
 
               <xsl:choose>
-                <xsl:when test="location/link = ''">
-                  <xsl:value-of select="location/address" />
+                <xsl:when test="location/subField2 != ''">
+                  <!-- we have a map url: use it directly -->
+                  <a title="map" class="map-icon">
+                    <xsl:attribute name="href"><xsl:value-of select="location/subField2"/></xsl:attribute>
+                    <xsl:value-of select="location/address" />
+                    <!--span class="glyphicon glyphicon-map-marker"><xsl:text> </xsl:text></span-->
+                    <img src="{$resourcesRoot}/images/map-24.png" alt="map"/>
+                  </a>
+                </xsl:when>
+                <xsl:when test="location/street != '' or location/city != '' or location/state != '' or location/zip !=''">
+                  <!-- no map url from a Bedework field, but we have all components we need to create a Google map url -->
+                  <xsl:variable name="googleMapUrl">http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;q=<xsl:value-of select="location/street"/>, <xsl:value-of select="location/city"/>, <xsl:value-of select="location/state"/>, <xsl:value-of select="location/zip"/> (<xsl:value-of select="location/address"/>)&amp;ie=UTF8&amp;z=15</xsl:variable>
+                  <a title="map" class="map-icon">
+                    <xsl:attribute name="href"><xsl:value-of select="$googleMapUrl"/></xsl:attribute>
+                    <xsl:value-of select="location/address"/>
+                    <!--span class="glyphicon glyphicon-map-marker"><xsl:text> </xsl:text></span-->
+                    <img src="{$resourcesRoot}/images/map-24.png" alt="map"/>
+                  </a>
                 </xsl:when>
                 <xsl:otherwise>
-                  <a>
-                    <xsl:attribute name="href"><xsl:value-of select="location/link"/></xsl:attribute>
-                    <xsl:value-of select="location/address"/>
-                  </a>
+                  <xsl:value-of select="location/address"/>
                 </xsl:otherwise>
               </xsl:choose>
 
-              <xsl:if test="location/roomField != ''">
-                <div class="location-room"><xsl:value-of select="location/roomField" /></div>
-              </xsl:if>
+              <xsl:choose>
+                <xsl:when test="normalize-space(location/roomField) != ''">
+                  <div class="location-room"><xsl:value-of select="location/roomField" /><xsl:text> </xsl:text></div>
+                </xsl:when>
+                <xsl:otherwise>
+                  <div class="location-room"><xsl:value-of select="normalize-space(xproperties/X-YALE-LOCATION-ROOM/values/text)"/><xsl:text> </xsl:text></div>
+                </xsl:otherwise>
+              </xsl:choose>
 
               <xsl:if test="location/street != '' or location/state != '' or location/zip !=''">
                 <div class="location-street-state-zip">
-                  <xsl:if test="location/street != ''"><xsl:value-of select="location/street" /><xsl:if test="location/state !=''">,</xsl:if><xsl:text> </xsl:text></xsl:if>
+                  <xsl:if test="location/street != ''"><xsl:value-of select="location/street" /><xsl:if test="location/city !=''">,</xsl:if><xsl:text> </xsl:text></xsl:if>
+                  <xsl:if test="location/city != ''"><xsl:value-of select="location/city"/><xsl:if test="location/state !=''">,</xsl:if><xsl:text> </xsl:text></xsl:if>
                   <xsl:value-of select="location/state"/><xsl:text> </xsl:text><xsl:value-of select="location/zip"/>
                 </div>
+              </xsl:if>
+
+              <!-- location link down here - address field above uses map URL -->
+              <xsl:if test="location/link!=''">
+                <a>
+                  <xsl:attribute name="href"><xsl:value-of select="location/link"/></xsl:attribute>
+                  location website
+                </a>
               </xsl:if>
 
               <xsl:if test="location/accessible = 'true'">
@@ -309,6 +337,7 @@
           <xsl:text> </xsl:text>
         </div>
       </div>
+      </xsl:if>
 
       <xsl:if test="cost!=''">
         <div class="eventCost">
@@ -356,7 +385,7 @@
       </xsl:if>
 
       <xsl:choose>
-        <xsl:when test="contact/name!='None'">
+        <xsl:when test="contact/name and (contact/name!='None' and contact/name!='other')">
           <div class="eventContact">
             <span class="infoTitle"><xsl:copy-of select="$bwStr-SgEv-Contact"/><xsl:text> </xsl:text></span>
             <div class="sub-info">
@@ -374,6 +403,14 @@
               <xsl:if test="contact/phone!=''">
                 <xsl:text> </xsl:text><br/>
                 <xsl:value-of select="contact/phone" />
+              </xsl:if>
+              <xsl:if test="contact/email!=''">
+                <xsl:text> </xsl:text><br/>
+                <xsl:variable name="contactEmail"
+                              select="contact/email" />
+                <a href="mailto:{$contactEmail}">
+                  <xsl:value-of select="$contactEmail" />
+                </a>
               </xsl:if>
               <xsl:if test="contact/link!=''">
                 <xsl:text> </xsl:text><br/>

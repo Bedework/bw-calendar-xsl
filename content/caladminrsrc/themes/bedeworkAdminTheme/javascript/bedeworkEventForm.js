@@ -256,19 +256,21 @@ function bwSubmitComment(locationAddress,locationSubaddress,locationUrl,contactN
     var output = "";
     if (this.locationAddress != "" || this.locationSubaddress != "" || this.locationUrl != "") {
       output += '<table>';
-      output += '<tr><th colspan="2">Suggested Location:</th></tr>';
-      output += '<tr><td>Address:</td><td>' + this.locationAddress + '</td>';
+      output += '<tr><th>Suggested Location:</th></tr>';
+      output += '<tr><td>' + this.locationAddress + '</td></tr>';
+      /*output += '<tr><td>Address:</td><td>' + this.locationAddress + '</td>';
       output += '<tr><td>Subaddress:</td><td>' + this.locationSubaddress + '</td>';
-      output += '<tr><td>URL:</td><td>' + this.locationUrl + '</td>';
+      output += '<tr><td>URL:</td><td>' + this.locationUrl + '</td>';*/
       output += '</table>';
     }
     if (this.contactName != "" || this.contactPhone != "" || this.contactEmail != "" || this.contactUrl != "") {
       output += '<table>';
-      output += '<tr><th colspan="2">Suggested Contact:</th></tr>';
-      output += '<tr><td>Name:</td><td>' + this.contactName + '</td></tr>';
+      output += '<tr><th>Suggested Contact:</th></tr>';
+      output += '<tr><td>' + this.contactName + '</td></tr>';
+      /*output += '<tr><td>Name:</td><td>' + this.contactName + '</td></tr>';
       output += '<tr><td>Phone:</td><td>' + this.contactPhone + '</td></tr>';
       output += '<tr><td>URL:</td><td>' + this.contactUrl + '</td></tr>';
-      output += '<tr><td>Email:</td><td>' + this.contactEmail + '</td></tr>';
+      output += '<tr><td>Email:</td><td>' + this.contactEmail + '</td></tr>';*/
       output += '</table>';
     }
     if (this.topicalAreas != "") {
@@ -1233,3 +1235,121 @@ function bwAddRoom() {
     }
   });
 }
+
+// Form bindings
+$(function() {
+  // Location autocomplete
+  $("#bwLocationSearch").autocomplete({
+    minLength: 2,
+    appendTo: "#bwLocationSearchResults",
+    source: function (request, response) {
+      var searchResult = [];
+      $.ajax({
+        url: '/cal/location/all.gdo',
+        method: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: 'fexpr=loc_all=\'' + request.term + '\'',
+        //data: JSON.stringify({
+        //  "fexpr": 'loc_all=' + request.term
+        //}),
+        success: function (result) {
+          if (result !== undefined) {
+            if (result.status == 'ok' && result.locations[0]) {
+              searchResult = result.locations;
+              console.log("found this first: " + searchResult[0].addressField + " - " + searchResult[0].roomField);
+              response(searchResult);
+            }
+          }
+        },
+        error: function (xhr, status, err) {
+          console.error('/cal/location/all.gdo', status, err.toString());
+        }
+      })
+    },
+    focus: function (event, ui) {
+      // do nothing on focus event
+      return false;
+    },
+    select: function (event, ui) {
+      console.log("selected: " + ui.item.href);
+      //$(this).val(ui.item.href).removeClass("ui-autocomplete-loading");
+
+      var resultString = ui.item.addressField; // this must exist
+      if (ui.item.roomField != undefined && ui.item.roomField != "") {
+        resultString += " - " + ui.item.roomField;
+      }
+
+      $("#bwLocationUid").val(ui.item.uid);
+      $("#bwLocationSearch").val(resultString);
+      return false;
+    }
+  }).autocomplete("instance")._renderItem = function (ul, item) {
+    var resultString = '<div class="loc-result-address">' + item.addressField + '</div>'; // this must exist
+    if (item.roomField != undefined && item.roomField != "") {
+      resultString += '<div class="loc-result-room">' + item.roomField + '</div>';
+    }
+    if ((item.street != undefined && item.street != "") || (item.city != undefined && item.city != "")) {
+      resultString += '<div class="loc-result-street-address">';
+      if (item.street != undefined && item.street != "") {
+        resultString += '<span class="loc-result-street">' + item.street;
+        if (item.city != undefined && item.city != "") {
+          resultString += ', ';
+        }
+        resultString += '</span>';
+      }
+      if (item.city != undefined && item.city != "") {
+        resultString += '<span class="loc-result-city">' + item.city + '</span>';
+      }
+    }
+
+    return $('<li class="loc-result">').append(resultString).appendTo(ul);
+
+  };
+
+  // Contact autocomplete
+  $("#bwContactSearch").autocomplete({
+    minLength: 2,
+    appendTo: "#bwConatactSearchResults",
+    source: function (request, response) {
+      var searchResult = [];
+      $.ajax({
+        url: '/cal/contact/all.gdo',
+        method: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: 'fexpr=contact_all=\'' + request.term + '\'',
+        success: function (result) {
+          if (result !== undefined) {
+            if (result.status == 'ok' && result.contacts[0]) {
+              searchResult = result.contacts;
+              console.log("found this first: " + searchResult[0].cn.value);
+              response(searchResult);
+            }
+          }
+        },
+        error: function (xhr, status, err) {
+          console.error('/cal/contact/all.gdo', status, err.toString());
+        }
+      })
+    },
+    focus: function (event, ui) {
+      // do nothing on focus event
+      return false;
+    },
+    select: function (event, ui) {
+      console.log("selected: " + ui.item.uid);
+      //$(this).val(ui.item.href).removeClass("ui-autocomplete-loading");
+
+      var resultString = ui.item.cn.value; // this must exist
+
+      $("#bwContactUid").val(ui.item.uid);
+      $("#bwContactSearch").val(resultString);
+      return false;
+    }
+  }).autocomplete("instance")._renderItem = function (ul, item) {
+    var resultString = item.cn.value; // this must exist
+    return $("<li>").append("<div>" + resultString + "</div>").appendTo(ul);
+  };
+
+});

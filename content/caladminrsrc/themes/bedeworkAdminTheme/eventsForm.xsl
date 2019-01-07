@@ -2439,7 +2439,8 @@
             </input>
             <xsl:copy-of select="$bwStr-AEEF-NoTransparent"/>
           </td>
-        </tr> --><!--  Description  -->
+        </tr> -->
+        <!--  Description  -->
         <tr>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-Description"/>
@@ -2585,10 +2586,23 @@
               <xsl:if test="$canEdit = 'false'">
                 <xsl:attribute name="class">invisible</xsl:attribute>
               </xsl:if>
-              <input type="hidden" name="allLocationId" id="bwLocation">
+              <!--input type="hidden" name="allLocationId" id="bwLocation">
+                <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']/@value"/></xsl:attribute>
+              </input-->
+              <input type="hidden" id="bwLocationUid" name="allLocationId">
                 <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']/@value"/></xsl:attribute>
               </input>
               <div id="bwLocationsPrimaryContainer">
+              <label for="bwLocationSearch">
+                Search for address:
+              </label>
+              <input id="bwLocationSearch" size="60" placeholder="begin typing to search for a location" value="">
+                <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']"/></xsl:attribute>
+              </input>
+              <!-- <a href="mailto:calendar.support@example.edu?subject=Request - New Event Location" id="RequestLocationLink" class="requestLink" title="request a new location">request new</a> -->
+              <br/>
+              <div id="bwLocationSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
+<!-- ORIGINAL:
                 <label for="bwLocationsPrimary">
                   <xsl:value-of select="$bwStr-AEEF-AddressPrimary"/>
                 </label>
@@ -2610,6 +2624,7 @@
                   </xsl:if>
                   <xsl:value-of select="$bwStr-AEEF-Add"/>
                 </a>
+-->
               </div>
             </div>
             <xsl:if test="$canEdit = 'false'">
@@ -2624,6 +2639,7 @@
             <xsl:copy-of select="$bwStr-AEEF-Contact"/>
           </td>
           <td>
+<!-- OLD / ORIG:
             <input type="hidden" name="allContactId" id="bwContact">
               <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']/@value"/></xsl:attribute>
             </input>
@@ -2665,7 +2681,7 @@
                     <xsl:when test="$showAllContactsListOnFirstLoad = 'true'">
                       <xsl:copy-of select="form/contact/all/select/*"/>
                     </xsl:when>
-                    <xsl:otherwise> <!-- reconstruct all list - strip out "selected" attribute -->
+                    <xsl:otherwise> < ! - - reconstruct all list - strip out "selected" attribute - - >
                       <xsl:for-each select="form/contact/all/select/option">
                         <option>
                           <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
@@ -2676,9 +2692,26 @@
                   </xsl:choose>
                 </select>
               </div>
+-->
+
+             <!-- XXX New Search Approach as developed for Yale -->
+              <input type="hidden" id="bwContactUid" name="allContactId">
+                <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']/@value"/></xsl:attribute>
+              </input>
+              <label for="bwContactSearch">
+                Search for contact:
+              </label><br/>
+              <input id="bwContactSearch" size="60" placeholder="begin typing to search for a contact" value="">
+                <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']"/></xsl:attribute>
+              </input>
+              <!-- XXX request new contact mailto link: -->
+              <!--<a href="mailto:calendar.support@example.edu?subject=Request - New Event Contact" id="requestContactLink" class="requestLink" title="request a new contact">request new</a><br/>-->
+              <div id="bwContactSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
+
+<!--
               <xsl:text> </xsl:text>
-              <!-- allow for toggling between the preferred and all contacts listings if preferred
-                   contacts exist -->
+              < ! - - allow for toggling between the preferred and all contacts listings if preferred
+                   contacts exist - - >
               <xsl:if test="form/contact/preferred/select/option">
                 <div class="container">
                   <input type="radio" name="toggleContactLists" id="bwContactPreferredButton" value="preferred" onclick="changeClass('bwPrefContactContainer','shown');changeClass('bwAllContactContainer','invisible');">
@@ -2700,6 +2733,8 @@
                 </div>
               </xsl:if>
             </div>
+-->
+
             <xsl:if test="$canEdit = 'false'">
               <xsl:value-of select="form/contact/all/select/option[@selected]"/>
             </xsl:if>
