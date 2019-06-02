@@ -121,7 +121,7 @@
           <noversion>true</noversion>
           <delete>true</delete>
           <warName>bw-calendar-xsl</warName>
-          <baseDirPath>${project.basedir}/..</baseDirPath>
+          <baseDirPath>${org.bedework.deployment.basedir}</baseDirPath>
           <propsPath>${org.bedework.deployment.properties}</propsPath>
         </configuration>
       </plugin>
