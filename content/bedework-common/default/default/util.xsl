@@ -169,7 +169,7 @@
                 <xsl:value-of select="string-length(substring-before($latin1,$first-char)) + 160"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:message terminate="no">Warning: string contains a character that is out of range! Substituting "?".</xsl:message>
+                <!--<xsl:message terminate="no">Warning: string contains a character that is out of range! Substituting "?".</xsl:message> -->
                 <xsl:text>63</xsl:text>
               </xsl:otherwise>
             </xsl:choose>
