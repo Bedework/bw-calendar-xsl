@@ -10,7 +10,7 @@
   <url>https://github.com/Bedework/bw-calendar-xsl</url>
 
   <properties>
-    <bw-util-deploy.version>4.0.24</bw-util-deploy.version>
+    <bw-util-deploy.version>4.0.25</bw-util-deploy.version>
   </properties>
 
   <organization>
@@ -159,7 +159,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.9.1</version>
+            <version>3.1.1</version>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
@@ -169,7 +169,7 @@
               </execution>
             </executions>
             <configuration>
-              <additionalparam>-Xdoclint:none</additionalparam>
+              <additionalJOption>-Xdoclint:none</additionalJOption>
               <failOnError>false</failOnError>
             </configuration>
           </plugin>
