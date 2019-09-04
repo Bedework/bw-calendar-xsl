@@ -268,6 +268,9 @@
             <xsl:otherwise>
 
               <xsl:choose>
+                <xsl:when test="location/subField2 = 'NO-LINK'">
+                  <xsl:value-of select="location/address"/>
+                </xsl:when>
                 <xsl:when test="location/subField2 != ''">
                   <!-- we have a map url: use it directly -->
                   <a title="map" class="map-icon">
@@ -277,9 +280,9 @@
                     <img src="{$resourcesRoot}/images/map-24.png" alt="map"/>
                   </a>
                 </xsl:when>
-                <xsl:when test="location/street != '' or location/city != '' or location/state != '' or location/zip !=''">
+                <xsl:when test="location/combinedValues != ''">
                   <!-- no map url from a Bedework field, but we have all components we need to create a Google map url -->
-                  <xsl:variable name="googleMapUrl">http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;q=<xsl:value-of select="location/street"/>, <xsl:value-of select="location/city"/>, <xsl:value-of select="location/state"/>, <xsl:value-of select="location/zip"/> (<xsl:value-of select="location/address"/>)&amp;ie=UTF8&amp;z=15</xsl:variable>
+                  <xsl:variable name="googleMapUrl">http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;q=<xsl:value-of select="location/combinedValues"/>&amp;ie=UTF8&amp;z=15</xsl:variable>
                   <a title="map" class="map-icon">
                     <xsl:attribute name="href"><xsl:value-of select="$googleMapUrl"/></xsl:attribute>
                     <xsl:value-of select="location/address"/>
