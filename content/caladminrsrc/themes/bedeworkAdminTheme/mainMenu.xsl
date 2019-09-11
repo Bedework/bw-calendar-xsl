@@ -113,7 +113,7 @@
         <ul class="mainMenuRow" id="mainMenuRow2">
           <li>
             <a href="{$event-initUpdateEvent}">
-              <xsl:attribute name="href"><xsl:value-of select="$event-initUpdateEvent"/>&amp;listMode=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$calendarPath"/>" and (entity_type="event"|entity_type="todo"))&amp;sort=<xsl:value-of select="$eventListSort"/>&amp;setappvar=catFilter()</xsl:attribute>
+              <xsl:attribute name="href"><xsl:value-of select="$event-initUpdateEvent"/>&amp;listMode=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$calendarPath"/>" and (entity_type="event" or entity_type="todo"))&amp;sort=<xsl:value-of select="$eventListSort"/>&amp;setappvar=catFilter()</xsl:attribute>
               <xsl:if test="not(/bedework/currentCalSuite/name)">
                 <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
               </xsl:if>

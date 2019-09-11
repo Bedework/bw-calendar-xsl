@@ -74,7 +74,7 @@ function BwEventList(outputContainerID,dataType,options,startDate,filterPrefix,f
   this.fexprPrefix = filterPrefix;
   this.filterPaths = filterPaths;
   this.query = query;
-  this.fexprSuffix = "(entity_type=\"event\"|entity_type=\"todo\")";
+  this.fexprSuffix = "(entity_type=\"event\" or entity_type=\"todo\")";
   this.fexpr = "";
   this.eventCount = eventCount;
 

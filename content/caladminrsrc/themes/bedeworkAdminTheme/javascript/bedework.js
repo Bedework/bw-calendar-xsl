@@ -318,12 +318,12 @@ function setListDate(formObj,dateString) {
   if (formObj.catFilter.value != "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo"))';
+  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   formObj.submit();
 }
 function setSuggestListDate(formObj,dateString) {
   $("#appvar").val("curListDate(" + dateString + ")");
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
   formObj.submit();
 }
 function setListDateToday(dateString,formObj) {
@@ -334,13 +334,13 @@ function setListDateToday(dateString,formObj) {
   if (formObj.catFilter.value != "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo"))';
+  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
 }
 function setSuggestListDateToday(dateString,formObj) {
   // note that the today button is a submit, so no need to submit it via JS
   $("#bwListWidgetStartDate").val(dateString);
   $("#appvar").val("curListDate(" + dateString + ")");
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
 }
 // Change the event list widgets (for the main modify events listing)
 function setEventList(formObj,changed) {
@@ -348,7 +348,7 @@ function setEventList(formObj,changed) {
   if (formObj.catFilter.value != "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo"))';
+  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   switch (changed) {
     case "calPath":
       formObj.appvar.value = "calendarPath(" + formObj.colPath.value + ")";
@@ -367,19 +367,19 @@ function setEventList(formObj,changed) {
 }
 // Clear the category filter
 function clearCat(formObj) {
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo"))';
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   formObj.appvar.value = "catFilter()";
   formObj.submit();
 }
 // Stand-alone sort for pending queue
 function setListSort(formObj,sortVal) {
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo"))';
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   formObj.appvar.value = "sort(" + sortVal + ")";
   formObj.submit();
 }
 // Set
 function setSuggestListType(formObj,suggestType) {
   $("#appvar").val("suggestType(" + suggestType + ")");
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event"|entity_type="todo") and suggested-to="' + suggestType + ':' + formObj.suggestedTo.value + '")';
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo") and suggested-to="' + suggestType + ':' + formObj.suggestedTo.value + '")';
   formObj.submit();
 }

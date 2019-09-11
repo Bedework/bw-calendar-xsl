@@ -3456,7 +3456,7 @@
               <xsl:otherwise>P</xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <xsl:variable name="backToListLink"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event"|entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of select="/bedework/currentCalSuite/groupHref"/>")&amp;sort=dtstart.utc:asc&amp;master=true&amp;setappvar=suggestType(<xsl:value-of select="$suggestedListType"/>)</xsl:variable>
+          <xsl:variable name="backToListLink"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of select="/bedework/currentCalSuite/groupHref"/>")&amp;sort=dtstart.utc:asc&amp;master=true&amp;setappvar=suggestType(<xsl:value-of select="$suggestedListType"/>)</xsl:variable>
           <xsl:variable name="reloadEventLink"><xsl:value-of select="$event-fetchForUpdateSuggestionQueue"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <input type="button" name="updateEvent" value="{$bwStr-SEBu-AcceptEvent}" class="noFocus" onclick="setSuggestionStatus('accept','{$actionPrefix}','')"/><!-- accept and update -->
           <input type="button" name="rejectEvent" value="{$bwStr-SEBu-RejectEvent}" class="noFocus" onclick="setSuggestionStatus('reject','{$actionPrefix}','{$backToListLink}')"/>
@@ -3557,7 +3557,7 @@
                   <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="{$backToListLink}" class="noFocus"/>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:variable name="backToListLink">location.href='<xsl:value-of select="$event-initUpdateEvent"/>&amp;start=<xsl:value-of select="/bedework/currentdate/date"/>&amp;listMode=true&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event"|entity_type="todo"))&amp;sort=dtstart.utc:asc'</xsl:variable>
+                  <xsl:variable name="backToListLink">location.href='<xsl:value-of select="$event-initUpdateEvent"/>&amp;start=<xsl:value-of select="/bedework/currentdate/date"/>&amp;listMode=true&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))&amp;sort=dtstart.utc:asc'</xsl:variable>
                   <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="{$backToListLink}" class="noFocus"/>
                 </xsl:otherwise>
               </xsl:choose>

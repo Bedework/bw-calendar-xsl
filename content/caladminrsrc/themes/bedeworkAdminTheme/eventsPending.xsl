@@ -52,7 +52,7 @@
             <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
-        <xsl:variable name="fexpr">(colPath='<xsl:value-of select="$submissionsRootUnencoded"/>' and (entity_type="event"|entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)</xsl:variable>
+        <xsl:variable name="fexpr">(colPath='<xsl:value-of select="$submissionsRootUnencoded"/>' and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)</xsl:variable>
 
         <input type="hidden" name="listMode" value="true"/>
         <input type="hidden" name="sg" value="true"/>

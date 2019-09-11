@@ -67,7 +67,7 @@
             </xsl:choose>
           </xsl:variable>
           <a>
-            <xsl:attribute name="href"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event"|entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of
+            <xsl:attribute name="href"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of
                     select="/bedework/currentCalSuite/groupHref"/>")&amp;master=true&amp;sort=dtstart.utc:asc</xsl:attribute>
             <xsl:copy-of select="$bwStr-Head-SuggestionQueueEvents"/>
           </a>
@@ -85,7 +85,7 @@
               <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event"|entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
+          <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
           <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
         </a>
       </li>
