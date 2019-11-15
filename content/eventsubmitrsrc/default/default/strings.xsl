@@ -26,6 +26,7 @@
 
   <!-- xsl:template name="headSection" -->
   <xsl:variable name="bwStr-Head-BedeworkSubmitPubEv">Bedework: Submit a Public Event</xsl:variable>
+  <xsl:variable name="bwStr-Head-EventInformation">Event Information</xsl:variable>
 
   <!-- xsl:template name="header" -->
   <xsl:variable name="bwStr-Head-CalendarSuite">Calendar Suite</xsl:variable>
@@ -79,6 +80,7 @@
   <xsl:variable name="bwStr-FoEl-DateAndTime">Date &amp; Time:</xsl:variable>
   <xsl:variable name="bwStr-FoEl-AllDay">all day</xsl:variable>
   <xsl:variable name="bwStr-FoEl-Start">Start:</xsl:variable>
+  <xsl:variable name="bwStr-FoEl-Date">Date</xsl:variable>
   <xsl:variable name="bwStr-FoEl-SelectTimezone">select timezone</xsl:variable>
   <xsl:variable name="bwStr-FoEl-Due">Due:</xsl:variable>
   <xsl:variable name="bwStr-FoEl-End">End:</xsl:variable>
@@ -105,6 +107,8 @@
   <xsl:variable name="bwStr-FoEl-EventURLOptional">optional: for more information about the event</xsl:variable>
   <xsl:variable name="bwStr-FoEl-ImageURL">Image URL:</xsl:variable>
   <xsl:variable name="bwStr-FoEl-ImageURLOptional">optional: to include an image with the event description</xsl:variable>
+  <xsl:variable name="bwStr-FoEl-ImageAlt">Image description:</xsl:variable>
+  <xsl:variable name="bwStr-FoEl-ImageAltDesc">will be used as image alt tag</xsl:variable>
   <xsl:variable name="bwStr-FoEl-MustSelectLocation">You must either select a location or suggest one below.</xsl:variable>
   <xsl:variable name="bwStr-FoEl-SelectExistingLocation">select an existing location...</xsl:variable>
   <xsl:variable name="bwStr-FoEl-DidntFindLocation">Didn't find the location?  Suggest a new one:</xsl:variable>

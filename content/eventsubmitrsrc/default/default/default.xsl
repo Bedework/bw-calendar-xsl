@@ -39,6 +39,6 @@
   <!-- include the language string libraries -->
   <xsl:include href="./globals.xsl" />
   <xsl:include href="./strings.xsl"/>
-  <xsl:include href="../../themes/bwSubmissionsTheme/bedework.xsl" />
+  <xsl:include href="../../themes/bw1pageSubmissionsTheme/bedework.xsl" />
 
 </xsl:stylesheet>
