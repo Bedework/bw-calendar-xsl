@@ -135,8 +135,8 @@
                 <xsl:copy-of select="$bwStr-ModL-MainAddress"/>
               </td>
               <td align="left">
-                <input size="60" name="locationAddress.value" type="text" id="bwLocMainAddress">
-                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/address"/></xsl:attribute>
+                <input size="60" name="location.addressField" type="text" id="bwLocMainAddress">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/addressField"/></xsl:attribute>
                 </input>
               </td>
             </tr>
@@ -145,8 +145,8 @@
                 <xsl:copy-of select="$bwStr-ModL-SubAddress"/>
               </td>
               <td align="left">
-                <input size="60" name="locationSubaddress.value" type="text">
-                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/subaddress"/></xsl:attribute>
+                <input size="60" name="location.street" type="text">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/street"/></xsl:attribute>
                 </input>
               </td>
             </tr>

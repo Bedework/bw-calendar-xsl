@@ -75,7 +75,7 @@
           </td>
           <td align="left" class="padMeTop">
             <input type="radio" value="true" name="stripAlarms" checked="checked"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-Upld-Yes"/><br/>
-            <input type="radio" value="false" name="stripAlarms"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-Upld-Yes"/><xsl:text> </xsl:text><span class="note"><xsl:copy-of select="$bwStr-Upld-No"/></span><br/>
+            <input type="radio" value="false" name="stripAlarms"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-Upld-No"/><xsl:text><br/>
           </td>
         </tr>
       </table>
