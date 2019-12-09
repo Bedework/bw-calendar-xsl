@@ -587,6 +587,11 @@ td {
   padding-left: 0.5em;
   font-size: 0.8em;
 }
+#bw-location-address label {
+  display: inline-block;
+  width: 3.2em;
+  font-style: italic;
+}
 #navigationBarTable {
   font-size: 0.8em;
   margin: 0em;
@@ -765,6 +770,11 @@ form {
   padding: 0 2px;
   text-decoration: none;
 }
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 /* table below is used for almost all forms  */
 table.common {
   width: 100%;
@@ -844,10 +854,11 @@ table.common td.fieldval {
   vertical-align: top;
   padding: 0.5em 0.5em 0.2em 1em;
 }
-table.common td.fieldname {
+table.common td.fieldName {
   width: 15%;
   margin: 0em;
   vertical-align: top;
+  text-align: right;
   padding: 0.5em 0.5em 0.2em 0.5em;
   color: black;
   background-color: #eee;

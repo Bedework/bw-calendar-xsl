@@ -535,7 +535,7 @@
   <xsl:variable name="bwStr-MoLo-Address-Placeholder"></xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address-Info"></xsl:variable>
   <xsl:variable name="bwStr-MoLo-SubAddress">Subaddress:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-SubAddress-Placeholder">supplimental address information</xsl:variable>
+  <xsl:variable name="bwStr-MoLo-SubAddress-Placeholder">supplemental address information</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Street">Street:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Street-Placeholder"></xsl:variable>
   <xsl:variable name="bwStr-MoLo-City">City:</xsl:variable>

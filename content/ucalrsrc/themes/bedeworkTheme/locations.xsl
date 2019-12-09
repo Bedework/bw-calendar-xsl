@@ -139,7 +139,7 @@
                   <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/addressField"/></xsl:attribute>
                   <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-Address-Placeholder"/></xsl:attribute>
                 </input>
-                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Address-Info"/></span>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Required"/></span>
               </td>
             </tr>
             <tr class="optional">
