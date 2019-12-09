@@ -131,33 +131,101 @@
               </th>
             </tr>
             <tr>
-              <td class="fieldname">
-                <xsl:copy-of select="$bwStr-ModL-MainAddress"/>
-              </td>
-              <td align="left">
-                <input size="60" name="location.addressField" type="text" id="bwLocMainAddress">
-                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/addressField"/></xsl:attribute>
-                </input>
-              </td>
-            </tr>
-            <tr>
-              <td class="fieldname">
-                <xsl:copy-of select="$bwStr-ModL-SubAddress"/>
-              </td>
-              <td align="left">
-                <input size="60" name="location.street" type="text">
-                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/street"/></xsl:attribute>
-                </input>
-              </td>
-            </tr>
-            <tr>
-              <td class="fieldname">
-                <xsl:copy-of select="$bwStr-ModL-LocationLink"/>
+              <td class="fieldName">
+                <label for="locationAddressField"><xsl:copy-of select="$bwStr-MoLo-Name"/></label>
               </td>
               <td>
-                <input size="60" name="location.link" type="text">
-                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/link"/></xsl:attribute>
+                <input type="text" name="location.addressField" id="locationAddressField" size="40" value="">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/addressField"/></xsl:attribute>
+                  <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-Address-Placeholder"/></xsl:attribute>
                 </input>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Address-Info"/></span>
+              </td>
+            </tr>
+            <tr class="optional">
+              <td class="fieldName">
+                <label for="locationRoomField"><xsl:copy-of select="$bwStr-MoLo-Room"/></label>
+              </td>
+              <td>
+                <input type="text" name="location.roomField" id="locationRoomField" size="40" value="">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/roomField"/></xsl:attribute>
+                  <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-Room-Placeholder"/></xsl:attribute>
+                </input>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Optional"/></span>
+              </td>
+            </tr>
+            <tr id="bw-location-address" class="optional">
+              <td class="fieldName">
+                <xsl:copy-of select="$bwStr-MoLo-Address"/>
+              </td>
+              <td>
+                <fieldset>
+                  <label for="locationStreet"><xsl:copy-of select="$bwStr-MoLo-Street"/></label>
+                  <input type="text" name="location.street" id="locationStreet" size="40">
+                    <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/street"/></xsl:attribute>
+                    <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-Street-Placeholder"/></xsl:attribute>
+                  </input>
+                  <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Optional"/></span>
+
+                  <br/>
+
+                  <label for="locationCity"><xsl:copy-of select="$bwStr-MoLo-City"/></label>
+                  <input type="text" name="location.city" id="locationCity" size="40">
+                    <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/city"/></xsl:attribute>
+                    <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-City-Placeholder"/></xsl:attribute>
+                  </input>
+
+                  <br/>
+
+                  <label for="locationState"><xsl:copy-of select="$bwStr-MoLo-State"/></label>
+                  <input type="text" name="location.state" id="locationState" size="2">
+                    <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/state"/></xsl:attribute>
+                    <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-State-Placeholder"/></xsl:attribute>
+                  </input>
+                  <label for="locationPostalCode" class="inline"><xsl:copy-of select="$bwStr-MoLo-PostalCode"/></label>
+                  <input type="text" name="location.zip" id="locationPostalCode" size="10">
+                    <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/zip"/></xsl:attribute>
+                    <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-PostalCode-Placeholder"/></xsl:attribute>
+                  </input>
+                </fieldset>
+
+              </td>
+            </tr>
+            <!-- Subfield2 - used by default for full URL to Map -->
+            <tr class="optional">
+              <td class="fieldName">
+                <label for="locationSubField2"><xsl:copy-of select="$bwStr-MoLo-SubField2"/></label>
+              </td>
+              <td>
+                <input type="text" name="location.subField2" id="locationSubField2" size="40">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/subField2"/></xsl:attribute>
+                  <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-SubField2-Placeholder"/></xsl:attribute>
+                </input>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Optional"/></span>
+              </td>
+            </tr>
+            <tr class="optional">
+              <td class="fieldName">
+                <label for="locationUrl"><xsl:copy-of select="$bwStr-MoLo-LocationURL"/></label>
+              </td>
+              <td>
+                <input type="text" name="location.link" id="locationUrl" size="40">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/link"/></xsl:attribute>
+                  <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-LocationURL-Placeholder"/></xsl:attribute>
+                </input>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Optional"/></span>
+              </td>
+            </tr>
+            <tr class="optional">
+              <td class="fieldName">
+                <label for="geoUri"><xsl:copy-of select="$bwStr-MoLo-GeoUri"/></label>
+              </td>
+              <td>
+                <input type="text" name="location.geouri" id="geoUri" size="40">
+                  <xsl:attribute name="value"><xsl:value-of select="/bedework/currentLocation/geouri"/></xsl:attribute>
+                  <xsl:attribute name="placeholder"><xsl:value-of select="$bwStr-MoLo-GeoUri-Placeholder"/></xsl:attribute>
+                </input>
+                <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MoLo-Optional"/></span>
               </td>
             </tr>
           </table>
