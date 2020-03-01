@@ -837,6 +837,9 @@
   <xsl:variable name="bwStr-ModRes-FeImageUrl">Image URL:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeLink">Link:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeTooltip">Tooltip:</xsl:variable>
+  <xsl:variable name="bwStr-ModRes-FeAlt">Alt:</xsl:variable>
+  <xsl:variable name="bwStr-ModRes-FeTitle">Title:</xsl:variable>
+  <xsl:variable name="bwStr-ModRes-FeCaption">Caption:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeSinglePanel">Single panel:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeGenericPanels">Generic panels (when featured events are disabled):</xsl:variable>
 

@@ -229,8 +229,8 @@
 
             <!-- trade the following two fields to see the featured events content
                  rendered in a textarea -->
-            <input type="hidden" name="content" id="resourceContent"/>
-            <!-- textarea name="content" rows="20" cols="120" id="resourceContent" style="display:block;"></textarea-->
+            <!-- <input type="hidden" name="content" id="resourceContent"/> -->
+            <textarea name="content" rows="20" cols="120" id="resourceContent" style="display:block;"><xsl:text> </xsl:text></textarea>
 
             <input type="submit" name="update" value="{$bwStr-ModRes-UpdateFeaturedEvents}"/>
             <input type="submit" name="remove" value="{$bwStr-ModRes-RemoveFeaturedEvents}"/>
@@ -450,14 +450,20 @@
 		          <a target="bwFeature">
 		            <xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
 		            <img width="100">
-		              <xsl:attribute name="src"><xsl:value-of select="name"/></xsl:attribute>
+		              <xsl:attribute name="src"><xsl:value-of select="url"/></xsl:attribute>
 		              <xsl:attribute name="alt"><xsl:value-of select="toolTip"/></xsl:attribute>
 		            </img>
 		          </a>
-		          <label class="field" for="image{$index}-name"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
+		          <label class="field" for="image{$index}-url"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
 		          <div class="value">
-		            <input type="text" size="83" name="image{$index}-name" id="image{$index}-name">
-		              <xsl:attribute name="value"><xsl:value-of select="name"/></xsl:attribute>
+		            <input type="text" size="83" name="image{$index}-url" id="image{$index}-url">
+		              <xsl:attribute name="value"><xsl:value-of select="url"/></xsl:attribute>
+		            </input>
+		          </div>
+              <label class="field" for="image{$index}-alt"><xsl:value-of select="$bwStr-ModRes-FeAlt"/></label>
+		          <div class="value">
+                <input type="text" size="83" name="image{$index}-alt" id="image{$index}-alt">
+                  <xsl:attribute name="value"><xsl:value-of select="alt"/></xsl:attribute>
 		            </input>
 		          </div>
 		          <label class="field" for="image{$index}-link"><xsl:value-of select="$bwStr-ModRes-FeLink"/></label>
@@ -466,10 +472,16 @@
 	                <xsl:attribute name="value"><xsl:value-of select="link"/></xsl:attribute>
 	              </input>
 		          </div>
-		          <label class="field" for="image{$index}-toolTip"><xsl:value-of select="$bwStr-ModRes-FeTooltip"/></label>
+		          <label class="field" for="image{$index}-title"><xsl:value-of select="$bwStr-ModRes-FeTitle"/></label>
 		          <div class="value">
-		            <input type="text" size="83" name="image{$index}-toolTip" id="image{$index}-toolTip">
-	                <xsl:attribute name="value"><xsl:value-of select="toolTip"/></xsl:attribute>
+		            <input type="text" size="83" name="image{$index}-title" id="image{$index}-title">
+	                <xsl:attribute name="value"><xsl:value-of select="title"/></xsl:attribute>
+		            </input>
+		          </div>
+              <label class="field" for="image{$index}-caption"><xsl:value-of select="$bwStr-ModRes-FeCaption"/></label>
+              <div class="value">
+                <input type="text" size="83" name="image{$index}-caption" id="image{$index}-caption">
+                  <xsl:attribute name="value"><xsl:value-of select="caption"/></xsl:attribute>
 		            </input>
 		          </div>
 		        </div>
@@ -486,26 +498,26 @@
 	          <a target="bwFeature">
 	            <xsl:attribute name="href"><xsl:value-of select="features/single/image/link"/></xsl:attribute>
 	            <img width="300">
-	              <xsl:attribute name="src"><xsl:value-of select="features/single/image/name"/></xsl:attribute>
-	              <xsl:attribute name="alt"><xsl:value-of select="features/single/image/toolTip"/></xsl:attribute>
+	              <xsl:attribute name="src"><xsl:value-of select="features/single/image/url"/></xsl:attribute>
+	              <xsl:attribute name="alt"><xsl:value-of select="features/single/image/alt"/></xsl:attribute>
 	            </img>
 	          </a>
-	          <label class="field" for="singleImage-name"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
+	          <label class="field" for="singleImage-url"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
 	          <div class="value">
-	            <input type="text" size="50" name="singleImage-name" id="singleImage-name">
-	              <xsl:attribute name="value"><xsl:value-of select="features/single/image/name"/></xsl:attribute>
+	            <input type="text" size="50" name="singleImage-url" id="singleImage-url">
+	              <xsl:attribute name="value"><xsl:value-of select="features/single/image/url"/></xsl:attribute>
+	            </input>
+	          </div>
+            <label class="field" for="singleImage-alt"><xsl:value-of select="$bwStr-ModRes-FeAlt"/></label>
+	          <div class="value">
+              <input type="text" size="50" name="singleImage-alt" id="singleImage-alt">
+                <xsl:attribute name="value"><xsl:value-of select="features/single/image/alt"/></xsl:attribute>
 	            </input>
 	          </div>
 	          <label class="field" for="singleImage-link"><xsl:value-of select="$bwStr-ModRes-FeLink"/></label>
 	          <div class="value">
 	            <input type="text" size="50" name="singleImage-link" id="singleImage-link">
 	              <xsl:attribute name="value"><xsl:value-of select="features/single/image/link"/></xsl:attribute>
-	            </input>
-	          </div>
-	          <label class="field" for="singleImage-toolTip"><xsl:value-of select="$bwStr-ModRes-FeTooltip"/></label>
-	          <div class="value">
-	            <input type="text" size="50" name="singleImage-toolTip" id="singleImage-toolTip">
-	              <xsl:attribute name="value"><xsl:value-of select="features/single/image/toolTip"/></xsl:attribute>
 	            </input>
 	          </div>
 	        </div>
@@ -521,19 +533,19 @@
 	          <xsl:variable name="index"><xsl:value-of select="position()"/></xsl:variable>
 		        <div class="fieldGroup">
 	            <img width="100">
-	              <xsl:attribute name="src"><xsl:value-of select="name"/></xsl:attribute>
-	              <xsl:attribute name="alt"><xsl:value-of select="tooltip"/></xsl:attribute>
+	              <xsl:attribute name="src"><xsl:value-of select="url"/></xsl:attribute>
+	              <xsl:attribute name="alt"><xsl:value-of select="alt"/></xsl:attribute>
 	            </img>
-	            <label class="field" for="genImage{$index}-name"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
+	            <label class="field" for="genImage{$index}-url"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
 		          <div class="value">
-		            <input type="text" size="83" name="genImage{$index}-name" id="genImage{$index}-name">
-	                <xsl:attribute name="value"><xsl:value-of select="name"/></xsl:attribute>
+		            <input type="text" size="83" name="genImage{$index}-url" id="genImage{$index}-url">
+	                <xsl:attribute name="value"><xsl:value-of select="url"/></xsl:attribute>
 	              </input>
 		          </div>
-		          <label class="field" for="genImage{$index}-toolTip"><xsl:value-of select="$bwStr-ModRes-FeTooltip"/></label>
+		          <label class="field" for="genImage{$index}-alt"><xsl:value-of select="$bwStr-ModRes-FeAlt"/></label>
 		          <div class="value">
-		            <input type="text" size="83" name="genImage{$index}-toolTip" id="genImage{$index}-toolTip">
-	                <xsl:attribute name="value"><xsl:value-of select="toolTip"/></xsl:attribute>
+		            <input type="text" size="83" name="genImage{$index}-alt" id="genImage{$index}-alt">
+	                <xsl:attribute name="value"><xsl:value-of select="alt"/></xsl:attribute>
 	              </input>
 		          </div>
 		        </div>

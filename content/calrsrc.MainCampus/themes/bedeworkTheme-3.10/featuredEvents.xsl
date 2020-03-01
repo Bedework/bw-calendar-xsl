@@ -71,23 +71,58 @@
   <xsl:template match="image">
     <xsl:param name="singleMode">false</xsl:param>
     <xsl:param name="isGeneric">false</xsl:param>
-    <xsl:variable name="imgPrefix"><xsl:choose><xsl:when test="not(starts-with(name,'http') or starts-with(name,'/'))"><xsl:value-of select="$resourcesRoot"/>/featured/</xsl:when></xsl:choose></xsl:variable>
+    <xsl:variable name="imgPrefix"><xsl:choose><xsl:when test="not(starts-with(url,'http') or starts-with(url,'/'))"><xsl:value-of select="$resourcesRoot"/>/featured/</xsl:when></xsl:choose></xsl:variable>
     <xsl:choose>
       <xsl:when test="link = '' or $isGeneric = 'true'">
-        <img class="img-responsive"><!-- original dimensions width="241" height="189" - not included for responsive design -->
-          <xsl:attribute name="src"><xsl:value-of select="$imgPrefix"/><xsl:value-of select="name"/></xsl:attribute>
-          <xsl:attribute name="alt"><xsl:value-of select="toolTip"/></xsl:attribute>
-          <xsl:if test="$singleMode = 'true'"><xsl:attribute name="class">img-responsive singleFeatureMode</xsl:attribute></xsl:if>
-        </img>
+        <figure class="red">
+          <img class="img-responsive"><!-- original dimensions width="241" height="189" - not included for responsive design -->
+            <xsl:attribute name="src"><xsl:value-of select="$imgPrefix"/><xsl:value-of select="url"/></xsl:attribute>
+              <xsl:attribute name="alt">
+                <xsl:choose>
+                  <xsl:when test="title = '' and caption = ''"><xsl:value-of select="alt"/></xsl:when>
+                  <xsl:otherwise></xsl:otherwise><!-- use empty alt when there are captions -->
+                </xsl:choose>
+              </xsl:attribute>
+            <xsl:if test="$singleMode = 'true'"><xsl:attribute name="class">img-responsive singleFeatureMode</xsl:attribute></xsl:if>
+          </img>
+          <xsl:if test="title != '' or caption != ''">
+            <figcaption>
+                <xsl:if test="title != ''">
+                  <h2 class="grid-title"><xsl:value-of select="title"/></h2>
+                </xsl:if>
+                <xsl:if test="caption != ''">
+                  <p class="grid-caption"><xsl:value-of select="caption"/></p>
+                </xsl:if>
+            </figcaption>
+          </xsl:if>
+        </figure>
       </xsl:when>
       <xsl:otherwise>
         <a>
           <xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
-          <img class="img-responsive"><!-- original dimensions width="241" height="189" - not included for responsive design -->
-            <xsl:attribute name="src"><xsl:value-of select="$imgPrefix"/><xsl:value-of select="name"/></xsl:attribute>
-            <xsl:attribute name="alt"><xsl:value-of select="toolTip"/></xsl:attribute>
-            <xsl:if test="$singleMode = 'true'"><xsl:attribute name="class">img-responsive singleFeatureMode</xsl:attribute></xsl:if>
-          </img>
+          <figure class="red">
+            <img class="img-responsive"><!-- original dimensions width="241" height="189" - not included for responsive design -->
+              <xsl:attribute name="src"><xsl:value-of select="$imgPrefix"/><xsl:value-of select="url"/></xsl:attribute>
+              <xsl:attribute name="alt">
+                <xsl:choose>
+                  <xsl:when test="title = '' and caption = ''"><xsl:value-of select="alt"/></xsl:when>
+                  <xsl:otherwise></xsl:otherwise><!-- use empty alt when there are captions -->
+                </xsl:choose>
+              </xsl:attribute>
+              <xsl:if test="$singleMode = 'true'"><xsl:attribute name="class">img-responsive singleFeatureMode</xsl:attribute></xsl:if>
+            </img>
+
+            <xsl:if test="title != '' or caption != ''">
+              <figcaption>
+                <xsl:if test="title != ''">
+                  <h2 class="grid-title"><xsl:value-of select="title"/></h2>
+                </xsl:if>
+                <xsl:if test="caption != ''">
+                  <p class="grid-caption"><xsl:value-of select="caption"/></p>
+                </xsl:if>
+              </figcaption>
+            </xsl:if>
+          </figure>
         </a>
       </xsl:otherwise>
     </xsl:choose>

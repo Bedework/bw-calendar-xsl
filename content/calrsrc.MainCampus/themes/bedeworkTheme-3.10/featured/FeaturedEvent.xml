@@ -9,25 +9,37 @@
     <group>
       <image>
         <name>bede.jpg</name>
+        <url>bede.jpg</url>
         <link>http://en.wikipedia.org/wiki/De_temporum_ratione</link>
-        <toolTip>De temporum ratione</toolTip>
+        <alt>De temporum ratione</alt>
+        <title></title>
+        <caption></caption>
       </image>
       <image>
         <name>gettingstarted.jpg</name>
+        <url>gettingstarted.jpg</url>
         <link>https://wiki.jasig.org/display/BWK310/Getting+Started</link>
-        <toolTip>Bedework Getting Started Guide</toolTip>
+        <alt>Bedework Getting Started Guide</alt>
+        <title></title>
+        <caption></caption>
       </image>
       <image>
         <name>bedework.jpg</name>
+        <url>bedework.jpg</url>
         <link>http://www.jasig.org/bedework/documentation</link>
-        <toolTip>Bedework Documentation</toolTip>
+        <alt>Bedework Documentation</alt>
+        <title></title>
+        <caption></caption>
       </image>
     </group>
     <single>
       <image>
         <name>bedework.jpg</name>
+        <url>bedework.jpg</url>
         <link>http://www.jasig.org/bedework</link>
-        <toolTip>Bedework Website</toolTip>
+        <alt>Bedework Website</alt>
+        <title></title>
+        <caption></caption>
       </image>
     </single>
   </features>
@@ -35,15 +47,24 @@
     <group>
       <image>
 	      <name>bede.jpg</name>
-	      <toolTip>De temporum ratione</toolTip>
+	      <url>bede.jpg</url>
+	      <alt>De temporum ratione</alt>
+        <title></title>
+        <caption></caption>
 	    </image>
 	    <image>
 	      <name>gettingstarted.jpg</name>
-	      <toolTip>Bedework Documentation</toolTip>
+	      <url>gettingstarted.jpg</url>
+	      <alt>Bedework Documentation</alt>
+        <title></title>
+        <caption></caption>
 	    </image>
 	    <image>
 	      <name>bedework.jpg</name>
-	      <toolTip>Bedework Website</toolTip>
+	      <url>bedework.jpg</url>
+	      <alt>Bedework Website</alt>
+        <title></title>
+        <caption></caption>
 	    </image>
     </group>
   </generics>

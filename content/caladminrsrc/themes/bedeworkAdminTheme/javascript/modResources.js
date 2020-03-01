@@ -20,23 +20,25 @@
 // Specialty output for featured events resources
 function writeFeaturedEventsXml() {
   var feXml = "<featuredEvents>\n";
-  feXml += "  <featuresOn>" + $("#featuredEventsForm input:radio[name='enabled']:checked").val() + "</featuresOn> <!-- true to use features, false to use generic placeholders -->\n";
-  feXml += "  <singleMode>" + $("#featuredEventsForm input:radio[name='singleMode']:checked").val() + "</singleMode> <!-- true for a single pane (single), false for a triptych (group) -->\n";
+  feXml += "  <featuresOn><![CDATA[" + $("#featuredEventsForm input:radio[name='enabled']:checked").val() + "]]></featuresOn> <!-- true to use features, false to use generic placeholders -->\n";
+  feXml += "  <singleMode><![CDATA[" + $("#featuredEventsForm input:radio[name='singleMode']:checked").val() + "]]></singleMode> <!-- true for a single pane (single), false for a triptych (group) -->\n";
   feXml += "  <features>\n";
   feXml += "    <group>\n";
   for(i=1; i < 4; i++) {  
     feXml += "      <image>\n";
-    feXml += "        <name>" + $("#featuredEventsForm #image" + i + "-name").val() + "</name>\n";
-    feXml += "        <link>" + $("#featuredEventsForm #image" + i + "-link").val() + "</link>\n";
-    feXml += "        <toolTip>" + $("#featuredEventsForm #image" + i + "-toolTip").val() + "</toolTip>\n";
+    feXml += "        <url><![CDATA[" + $("#featuredEventsForm #image" + i + "-url").val() + "]]></url>\n";
+    feXml += "        <link><![CDATA[" + $("#featuredEventsForm #image" + i + "-link").val() + "]]></link>\n";
+    feXml += "        <alt><![CDATA[" + $("#featuredEventsForm #image" + i + "-alt").val() + "]]></alt>\n";
+    feXml += "        <title><![CDATA[" + $("#featuredEventsForm #image" + i + "-title").val() + "]]></title>\n";
+    feXml += "        <caption><![CDATA[" + $("#featuredEventsForm #image" + i + "-caption").val() + "]]></caption>\n";
     feXml += "      </image>\n";
   }
   feXml += "    </group>\n";
   feXml += "    <single>\n";
   feXml += "      <image>\n";
-  feXml += "        <name>" + $("#featuredEventsForm #singleImage-name").val() + "</name>\n";
-  feXml += "        <link>" + $("#featuredEventsForm #singleImage-link").val() + "</link>\n";
-  feXml += "        <toolTip>" + $("#featuredEventsForm #singleImage-toolTip").val() + "</toolTip>\n";
+  feXml += "        <url><![CDATA[" + $("#featuredEventsForm #singleImage-url").val() + "]]></url>\n";
+  feXml += "        <link><![CDATA[" + $("#featuredEventsForm #singleImage-link").val() + "]]></link>\n";
+  feXml += "        <alt><![CDATA[" + $("#featuredEventsForm #singleImage-alt").val() + "]]></alt>\n";
   feXml += "      </image>\n";
   feXml += "    </single>\n";
   feXml += "  </features>\n";
@@ -44,9 +46,9 @@ function writeFeaturedEventsXml() {
   feXml += "    <group>\n";
   for(i=1; i < 4; i++) {  
     feXml += "      <image>\n";
-    feXml += "        <name>" + $("#featuredEventsForm #genImage" + i + "-name").val() + "</name>\n";
-    feXml += "        <link>" + $("#featuredEventsForm #genImage" + i + "-link").val() + "</link>\n";
-    feXml += "        <toolTip>" + $("#featuredEventsForm #genImage" + i + "-toolTip").val() + "</toolTip>\n";
+    feXml += "        <url><![CDATA[" + $("#featuredEventsForm #genImage" + i + "-url").val() + "]]></url>\n";
+    feXml += "        <link><![CDATA[" + $("#featuredEventsForm #genImage" + i + "-link").val() + "]]></link>\n";
+    feXml += "        <alt><![CDATA[" + $("#featuredEventsForm #genImage" + i + "-alt").val() + "]]></alt>\n";
     feXml += "      </image>\n";
   }
   feXml += "    </group>\n";
