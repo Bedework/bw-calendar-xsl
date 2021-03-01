@@ -192,13 +192,13 @@
          This template looks at the categories found in the event and
          returns a color class for use with the "subscriptionClass" variable.
          The classes suggested below come from bwColors.css found in the bedework-common directory. -->
-      <xsl:choose>
        <!--
+      <xsl:choose>
        <xsl:when test="category/value = 'Athletics'">bwltpurple</xsl:when>
        <xsl:when test="category/value = 'Arts'">bwltsalmon</xsl:when>
-       -->
-        <xsl:otherwise></xsl:otherwise> <!-- do nothing -->
+        <xsl:otherwise></xsl:otherwise> < ! - - do nothing - - >
     </xsl:choose>
+      -->
   </xsl:template>
 
 </xsl:stylesheet>
