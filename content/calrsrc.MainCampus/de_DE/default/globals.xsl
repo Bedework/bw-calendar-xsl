@@ -53,13 +53,11 @@
   <xsl:variable name="listEvents" select="/bedework/urlPrefixes/main/listEvents" />
   <xsl:variable name="eventView" select="/bedework/urlPrefixes/event/eventView" />
   <xsl:variable name="addEventRef" select="/bedework/urlPrefixes/event/addEventRef" />
-  <xsl:variable name="addEventSub" select="/bedework/urlPrefixes/event/addEventSub" />
   <xsl:variable name="export" select="/bedework/urlPrefixes/misc/export" />
   <xsl:variable name="async" select="/bedework/urlPrefixes/misc/async" />
   <xsl:variable name="search" select="/bedework/urlPrefixes/search/search" />
   <xsl:variable name="search-next" select="/bedework/urlPrefixes/search/next" />
   <xsl:variable name="calendar-fetchForExport" select="/bedework/urlPrefixes/calendar/fetchForExport" />
-  <xsl:variable name="mailEvent" select="/bedework/urlPrefixes/mail/mailEvent" />
   <xsl:variable name="stats" select="/bedework/urlPrefixes/stats/stats" />
   <xsl:variable name="showPage" select="/bedework/urlPrefixes/misc/showPage" />
 

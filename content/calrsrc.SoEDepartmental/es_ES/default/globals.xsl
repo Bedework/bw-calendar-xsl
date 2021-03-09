@@ -35,7 +35,6 @@
   <xsl:variable name="search" select="/bedework/urlPrefixes/search/search" />
   <xsl:variable name="search-next" select="/bedework/urlPrefixes/search/next" />
   <xsl:variable name="calendar-fetchForExport" select="/bedework/urlPrefixes/calendar/fetchForExport" />
-  <xsl:variable name="mailEvent" select="/bedework/urlPrefixes/mail/mailEvent" />
   <xsl:variable name="stats" select="/bedework/urlPrefixes/stats/stats" />
 
   <!-- URL of the web application - includes web context -->
