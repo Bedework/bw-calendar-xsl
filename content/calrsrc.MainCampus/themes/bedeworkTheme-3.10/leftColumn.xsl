@@ -23,6 +23,9 @@
   <xsl:template name="leftColumn">
     <!--a href="javascript:bwClearAllFilters();">clear all filters</a-->
 
+    <!-- Add button to ease finding of Virtual Events filter -->
+    <div id="vEventButtonContainer"><button id="vEventButton" class="btn btn-default">Show Virtual Events</button></div>
+
     <xsl:call-template name="viewList" />
 
     <div class="sideBarContainer">

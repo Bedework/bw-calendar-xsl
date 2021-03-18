@@ -372,6 +372,12 @@ ul.viewList li span {
   font-size: 1.5em;
   cursor: pointer;
 }
+#vEventButton {
+  display: block;
+  margin-top: 1em;
+  font-size: 0.8em;
+  padding: 0.5em 1em;
+}
 
 /* LOWER LEFT MENU CONTENT */
 .sideBarContainer .leftMenuTitle {

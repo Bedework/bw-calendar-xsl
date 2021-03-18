@@ -104,6 +104,7 @@ $(document).ready(function() {
   $("#mobileMenu").click(function(){
     $("#bwDatePickerLinks").toggle(100);
     $("#bwBasicSearch").toggle(100);
+    $("#vEventButtonContainer").toggle(100);
     $("#bwViewList").toggle(100);
     /*$(".bwMenu").toggle(100, function() {
       if ($(this).find(".bwMenuTree").is(":visible")) {

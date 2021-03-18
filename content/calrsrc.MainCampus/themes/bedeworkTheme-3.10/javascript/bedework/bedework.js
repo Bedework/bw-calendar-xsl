@@ -93,6 +93,7 @@ $(document).ready(function(){
       isTiny = false;
       $("#bwDatePickerLinks").show();
       $("#bwBasicSearch").show();
+      $("#vEventButtonContainer").show();
       $("#bwViewList").show();
       $("#ongoing").show();
       $("#ongoing .bwEventList").show();
@@ -103,9 +104,15 @@ $(document).ready(function(){
       isTiny = true;
       $("#bwDatePickerLinks").hide(100);
       $("#bwBasicSearch").hide(100);
+      $("#vEventButtonContainer").hide(100);
       $("#bwViewList").hide(100);
       $("#ongoing").hide(100);
       $("#ongoing .bwEventsTitle .caret").addClass("caret-right");
     }
   };
+
+  // Handle the Show Virtual Events button
+  $('#vEventButton').on('click', function (event) {
+    $('#bwNav1-useragrpcalsuiteMainCampusVirtualEvents').click();
+  });
 });
