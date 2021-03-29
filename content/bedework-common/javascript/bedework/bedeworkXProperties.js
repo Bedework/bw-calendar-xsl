@@ -26,6 +26,7 @@
 var bwXPropertyAlias = "X-BEDEWORK-ALIAS";
 var bwXPropertyImage = "X-BEDEWORK-IMAGE";
 var bwXPropertyThumbImage = "X-BEDEWORK-THUMB-IMAGE";
+var bwXPropertyVirtualReg = "X-BEDEWORK-VIRTUAL-REG";
 var bwXPropertySubmittedBy = "X-BEDEWORK-SUBMITTEDBY";
 var bwXPropertyLocation = "X-BEDEWORK-LOCATION";
 var bwXPropertyContact = "X-BEDEWORK-CONTACT";

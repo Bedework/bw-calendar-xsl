@@ -115,6 +115,7 @@
   <xsl:variable name="bwStr-SgEv-STATUS">Status:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Cost">Cost:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-See">See:</xsl:variable>
+  <xsl:variable name="bwStr-SgEv-VirtualReg">Virtual Registration Link:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Contact">Contact:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Comments">Comments:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Categories">Categories:</xsl:variable>

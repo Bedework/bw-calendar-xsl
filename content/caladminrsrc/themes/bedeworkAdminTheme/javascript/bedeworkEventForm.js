@@ -443,6 +443,12 @@ function setBedeworkXProperties(formObj,submitter) {
     bwXProps.update(bwXPropertyThumbImage,[],formObj["xBwImageThumbHolder"].value,true);
   }
 
+  // X-BEDEWORK-VIRTUAL-REG:
+  if (formObj["xBwVirtRegLink"] &&
+      formObj["xBwVirtRegLink"].value != '') {
+    bwXProps.update(bwXPropertyVirtualReg,[],formObj["xBwVirtRegLink"].value,true);
+  }
+
   // UPLOADING AN IMAGE
   // If the imageUpload field is not empty or the "overwrite" flag is checked,
   // don't send the image field x-properties. This enables uploads to override

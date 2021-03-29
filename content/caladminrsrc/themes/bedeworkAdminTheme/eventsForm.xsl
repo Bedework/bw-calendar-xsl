@@ -2488,6 +2488,18 @@
             </input>
           </td>
         </tr>
+        <!-- Virtual registration link -->
+        <tr class="optional">
+          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <td class="fieldName">
+            <xsl:copy-of select="$bwStr-AEEF-VirtualRegURL"/>
+          </td>
+          <td>
+            <input type="text" name="xBwVirtRegLink" id="xBwVirtRegLink" size="80" placeholder="{$bwStr-AEEF-OptionalVirtualReg}">
+              <xsl:attribute name="value"><xsl:value-of select="form/xproperties/node()[name()='X-BEDEWORK-VIRTUAL-REG']/values/text"/></xsl:attribute>
+            </input>
+          </td>
+        </tr>
         <!-- Image Url -->
         <tr class="optional" id="bwImageUrl">
           <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>

@@ -192,6 +192,7 @@
   <xsl:variable name="bwStr-SgEv-ChangeMyStatus">cambiar mi estado</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Cost">Coste:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-See">Ver:</xsl:variable>
+  <xsl:variable name="bwStr-SgEv-VirtualReg">Virtual Registration Link:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-MoreInfo">Más Información</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Contact">Contacto:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-ContactInfo">Información de Contacto:</xsl:variable>

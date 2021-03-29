@@ -359,6 +359,16 @@
         </div>
       </xsl:if>
 
+      <xsl:if test="xproperties/X-BEDEWORK-VIRTUAL-REG">
+        <div class="eventLink">
+          <span class="infoTitle"><xsl:copy-of select="$bwStr-SgEv-VirtualReg"/><xsl:text> </xsl:text></span>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="xproperties/node()[name()='X-BEDEWORK-VIRTUAL-REG']/values/text"/></xsl:attribute>
+            <xsl:value-of select="xproperties/node()[name()='X-BEDEWORK-VIRTUAL-REG']/values/text"/>
+          </a>
+        </div>
+      </xsl:if>
+
       <div class="eventDescription">
         <span class="infoTitle"><xsl:copy-of select="$bwStr-SgEv-Description"/><xsl:text> </xsl:text></span>
         <!-- to preserve line breaks in descriptions, set <br/> as the replacement string

@@ -320,6 +320,8 @@
   <xsl:variable name="bwStr-AEEF-OptionalPlaceToPurchaseTicks">optional: if any, and place to purchase tickets</xsl:variable>
   <xsl:variable name="bwStr-AEEF-EventURL">Event URL:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-OptionalMoreEventInfo">optional link to more information about the event</xsl:variable>
+  <xsl:variable name="bwStr-AEEF-VirtualRegURL">Virtual Registration:</xsl:variable>
+  <xsl:variable name="bwStr-AEEF-OptionalVirtualReg">optional link to register for virtual attendance</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Image">Image:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ImageURL">Image URL:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ImageThumbURL">Thumbnail URL:</xsl:variable>
