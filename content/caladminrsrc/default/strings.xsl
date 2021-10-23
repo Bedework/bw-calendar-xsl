@@ -649,6 +649,7 @@
   <xsl:variable name="bwStr-CuCa-URLToCalendar">URL to calendar:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-ID">ID (if required):</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Password">Password (if required):</xsl:variable>
+  <xsl:variable name="bwStr-CuCa-CampusGroups">Select for CampusGroups subscription:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-OrgSync">Select for orgSync subscription:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-OrgSyncPublicOnly">Select for only events marked public:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-OrgSyncLocKey">Locations key name:</xsl:variable>
@@ -1046,6 +1047,7 @@
   <xsl:variable name="bwStr-CSPf-DateTime">date/time</xsl:variable>
   <xsl:variable name="bwStr-CSPf-DefaultTimezone">Default timezone:</xsl:variable>
   <xsl:variable name="bwStr-CSPf-SelectTimezone">select timezone...</xsl:variable>
+  <xsl:variable name="bwStr-CSPf-CategoryMapping">Category Mapping (Synch engine use):</xsl:variable>
   <xsl:variable name="bwStr-CSPf-Update">Update</xsl:variable>
   <xsl:variable name="bwStr-CSPf-Cancel">Cancel</xsl:variable>
   <xsl:variable name="bwStr-CSPf-Approvers">Approvers:</xsl:variable>

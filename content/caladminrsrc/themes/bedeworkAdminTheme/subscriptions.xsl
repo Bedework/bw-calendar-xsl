@@ -330,6 +330,12 @@
                         <input type="checkbox" name="orgSyncV2"/>
                       </td>
                     </tr>
+                    <tr>
+                      <th><xsl:copy-of select="$bwStr-CuCa-CampusGroups"/></th>
+                      <td>
+                        <input type="checkbox" name="campusGroups"/>
+                      </td>
+                    </tr>
                   </xsl:if>
                 </table>
               </div>

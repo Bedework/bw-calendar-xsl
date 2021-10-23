@@ -243,6 +243,19 @@
         <xsl:if test="/bedework/userInfo/superUser = 'true'">
           <tr>
             <th>
+              <label for="categoryMapping">
+                <xsl:copy-of select="$bwStr-CSPf-CategoryMapping"/>
+              </label>
+            </th>
+            <td>
+              <textarea name="categoryMapping" id="categoryMapping" rows="10" cols="60">
+                <xsl:value-of select="/bedework/prefs/categoryMapping"/>
+                <xsl:if test="/bedework/prefs/categoryMapping = ''"><xsl:text> </xsl:text></xsl:if>
+              </textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>
               <label for="csApprovers">
                 <xsl:copy-of select="$bwStr-CSPf-Approvers"/>
               </label>

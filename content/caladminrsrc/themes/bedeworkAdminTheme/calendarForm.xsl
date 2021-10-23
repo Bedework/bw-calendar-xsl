@@ -165,6 +165,12 @@
                   <input type="checkbox" name="orgSyncV2" onclick="toggleVisibility('orgSyncFeatures','')"/>
                 </td>
               </tr>
+              <tr>
+                <th><xsl:copy-of select="$bwStr-CuCa-CampusGroups"/></th>
+                <td>
+                  <input type="checkbox" name="campusGroups"/>
+                </td>
+              </tr>
             </xsl:if>
 
             <tr>
