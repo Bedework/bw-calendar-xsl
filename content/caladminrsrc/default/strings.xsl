@@ -1181,6 +1181,8 @@
   <xsl:variable name="bwStr-Srch-ScopeLocal">this group</xsl:variable>
   <xsl:variable name="bwStr-Srch-ScopeMine">my groups</xsl:variable>
   <xsl:variable name="bwStr-Srch-ScopeAll">all groups</xsl:variable>
+  <xsl:variable name="bwStr-Srch-ColScopeAll">all calendars</xsl:variable>
+  <xsl:variable name="bwStr-Srch-ColScopeMain">main calendar</xsl:variable>
   <xsl:variable name="bwStr-Srch-Limit">Limit:</xsl:variable>
   <xsl:variable name="bwStr-Srch-TodayForward">today forward</xsl:variable>
   <xsl:variable name="bwStr-Srch-PastDates">past dates</xsl:variable>

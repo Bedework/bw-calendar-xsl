@@ -69,7 +69,17 @@
               if (formObj.fexpr[2].checked) {
                 scope = "all";
               }
-              formObj.setappvar.value = "bwQuery(" + date + "|" + formObj.query.value  + "|" + scope + ")";
+
+              var colscope="main";
+              if (formObj.colscope[0].checked) {
+                colscope="all";
+                formObj.fexpr[0].value = formObj.fexpr[0].value.replace("/public/cals/MainCal", "/public/cals");
+                formObj.fexpr[1].value = formObj.fexpr[1].value.replace("/public/cals/MainCal", "/public/cals");
+                formObj.fexpr[2].value = formObj.fexpr[2].value.replace("/public/cals/MainCal", "/public/cals");
+              }
+              formObj.setappvar.value = "bwQuery(" + date + "|" +
+                    formObj.query.value  + "|" +
+                    scope + "|" + colscope + ")";
               if (submit == true) {
                 formObj.submit();
               }
