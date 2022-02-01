@@ -58,7 +58,7 @@
             <artifactId>bw-util-maven-deploy</artifactId>
             <configuration>
               <warName>bw-calendar-xsl</warName>
-              <baseDirPath>${project.basedir}/../..</baseDirPath>
+              <baseDirPath>${project.basedir}/..</baseDirPath>
               <propsPath>${org.bedework.deployment.properties}</propsPath>
             </configuration>
           </plugin>
