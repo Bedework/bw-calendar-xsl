@@ -34,8 +34,6 @@
   <!--      BEDEWORK ADMIN CLIENT STYLESHEET     -->
   <!-- ========================================= -->
 
-  <xsl:variable name="bedeworkCommon">/approots/bedework-common</xsl:variable>
-
   <!-- DEFINE INCLUDES -->
   <xsl:include href="../../globals.xsl" />
   <xsl:include href="../strings.xsl"/>

@@ -23,15 +23,11 @@
        for filtering in the manage event list. -->
   <xsl:key name="catUid" match="category" use="uid"/>
 
+  <xsl:variable name="bedeworkCommon">/approots/bedework-common</xsl:variable>
 
   <!-- DEFINE GLOBAL INCLUDES -->
   <xsl:include href="/approots/bedework-common/default/default/util.xsl"/>
   <xsl:include href="/approots/bedework-common/default/default/bedeworkAccess.xsl"/>
-
-  <!-- include the common language string libraries -->
-  <xsl:include href="/approots/bedework-common/default/default/errors.xsl" />
-  <xsl:include href="/approots/bedework-common/default/default/messages.xsl" />
-  <xsl:include href="/approots/bedework-common/default/default/bedeworkAccessStrings.xsl"/>
 
 
   <!-- ======================= -->
