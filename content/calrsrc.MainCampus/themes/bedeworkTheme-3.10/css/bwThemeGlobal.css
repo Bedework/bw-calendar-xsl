@@ -817,6 +817,17 @@ div.groupDesc {
 .eventWhen {
 }
 .eventWhere {
+  position: relative;
+}
+.eventWhere .glyphicon-map-marker {
+  font-size: 1.5em;
+  position: absolute;
+  padding: 0.7em 0.25em 0.5em 0.2em;
+}
+.map-icon {
+}
+.map-icon img {
+  vertical-align: baseline;
 }
 .time-container {
   display: inline;

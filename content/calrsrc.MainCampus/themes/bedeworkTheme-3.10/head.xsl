@@ -166,7 +166,7 @@
           "setSelectionList" : "<xsl:value-of select="$setSelectionList"/>",
           "async" : "<xsl:value-of select="$async"/>",
           "feedPrefix" : "<xsl:value-of select="/bedework/cachePrefix"/>",
-          "feedResources" : "/calfeedrsrc.MainCampus/default/default/theme"
+          "feedResources" : "/approots/calfeedrsrc.MainCampus/default/default/theme"
         }
 
         // calendar explorers
