@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.bedework</groupId>
@@ -10,8 +10,8 @@
   <version>4.0.0-SNAPSHOT</version>
 
   <groupId>org.bedework.bwxsl</groupId>
-	<artifactId>bw-calendar-xsl</artifactId>
-	<packaging>war</packaging>
+  <artifactId>bw-calendar-xsl</artifactId>
+  <packaging>pom</packaging>
   <name>Bedework: XSL and related content for calendar</name>
 
   <description>Quickstart XSL stylesheets</description>
@@ -24,72 +24,13 @@
     <tag>HEAD</tag>
   </scm>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-
-        <configuration>
-          <webResources>
-            <resource>
-              <!-- this is relative to the pom.xml directory -->
-              <directory>content</directory>
-            </resource>
-          </webResources>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-    <profile>
-      <id>Not feature pack build</id>
-
-      <activation>
-        <property>
-          <name>!bw-wildfly-feature-pack-build</name>
-        </property>
-      </activation>
-
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.bedework</groupId>
-            <artifactId>bw-util-maven-deploy</artifactId>
-            <configuration>
-              <warName>bw-calendar-xsl</warName>
-              <baseDirPath>${project.basedir}/..</baseDirPath>
-              <propsPath>${org.bedework.deployment.properties}</propsPath>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
-      <id>Feature pack build</id>
-
-      <activation>
-        <property>
-          <name>bw-wildfly-feature-pack-build</name>
-        </property>
-      </activation>
-
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.bedework</groupId>
-            <artifactId>bw-util-maven-deploy</artifactId>
-
-            <configuration>
-              <warName>bw-calendar-xsl</warName>
-              <baseDirPath>${org.bedework.feature-build.deployment.basedir}</baseDirPath>
-              <propsPath>${org.bedework.feature-build.deployment.properties}</propsPath>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
+  <modules>
+    <module>bw-calendar-xsl-caladminrsrc</module>
+    <module>bw-calendar-xsl-calfeedrsrc.MainCampus</module>
+    <module>bw-calendar-xsl-calrsrc.MainCampus</module>
+    <module>bw-calendar-xsl-calrsrc.SoEDepartmental</module>
+    <module>bw-calendar-xsl-common</module>
+    <module>bw-calendar-xsl-eventsubmitrsrc</module>
+    <module>bw-calendar-xsl-ucalrsrc</module>
+  </modules>
 </project>
