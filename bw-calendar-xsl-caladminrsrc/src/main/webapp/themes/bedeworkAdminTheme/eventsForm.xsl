@@ -682,19 +682,21 @@
                 </div>
               </div>
               <br/>
-              <div class="dateFields" id="noDuration">
-                <xsl:choose>
-                  <xsl:when test="form/end/type='N'">
-                    <input type="radio" name="eventEndType" id="bwEndNoneButton" value="N" checked="checked" onclick="changeClass('endDateTime','invisible');changeClass('endDuration','invisible');"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <input type="radio" name="eventEndType" id="bwEndNoneButton" value="N" onclick="changeClass('endDateTime','invisible');changeClass('endDuration','invisible');"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <label for="bwEndNoneButton">
-                  <xsl:copy-of select="$bwStr-AEEF-ThisEventHasNoDurationEndDate"/>
-                </label>
-              </div>
+              <xsl:if test="($allowNoDuration = 'true') or ($superUser = 'true')">
+                <div class="dateFields" id="noDuration">
+                  <xsl:choose>
+                    <xsl:when test="form/end/type='N'">
+                      <input type="radio" name="eventEndType" id="bwEndNoneButton" value="N" checked="checked" onclick="changeClass('endDateTime','invisible');changeClass('endDuration','invisible');"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <input type="radio" name="eventEndType" id="bwEndNoneButton" value="N" onclick="changeClass('endDateTime','invisible');changeClass('endDuration','invisible');"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                  <label for="bwEndNoneButton">
+                    <xsl:copy-of select="$bwStr-AEEF-ThisEventHasNoDurationEndDate"/>
+                  </label>
+                </div>
+              </xsl:if>
             </fieldset>
           </td>
         </tr>
@@ -983,12 +985,14 @@
                         <div id="recurrenceUntilRules" class="invisible">
                           <em><xsl:copy-of select="$bwStr-AEEF-Repeat"/></em>
                           <p>
-                            <input type="radio" name="recurCountUntil" value="forever">
-                              <xsl:if test="not(form/recurring) or form/recurring/count = '-1'">
-                                <xsl:attribute name="checked">checked</xsl:attribute>
-                              </xsl:if>
-                            </input>
-                            <xsl:copy-of select="$bwStr-AEEF-Forever"/>
+                            <xsl:if test="($unlimitedRecurrences = 'true') or ($superUser = 'true')">
+                              <input type="radio" name="recurCountUntil" value="forever">
+                                <xsl:if test="not(form/recurring) or form/recurring/count = '-1'">
+                                  <xsl:attribute name="checked">checked</xsl:attribute>
+                                </xsl:if>
+                              </input>
+                              <xsl:copy-of select="$bwStr-AEEF-Forever"/>
+                            </xsl:if>
                             <input type="radio" name="recurCountUntil" value="count" id="recurCount">
                               <xsl:if test="form/recurring/count != '-1'">
                                 <xsl:attribute name="checked">checked</xsl:attribute>

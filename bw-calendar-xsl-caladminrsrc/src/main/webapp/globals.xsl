@@ -235,6 +235,14 @@
   <!-- Other generally useful global variables -->
   <xsl:variable name="publicCal">/cal</xsl:variable>
 
+  <!-- The following variable can be set to "true" to allow
+       the use of forever in recurrences for non-super users -->
+  <xsl:variable name="unlimitedRecurrences">false</xsl:variable>
+
+  <!-- The following variable can be set to "true" to allow
+       the use of no duration for non-super users -->
+  <xsl:variable name="allowNoDuration">false</xsl:variable>
+
   <!-- DEPRECATED: but left here for backward compatibility with older themes.
        The following variable can be set to "true" or "false";
        to use jQuery widgets and fancier UI features, set to false - these are
