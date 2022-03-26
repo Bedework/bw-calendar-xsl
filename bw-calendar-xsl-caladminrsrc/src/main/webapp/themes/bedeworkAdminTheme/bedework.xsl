@@ -244,9 +244,6 @@
                 <xsl:when test="/bedework/page='upload'">
                   <xsl:call-template name="upload"/>
                 </xsl:when>
-                <xsl:when test="/bedework/page='uploadTimezones'">
-                  <xsl:call-template name="uploadTimezones"/>
-                </xsl:when>
                 <xsl:when test="/bedework/page='showSysStats'">
                   <xsl:apply-templates select="/bedework/sysStats" mode="showSysStats"/>
                 </xsl:when>
