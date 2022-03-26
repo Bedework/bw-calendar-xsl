@@ -89,6 +89,9 @@
 	      <xsl:when test="id='org.bedework.client.error.duplicatelocation'">
 	        Cannot add: the location already exists.
 	      </xsl:when>
+				<xsl:when test="id='org.bedework.client.error.duplicateresource'">
+					Cannot add: the resource already exists.
+				</xsl:when>
 	      <xsl:when test="id='org.bedework.client.error.duplicateuid'">
 	          Duplicate uid: this event already exists in this calendar.
 	      </xsl:when>
