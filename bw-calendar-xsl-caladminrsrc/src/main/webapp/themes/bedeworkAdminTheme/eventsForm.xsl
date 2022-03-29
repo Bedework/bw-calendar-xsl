@@ -916,6 +916,7 @@
                         <xsl:text> </xsl:text>
                       </xsl:if>
 
+                      <xsl:text> </xsl:text>
                       <xsl:copy-of select="$bwStr-AEEF-Repeating"/>
                       <xsl:choose>
                         <xsl:when test="form/recurrence/count = '-1'"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-AEEF-Forever"/></xsl:when>
