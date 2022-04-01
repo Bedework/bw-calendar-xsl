@@ -2563,7 +2563,7 @@
                 <xsl:copy-of select="$bwStr-AEEF-ImageUpload"/>
               </label>
               <xsl:text> </xsl:text>
-              <input type="file" name="eventImageUpload" id="eventImageUpload" size="45"/>
+              <input type="file" name="imageUpload" id="eventImageUpload" size="45"/>
               <input type="checkbox" name="replaceImage" id="replaceImage" value="true"/><label for="replaceImage"><xsl:copy-of select="$bwStr-AEEF-Overwrite"/></label>
               <!-- button name="eventImageUseExisting" id="eventImageUseExisting"><xsl:copy-of select="$bwStr-AEEF-UseExisting"/></button-->
               <br/>
