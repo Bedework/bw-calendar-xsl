@@ -1056,7 +1056,7 @@
   <xsl:variable name="bwStr-CSPf-MaxEntitySize">Maximum size for file uploads (in bytes):</xsl:variable>
   <xsl:variable name="bwStr-CSPf-DefaultImageDirectory">Default image directory:</xsl:variable>
 
-  <!--  xsl:template name="uploadTimezones" -->
+  <!--  xsl:template name="fixTimezones" -->
   <xsl:variable name="bwStr-UpTZ-ManageTZ">Gestionar zonas horarias</xsl:variable>
   <xsl:variable name="bwStr-UpTZ-UploadTZ">Actualizar zonas horarias</xsl:variable>
   <xsl:variable name="bwStr-UpTZ-Cancel">Cancelar</xsl:variable>
