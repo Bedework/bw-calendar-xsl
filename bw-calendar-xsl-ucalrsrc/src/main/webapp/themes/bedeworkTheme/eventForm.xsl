@@ -213,6 +213,14 @@
       </ul>
 
 
+    <!-- Output guid and recurrenceid for a validity check -->
+    <input type="hidden" name="guid">
+      <xsl:attribute name="value"><xsl:value-of select="$guid"/></xsl:attribute>
+    </input>
+    <input type="hidden" name="recurrenceId">
+      <xsl:attribute name="value"><xsl:value-of select="$recurrenceId"/></xsl:attribute>
+    </input>
+
     <!-- Basic tab -->
     <!-- ============== -->
     <!-- this tab is visible by default -->

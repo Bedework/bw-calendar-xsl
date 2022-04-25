@@ -87,6 +87,14 @@
 
     <div id="eventFormContent">
 
+      <!-- Output guid and recurrenceid for a validity check -->
+      <input type="hidden" name="guid">
+        <xsl:attribute name="value"><xsl:value-of select="$guid"/></xsl:attribute>
+      </input>
+      <input type="hidden" name="recurrenceId">
+        <xsl:attribute name="value"><xsl:value-of select="$recurrenceId"/></xsl:attribute>
+      </input>
+
       <div class="eventSubmitButtons">
         <input name="submit" class="submit" type="submit" value="{$bwStr-FoEl-SubmitForApproval}"/>
         <input name="cancelled" type="button" value="{$bwStr-FoEl-Cancel}" onclick="location.href={$setup}"/>
