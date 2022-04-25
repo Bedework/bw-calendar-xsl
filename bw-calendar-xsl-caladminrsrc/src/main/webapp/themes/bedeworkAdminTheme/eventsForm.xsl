@@ -162,6 +162,14 @@
         </xsl:otherwise>
       </xsl:choose>
 
+      <!-- Output guid and recurrenceid for a validity check -->
+      <input type="hidden" name="guid">
+        <xsl:attribute name="value"><xsl:value-of select="$guid"/></xsl:attribute>
+      </input>
+      <input type="hidden" name="recurrenceId">
+        <xsl:attribute name="value"><xsl:value-of select="$recurrenceId"/></xsl:attribute>
+      </input>
+
       <!-- Provide a placeholder to test which submit button was pressed -->
       <input type="hidden" name="submitVal" value=""/>
 
@@ -757,7 +765,7 @@
 
               </xsl:when>
               <xsl:otherwise>
-                <!-- has recurrenceId, so is master -->
+                <!-- has no recurrenceId, so is master -->
 
                 <xsl:choose>
                   <xsl:when test="form/recurringEntity = 'false'">
