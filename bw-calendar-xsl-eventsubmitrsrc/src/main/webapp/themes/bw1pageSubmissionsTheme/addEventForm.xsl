@@ -97,7 +97,7 @@
 
       <div class="eventSubmitButtons">
         <input name="submit" class="submit" type="submit" value="{$bwStr-FoEl-SubmitForApproval}"/>
-        <input name="cancelled" type="button" value="{$bwStr-FoEl-Cancel}" onclick="location.href={$setup}"/>
+        <input name="cancelled" type="submit" value="{$bwStr-FoEl-Cancel}" onclick="location.href={$setup}"/>
       </div>
 
       <div id="validityNotice" class="invisible">
@@ -774,7 +774,7 @@
 
       <div class="eventSubmitButtons">
         <input name="submit" class="submit" type="submit" value="{$bwStr-FoEl-SubmitForApproval}"/>
-        <input name="cancelled" type="button" value="{$bwStr-FoEl-Cancel}" onclick="location.href={$setup}"/>
+        <input name="cancelled" type="submit" value="{$bwStr-FoEl-Cancel}" onclick="location.href={$setup}"/>
       </div>
     </div>
   </xsl:template>
