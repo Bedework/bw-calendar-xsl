@@ -328,13 +328,13 @@ function setBedeworkXProperties(formObj,submitter) {
     bwXProps.remove('X-BEDEWORK-CUSTOM-TAGS');
   }
 
-  // Yale-Specific X-Properties Here
-  if (formObj["xYaleRecurrenceInfo"] && trim(formObj["xYaleRecurrenceInfo"].value) != '') {
-    bwXProps.update('X-YALE-RECURRENCEINFO',[],trim(formObj["xYaleRecurrenceInfo"].value),true);
+  if (formObj["xRecurrenceInfo"] && trim(formObj["xRecurrenceInfo"].value) != '') {
+    bwXProps.update('X-BW-RECURRENCEINFO',[],trim(formObj["xRecurrenceInfo"].value),true);
   } else {
-    bwXProps.remove('X-YALE-RECURRENCEINFO');
+    bwXProps.remove('X-BW-RECURRENCEINFO');
   }
 
+  // Yale-Specific X-Properties Here
   if (formObj["xYaleLocationAdditionalInfo"] && trim(formObj["xYaleLocationAdditionalInfo"].value) != '') {
     bwXProps.update('X-YALE-LOCATION-ADDITIONAL-INFO',[],trim(formObj["xYaleLocationAdditionalInfo"].value),true);
   } else {
