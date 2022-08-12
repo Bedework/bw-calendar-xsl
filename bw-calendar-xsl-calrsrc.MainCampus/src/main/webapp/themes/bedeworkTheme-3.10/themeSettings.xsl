@@ -106,7 +106,7 @@
   <xsl:template name="footerText">
     <xsl:copy-of select="$bwStr-Foot-BasedOnThe" />
     <xsl:text> </xsl:text>
-    <a href="http://www.jasig.org/bedework/documentation">
+    <a href="https://bedework.github.io/">
       <xsl:copy-of select="$bwStr-Foot-BedeworkCalendarSystem" />
     </a>
     |
