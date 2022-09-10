@@ -25,7 +25,7 @@
     method="xml"
     indent="no"
     media-type="text/html"
-    standalone="yes"
+    standalone="no"
     omit-xml-declaration="yes"
   />
 
