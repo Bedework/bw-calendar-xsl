@@ -23,7 +23,6 @@
   indent="yes"
   omit-xml-declaration="no"
   media-type="text/xml"
-  standalone="yes"
 />
 
 <!-- =========================================================
