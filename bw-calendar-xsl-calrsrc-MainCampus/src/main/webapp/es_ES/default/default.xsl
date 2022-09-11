@@ -18,16 +18,15 @@
     under the License.
 -->
 <xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns="http://www.w3.org/1999/xhtml">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml">
 
   <xsl:output
-    method="xml"
-    indent="no"
-    media-type="text/html"
-    standalone="no"
-    omit-xml-declaration="yes"
-  />
+      method="xml"
+      indent="no"
+      media-type="text/html"
+      omit-xml-declaration="yes"
+      />
 
   <!-- =========================================================
 

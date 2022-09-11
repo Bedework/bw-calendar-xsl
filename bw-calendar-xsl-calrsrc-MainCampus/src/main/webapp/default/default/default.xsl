@@ -25,7 +25,6 @@
     method="xml"
     indent="no"
     media-type="text/html"
-    standalone="no"
     omit-xml-declaration="yes"
   />
 
@@ -47,6 +46,8 @@
 
     ===============================================================  -->
 
+  <xsl:variable name="bedeworkCommon">/approots/bedework-common</xsl:variable>
+
   <!-- DEFINE INCLUDES -->
   <xsl:include href="./globals.xsl" />
   <xsl:include href="../strings.xsl" />
@@ -54,6 +55,6 @@
 
   <!-- DEFAULT THEME NAME -->
   <!-- to change the default theme, change this include -->
-  <xsl:include href="../../themes/bedeworkTheme-3.10/widget.xsl" />
+  <xsl:include href="../../themes/bedeworkTheme-3.10/bedework.xsl" />
 
 </xsl:stylesheet>

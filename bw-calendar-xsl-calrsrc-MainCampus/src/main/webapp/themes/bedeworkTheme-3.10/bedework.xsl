@@ -20,8 +20,9 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <xsl:output method="xml" indent="yes" media-type="text/html"
+  <!--  <xsl:output method="xml" indent="yes" media-type="text/html"
     standalone="yes" omit-xml-declaration="yes" />
+    -->
 
   <!-- =========================================================
 
@@ -83,7 +84,7 @@
 
   <!-- MAIN TEMPLATE -->
   <xsl:template match="/">
-<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text><!-- HTML5 -->
+    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text><!-- HTML5 -->
     <html lang="en">
       <xsl:call-template name="head"/>
       <body>

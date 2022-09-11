@@ -18,7 +18,7 @@
     under the License.
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="html" omit-xml-declaration="yes" indent="no" media-type="text/javascript" standalone="no"/>
+  <xsl:output method="html" omit-xml-declaration="yes" indent="no" media-type="text/javascript"/>
   <!-- JSON feed of Bedework events,
        Bedework v3.6, Arlen Johnson
 
@@ -32,8 +32,6 @@
 
   <xsl:template match='/'>
     {"bwEventList": {
-      "resultSize": "<xsl:value-of select="/bedework/events/resultSize"/>",
-      "paged": "<xsl:value-of select="/bedework/events/paged"/>",
       "events": [
         <xsl:apply-templates select="/bedework/events/event" />
       ]

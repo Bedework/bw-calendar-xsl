@@ -18,16 +18,15 @@
     under the License.
 -->
 <xsl:stylesheet version="1.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns="http://www.w3.org/1999/xhtml">
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns="http://www.w3.org/1999/xhtml">
 
   <xsl:output
-      method="xml"
-      indent="no"
-      media-type="text/html"
-      standalone="yes"
-      omit-xml-declaration="yes"
-      />
+    method="xml"
+    indent="no"
+    media-type="text/html"
+    omit-xml-declaration="yes"
+  />
 
   <!-- =========================================================
 
@@ -47,8 +46,6 @@
 
     ===============================================================  -->
 
-  <xsl:variable name="bedeworkCommon">/approots/bedework-common</xsl:variable>
-
   <!-- DEFINE INCLUDES -->
   <xsl:include href="./globals.xsl" />
   <xsl:include href="../strings.xsl" />
@@ -56,6 +53,6 @@
 
   <!-- DEFAULT THEME NAME -->
   <!-- to change the default theme, change this include -->
-  <xsl:include href="../../themes/bedeworkTheme-3.10/bedework.xsl" />
+  <xsl:include href="../../themes/bedeworkTheme-3.10/widget.xsl" />
 
 </xsl:stylesheet>
