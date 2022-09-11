@@ -25,7 +25,6 @@
     method="xml"
     indent="no"
     media-type="text/html"
-    standalone="yes"
     omit-xml-declaration="yes"
   />
   <!--xsl:strip-space elements="*"/-->

@@ -20,6 +20,13 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <xsl:output
+          method="xml"
+          indent="no"
+          media-type="text/html"
+          omit-xml-declaration="yes"
+  />
+
   <!-- ======================================== -->
   <!--      BEDEWORK ADMIN CLIENT STYLESHEET     -->
   <!-- ========================================= -->
