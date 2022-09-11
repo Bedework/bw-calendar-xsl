@@ -26,9 +26,9 @@
 
   <modules>
     <module>bw-calendar-xsl-caladminrsrc</module>
-    <module>bw-calendar-xsl-calfeedrsrc.MainCampus</module>
-    <module>bw-calendar-xsl-calrsrc.MainCampus</module>
-    <module>bw-calendar-xsl-calrsrc.SoEDepartmental</module>
+    <module>bw-calendar-xsl-calfeedrsrc-MainCampus</module>
+    <module>bw-calendar-xsl-calrsrc-MainCampus</module>
+    <module>bw-calendar-xsl-calrsrc-SoEDepartmental</module>
     <module>bw-calendar-xsl-common</module>
     <module>bw-calendar-xsl-eventsubmitrsrc</module>
     <module>bw-calendar-xsl-ucalrsrc</module>
