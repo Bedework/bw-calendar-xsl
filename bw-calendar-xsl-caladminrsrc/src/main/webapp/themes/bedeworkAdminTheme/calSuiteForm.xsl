@@ -73,7 +73,7 @@
     <xsl:variable name="calSuiteName" select="name"/>
     <form name="calSuiteForm" action="{$calsuite-update}" method="post">
       <input type="hidden" name="calPath" size="20">
-        <xsl:attribute name="value"><xsl:variable name="calPath" select="calPath"/></xsl:attribute>
+        <xsl:attribute name="value"><xsl:value-of select="calPath"/></xsl:attribute>
       </input>
       <table class="eventFormTable">
         <tr>
