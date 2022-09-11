@@ -21,6 +21,7 @@
   version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/xhtml">
+  <!--
 <xsl:output
   method="xml"
   indent="no"
@@ -28,7 +29,7 @@
   doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
   doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
   standalone="yes"
-  omit-xml-declaration="yes"/>
+  omit-xml-declaration="yes"/>-->
 
   <!-- ===================================================== -->
   <!--       Globals for PERSONAL CALENDAR STYLESHEET        -->
