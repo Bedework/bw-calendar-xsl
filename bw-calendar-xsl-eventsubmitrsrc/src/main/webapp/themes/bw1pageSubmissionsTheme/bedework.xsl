@@ -18,8 +18,9 @@
     under the License.
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!--
   <xsl:output method="xml" indent="yes" media-type="text/html"
-              standalone="yes" omit-xml-declaration="yes" />
+              standalone="yes" omit-xml-declaration="yes" /> -->
 
   <xsl:include href="./themeSettings.xsl"/>
   <xsl:include href="./head.xsl"/>
