@@ -3110,16 +3110,20 @@
             <xsl:copy-of select="$bwStr-AEEF-TopicalArea"/>
           </td>
           <td>
+            <!-- One column for any not contained in a folder -->
             <ul class="bwColumn aliasTree">
-              <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and (position() &lt; ceiling($taCount div 2))]" mode="showEventFormAliases">
+              <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '1' and display = 'true']" mode="showEventFormAliases">
                 <xsl:with-param name="root">false</xsl:with-param>
               </xsl:apply-templates>
             </ul>
-            <ul class="bwColumn aliasTree">
-              <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and (position() &gt;= ceiling($taCount div 2))]" mode="showEventFormAliases">
-                <xsl:with-param name="root">false</xsl:with-param>
-              </xsl:apply-templates>
-            </ul>
+            <!-- half folders in another column -->
+            <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '0' and display = 'true' and (position() &lt; ceiling($taCount div 2))]" mode="showEventFormAliases">
+              <xsl:with-param name="root">false</xsl:with-param>
+            </xsl:apply-templates>
+            <!-- other half folders in another column -->
+            <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '0' and display = 'true' and (position() &gt;= ceiling($taCount div 2))]" mode="showEventFormAliases">
+              <xsl:with-param name="root">false</xsl:with-param>
+            </xsl:apply-templates>
           </td>
         </tr>
 
@@ -3322,6 +3326,11 @@
         <xsl:otherwise>isNotChecked</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+
+    <xsl:if test="calType = '0'">
+      <xsl:text disable-output-escaping="yes">&lt;ul class="bwColumn aliasTree"></xsl:text>
+    </xsl:if>
+
     <li>
       <xsl:if test="$checkedStatus = 'isCheckedByOtherGroup'">
         <xsl:attribute name="class">checkedByOtherGroup</xsl:attribute>
@@ -3385,6 +3394,10 @@
         </ul>
       </xsl:if>
     </li>
+
+    <xsl:if test="calType = '0'">
+      <xsl:text disable-output-escaping="yes">&lt;/ul></xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="submitEventButtons">
