@@ -906,7 +906,7 @@ a.disabled {
   margin-right: 2em;
 }
 #bwTopicalAreas .bwColumn {
-  width: 50%;
+  grid-template-columns: max-content;
 }
 #bwTopicalAreas li.checkedByOtherGroup {
   color: #777;

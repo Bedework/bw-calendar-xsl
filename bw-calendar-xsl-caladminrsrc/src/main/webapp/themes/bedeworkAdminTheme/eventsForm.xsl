@@ -3110,18 +3110,14 @@
             <xsl:copy-of select="$bwStr-AEEF-TopicalArea"/>
           </td>
           <td>
-            <!-- One column for any not contained in a folder -->
+            <!-- One block for any not contained in a folder -->
             <ul class="bwColumn aliasTree">
               <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '1' and display = 'true']" mode="showEventFormAliases">
                 <xsl:with-param name="root">false</xsl:with-param>
               </xsl:apply-templates>
             </ul>
-            <!-- half folders in another column -->
-            <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '0' and display = 'true' and (position() &lt; ceiling($taCount div 2))]" mode="showEventFormAliases">
-              <xsl:with-param name="root">false</xsl:with-param>
-            </xsl:apply-templates>
-            <!-- other half folders in another column -->
-            <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '0' and display = 'true' and (position() &gt;= ceiling($taCount div 2))]" mode="showEventFormAliases">
+            <!-- and one for each folder -->
+            <xsl:apply-templates select="form/subscriptions/calsuite/calendars/calendar/calendar[isTopicalArea = 'true' and calType = '0' and display = 'true']" mode="showEventFormAliases">
               <xsl:with-param name="root">false</xsl:with-param>
             </xsl:apply-templates>
           </td>
