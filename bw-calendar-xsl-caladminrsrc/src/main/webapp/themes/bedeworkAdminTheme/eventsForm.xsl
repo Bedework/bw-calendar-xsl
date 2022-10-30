@@ -177,6 +177,7 @@
            form below will test for that and allow this value to be changed.  -->
       <input type="hidden" name="newCalPath" id="newCalPath">
         <xsl:choose>
+          <!-- No calendar available - put it in unapproved -->
           <xsl:when test="not(form/calendar/all/select/option)">
             <xsl:attribute name="value">/public/unbrowsable/workflow/unapproved</xsl:attribute>
           </xsl:when>
