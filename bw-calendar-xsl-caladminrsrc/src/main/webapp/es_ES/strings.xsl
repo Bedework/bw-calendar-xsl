@@ -633,6 +633,7 @@
   <xsl:variable name="bwStr-CuCa-Name">Nombre:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Summary">Resumen:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Description">Descripción:</xsl:variable>
+  <xsl:variable name="bwStr-CuCa-PrimaryCollection">Primary Collection:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Filter">Filtro:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-ShowHideCategoriesFiltering">mostrar/ocultar categorías para filtrar la salida</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Categories">Categorías:</xsl:variable>

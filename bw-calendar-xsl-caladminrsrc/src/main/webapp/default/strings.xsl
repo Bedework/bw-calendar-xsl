@@ -636,6 +636,7 @@
   <xsl:variable name="bwStr-CuCa-Name">System Name:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Summary">Display Name:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Description">Description:</xsl:variable>
+  <xsl:variable name="bwStr-CuCa-PrimaryCollection">Primary Collection:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Filter">Filter:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-ShowHideCategoriesFiltering">show/hide categories for filtering on output</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Categories">Categories:</xsl:variable>

@@ -57,6 +57,14 @@
             </textarea>
           </td>
         </tr>
+        <xsl:if test="/bedework/userInfo/superUser='true'">
+          <tr>
+            <th><xsl:copy-of select="$bwStr-CuCa-PrimaryCollection"/></th>
+            <td>
+              <input type="checkbox" name="primaryCollection"/>
+            </td>
+          </tr>
+        </xsl:if>
         <!-- For now, colors need to be set in the calendar suite stylesheet. -->
         <!-- tr>
           <th>Color:</th>
@@ -331,9 +339,22 @@
           </td>
         </tr-->
         <tr>
+          <th><xsl:copy-of select="$bwStr-CuCa-PrimaryCollection"/></th>
+          <td>
+            <input type="checkbox" name="calendar.primaryCollection"
+                   id="calPrimaryCollection" size="40">
+              <xsl:if test="primaryCollection = 'true'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input><xsl:text> </xsl:text>
+            <label for="calPrimaryCollection"><xsl:copy-of select="$bwStr-CuCa-PrimaryCollection"/></label>
+          </td>
+        </tr>
+        <tr>
           <th><xsl:copy-of select="$bwStr-CuCa-Display"/></th>
           <td>
-            <input type="checkbox" name="calendar.display" id="calDisplay" size="40">
+            <input type="checkbox" name="calendar.display"
+                   id="calDisplay" size="40">
               <xsl:if test="display = 'true'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
