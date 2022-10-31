@@ -61,7 +61,7 @@
           <tr>
             <th><xsl:copy-of select="$bwStr-CuCa-PrimaryCollection"/></th>
             <td>
-              <input type="checkbox" name="primaryCollection"/>
+              <input type="checkbox" name="calendar.primaryCollection"/>
             </td>
           </tr>
         </xsl:if>
