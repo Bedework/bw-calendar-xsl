@@ -1013,6 +1013,7 @@
   <xsl:variable name="bwStr-AdCS-Name">Name:</xsl:variable>
   <xsl:variable name="bwStr-AdCS-NameCalSuite">Name of your calendar suite</xsl:variable>
   <xsl:variable name="bwStr-AdCS-Group">Group:</xsl:variable>
+  <xsl:variable name="bwStr-AdCS-Description">Description:</xsl:variable>
   <xsl:variable name="bwStr-AdCS-NameAdminGroup">Name of admin group which contains event administrators and event owner to which preferences for the suite are attached</xsl:variable>
   <xsl:variable name="bwStr-AdCS-Add">Add</xsl:variable>
   <xsl:variable name="bwStr-AdCS-Cancel">Cancel</xsl:variable>
@@ -1022,6 +1023,7 @@
   <xsl:variable name="bwStr-CalS-NameColon">Name:</xsl:variable>
   <xsl:variable name="bwStr-CalS-NameOfCalendarSuite">Name of your calendar suite</xsl:variable>
   <xsl:variable name="bwStr-CalS-Group">Group:</xsl:variable>
+  <xsl:variable name="bwStr-CalS-Description">Description:</xsl:variable>
   <xsl:variable name="bwStr-CalS-NameOfAdminGroup">Name of admin group which contains event administrators and event owner to which preferences for the suite are attached</xsl:variable>
   <xsl:variable name="bwStr-CalS-CurrentAccess">Current Access:</xsl:variable>
   <xsl:variable name="bwStr-CalS-DeleteCalendarSuite">Delete Calendar Suite</xsl:variable>

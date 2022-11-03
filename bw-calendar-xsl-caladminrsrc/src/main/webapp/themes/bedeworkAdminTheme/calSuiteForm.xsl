@@ -48,6 +48,21 @@
           </td>
         </tr>
         <tr>
+          <td class="fieldName">
+            <label for="adminGroupDesc">
+              <xsl:copy-of select="$bwStr-AdCS-Description"/>
+            </label>
+          </td>
+          <td>
+            <textarea name="description"
+                      id="adminGroupDesc" cols="50" rows="3">
+              <xsl:text> </xsl:text>
+              <!-- keep this non-breaking space to avoid browser
+                rendering errors when the text area is empty -->
+            </textarea>
+          </td>
+        </tr>
+        <tr>
           <th>Context:</th>
           <td>
             <input type="text" name="context" value="{context}"/>
@@ -113,6 +128,25 @@
           </td>
           <td>
             <xsl:copy-of select="$bwStr-AdCS-NameAdminGroup"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="fieldName">
+            <label for="adminGroupDesc">
+              <xsl:copy-of select="$bwStr-CalS-Description"/>
+            </label>
+          </td>
+          <td>
+            <textarea name="description"
+                      id="adminGroupDesc" cols="50" rows="3">
+              <xsl:value-of
+                      select="description"/>
+              <xsl:if test="normalize-space(description) = ''">
+                <xsl:text> </xsl:text>
+                <!-- keep this non-breaking space to avoid browser
+                rendering errors when the text area is empty -->
+              </xsl:if>
+            </textarea>
           </td>
         </tr>
         <tr>
