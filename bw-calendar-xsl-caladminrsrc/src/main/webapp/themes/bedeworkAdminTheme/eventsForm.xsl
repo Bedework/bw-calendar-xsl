@@ -174,10 +174,13 @@
       <input type="hidden" name="submitVal" value=""/>
 
       <!-- Set the underlying calendar; if there is more than one publishing calendar, the
-           form below will test for that and allow this value to be changed.  -->
+           form below will test for that and allow this value to be changed.  - - >
+
+      Removed all this - probably no need to try to
+       change a calendar
       <input type="hidden" name="newCalPath" id="newCalPath">
         <xsl:choose>
-          <!-- No calendar available - put it in unapproved -->
+          < ! - - No calendar available - put it in unapproved - - >
           <xsl:when test="not(form/calendar/all/select/option)">
             <xsl:attribute name="value">/public/unbrowsable/workflow/unapproved</xsl:attribute>
           </xsl:when>
@@ -189,6 +192,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </input>
+      -->
 
       <!-- Setup email notification fields -->
       <input type="hidden" id="submitNotification" name="submitNotification" value="false"/>
@@ -282,11 +286,12 @@
                   </td>
                 </tr>
         -->
+        <!-- Never display calendars
         <xsl:if test="count(form/calendar/all/select/option) &gt; 1 and
                       not(starts-with(form/calendar/event/path,$submissionsRootUnencoded)) and
                       not(starts-with(form/calendar/event/path,$workflowRootUnencoded))">
-          <!-- check to see if we have more than one publishing calendar
-             but disallow directly setting for pending events -->
+          < ! - - check to see if we have more than one publishing calendar
+             but disallow directly setting for pending events - - >
           <tr>
             <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
             <td class="fieldName">
@@ -300,9 +305,10 @@
                 <xsl:copy-of select="$bwStr-AEEF-Calendar"/>
               </label>
             </td>
+
             <td>
               <xsl:if test="form/calendar/preferred/select/option">
-                <!-- Display the preferred calendars by default if they exist -->
+                < ! - - Display the preferred calendars by default if they exist - - >
                 <select name="bwPreferredCalendars" id="bwPreferredCalendars" onchange="this.form.newCalPath.value = this.value">
 
                   <option value="">
@@ -325,7 +331,7 @@
                   </xsl:for-each>
                 </select>
               </xsl:if>
-              <!-- hide the listing of all calendars if preferred calendars exist, otherwise show them -->
+              < ! - - hide the listing of all calendars if preferred calendars exist, otherwise show them - - >
               <select name="bwAllCalendars" id="bwAllCalendars" onchange="this.form.newCalPath.value = this.value;">
 
                 <xsl:if test="form/calendar/preferred/select/option">
@@ -351,8 +357,8 @@
                 </xsl:for-each>
               </select>
               <xsl:text> </xsl:text>
-              <!-- allow for toggling between the preferred and all calendars listings if preferred
-                   calendars exist -->
+              < ! - - allow for toggling between the preferred and all calendars listings if preferred
+                   calendars exist - - >
               <xsl:if test="form/calendar/preferred/select/option">
                 <input type="radio" name="toggleCalendarLists" id="toggleCalendarListsPreferred" value="preferred" checked="checked" onclick="changeClass('bwPreferredCalendars','shown');changeClass('bwAllCalendars','invisible');this.form.newCalPath.value = this.form.bwPreferredCalendars.value;"/>
                 <label for="toggleCalendarListsPreferred"><xsl:copy-of select="$bwStr-AEEF-Preferred"/></label>
@@ -362,7 +368,7 @@
             </td>
           </tr>
         </xsl:if>
-
+            -->
         <tr>
           <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
