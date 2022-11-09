@@ -282,9 +282,12 @@
 	      <xsl:when test="id='org.bedework.validation.error.cannot.change.method'">
 	        Error: you cannot change scheduling method
 	      </xsl:when>
-	      <xsl:when test="id='org.bedework.validation.error.insubmissionscalendar'">
-	        To publish this event, you must move it to a public calendar.  Please select a different calendar.
-	      </xsl:when>
+				<xsl:when test="id='org.bedework.validation.error.notinsubmissionscalendar'">
+					Can only publish events from a submissions calendar.
+				</xsl:when>
+				<xsl:when test="id='org.bedework.validation.error.notinworkflowcalendar'">
+					Can only approve events from an unapproved workflow calendar.
+				</xsl:when>
 	      <xsl:when test="id='org.bedework.client.error.duplicateimage'">
 	        Image with that name already uploaded.  Change the file's name, or use the "Overwrite" switch to replace it.
 	      </xsl:when>
