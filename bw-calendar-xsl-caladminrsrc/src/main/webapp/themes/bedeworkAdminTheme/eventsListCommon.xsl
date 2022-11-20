@@ -135,6 +135,16 @@
     <xsl:variable name="calSuite" select="calSuite"/>
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="i" select="position()"/>
+    <xsl:variable name="eventTitle">
+      <xsl:choose>
+        <xsl:when test="summary != ''">
+          <xsl:value-of select="summary"/>
+        </xsl:when>
+        <xsl:otherwise>
+          &gt;em&lt;<xsl:copy-of select="$bwStr-EvLC-NoTitle"/>&gt;/em&lt;
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <tr>
       <xsl:attribute name="id">suggestionRow<xsl:value-of select="$i"/></xsl:attribute>
       <xsl:if test="position() mod 2 = 0"><xsl:attribute name="class">even</xsl:attribute></xsl:if>
@@ -152,14 +162,7 @@
           <xsl:when test="$pending = 'true'">
             <xsl:choose>
               <xsl:when test="xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT and not(xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group)">
-                <xsl:choose>
-                  <xsl:when test="summary != ''">
-                    <xsl:value-of select="summary"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <em><xsl:copy-of select="$bwStr-EvLC-NoTitle"/></em>
-                  </xsl:otherwise>
-                </xsl:choose>
+                <xsl:copy-of select="$eventTitle"/>
               </xsl:when>
               <xsl:otherwise>
                 <a>
@@ -172,14 +175,7 @@
                       <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdatePending"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
                     </xsl:otherwise>
                   </xsl:choose>
-                  <xsl:choose>
-                    <xsl:when test="summary != ''">
-                      <xsl:value-of select="summary"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <em><xsl:copy-of select="$bwStr-EvLC-NoTitle"/></em>
-                    </xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:copy-of select="$eventTitle"/>
                 </a>
               </xsl:otherwise>
             </xsl:choose>
@@ -211,14 +207,7 @@
                   <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
                 </xsl:otherwise>
               </xsl:choose>
-              <xsl:choose>
-                <xsl:when test="summary != ''">
-                  <xsl:value-of select="summary"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <em><xsl:copy-of select="$bwStr-EvLC-NoTitle"/></em>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:copy-of select="$eventTitle"/>
             </a>
             <xsl:if test="$approvalQueue = 'false'">
               <!-- generate a public link; for now always expose in the main suite. -->
