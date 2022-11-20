@@ -28,7 +28,7 @@
 
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
-        <xsl:with-param name="nextAction" select="$nextApprovalQueueTab"/>
+        <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
       </xsl:call-template>
 
       <form name="bwManageEventListControls"
@@ -59,7 +59,7 @@
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
-      <xsl:with-param name="nextAction" select="$nextApprovalQueueTab"/>
+      <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
       <xsl:with-param name="bottom">true</xsl:with-param>
     </xsl:call-template>
 

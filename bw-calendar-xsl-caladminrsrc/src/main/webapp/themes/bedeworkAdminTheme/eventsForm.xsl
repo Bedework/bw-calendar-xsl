@@ -45,21 +45,24 @@
     <!-- Set some booleans for our page types for shorter testing of true and false -->
     <xsl:variable name="modEventPending">
       <xsl:choose>
-        <xsl:when test="/bedework/page = 'modEventPending'">true</xsl:when>
+        <xsl:when test="(/bedework/page = 'modEvent') and
+                        (/bedework/tab = 'pending')">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
     <xsl:variable name="modEventApprovalQueue">
       <xsl:choose>
-        <xsl:when test="/bedework/page = 'modEventApprovalQueue'">true</xsl:when>
+        <xsl:when test="(/bedework/page = 'modEvent') and
+                        (/bedework/tab = 'approvalQueue')">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
 
     <xsl:variable name="modEventSuggestionQueue">
       <xsl:choose>
-        <xsl:when test="/bedework/page = 'modEventSuggestionQueue'">true</xsl:when>
+        <xsl:when test="(/bedework/page = 'modEvent') and
+                        (/bedework/tab = 'suggestionQueue')">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>

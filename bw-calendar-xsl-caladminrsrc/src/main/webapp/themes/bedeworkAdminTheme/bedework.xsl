@@ -84,7 +84,8 @@
                 <xsl:when test="/bedework/page='tabPendingEvents'">
                   <xsl:call-template name="tabPendingEvents"/>
                 </xsl:when>
-                <xsl:when test="/bedework/page='tabApprovalQueueEvents'">
+                <xsl:when test="(/bedework/page='eventList') and
+                                (/bedework/tab = 'approvalQueue')">
                   <xsl:call-template name="tabApprovalQueueEvents"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabSuggestionQueueEvents'">

@@ -70,7 +70,6 @@
   <xsl:variable name="initPendingTab" select="/bedework/urlPrefixes/initPendingTab"/>
   <xsl:variable name="nextPendingTab" select="/bedework/urlPrefixes/nextPendingTab"/>
   <xsl:variable name="initApprovalQueueTab" select="/bedework/urlPrefixes/initApprovalQueueTab"/>
-  <xsl:variable name="nextApprovalQueueTab" select="/bedework/urlPrefixes/nextApprovalQueueTab"/>
   <xsl:variable name="initSuggestionQueueTab" select="/bedework/urlPrefixes/initSuggestionQueueTab"/>
   <xsl:variable name="nextSuggestionQueueTab" select="/bedework/urlPrefixes/nextSuggestionQueueTab"/>
   <xsl:variable name="showCalsuiteTab" select="/bedework/urlPrefixes/showCalsuiteTab"/>

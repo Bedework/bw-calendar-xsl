@@ -392,8 +392,7 @@
         </xsl:if>
         <xsl:if test="/bedework/page='eventList' or
                       /bedework/page='tabPendingEvents' or
-                      /bedework/page='tabSuggestionQueueEvents' or
-                      /bedework/page='tabApprovalQueueEvents'">
+                      /bedework/page='tabSuggestionQueueEvents'">
           <script type="text/javascript" src="{$bedeworkCommon}/javascript/jquery/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
           <link rel="stylesheet" type="text/css" media="screen" href="{$bedeworkCommon}/javascript/jquery/magnific/magnific-popup.css" />
           <!-- now setup date and time pickers -->
@@ -502,8 +501,7 @@
                       /bedework/page='calSuitePrefs' or
                       /bedework/page='eventList' or
                       /bedework/page='tabPendingEvents' or
-                      /bedework/page='tabSuggestionQueueEvents' or
-                      /bedework/page='tabApprovalQueueEvents'">
+                      /bedework/page='tabSuggestionQueueEvents'">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js">/* Bedework Event Form Functions */</script>
           <script type="text/javascript" src="{$bedeworkCommon}/javascript/bedework/bedeworkUtil.js">/* Bedework Utilities */</script>
