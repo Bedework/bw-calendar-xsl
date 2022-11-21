@@ -37,7 +37,6 @@
 
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
-        <xsl:with-param name="nextAction" select="$nextPendingTab"/>
         <xsl:with-param name="sort" select="$sort"/>
       </xsl:call-template>
 
@@ -98,7 +97,7 @@
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
-      <xsl:with-param name="nextAction"><xsl:value-of select="$nextPendingTab"/>&amp;sg=true</xsl:with-param>
+      <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>
       <xsl:with-param name="sort" select="$sort"/>
       <xsl:with-param name="bottom">true</xsl:with-param>
     </xsl:call-template>

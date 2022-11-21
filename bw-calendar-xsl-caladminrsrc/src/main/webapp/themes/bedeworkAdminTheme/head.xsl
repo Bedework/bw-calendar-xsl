@@ -90,10 +90,7 @@
         </script>
 
         <!-- conditional javascript and css only for modifying events -->
-        <xsl:if test="/bedework/page='modEvent' or
-                      /bedework/page='modEventPending' or
-                      /bedework/page='modEventApprovalQueue' or
-                      /bedework/page='modEventSuggestionQueue'">
+        <xsl:if test="/bedework/page='modEvent'">
           <!-- import the internationalized strings for the javascript widgets -->
           <xsl:call-template name="bedeworkEventJsStrings"/>
 
@@ -387,12 +384,11 @@
             </xsl:comment>
           </script>
         </xsl:if>
-        <xsl:if test="/bedework/page='tabSuggestionQueueEvents' or /bedework/page='modEventSuggestionQueue'">
+        <xsl:if test="(/bedework/tab = 'suggestionQueue') and
+             ((/bedework/page='eventList') or (/bedework/page='modEvent'))">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/suggestions.js">/* Suggestion queue */</script>
         </xsl:if>
-        <xsl:if test="/bedework/page='eventList' or
-                      /bedework/page='tabPendingEvents' or
-                      /bedework/page='tabSuggestionQueueEvents'">
+        <xsl:if test="/bedework/page='eventList'">
           <script type="text/javascript" src="{$bedeworkCommon}/javascript/jquery/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
           <link rel="stylesheet" type="text/css" media="screen" href="{$bedeworkCommon}/javascript/jquery/magnific/magnific-popup.css" />
           <!-- now setup date and time pickers -->
@@ -496,12 +492,10 @@
         </xsl:if>
         <xsl:if test="/bedework/page='upload' or
                       /bedework/page='selectCalForEvent' or
-                      /bedework/page='deleteEventConfirmPending' or
+                      ((/bedework/page = 'deleteEventConfirm') and (/bedework/tab = 'pending')) or
                       /bedework/page='addFilter' or
                       /bedework/page='calSuitePrefs' or
-                      /bedework/page='eventList' or
-                      /bedework/page='tabPendingEvents' or
-                      /bedework/page='tabSuggestionQueueEvents'">
+                      /bedework/page='eventList'">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js">/* Bedework Event Form Functions */</script>
           <script type="text/javascript" src="{$bedeworkCommon}/javascript/bedework/bedeworkUtil.js">/* Bedework Utilities */</script>

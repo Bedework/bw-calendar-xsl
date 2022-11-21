@@ -29,7 +29,7 @@
 
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
-        <xsl:with-param name="nextAction"><xsl:value-of select="$nextSuggestionQueueTab"/>&amp;sg=true</xsl:with-param>
+        <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>
       </xsl:call-template>
 
       <form name="bwManageEventListControls"
@@ -90,7 +90,7 @@
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
-      <xsl:with-param name="nextAction"><xsl:value-of select="$nextSuggestionQueueTab"/>&amp;sg=true</xsl:with-param>
+      <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>
       <xsl:with-param name="bottom">true</xsl:with-param>
     </xsl:call-template>
 

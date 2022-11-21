@@ -26,7 +26,7 @@
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
 
     <xsl:choose>
-      <xsl:when test="/bedework/page='deleteEventConfirm' or /bedework/page='deleteEventConfirmPending' or /bedework/page='deleteEventConfirmApprovalQueue'">
+      <xsl:when test="/bedework/page='deleteEventConfirm'">
         <h2><xsl:copy-of select="$bwStr-DsEv-OkayToDelete"/></h2>
 
         <xsl:if test="/bedework/page='deleteEventConfirm'">
@@ -54,35 +54,30 @@
 
         <div id="confirmButtons">
           <form method="post">
-            <xsl:choose>
-              <xsl:when test="/bedework/page = 'deleteEventConfirmPending'">
-                <xsl:attribute name="action"><xsl:value-of select="$event-deletePending"/></xsl:attribute>
-                <xsl:attribute name="onsubmit">doRejectEvent(this,'<xsl:value-of select="summary"/>','<xsl:value-of select="$eventDatesForEmail"/>');</xsl:attribute>
-                <!-- Setup email notification fields -->
-                <input type="hidden" id="submitNotification" name="submitNotification" value="true"/>
-                <!-- "from" should be a preference: hard code it for now -->
-                <input type="hidden" id="snfrom" name="snfrom" value="bedework@yoursite.edu"/>
-                <input type="hidden" id="snsubject" name="snsubject" value=""/>
-                <input type="hidden" id="sntext" name="sntext" value=""/>
-                <div id="bwEmailBox">
-                  <p>
-                    <strong><xsl:copy-of select="$bwStr-DsEv-YouDeletingPending"/></strong><br/>
-                    <input type="checkbox" name="notifyFlag" checked="checked" onclick="toggleVisibility('bwRejectEventReasonBox','visible');"/>
-                    <xsl:copy-of select="$bwStr-DsEv-SendNotification"/>
+            <xsl:attribute name="action"><xsl:value-of select="$event-delete"/></xsl:attribute>
+            <xsl:if test="(/bedework/page = 'deleteEventConfirm') and (/bedework/tab = 'pending')">
+              <xsl:attribute name="onsubmit">doRejectEvent(this,'<xsl:value-of select="summary"/>','<xsl:value-of select="$eventDatesForEmail"/>');</xsl:attribute>
+              <!-- Setup email notification fields -->
+              <input type="hidden" id="submitNotification" name="submitNotification" value="true"/>
+              <!-- "from" should be a preference: hard code it for now -->
+              <input type="hidden" id="snfrom" name="snfrom" value="bedework@yoursite.edu"/>
+              <input type="hidden" id="snsubject" name="snsubject" value=""/>
+              <input type="hidden" id="sntext" name="sntext" value=""/>
+              <div id="bwEmailBox">
+                <p>
+                  <strong><xsl:copy-of select="$bwStr-DsEv-YouDeletingPending"/></strong><br/>
+                  <input type="checkbox" name="notifyFlag" checked="checked" onclick="toggleVisibility('bwRejectEventReasonBox','visible');"/>
+                  <xsl:copy-of select="$bwStr-DsEv-SendNotification"/>
+                </p>
+                <div id="bwRejectEventReasonBox">
+                  <p><xsl:copy-of select="$bwStr-DsEv-Reason"/><br/>
+                    <textarea name="reason" rows="4" cols="60">
+                      <xsl:text> </xsl:text>
+                    </textarea>
                   </p>
-                  <div id="bwRejectEventReasonBox">
-                    <p><xsl:copy-of select="$bwStr-DsEv-Reason"/><br/>
-                      <textarea name="reason" rows="4" cols="60">
-                        <xsl:text> </xsl:text>
-                      </textarea>
-                    </p>
-                  </div>
                 </div>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:attribute name="action"><xsl:value-of select="$event-delete"/></xsl:attribute>
-              </xsl:otherwise>
-            </xsl:choose>
+              </div>
+            </xsl:if>
             <input type="submit" name="delete" value="{$deleteConfirmValue}"/>
             <input type="submit" name="cancelled" value="{$bwStr-DsEv-Cancel}"/>
             <input type="hidden" name="calPath" value="{$calPath}"/>
@@ -255,7 +250,7 @@
 
     </table>
 
-    <xsl:if test="/bedework/page != 'deleteEventConfirmPending'">
+    <xsl:if test="(/bedework/page != 'deleteEventConfirm') or (/bedework/tab != 'pending')">
       <p>
         <xsl:variable name="userPath"><xsl:value-of select="/bedework/syspars/userPrincipalRoot"/>/<xsl:value-of select="/bedework/userInfo/user"/></xsl:variable>
         <input type="button" name="return" onclick="javascript:location.replace('{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}')">

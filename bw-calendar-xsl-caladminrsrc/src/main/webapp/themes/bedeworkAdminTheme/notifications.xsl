@@ -90,7 +90,7 @@
         <xsl:when test="type = 'suggest'">
           <!-- we will set the href to visit the event in question -->
           <a title="{$bwStr-Notification-ViewEvent}" class="suggest">
-            <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdateSuggestionQueue"/>&amp;href=<xsl:value-of select="resource/href"/></xsl:attribute>
+            <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;href=<xsl:value-of select="resource/href"/></xsl:attribute>
             <xsl:if test="$notificationAutoRemove = 'true'">
               <xsl:attribute name="onclick">javascript:bwRemoveNotification('<xsl:value-of select="$notify-remove"/>&amp;name=<xsl:value-of select="name"/>','<xsl:value-of select="name"/>',false);</xsl:attribute>
             </xsl:if>
@@ -146,7 +146,7 @@
         <xsl:when test="type = 'awaitingApproval'">
           <!-- we will set the href to visit the event in question -->
           <a title="{$bwStr-Notification-ViewEvent}" class="awaitingApproval">
-            <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdateApprovalQueue"/>&amp;href=<xsl:value-of select="resource/href"/></xsl:attribute>
+            <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;href=<xsl:value-of select="resource/href"/></xsl:attribute>
             <xsl:if test="$notificationAutoRemove = 'true'">
               <xsl:attribute name="onclick">javascript: bwRemoveNotification('<xsl:value-of select="$notify-remove"/>&amp;name=<xsl:value-of select="name"/>','<xsl:value-of select="name"/>',false);</xsl:attribute>
             </xsl:if>

@@ -166,15 +166,9 @@
               </xsl:when>
               <xsl:otherwise>
                 <a>
-                  <xsl:choose>
-                    <xsl:when test="recurrenceId != ''">
-                      <!-- recurrence instances should be updated like normal events - only master events should be published -->
-                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdatePending"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
-                    </xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/>
+                  </xsl:attribute>
                   <xsl:copy-of select="$eventTitle"/>
                 </a>
               </xsl:otherwise>
@@ -188,20 +182,9 @@
             <a>
               <xsl:attribute name="title"><xsl:copy-of select="$bwStr-EvLC-EditEvent"/></xsl:attribute>
               <xsl:choose>
-                <xsl:when test="$approvalQueue = 'true'">
-                  <xsl:choose>
-                    <xsl:when test="recurrenceId != ''">
-                      <!-- recurrence instances should be updated like normal events - only master events should be published -->
-                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdateApprovalQueue"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
-                    </xsl:otherwise>
-                  </xsl:choose>
-                </xsl:when>
                 <xsl:when test="$suggestionQueue = 'true'">
                   <!-- only link to master events - do not link to recurrence instances -->
-                  <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdateSuggestionQueue"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/></xsl:attribute>
+                  <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/></xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
@@ -329,24 +312,9 @@
             <xsl:text> </xsl:text>
             <xsl:copy-of select="$bwStr-EvLC-RecurringEventEdit"/>
             <xsl:text> </xsl:text>
-            <xsl:choose>
-              <xsl:when test="$pending = 'true'">
-                <!-- only master events can be published -->
-                <a href="{$event-fetchForUpdatePending}&amp;calPath={$calPath}&amp;guid={$guid}">
-                  <xsl:copy-of select="$bwStr-EvLC-Master"/>
-                </a>
-              </xsl:when>
-              <xsl:when test="$approvalQueue = 'true'">
-                <a href="{$event-fetchForUpdateApprovalQueue}&amp;calPath={$calPath}&amp;guid={$guid}">
-                  <xsl:copy-of select="$bwStr-EvLC-Master"/>
-                </a>
-              </xsl:when>
-              <xsl:otherwise>
-                <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}">
-                  <xsl:copy-of select="$bwStr-EvLC-Master"/>
-                </a>
-              </xsl:otherwise>
-            </xsl:choose>
+            <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}">
+              <xsl:copy-of select="$bwStr-EvLC-Master"/>
+            </a>
             <!-- recurrence instances can only be edited; and do not link to them in suggestion queue-->
             <xsl:if test="$suggestionQueue = 'false'">
             | <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}">

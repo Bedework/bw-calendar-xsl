@@ -52,7 +52,6 @@
 
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
-        <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
         <xsl:with-param name="sort" select="$sort"/>
       </xsl:call-template>
 
@@ -155,7 +154,6 @@
     <xsl:call-template name="eventListCommon"/>
 
     <xsl:call-template name="eventListControls">
-      <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
       <xsl:with-param name="sort" select="$sort"/>
       <xsl:with-param name="bottom">true</xsl:with-param>
     </xsl:call-template>

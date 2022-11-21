@@ -81,14 +81,16 @@
             <xsl:call-template name="tabs"/>
             <div id="content">
               <xsl:choose>
-                <xsl:when test="/bedework/page='tabPendingEvents'">
+                <xsl:when test="(/bedework/page='eventList') and
+                                (/bedework/tab = 'pending')">
                   <xsl:call-template name="tabPendingEvents"/>
                 </xsl:when>
                 <xsl:when test="(/bedework/page='eventList') and
                                 (/bedework/tab = 'approvalQueue')">
                   <xsl:call-template name="tabApprovalQueueEvents"/>
                 </xsl:when>
-                <xsl:when test="/bedework/page='tabSuggestionQueueEvents'">
+                <xsl:when test="(/bedework/page='eventList') and
+                                (/bedework/tab = 'suggestionQueue')">
                   <xsl:call-template name="tabSuggestionQueueEvents"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabCalsuite'">
@@ -103,17 +105,11 @@
                 <xsl:when test="/bedework/page='eventList'">
                   <xsl:call-template name="eventList"/>
                 </xsl:when>
-                <xsl:when test="/bedework/page='modEvent' or
-                               /bedework/page='modEventPending' or
-                               /bedework/page='modEventApprovalQueue' or
-                               /bedework/page='modEventSuggestionQueue'">
+                <xsl:when test="/bedework/page='modEvent'">
                   <xsl:apply-templates select="/bedework/formElements" mode="modEvent"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='displayEvent' or
-                                /bedework/page='deleteEventConfirm' or
-                                /bedework/page='deleteEventConfirmPending' or
-                                /bedework/page='deleteEventConfirmApprovalQueue' or
-                                /bedework/page='deleteEventConfirmSuggestionQueue'">
+                                /bedework/page='deleteEventConfirm'">
                   <xsl:apply-templates select="/bedework/event" mode="displayEvent"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='contactList'">

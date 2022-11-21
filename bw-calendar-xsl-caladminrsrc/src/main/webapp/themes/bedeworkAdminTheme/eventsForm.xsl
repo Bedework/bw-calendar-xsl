@@ -92,7 +92,7 @@
       </p>
     </xsl:if>
 
-    <xsl:if test="/bedework/page = 'modEventPending'">
+    <xsl:if test="$modEventPending = 'true'">
       <!-- if a submitted event has topical areas that match with
            those in the calendar suite, convert them -->
       <script type="text/javascript">
@@ -152,18 +152,9 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="creating"><xsl:value-of select="/bedework/creating"/></xsl:variable>
-    <form id="bwEventForm" name="eventForm" method="post" enctype="multipart/form-data" onsubmit="return setEventFields(this,{$portalFriendly},'{$submitter}','{$creating}')">
-      <xsl:choose>
-        <xsl:when test="/bedework/page = 'modEventPending'">
-          <xsl:attribute name="action"><xsl:value-of select="$event-updatePending"/></xsl:attribute>
-        </xsl:when>
-        <xsl:when test="/bedework/page = 'modEventApprovalQueue'">
-          <xsl:attribute name="action"><xsl:value-of select="$event-updateApprovalQueue"/></xsl:attribute>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="action"><xsl:value-of select="$event-update"/></xsl:attribute>
-        </xsl:otherwise>
-      </xsl:choose>
+    <form id="bwEventForm" name="eventForm" method="post" enctype="multipart/form-data"
+          onsubmit="return setEventFields(this,{$portalFriendly},'{$submitter}','{$creating}')">
+      <xsl:attribute name="action"><xsl:value-of select="$event-update"/></xsl:attribute>
 
       <!-- Output guid and recurrenceid for a validity check -->
       <input type="hidden" name="guid">
@@ -208,6 +199,7 @@
         <xsl:with-param name="eventTitle" select="$eventTitle"/>
         <xsl:with-param name="eventUrlPrefix" select="$eventUrlPrefix"/>
         <xsl:with-param name="canEdit" select="$canEdit"/>
+        <xsl:with-param name="modEventPending" select="$modEventPending"/>
         <xsl:with-param name="modEventApprovalQueue" select="$modEventApprovalQueue"/>
         <xsl:with-param name="modEventSuggestionQueue" select="$modEventSuggestionQueue"/>
         <xsl:with-param name="actionPrefix"><xsl:value-of select="$suggest-setStatusForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:with-param>
@@ -761,18 +753,14 @@
                 <!-- recurrence instances can not themselves recur,
                      so provide access to master event -->
                 <em><xsl:copy-of select="$bwStr-AEEF-ThisEventRecurrenceInstance"/></em><br/>
-                <xsl:choose>
-                  <xsl:when test="starts-with(form/calendar/event/path,$submissionsRootUnencoded)">
-                    <a href="{$event-fetchForUpdatePending}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></a>
-                  </xsl:when>
-                  <xsl:when test="starts-with(form/calendar/event/path,$workflowRootUnencoded)">
-                    <a href="{$event-fetchForUpdateApprovalQueue}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></a>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$bwStr-AEEF-EditMasterEvent"/></a>
-                  </xsl:otherwise>
-                </xsl:choose>
-
+                <xsl:variable name="modMasterText">
+                  <xsl:choose>
+                    <xsl:when test="starts-with(form/calendar/event/path,$submissionsRootUnencoded)"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></xsl:when>
+                    <xsl:when test="starts-with(form/calendar/event/path,$workflowRootUnencoded)"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></xsl:when>
+                    <xsl:otherwise><xsl:copy-of select="$bwStr-AEEF-EditMasterEvent"/></xsl:otherwise>
+                  </xsl:choose>
+                </xsl:variable>
+                <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$modMasterText"/></a>
               </xsl:when>
               <xsl:otherwise>
                 <!-- has no recurrenceId, so is master -->
@@ -3284,6 +3272,7 @@
           <xsl:with-param name="eventTitle" select="$eventTitle"/>
           <xsl:with-param name="eventUrlPrefix" select="$eventUrlPrefix"/>
           <xsl:with-param name="canEdit" select="$canEdit"/>
+          <xsl:with-param name="modEventPending" select="$modEventPending"/>
           <xsl:with-param name="modEventApprovalQueue" select="$modEventApprovalQueue"/>
           <xsl:with-param name="modEventSuggestionQueue" select="$modEventSuggestionQueue"/>
           <xsl:with-param name="actionPrefix"><xsl:value-of select="$suggest-setStatusForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:with-param>
@@ -3410,6 +3399,7 @@
     <xsl:param name="eventTitle"/>
     <xsl:param name="eventUrlPrefix"/>
     <xsl:param name="canEdit"/>
+    <xsl:param name="modEventPending"/>
     <xsl:param name="modEventApprovalQueue"/>
     <xsl:param name="modEventSuggestionQueue"/>
     <xsl:param name="actionPrefix"/>
@@ -3421,7 +3411,7 @@
     <div class="submitBox">
       <xsl:choose>
         <!-- xsl:when test="starts-with(form/calendar/event/path,$submissionsRootUnencoded)"-->
-        <xsl:when test="/bedework/page = 'modEventPending'">
+        <xsl:when test="$modEventPending = 'true'">
           <div class="right">
             <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
           </div>
@@ -3501,7 +3491,7 @@
             </xsl:choose>
           </xsl:variable>
           <xsl:variable name="backToListLink"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of select="/bedework/currentCalSuite/groupHref"/>")&amp;sort=dtstart.utc:asc&amp;master=true&amp;setappvar=suggestType(<xsl:value-of select="$suggestedListType"/>)</xsl:variable>
-          <xsl:variable name="reloadEventLink"><xsl:value-of select="$event-fetchForUpdateSuggestionQueue"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
+          <xsl:variable name="reloadEventLink"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <input type="button" name="updateEvent" value="{$bwStr-SEBu-AcceptEvent}" class="noFocus" onclick="setSuggestionStatus('accept','{$actionPrefix}','')"/><!-- accept and update -->
           <input type="button" name="rejectEvent" value="{$bwStr-SEBu-RejectEvent}" class="noFocus" onclick="setSuggestionStatus('reject','{$actionPrefix}','{$backToListLink}')"/>
           <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="location.href='{$backToListLink}'" class="noFocus"/>

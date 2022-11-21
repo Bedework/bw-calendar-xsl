@@ -27,9 +27,7 @@
     <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
 
     <div id="bwEventListControls">
-      <xsl:call-template name="eventListControls">
-        <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
-      </xsl:call-template>
+      <xsl:call-template name="eventListControls" />
 
       <form name="bwManageEventListControls"
             id="bwManageEventListControls"
@@ -59,7 +57,6 @@
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
-      <xsl:with-param name="nextAction" select="$event-nextUpdateList"/>
       <xsl:with-param name="bottom">true</xsl:with-param>
     </xsl:call-template>
 

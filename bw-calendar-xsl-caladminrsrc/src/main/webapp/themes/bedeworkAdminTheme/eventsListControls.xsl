@@ -21,11 +21,12 @@
 
   <!--++++++++++++++++++ Manage Events List ++++++++++++++++++++-->
   <xsl:template name="eventListControls">
-    <xsl:param name="nextAction"/>
+    <xsl:param name="extra"/>
     <xsl:param name="bottom">false</xsl:param>
     <xsl:param name="sort">dtstart.utc:asc</xsl:param>
 
     <!-- search meta-data -->
+    <xsl:variable name="nextAction" select="$event-nextUpdateList"/>
     <xsl:variable name="resultSize" select="/bedework/events/resultSize"/>
     <xsl:variable name="pageSize" select="/bedework/events/pageSize"/>
     <xsl:variable name="offset">
@@ -42,14 +43,14 @@
         <xsl:if test="$bottom = 'true'">
           <xsl:attribute name="class">bwEventListNav bwListNavBottom</xsl:attribute>
         </xsl:if>
-        <button type="button" class="prev" onclick="location.href='{$nextAction}&amp;prev=prev&amp;sort={$sort}'">
+        <button type="button" class="prev" onclick="location.href='{$nextAction}{$extra}&amp;prev=prev&amp;sort={$sort}'">
           <xsl:if test="$curPage = 1">
             <xsl:attribute name="disabled">disabled</xsl:attribute>
             <xsl:attribute name="class">prev disabled</xsl:attribute>
           </xsl:if>
           <span class="ui-icon 	ui-icon-carat-1-w"><xsl:text> </xsl:text></span> <xsl:copy-of select="$bwStr-EvLs-Previous"/>
         </button>
-        <button type="button" class="next" onclick="location.href='{$nextAction}&amp;next=next&amp;sort={$sort}'">
+        <button type="button" class="next" onclick="location.href='{$nextAction}{$extra}&amp;next=next&amp;sort={$sort}'">
           <xsl:if test="$curPage = $totalPages">
             <xsl:attribute name="disabled">disabled</xsl:attribute>
             <xsl:attribute name="class">next disabled</xsl:attribute>
