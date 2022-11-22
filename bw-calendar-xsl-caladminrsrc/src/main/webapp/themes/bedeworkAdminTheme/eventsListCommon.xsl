@@ -47,9 +47,12 @@
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Author"/></th>
           <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
-          <xsl:if test="$suggestionQueue = 'true'">
-            <th>Accept?</th>
-          </xsl:if>
+          <xsl:choose>
+            <xsl:when test="$suggestionQueue = 'true'">
+              <th>Accept?</th>
+            </xsl:when>
+            <xsl:otherwise><th><xsl:text></xsl:text></th></xsl:otherwise>
+          </xsl:choose>
         </tr>
       </thead>
       <tbody>
@@ -306,7 +309,7 @@
         </xsl:choose>
       </td>
       <td>
-        <xsl:value-of select="description"/>
+        <xsl:value-of select="description"/><!--
         <xsl:if test="recurring = 'true' or recurrenceId != ''">
           <div class="recurrenceEditLinks">
             <xsl:text> </xsl:text>
@@ -315,7 +318,7 @@
             <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}">
               <xsl:copy-of select="$bwStr-EvLC-Master"/>
             </a>
-            <!-- recurrence instances can only be edited; and do not link to them in suggestion queue-->
+            < ! - - recurrence instances can only be edited; and do not link to them in suggestion queue- - >
             <xsl:if test="$suggestionQueue = 'false'">
             | <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}">
                 <xsl:copy-of select="$bwStr-EvLC-Instance"/>
@@ -323,7 +326,7 @@
             </xsl:if>
           </div>
         </xsl:if>
-
+-->
         <div class="created-modified">
           <xsl:if test="deleted = 'true'">
             <xsl:copy-of select="$bwStr-EvLC-EventDeleted"/>
@@ -342,8 +345,15 @@
           <xsl:value-of select="substring(created,10,2)"/>:<xsl:value-of select="substring(created,12,2)"/> utc
         </div>
       </td>
-      <xsl:if test="$suggestionQueue = 'true'">
-        <td>
+      <td>
+        <xsl:if test="recurring = 'true' or recurrenceId != ''">
+          <div class="recurrenceEditLinks">
+            <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
+              <xsl:copy-of select="$bwStr-EvLC-Master"/>
+            </button>
+          </div>
+        </xsl:if>
+        <xsl:if test="$suggestionQueue = 'true'">
           <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
             <xsl:value-of select="$bwStr-SEBu-Accept"/>
@@ -351,8 +361,8 @@
           <button onclick="setSuggestionRowStatus('reject','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
             <xsl:value-of select="$bwStr-SEBu-Reject"/>
           </button>
-        </td>
-      </xsl:if>
+        </xsl:if>
+      </td>
     </tr>
   </xsl:template>
 
