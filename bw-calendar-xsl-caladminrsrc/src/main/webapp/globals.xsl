@@ -79,6 +79,8 @@
   <xsl:variable name="index-unindex" select="/bedework/urlPrefixes/search/unindex"/>
 
   <!-- events -->
+  <xsl:variable name="event-fetchForApprovePublish" select="/bedework/urlPrefixes/event/fetchForApprovePublish"/>
+  <xsl:variable name="event-approvePublish" select="/bedework/urlPrefixes/event/approvePublish"/>
   <xsl:variable name="event-showEvent" select="/bedework/urlPrefixes/event/showEvent"/>
   <xsl:variable name="event-showModForm" select="/bedework/urlPrefixes/event/showModForm"/>
   <xsl:variable name="event-showUpdateList" select="/bedework/urlPrefixes/event/showUpdateList"/>

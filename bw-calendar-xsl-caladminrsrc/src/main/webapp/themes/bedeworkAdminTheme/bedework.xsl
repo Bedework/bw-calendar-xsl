@@ -109,7 +109,8 @@
                   <xsl:apply-templates select="/bedework/formElements" mode="modEvent"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='displayEvent' or
-                                /bedework/page='deleteEventConfirm'">
+                                /bedework/page='deleteEventConfirm' or
+                                /bedework/page='approvePublish'">
                   <xsl:apply-templates select="/bedework/event" mode="displayEvent"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='contactList'">

@@ -179,6 +179,7 @@
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Mostrar etiquetas por otros grupos</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Evento recurrente. Editar:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Master">Editar maestro</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable><!-- XXX translate -->

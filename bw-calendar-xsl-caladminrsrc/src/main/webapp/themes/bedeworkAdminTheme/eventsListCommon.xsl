@@ -353,6 +353,13 @@
             </button>
           </div>
         </xsl:if>
+        <xsl:if test="$approvalQueue = 'true'">
+          <div class="recurrenceEditLinks">
+            <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
+              <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
+            </button>
+          </div>
+        </xsl:if>
         <xsl:if test="$suggestionQueue = 'true'">
           <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
