@@ -3332,60 +3332,9 @@
           <div class="right">
             <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
           </div>
-          <!-- no need for a publish box in the single calendar model unless we have more than one calendar; -->
-          <xsl:choose>
-            <xsl:when test="count(form/calendar/all/select/option) &gt; 1"><!-- test for the presence of more than one publishing calendar -->
-              <div id="publishBox" class="invisible">
-                <div id="publishBoxCloseButton">
-                  <a href="javascript:resetPublishBox('calendarId')">
-                    <img src="{$resourcesRoot}/images/closeIcon.gif" width="20" height="20" alt="close"/>
-                  </a>
-                </div>
-                <strong><xsl:copy-of select="$bwStr-SEBu-SelectPublishCalendar"/></strong><br/>
-                <select name="calendarId" id="calendarId" onchange="this.form.newCalPath.value = this.value;">
-                  <option>
-                    <xsl:attribute name="value"><xsl:value-of select="form/calendar/path"/></xsl:attribute>
-                    <xsl:copy-of select="$bwStr-SEBu-Select"/>
-                  </option>
-                  <xsl:for-each select="form/calendar/all/select/option">
-                    <xsl:sort select="." order="ascending"/>
-                    <option>
-                      <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
-                      <xsl:if test="@selected"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-                      <xsl:choose>
-                        <xsl:when test="starts-with(node(),/bedework/submissionsRoot/unencoded)">
-                          <xsl:copy-of select="$bwStr-SEBu-SubmittedEvents"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <xsl:value-of select="substring-after(node(),'/public/')"/>
-                        </xsl:otherwise>
-                      </xsl:choose>
-                    </option>
-                  </xsl:for-each>
-                </select>
-                <input type="submit" name="publishEvent" value="{$bwStr-SEBu-PublishEvent}" class="noFocus">
-                  <xsl:attribute name="onclick">doPublishEvent(this.form.newCalPath.value,"<xsl:value-of select="$escapedTitle"/>","<xsl:value-of select="$eventUrlPrefix"/>",this.form);changeClass('publishBox','invisible');</xsl:attribute>
-                </input>
-                <xsl:if test="$portalFriendly = 'false'">
-                  <br/>
-                  <span id="calDescriptionsLink">
-                    <a href="javascript:launchSimpleWindow('{$calendar-fetchDescriptions}')"><xsl:copy-of select="$bwStr-SEBu-CalendarDescriptions"/></a>
-                  </span>
-                </xsl:if>
-              </div>
-              <input type="submit" name="updateSubmitEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
-              <input type="button" name="publishEvent" value="{$bwStr-SEBu-PublishEvent}" onclick="changeClass('publishBox','visible')" class="noFocus"/>
-              <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <!-- we are using the single calendar model for public events -->
-              <input type="submit" name="updateSubmitEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
-              <input type="submit" name="publishEvent" value="{$bwStr-SEBu-PublishEvent}" class="noFocus">
-                <xsl:attribute name="onclick">doPublishEvent("<xsl:value-of select="form/calendar/all/select/option/@value"/>","<xsl:value-of select="$escapedTitle"/>","<xsl:value-of select="$eventUrlPrefix"/>",this.form);</xsl:attribute>
-              </input>
-              <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
-            </xsl:otherwise>
-          </xsl:choose>
+          <!-- we are using the single calendar model for public events -->
+          <input type="submit" name="updateSubmitEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
+          <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
           <span class="claimButtons">
             <xsl:choose>
               <xsl:when test="form/xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group">
@@ -3417,60 +3366,8 @@
           <div class="right">
             <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
           </div>
-          <!-- no need for a publish box in the single calendar model unless we have more than one calendar; -->
-          <xsl:choose>
-            <xsl:when test="count(form/calendar/all/select/option) &gt; 1"><!-- test for the presence of more than one publishing calendar -->
-              <div id="publishBox" class="invisible">
-                <div id="publishBoxCloseButton">
-                  <a href="javascript:resetPublishBox('calendarId')">
-                    <img src="{$resourcesRoot}/images/closeIcon.gif" width="20" height="20" alt="close"/>
-                  </a>
-                </div>
-                <strong><xsl:copy-of select="$bwStr-SEBu-SelectPublishCalendar"/></strong><br/>
-                <select name="calendarId" id="calendarId" onchange="this.form.newCalPath.value = this.value;">
-                  <option>
-                    <xsl:attribute name="value"><xsl:value-of select="form/calendar/path"/></xsl:attribute>
-                    <xsl:copy-of select="$bwStr-SEBu-Select"/>
-                  </option>
-                  <xsl:for-each select="form/calendar/all/select/option">
-                    <xsl:sort select="." order="ascending"/>
-                    <option>
-                      <xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
-                      <xsl:if test="@selected"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-                      <xsl:choose>
-                        <xsl:when test="starts-with(node(),/bedework/submissionsRoot/unencoded)">
-                          <xsl:copy-of select="$bwStr-SEBu-SubmittedEvents"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <xsl:value-of select="substring-after(node(),'/public/')"/>
-                        </xsl:otherwise>
-                      </xsl:choose>
-                    </option>
-                  </xsl:for-each>
-                </select>
-                <input type="submit" name="approveEvent" value="{$bwStr-SEBu-ApproveEvent}" class="noFocus">
-                  <xsl:attribute name="onclick">doApproveEvent(this.form.newCalPath.value,"<xsl:value-of select="$escapedTitle"/>","<xsl:value-of select="$eventUrlPrefix"/>",this.form);changeClass('publishBox','invisible');</xsl:attribute>
-                </input>
-                <xsl:if test="$portalFriendly = 'false'">
-                  <br/>
-                  <span id="calDescriptionsLink">
-                    <a href="javascript:launchSimpleWindow('{$calendar-fetchDescriptions}')"><xsl:copy-of select="$bwStr-SEBu-CalendarDescriptions"/></a>
-                  </span>
-                </xsl:if>
-              </div>
-              <input type="submit" name="updateApproveEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
-              <input type="button" name="approveEvent" value="{$bwStr-SEBu-ApproveEvent}" onclick="changeClass('publishBox','visible')" class="noFocus"/>
-              <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <!-- we are using the single calendar model for public events -->
-              <input type="submit" name="updateApproveEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
-              <input type="submit" name="approveEvent" value="{$bwStr-SEBu-ApproveEvent}" class="noFocus">
-                <xsl:attribute name="onclick">doApproveEvent("<xsl:value-of select="form/calendar/all/select/option/@value"/>","<xsl:value-of select="$escapedTitle"/>","<xsl:value-of select="$eventUrlPrefix"/>",this.form);</xsl:attribute>
-              </input>
-              <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
-            </xsl:otherwise>
-          </xsl:choose>
+          <input type="submit" name="updateApproveEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus"/>
+          <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:choose>

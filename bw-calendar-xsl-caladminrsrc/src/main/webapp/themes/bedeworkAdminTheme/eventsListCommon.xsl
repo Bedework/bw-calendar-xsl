@@ -51,7 +51,7 @@
             <xsl:when test="$suggestionQueue = 'true'">
               <th>Accept?</th>
             </xsl:when>
-            <xsl:otherwise><th><xsl:text></xsl:text></th></xsl:otherwise>
+            <xsl:otherwise><th><xsl:text> </xsl:text></th></xsl:otherwise>
           </xsl:choose>
         </tr>
       </thead>
