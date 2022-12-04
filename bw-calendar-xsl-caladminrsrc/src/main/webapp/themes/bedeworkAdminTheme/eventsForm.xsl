@@ -670,14 +670,7 @@
                 <!-- recurrence instances can not themselves recur,
                      so provide access to master event -->
                 <em><xsl:copy-of select="$bwStr-AEEF-ThisEventRecurrenceInstance"/></em><br/>
-                <xsl:variable name="modMasterText">
-                  <xsl:choose>
-                    <xsl:when test="starts-with(form/calendar/event/path,$submissionsRootUnencoded)"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></xsl:when>
-                    <xsl:when test="starts-with(form/calendar/event/path,$workflowRootUnencoded)"><xsl:copy-of select="$bwStr-AEEF-EditPendingMasterEvent"/></xsl:when>
-                    <xsl:otherwise><xsl:copy-of select="$bwStr-AEEF-EditMasterEvent"/></xsl:otherwise>
-                  </xsl:choose>
-                </xsl:variable>
-                <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$modMasterText"/></a>
+                <a href="{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}" title="{$bwStr-AEEF-EditMaster}"><xsl:copy-of select="$bwStr-AEEF-EditMasterEvent"/></a>
               </xsl:when>
               <xsl:otherwise>
                 <!-- has no recurrenceId, so is master -->
