@@ -25,6 +25,7 @@
   <xsl:template name="eventListCommon">
     <xsl:param name="pending">false</xsl:param>
     <xsl:param name="approvalQueue">false</xsl:param>
+    <xsl:param name="approverUser">false</xsl:param>
     <xsl:param name="suggestionQueue">false</xsl:param>
     <table id="commonListTable" title="event listing">
       <thead>
@@ -60,6 +61,7 @@
         <xsl:apply-templates select="/bedework/events/event" mode="eventListCommon">
           <xsl:with-param name="pending"><xsl:value-of select="$pending"/></xsl:with-param>
           <xsl:with-param name="approvalQueue"><xsl:value-of select="$approvalQueue"/></xsl:with-param>
+          <xsl:with-param name="approverUser"><xsl:value-of select="$approverUser"/></xsl:with-param>
           <xsl:with-param name="suggestionQueue"><xsl:value-of select="$suggestionQueue"/></xsl:with-param>
         </xsl:apply-templates>
 
@@ -132,6 +134,7 @@
   <xsl:template match="event" mode="eventListCommon">
     <xsl:param name="pending">false</xsl:param>
     <xsl:param name="approvalQueue">false</xsl:param>
+    <xsl:param name="approverUser">false</xsl:param>
     <xsl:param name="suggestionQueue">false</xsl:param>
     <xsl:variable name="calPath" select="calendar/encodedPath"/>
     <xsl:variable name="guid" select="guid"/>
@@ -353,7 +356,7 @@
             </button>
           </div>
         </xsl:if>
-        <xsl:if test="$approvalQueue = 'true'">
+        <xsl:if test="(($approvalQueue = 'true') and ($approverUser = 'true'))">
           <div class="recurrenceEditLinks">
             <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
               <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>

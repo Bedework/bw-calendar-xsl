@@ -22,6 +22,12 @@
   <!--+++++++++++++++ Approval Queue Tab ++++++++++++++++++++-->
   <xsl:template name="tabApprovalQueueEvents">
     <h2><xsl:copy-of select="$bwStr-TaAQ-ApprovalQueueEvents"/></h2>
+    <xsl:variable name="approverUser">
+      <xsl:choose>
+        <xsl:when test="((/bedework/userInfo/approverUser = 'true') or (/bedework/userInfo/superUser = 'true'))">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:if test="/bedework/userInfo/approverUser = 'false'">
       <button onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/></button>
     </xsl:if>
@@ -57,6 +63,7 @@
 
     <xsl:call-template name="eventListCommon">
       <xsl:with-param name="approvalQueue">true</xsl:with-param>
+      <xsl:with-param name="approverUser"><xsl:copy-of select="$approverUser"/></xsl:with-param>
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
