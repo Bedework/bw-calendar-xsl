@@ -77,8 +77,8 @@ function showLink(urlString,title) {
 }
 function sortList(list) {
   $(list).children("li").sort(function(a, b) {
-    var x = $(a).find('a').text().toUpperCase();
-    var y = $(b).find('a').text().toUpperCase();
+    var x = $(a).find('button.ta').text().toUpperCase();
+    var y = $(b).find('button.ta').text().toUpperCase();
     return (x < y) ? -1 : (x > y) ? 1 : 0;
   }).appendTo(list);
 }

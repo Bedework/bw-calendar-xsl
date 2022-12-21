@@ -348,6 +348,28 @@ label {
 }
 
 /* VIEWS LISTING */
+#bwViewList button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  transition: color 0.2s ease-in-out;
+}
+#bwViewList button.ta {
+  color: #286dc0;
+}
+#bwViewList button:hover {
+  color: #222;
+  text-decoration: underline;
+}
+#bwViewList button:focus {
+  color: #222;
+  border: 1px dotted #222;
+  border-bottom: 1px solid #222;
+}
+#bwViewList button.ta.selected {
+  font-weight: bold;
+}
 ul.viewList {
   margin: 0 1em;
   border-top: 1px solid #fff;
@@ -499,7 +521,44 @@ ul#calDisplayOptions li a {
   border: 1px solid #DDDDDD;
   color: #000000;
   padding: 2px 4px;
+  margin: 0 0 5px 2px;
   white-space: nowrap;
+}
+.bwfilter > button {
+  margin-left: 4px;
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #286dc0;
+  line-height: 1em;
+}
+.bwfilter > button:hover {
+  color: #222;
+}
+.bwfilter > button:focus {
+  color: #222;
+  border: 1px dotted #222;
+}
+.bwClearCalFilters {
+  padding: 0;
+  font-size: 0.9em;
+  background: none;
+  border: none;
+  color: #286dc0;
+}
+.bwClearCalFilters:hover {
+  color: #222;
+}
+.bwClearCalFilters:focus {
+  border: 1px dotted #286dc0;
+}
+#bwClearQuery {
+  background-color: unset;
+  border: none;
+  color: #286dc0;
 }
 #bwResultSize {
   background-color: #f5f5f5;

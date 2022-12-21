@@ -24,37 +24,46 @@
   <xsl:template name="viewList">
     <div id="bwViewList">
       <xsl:for-each select="/bedework/views/view">
-        <xsl:variable name="viewId">bwNav<xsl:value-of select="position()-1"/></xsl:variable>
-        <xsl:variable name="viewState">
-          <xsl:choose>
-            <xsl:when test="contains(/bedework/appvar[key='closedViews']/value,$viewId)">closed</xsl:when>
-            <xsl:otherwise>open</xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <div class="bwMenu">
-          <xsl:attribute name="id"><xsl:value-of select="$viewId"/></xsl:attribute>
-          <div class="bwMenuTitle">
-            <span class="caret">
-              <xsl:if test="$viewState = 'closed'"><xsl:attribute name="class">caret caret-right</xsl:attribute></xsl:if>
-              <xsl:text> </xsl:text>
-            </span>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="name"/>
-          </div>
-          <div class="bwMenuTree">
-            <xsl:if test="$viewState = 'closed'"><xsl:attribute name="style">display: none</xsl:attribute></xsl:if>
-            <ul>
-              <xsl:for-each select="paths/path">
-                <xsl:sort select="." order="ascending"/><!-- when a sort field is available, remove this line -->
-                <xsl:variable name="currentPath"><xsl:value-of select="."/></xsl:variable>
-                <xsl:apply-templates select="/bedework/myCalendars/calendars//calendar[path=$currentPath]" mode="menuTree">
-                  <xsl:with-param name="viewId"><xsl:value-of select="$viewId"/></xsl:with-param>
-                </xsl:apply-templates>
-              </xsl:for-each>
-            </ul>
-          </div>
-        </div>
+        <xsl:apply-templates select="current()" mode="viewMenu">
+          <xsl:with-param name="viewPos"><xsl:value-of select="position()-1"/></xsl:with-param>
+        </xsl:apply-templates>
       </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <!-- individual view menu -->
+  <xsl:template match="view" mode="viewMenu">
+    <xsl:param name="viewPos">0</xsl:param>
+    <xsl:variable name="viewId">bwNav<xsl:value-of select="$viewPos"/></xsl:variable>
+    <xsl:variable name="viewState">
+      <xsl:choose>
+        <xsl:when test="contains(/bedework/appvar[key='closedViews']/value,$viewId)">closed</xsl:when>
+        <xsl:otherwise>open</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <div class="bwMenu">
+      <xsl:attribute name="id"><xsl:value-of select="$viewId"/></xsl:attribute>
+      <button class="bwMenuTitle" aria-expanded="true">
+        <xsl:if test="$viewState = 'closed'"><xsl:attribute name="aria-expanded">false</xsl:attribute></xsl:if>
+        <span class="caret">
+          <xsl:if test="$viewState = 'closed'"><xsl:attribute name="class">caret caret-right</xsl:attribute></xsl:if>
+          <xsl:text> </xsl:text>
+        </span>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="name"/>
+      </button>
+      <div class="bwMenuTree">
+        <xsl:if test="$viewState = 'closed'"><xsl:attribute name="style">display: none</xsl:attribute></xsl:if>
+        <ul>
+          <xsl:for-each select="paths/path">
+            <xsl:sort select="." order="ascending"/><!-- when a sort field is available, remove this line -->
+            <xsl:variable name="currentPath"><xsl:value-of select="."/></xsl:variable>
+            <xsl:apply-templates select="/bedework/myCalendars/calendars//calendar[path=$currentPath]" mode="menuTree">
+              <xsl:with-param name="viewId"><xsl:value-of select="$viewId"/></xsl:with-param>
+            </xsl:apply-templates>
+          </xsl:for-each>
+        </ul>
+      </div>
     </div>
   </xsl:template>
 
@@ -85,23 +94,28 @@
             <xsl:otherwise>hasChildren <xsl:value-of select="$folderState"/></xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>
-        <span class="menuTreeToggle">
+        <button class="menuTreeToggle" aria-expanded="false">
+          <xsl:if test="$folderState = 'open'"><xsl:attribute name="aria-expanded">true</xsl:attribute></xsl:if>
           <xsl:choose>
             <xsl:when test="$folderState = 'closed'">+</xsl:when>
             <xsl:otherwise>-</xsl:otherwise>
           </xsl:choose>
-        </span>
+        </button>
       </xsl:if>
       <xsl:if test="not(calendar) and $virtualPath = $curPath">
         <xsl:attribute name="class">selected</xsl:attribute>
       </xsl:if>
-      <a>
-        <xsl:attribute name="href">
+      <button class="ta" aria-pressed="false">
+        <xsl:if test="not(calendar) and $virtualPath = $curPath">
+          <xsl:attribute name="aria-pressed">true</xsl:attribute>
+        </xsl:if>
+        <xsl:attribute name="value">
           <xsl:value-of select="path"/>
         </xsl:attribute>
         <xsl:attribute name="id"><xsl:value-of select="$itemId"/></xsl:attribute>
+        <xsl:attribute name="title"><xsl:value-of select="desc"/></xsl:attribute>
         <xsl:value-of select="summary"/>
-      </a>
+      </button>
 	    <xsl:if test="calendar[((calType &lt; 2) or (calType = 8)) and (name != 'calendar')]"><!-- the test for "calendar" isn't best -->
         <ul>
 	        <xsl:apply-templates select="calendar[((calType &lt; 2) or (calType = 8)) and (name != 'calendar') and not(starts-with(name,'.cs'))]" mode="menuTree"><!-- ".cs" calendars hold calendar suite resources -->

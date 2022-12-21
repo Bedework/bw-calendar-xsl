@@ -27,7 +27,7 @@
       var bwOngoingOptions = {
         title: "<xsl:copy-of select="$bwStr-Ongoing-Title"/>",
         showTitle: true,
-        showCaret: true,
+        showCaret: false,
         displayDescription: false,
         displayEventDetailsInline: false,
         suppressStartDateInList: true,

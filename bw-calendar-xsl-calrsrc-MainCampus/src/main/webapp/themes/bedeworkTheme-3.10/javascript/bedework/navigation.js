@@ -30,7 +30,7 @@ $(document).ready(function() {
    * for filtering the center event list.
    * This is fired when a user clicks a calendar in the explorer
    * navigation in the left column. */
-  $(".bwMenuTree a").click(function (event) {
+  $(".bwMenuTree button.ta").click(function (event) {
     event.preventDefault();
     var curFilter = $(this).attr("id");
     // get the index held in the ID and the name of the group:
@@ -45,10 +45,10 @@ $(document).ready(function() {
     }
     if (itemIndex != -1) {
       bwFilters[navIndex].splice(itemIndex, 1);
-      $(this).css("font-weight", "normal").attr("aria-selected","false");
+      $(this).removeClass("selected").attr("aria-pressed","false");
     } else {
       bwFilters[navIndex].push(curFilter);
-      $(this).css("font-weight", "bold").attr("aria-selected","true");
+      $(this).addClass("selected").attr("aria-pressed","true");
     }
 
     refreshFilterList(navIndex,navName);
@@ -63,20 +63,21 @@ $(document).ready(function() {
   /* Open and close the views (by clicking the caret or the text  */
   /* Default state is open */
   $(".bwMenuTitle").click(function(){
-    //$(this).next(".bwMenuTree").toggle(100);
-    //$(this).find(".caret").toggleClass("caret-right");
+    var curButton = $(this);
     var curItem = $(this).parent("div");
     $(curItem).children(".bwMenuTree").slideToggle(100, function () {
       if ($(this).is(":hidden")) {
         $(curItem).find(".caret").addClass("caret-right");
-        closedViews.push($(curItem).attr("id"));
+        $(curButton).attr("aria-expanded","false");
+        //closedViews.push($(curItem).attr("id"));
       } else {
         var itemIndex = $.inArray($(curItem).attr("id"), openCals);
         $(curItem).find(".caret").removeClass("caret-right");
-        closedViews.splice(itemIndex, 1);
+        $(curButton).attr("aria-expanded","true");
+        //closedViews.splice(itemIndex, 1);
       }
 
-      sendAjax("setappvar=closedViews(" + closedViews.toString() + ")");
+      //sendAjax("setappvar=closedViews(" + closedViews.toString() + ")");
 
     });
   });
@@ -84,14 +85,17 @@ $(document).ready(function() {
   /* Open and close the calendar subtree (by clicking the + or -) */
   /* Default state is closed */
   $(".bwMenuTree .menuTreeToggle").click(function () {
+    var curButton = $(this);
     var curItem = $(this).parent("li");
     $(curItem).children("ul").slideToggle("fast", function () {
       if ($(this).is(":visible")) {
-        $(this).parent("li").children("span.menuTreeToggle").html("-");
+        $(curButton).attr("aria-expanded","true");
+        $(this).parent("li").children(".menuTreeToggle").html("-");
         openCals.push($(curItem).attr("id"));
       } else {
         var itemIndex = $.inArray($(curItem).attr("id"), openCals);
-        $(this).parent("li").children("span.menuTreeToggle").html("+");
+        $(curButton).attr("aria-expanded","false");
+        $(this).parent("li").children(".menuTreeToggle").html("+");
         openCals.splice(itemIndex, 1);
       }
 
@@ -103,8 +107,6 @@ $(document).ready(function() {
   /* Open and close the mobile menu */
   $("#mobileMenu").click(function(){
     $("#bwDatePickerLinks").toggle(100);
-    $("#bwBasicSearch").toggle(100);
-    $("#vEventButtonContainer").toggle(100);
     $("#bwViewList").toggle(100);
     /*$(".bwMenu").toggle(100, function() {
       if ($(this).find(".bwMenuTree").is(":visible")) {
@@ -117,7 +119,7 @@ $(document).ready(function() {
   });
 
   /* Add the click handler to filters that are generated on first page load.  */
-  $(".eventFilterInfo").on("click", ".bwfilter a", bwFilterClickHandler);
+  $(".eventFilterInfo").on("click", ".bwfilter button", bwFilterClickHandler);
 
   /* Add a click handler to the "back to events" link. */
   $("#eventIcons").on("click", "a.linkBack", bwRangeClickHandler);
@@ -188,7 +190,7 @@ function bwClearFilters(navIndex) {
   bwFilters[navIndex].length = 0;
   bwFilterPaths[navIndex].length = 0;
   refreshFilterList(navIndex);
-  $("#bwNav" + navIndex +  " .bwMenuTree a").css("font-weight", "normal").attr("aria-selected","false");
+  $("#bwNav" + navIndex +  " .bwMenuTree button.ta").removeClass("selected").attr("aria-pressed","false");
   reloadMainEventList();
 }
 
@@ -199,7 +201,7 @@ function bwClearAllFilters() {
     bwFilterPaths[i].length = 0; // same goes for the filter paths.
     $("#calFilterContainer" + i).empty();
   });
-  $(".bwMenuTree a").css("font-weight", "normal");
+  $(".bwMenuTree button.ta").removeClass("selected").attr("aria-pressed","false");
   reloadMainEventList();
 }
 
@@ -211,8 +213,7 @@ function bwClearAll() {
     bwFilterPaths[i].length = 0; // same goes for the filter paths.
     $("#calFilterContainer" + i).empty();
   });
-  $(".bwMenuTree a").css("font-weight", "normal");
-  $(".bwMenuTree a").css("background", "none");
+  $(".bwMenuTree button.ta").removeClass("selected").attr("aria-pressed","false");
   // clear the query
   bwMainEventList.setQuery("");
   $("#bwBasicSearchInput").val("");
@@ -229,21 +230,10 @@ function bwReplaceFilters(filterPath) {
     bwFilterPaths[i].length = 0; // same goes for the filter paths.
     $("#calFilterContainer" + i).empty();
   });
-  $(".bwMenuTree a").css("font-weight", "normal");
+  $(".bwMenuTree button.ta").removeClass("selected").attr("aria-pressed","false");
   bwMainEventList.setQuery("");
   $("#bwBasicSearchInput").val("");
   refreshQuery(bwQueryName,bwClearQueryMarkup);
-
-  // Look up the new filter by finding href="path" in the navigation tree.
-  // XXX  This is not appropriate - the filter may not exist in the tree.
-  /*var filterId = $(".bwMenu a[href='" + filterPath +  "']").attr("id");
-  console.log("filterId = " + filterId);
-  if (filterId == undefined) {
-    filterId = "empty";
-  }
-  // set the new filter:
-  bwFilters[0][0] = filterId;
-  bwFilterPaths[0][0] = filterPath;*/
 
   reloadMainEventList();
 }
@@ -268,11 +258,11 @@ function displayFilters(bwFilterSet, navIndex, navName) {
     filterList += renderFilter(value);
   });
   filterList += "</span>";
-  filterList += " <a href=\"javascript:bwClearFilters(" + navIndex + ")\" class=\"bwClearCalFilters\">" + bwClearFilterStr + "</a>";
+  filterList += " <button onclick=\"bwClearFilters(" + navIndex + ")\" class=\"bwClearCalFilters\">" + bwClearFilterStr + "</button>";
   // Write the list back to the screen
   $("#bwFilterList" + navIndex).html(filterList);
   // Add click handlers to the list items
-  $("#bwFilterList" + navIndex + " .bwfilter a").click(bwFilterClickHandler);
+  $("#bwFilterList" + navIndex + " .bwfilter button").click(bwFilterClickHandler);
 }
 
 /* Generate every filter list.  This is called when constructing the pages. */
@@ -288,7 +278,7 @@ function displayAllFilters(bwFilters) {
         }
         // make our selected navigational items bold on every page
         $.each(value, function (j, val) {
-          $("#" + val).css("font-weight","bold").attr("aria-selected","true");
+          $("#" + val).addClass("selected").attr("aria-pressed","true");
         });
       }
     });
@@ -298,9 +288,9 @@ function displayAllFilters(bwFilters) {
 /* Generate an individual filter */
 function renderFilter(id) {
   var anchorId = "f" + id;
-  var filterPath = $("#" + id).attr("href");
+  var filterPath = $("#" + id).attr("value");
   var label = $("#" + id).text();
-  return '<span class="bwfilter"><span class="bwFilterItemName">' + label + '</span><a href="' + filterPath + '" id="' + anchorId + '">x</a></span> ';
+  return '<span class="bwfilter"><span class="bwFilterItemName">' + label + '</span><button value="' + filterPath + '" id="' + anchorId + '"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">remove filter</span></button></span> ';
 }
 
 /* Construct the filter paths by looking up the IDs in bwFilters (global) */
@@ -312,7 +302,7 @@ function buildFilterPaths() {
     filterPaths[i] = new Array();
     if (filterSet.length) {
       $.each(filterSet, function (j, value) {
-        path = $("#" + value).attr("href");
+        path = $("#" + value).attr("value");
         filterPaths[i].push(path);
       });
     }
@@ -474,7 +464,7 @@ function bwFilterClickHandler(event) {
   // refresh the list for the filters we have
   if (bwPage == "eventList") {
     refreshFilterList(navIndex,navName);
-    $("#" + curFilter).css("font-weight", "normal");
+    $("#" + curFilter).removeClass("selected").attr("aria-pressed","false");
     var reqData = new Object;  // for refreshing the center event list
     reqData.fexpr = fexpr;
     sendAjax(qstring); // pass back the state parameters
@@ -506,7 +496,7 @@ function addCalFilter(filterId) {
   }
   var qstring = new Array();
   $.each(bwFilters, function (i, value) {
-    var filter = $("#" + value).attr("href");
+    var filter = $("#" + value).attr("value");
     qstring.push("vpath=" + filter);
   });
   qstring.push("setappvar=bwFilters(" + bwFilters.toString() + ")");
@@ -522,10 +512,10 @@ function bwScroll() {
   }
 }
 
-function bwOngoingClickHandler(event) {
+/*function bwOngoingClickHandler(event) {
   $(this).next(".bwEventList").toggle("fast");
   $(this).find(".caret").toggleClass("caret-right");
-};
+};*/
 
 function bwListedEventClickHandler(event) {
   // highlight the list element briefly and then go to the event

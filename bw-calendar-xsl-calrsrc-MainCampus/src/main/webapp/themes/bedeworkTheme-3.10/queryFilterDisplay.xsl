@@ -31,7 +31,7 @@
             <strong class="bwQueryQuery">"<xsl:value-of select="/bedework/appvar[key='bwQuery']/value"/>"</strong>
           </span>
           <xsl:text> </xsl:text>
-          <a id="bwClearQuery" href="javascript:bwClearSearch();"><xsl:copy-of select="$bwStr-LsEv-ClearSearch"/></a>
+          <button id="bwClearQuery" onclick="bwClearSearch();"><xsl:copy-of select="$bwStr-LsEv-ClearSearch"/></button>
         </div>
       </xsl:if>
     </div>

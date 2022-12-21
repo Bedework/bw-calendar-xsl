@@ -191,10 +191,10 @@
         var bwQueryName = "<xsl:value-of select="$bwStr-LsEv-Filter"/>";
         <xsl:choose>
           <xsl:when test="/bedework/page = 'eventscalendar'">
-            var bwClearQueryMarkup = '<a id="bwClearQuery" href="{$setSelection}&amp;viewName=All&amp;setappvar=bwFilters()&amp;setappvar=bwFilterLabels()"><xsl:value-of select="$bwStr-LsEv-ClearSearch"/></a>';
+            var bwClearQueryMarkup = '<button id="bwClearQuery" onclick="location.href='{$setSelection}&amp;viewName=All&amp;setappvar=bwFilters()&amp;setappvar=bwFilterLabels()'"><xsl:value-of select="$bwStr-LsEv-ClearSearch"/></button>';
           </xsl:when>
           <xsl:otherwise>
-            var bwClearQueryMarkup = '<a id="bwClearQuery" href="javascript:bwClearSearch();"><xsl:value-of select="$bwStr-LsEv-ClearSearch"/></a>';
+            var bwClearQueryMarkup = '<button id="bwClearQuery" onclick="bwClearSearch();"><xsl:value-of select="$bwStr-LsEv-ClearSearch"/></button>';
           </xsl:otherwise>
         </xsl:choose>
 
