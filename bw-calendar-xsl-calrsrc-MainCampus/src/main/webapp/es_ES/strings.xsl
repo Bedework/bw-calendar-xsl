@@ -177,7 +177,6 @@
   <xsl:variable name="bwStr-SgEv-AddEventToMyCalendar">Añadir a MyCalendar</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AddToGoogleCalendar">Añadir a Google Calendar</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AddToFacebook">Añadir a Facebook</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-ShareThis">Compartir Esto - debe estar configurado explicitamente para su sitio.</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Where">Dónde:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Location-Accessible">This venue is wheelchair accessible</xsl:variable> <!-- XXX translate-->
   <xsl:variable name="bwStr-SgEv-Location-Map">map</xsl:variable><!-- XXX translate-->

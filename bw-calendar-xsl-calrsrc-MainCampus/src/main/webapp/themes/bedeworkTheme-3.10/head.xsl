@@ -260,18 +260,6 @@
           displayAllFilters(bwFilters);
         });
       </script>
-
-      <xsl:if test="$eventIconShareThis = 'true'">
-        <!-- ShareThis code.  Gets publisher code from variable set in themeSettings.xsl -->
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"><xsl:text> </xsl:text></script>
-        <script type="text/javascript">
-           stLight.options({
-            publisher:'<xsl:value-of select="$shareThisCode"/>',
-            offsetTop:'0'
-           })
-        </script>
-      </xsl:if>
-
     </head>
   </xsl:template>
 

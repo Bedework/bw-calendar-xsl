@@ -113,29 +113,6 @@
                     <img title="{$bwStr-SgEv-AddToGoogleCalendar}" src="{$resourcesRoot}/images/gcal_small.gif" alt="{$bwStr-SgEv-AddToGoogleCalendar}"/>
                   </a>
                 </xsl:if>
-                <xsl:if test="$eventIconShareThis = 'true'">
-                  <xsl:variable name="shareURL"><xsl:value-of select="/bedework/urlprefix"/>/event/eventView.do?b=de&amp;href=<xsl:value-of select="encodedHref"/></xsl:variable>
-                  <xsl:variable name="noNewLineDetails">
-                    <xsl:call-template name="replace">
-                      <xsl:with-param name="string" select="description"/>
-                      <xsl:with-param name="pattern" select="'&#xa;'"/>
-                      <xsl:with-param name="substitution" select="''"/>
-                    </xsl:call-template>
-                  </xsl:variable>
-                  <xsl:variable name="shareThisId">shareThis-<xsl:value-of select="$guid"/><xsl:value-of select="recurrenceId"/></xsl:variable>
-                  <span id="{$shareThisId}">
-                    <script language="javascript" type="text/javascript">
-                      stWidget.addEntry({
-                        "service":"sharethis",
-                        "element":document.getElementById('<xsl:value-of select="$shareThisId"/>'),
-                        "title":'<xsl:call-template name="escapeApos"><xsl:with-param name="str" select="$gText"/></xsl:call-template>',
-                        "content":'<xsl:call-template name="escapeApos"><xsl:with-param name="str" select="$noNewLineDetails"/></xsl:call-template>',
-                        "summary":'<xsl:value-of select="$shareThisSummary"/>',
-                        "url":'<xsl:value-of select="$shareURL"/>'
-                      });
-                    </script>
-                  </span>
-                </xsl:if>
               </span>
 
               <!-- event thumbnail -->

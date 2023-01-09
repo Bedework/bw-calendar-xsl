@@ -200,17 +200,6 @@
   <!-- add to Google calendar -->
   <xsl:variable name="eventIconGoogleCal">true</xsl:variable>
 
-  <!-- "Share This"
-       Works, but has a bogus publishers code.  Replace with yours.
-       Also, set the summary line to reflect your institution. E.g., "MyCollege Events Calendar"
-  -->
-  <xsl:variable name="eventIconShareThis">true</xsl:variable>
-  <xsl:variable name="shareThisCode">bogus</xsl:variable>
-  <xsl:variable name="shareThisSummary">Bedework Events Calendar</xsl:variable>
-
-
-
-
   <!-- FEATURED EVENTS TRIPTYCH -->
   <!-- Display the featured event images? -->
   <xsl:variable name="featuredEventsEnabled">true</xsl:variable>
