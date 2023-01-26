@@ -451,7 +451,7 @@
 		            <xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
 		            <img width="100">
 		              <xsl:attribute name="src"><xsl:value-of select="url"/></xsl:attribute>
-		              <xsl:attribute name="alt"><xsl:value-of select="toolTip"/></xsl:attribute>
+		              <xsl:attribute name="alt"><xsl:value-of select="alt"/></xsl:attribute>
 		            </img>
 		          </a>
 		          <label class="field" for="image{$index}-url"><xsl:value-of select="$bwStr-ModRes-FeImageUrl"/></label>
