@@ -231,6 +231,7 @@
   <xsl:variable name="bwStr-LsEv-Next7Days">N&#228;chsten 7 Tage</xsl:variable>
   <xsl:variable name="bwStr-LsEv-NoEventsToDisplay">Keine Veranstaltung darstellbar.</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ContinueFrom">Continue from </xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-LsEv-ShowMore">Show more events</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ReturnToToday">Return to Today</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-LsEv-Calendars">Kalender:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ClearFilters">(Alle löschen)</xsl:variable>

@@ -657,7 +657,7 @@ function getBwEventLink(event,bwListOptions) {
 function setBwContinueFromMarkup(outputId,continueText,continueDate,todayText,todayDate) {
   var continueFromMarkup = "";
   continueFromMarkup += '<a href="' + bwUrls.setSelectionList + '&amp;start=' + continueDate + '&amp;listMode=true&amp;setappvar=navDate(' + continueDate + ')">';
-  continueFromMarkup += continueText + ' ' + continueDate;
+  continueFromMarkup += continueText;
   continueFromMarkup += '</a> | ';
   continueFromMarkup += '<a href="' +  bwUrls.setSelectionList + '&amp;start=' + todayDate + '&amp;listMode=true&amp;setappvar=navDate(' + todayDate + ')">';
   continueFromMarkup += todayText;

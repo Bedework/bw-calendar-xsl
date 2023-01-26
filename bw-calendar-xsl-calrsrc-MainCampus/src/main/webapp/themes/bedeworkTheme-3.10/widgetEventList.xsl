@@ -42,7 +42,7 @@
           $(document).ready(function () {
             $(window).off("scroll",bwScroll);
             $("#loadMoreEventsLink").remove();
-            setBwContinueFromMarkup("#continueFrom","<xsl:value-of select="$bwStr-LsEv-ContinueFrom"/>","<xsl:value-of select="$continueDate"/>","<xsl:value-of select="$bwStr-LsEv-ReturnToToday"/>","<xsl:value-of select="$todayDate"/>");
+            setBwContinueFromMarkup("#continueFrom","<xsl:value-of select="$bwStr-LsEv-ShowMore"/>","<xsl:value-of select="$continueDate"/>","<xsl:value-of select="$bwStr-LsEv-ReturnToToday"/>","<xsl:value-of select="$todayDate"/>");
           });
         </script>
       </xsl:when>
