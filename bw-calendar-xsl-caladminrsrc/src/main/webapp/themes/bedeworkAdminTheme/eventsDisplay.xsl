@@ -87,13 +87,6 @@
         </div>
       </xsl:when>
       <xsl:when test="/bedework/page='approvePublish'">
-        <xsl:variable name="approvePublishValue">
-          <xsl:choose>
-            <xsl:when test="/bedework/tab = 'approvalQueue'"><xsl:copy-of select="$bwStr-SEBu-ApproveEvent"/></xsl:when>
-            <xsl:otherwise><xsl:copy-of select="$bwStr-SEBu-AcceptEvent"/></xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-
         <div id="confirmButtons">
           <form method="post">
             <xsl:attribute name="action"><xsl:value-of select="$event-approvePublish"/></xsl:attribute>
@@ -122,11 +115,17 @@
               </div>
             </xsl:if>
             -->
-            <input type="submit" name="delete" value="{$approvePublishValue}"/>
+            <xsl:choose>
+              <xsl:when test="/bedework/tab = 'approvalQueue'">
+                <input type="submit" name="approveEvent" value="{$bwStr-SEBu-ApproveEvent}"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <input type="submit" name="publishEvent" value="{$bwStr-SEBu-AcceptEvent}"/>
+              </xsl:otherwise>
+            </xsl:choose>
             <input type="submit" name="cancelled" value="{$bwStr-DsEv-Cancel}"/>
             <input type="hidden" name="calPath" value="{$calPath}"/>
             <input type="hidden" name="guid" value="{$guid}"/>
-            <input type="hidden" name="recurrenceId" value="{$recurrenceId}"/>
           </form>
         </div>
       </xsl:when>

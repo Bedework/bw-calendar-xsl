@@ -24,7 +24,7 @@
     <h2><xsl:copy-of select="$bwStr-TaAQ-ApprovalQueueEvents"/></h2>
     <xsl:variable name="approverUser">
       <xsl:choose>
-        <xsl:when test="((/bedework/userInfo/approverUser = 'true') or (/bedework/userInfo/superUser = 'true'))">true</xsl:when>
+        <xsl:when test="(/bedework/userInfo/approverUser = 'true')">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
