@@ -55,9 +55,10 @@
   #bwDatePickerLinks {
     margin-bottom: 2em;
   }
+  /*
   #bwDatePickerInput {
     width: 90%;
-  }
+  } */
   #feature {
     /* if features are displayed, fill the width of the screen */
     margin-left: -15px;
