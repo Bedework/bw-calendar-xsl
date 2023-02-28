@@ -25,7 +25,7 @@
   <!-- URL of html resources (images, css, other html) for the current theme.
        This value is self-referential and should always match the directory name of the current theme.
        Don't change this value unless you know what you're doing. -->
-  <xsl:variable name="resourcesRoot"><xsl:value-of select="/bedework/browserResourceRoot" />/themes/bedeworkTheme-3.10</xsl:variable>
+  <xsl:variable name="resourcesRoot"><xsl:value-of select="/bedework/browserResourceRoot" />/themes/currentTheme</xsl:variable>
 
   <!-- Root context of uploaded event images -->
   <xsl:variable name="bwEventImagePrefix">/pubcaldav</xsl:variable>

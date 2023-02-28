@@ -53,6 +53,6 @@
 
   <!-- DEFAULT THEME NAME -->
   <!-- to change the default theme, change this include -->
-  <xsl:include href="../../themes/bedeworkTheme-3.10/widget.xsl" />
+  <xsl:include href="../../themes/currentTheme/widget.xsl" />
 
 </xsl:stylesheet>
