@@ -85,7 +85,7 @@
               <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
+          <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
           <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
         </a>
       </li>

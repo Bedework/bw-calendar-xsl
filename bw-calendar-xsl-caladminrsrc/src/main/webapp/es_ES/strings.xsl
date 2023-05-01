@@ -171,6 +171,7 @@
   <xsl:variable name="bwStr-EvLC-Viewing">Viendo</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EventsInA">eventos de</xsl:variable>
   <xsl:variable name="bwStr-EvLC-DayWindow">días</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Events">eventos</xsl:variable>
 
   <!--  xsl:template match="event" mode="eventListCommon" -->
   <xsl:variable name="bwStr-EvLC-NoTitle">sin título</xsl:variable>

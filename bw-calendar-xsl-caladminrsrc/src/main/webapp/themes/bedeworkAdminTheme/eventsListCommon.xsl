@@ -72,9 +72,11 @@
                 <xsl:attribute name="colspan">7</xsl:attribute>
               </xsl:if-->
               <xsl:copy-of select="$bwStr-EvLC-NoEvents"/>
-              (<xsl:value-of select="/bedework/maxdays"/>
-              <xsl:text> </xsl:text>
-              <xsl:value-of select="$bwStr-EvLC-DayWindow"/>)
+              <xsl:if test="$pending = 'false'">
+                (<xsl:value-of select="/bedework/maxdays"/>
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="$bwStr-EvLC-DayWindow"/>)
+              </xsl:if>
             </td>
           </tr>
         </xsl:if>
@@ -122,11 +124,16 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="/bedework/events/resultSize"/>
         <xsl:text> </xsl:text>
-        <xsl:value-of select="$bwStr-EvLC-EventsInA"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="/bedework/maxdays"/>
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="$bwStr-EvLC-DayWindow"/>
+        <xsl:if test="$pending = 'false'">
+          <xsl:value-of select="$bwStr-EvLC-EventsInA"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="/bedework/maxdays"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$bwStr-EvLC-DayWindow"/>
+        </xsl:if>
+        <xsl:if test="$pending = 'true'">
+          <xsl:value-of select="$bwStr-EvLC-Events"/>
+        </xsl:if>
       </div>
     </xsl:if>
   </xsl:template>
