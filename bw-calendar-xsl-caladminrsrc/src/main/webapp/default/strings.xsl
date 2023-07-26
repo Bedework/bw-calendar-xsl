@@ -182,6 +182,7 @@
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Recurring event.  Edit:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Master">Edit master</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-ClaimBeforeApprove">Claim before Approval</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable>

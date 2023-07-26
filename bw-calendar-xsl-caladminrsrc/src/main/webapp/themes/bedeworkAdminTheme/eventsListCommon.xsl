@@ -158,6 +158,13 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="claimedPending">
+      <xsl:choose>
+        <xsl:when test="$pending = 'true' and xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT">true</xsl:when>
+        <xsl:otherwise>false</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
     <tr>
       <xsl:attribute name="id">suggestionRow<xsl:value-of select="$i"/></xsl:attribute>
       <xsl:if test="position() mod 2 = 0"><xsl:attribute name="class">even</xsl:attribute></xsl:if>
@@ -259,6 +266,7 @@
         </xsl:choose>
       </td>
       <xsl:if test="$suggestionQueue = 'false'">
+        <!-- List topical areas for pending (suggested) and approval -->
         <td class="calcat">
           <xsl:choose>
             <xsl:when test="$pending = 'true'">
@@ -297,6 +305,7 @@
           </xsl:choose>
         </td>
       </xsl:if>
+      <!-- Don't list categories for pending -->
       <xsl:if test="$pending = 'false'">
         <td class="calcat">
           <xsl:if test="categories/category">
@@ -310,6 +319,7 @@
       </xsl:if>
       <td>
         <xsl:choose>
+          <!-- submitted by: Use entire value for pending - up to blank for the rest -->
           <xsl:when test="$pending = 'true'">
             <xsl:value-of select="xproperties/X-BEDEWORK-SUBMITTEDBY/values/text"/>
           </xsl:when>
@@ -361,6 +371,20 @@
             <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
               <xsl:copy-of select="$bwStr-EvLC-Master"/>
             </button>
+          </div>
+        </xsl:if>
+        <xsl:if test="(($pending = 'true') and ($approverUser = 'true'))">
+          <div class="recurrenceEditLinks">
+            <xsl:choose>
+              <xsl:when test="$claimedPending = 'true'">
+                <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
+                  <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
+                </button>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:copy-of select="$bwStr-EvLC-ClaimBeforeApprove"/>
+              </xsl:otherwise>
+            </xsl:choose>
           </div>
         </xsl:if>
         <xsl:if test="(($approvalQueue = 'true') and ($approverUser = 'true'))">
