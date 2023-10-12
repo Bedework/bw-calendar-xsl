@@ -55,9 +55,9 @@
       <div class="bwMenuTree">
         <xsl:if test="$viewState = 'closed'"><xsl:attribute name="style">display: none</xsl:attribute></xsl:if>
         <ul>
-          <xsl:for-each select="paths/path">
-            <xsl:sort select="." order="ascending"/><!-- when a sort field is available, remove this line -->
-            <xsl:variable name="currentPath"><xsl:value-of select="."/></xsl:variable>
+          <xsl:for-each select="collections/collection">
+            <xsl:sort select="summary" order="ascending"/><!-- when a sort field is available, remove this line -->
+            <xsl:variable name="currentPath"><xsl:value-of select="path"/></xsl:variable>
             <xsl:apply-templates select="/bedework/myCalendars/calendars//calendar[path=$currentPath]" mode="menuTree">
               <xsl:with-param name="viewId"><xsl:value-of select="$viewId"/></xsl:with-param>
             </xsl:apply-templates>
