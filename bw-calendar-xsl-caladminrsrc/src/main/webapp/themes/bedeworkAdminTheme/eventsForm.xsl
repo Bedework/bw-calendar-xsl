@@ -2292,7 +2292,7 @@
                       <!-- if there are exception dates, the following table will show -->
                       <table cellspacing="0" class="invisible" id="bwCurrentExdates">
                         <tr>
-                          <th colspan="4"><xsl:copy-of select="$bwStr-AEEF-NoExceptionDates"/></th>
+                          <th colspan="4"><xsl:copy-of select="$bwStr-AEEF-ExceptionDates"/></th>
                         </tr>
                         <tr class="colNames">
                           <td><xsl:copy-of select="$bwStr-AEEF-Date"/></td>
