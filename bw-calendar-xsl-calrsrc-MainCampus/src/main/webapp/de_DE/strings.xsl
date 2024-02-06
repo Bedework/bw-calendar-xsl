@@ -76,7 +76,7 @@
   <xsl:variable name="bwStr-Navi-WeekOf">Woche ab</xsl:variable>
 
   <!--  xsl:template name="searchBar" -->
-  <xsl:variable name="bwStr-SrcB-Add">hinzuf&#252;gen...</xsl:variable>
+  <xsl:variable name="bwStr-SrcB-SearchForEvents">Search for events:</xsl:variable>
   <xsl:variable name="bwStr-SrcB-ApplyFilter">Filter anwenden</xsl:variable>
   <xsl:variable name="bwStr-Util-List">LISTE</xsl:variable>
   <xsl:variable name="bwStr-Util-Cal">KALENDER</xsl:variable>
@@ -239,7 +239,7 @@
   <xsl:variable name="bwStr-exSu-Summary">Summary</xsl:variable>
   <xsl:variable name="bwStr-exSu-Timeframe">Time frame</xsl:variable>
   <xsl:variable name="bwStr-exSu-UseDefaultListing">Use the default listing, limit the number of days (from the current date), or provide a start date and an end date.</xsl:variable>
-  <xsl:variable name="bwStr-exSu-Default">Default: </xsl:variable>
+  <xsl:variable name="bwStr-exSu-Default">Default: pull events from "today" forward</xsl:variable>
   <xsl:variable name="bwStr-exSu-LimitTo">Limit to</xsl:variable>
   <xsl:variable name="bwStr-exSu-DaysFromToday">days from "today"</xsl:variable>
   <xsl:variable name="bwStr-exSu-DateRangeColon">Date Range:</xsl:variable>
