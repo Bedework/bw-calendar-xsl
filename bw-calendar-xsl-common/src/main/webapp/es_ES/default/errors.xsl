@@ -97,6 +97,9 @@
 	      <xsl:when test="id='org.bedework.client.error.duplicateuid'">
 	          Duplicate uid: this event already exists in this calendar.
 	      </xsl:when>
+				<xsl:when test="id='org.bedework.client.error.event.mismatch'">
+					Event mismatch: possibly caused by updating in multiple browser tabs or browsers. Please close any other bedework admin tab.
+				</xsl:when>
 	      <xsl:when test="id='org.bedework.client.error.failed.overrides'">
 	          Error: there were <xsl:value-of select="param"/> failed overrides.
 	      </xsl:when>
