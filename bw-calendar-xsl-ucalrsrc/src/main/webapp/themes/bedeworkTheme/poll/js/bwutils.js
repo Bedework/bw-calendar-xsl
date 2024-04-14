@@ -154,6 +154,22 @@ function getWhen(comp, purpose) {
   return when;
 }
 
+/**
+ * @param comp
+ * @param purpose - String purpose for the dates
+ * @returns {String} describing where the component happens - possibly empty
+ */
+function getLocation(comp, purpose) {
+  var location = comp.locationProp();
+
+  if (location === null) {
+    return '<div class="bw' + purpose + '">&nbsp;</div>';
+  }
+
+  return '<div class="bw' + purpose + '">' +
+        location + '</div>';
+}
+
 /* Normalised vpoll response values */
 
 var vpollResponseNone = 0;

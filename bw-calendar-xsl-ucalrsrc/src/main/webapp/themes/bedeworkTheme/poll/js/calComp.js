@@ -113,7 +113,7 @@ CalendarComponent.prototype.duration = function(value) {
     return this.data.getPropertyValue("duration");
   }
 
-  if (this.duration() != value) {
+  if (this.duration() !== value) {
     this.data.updateProperty("duration", value, {}, "duration");
     this.changed(true);
   }
@@ -173,11 +173,22 @@ CalendarComponent.prototype.end = function() {
   return this.endObj;
 };
 
+CalendarComponent.prototype.locationProp = function(value) {
+  if (value === undefined) {
+    return this.data.getPropertyValue("location");
+  } else {
+    if (this.location() !== value) {
+      this.data.updateProperty("location", value, {}, "text");
+      this.changed(true);
+    }
+  }
+};
+
 CalendarComponent.prototype.pollitemid = function(value) {
 	if (value === undefined) {
 		return this.data.getPropertyValue("poll-item-id");
 	} else {
-		if (this.pollitemid() != value) {
+		if (this.pollitemid() !== value) {
 			this.data.updateProperty("poll-item-id", value, {}, "integer");
 			this.changed(true);
 		}
@@ -187,7 +198,7 @@ CalendarComponent.prototype.pollitemid = function(value) {
 // A container class for VCALENDAR objects
 CalendarObject = function(caldata) {
 	CalendarComponent.call(this, caldata, null);
-	this._changed = false;
+	this.changed(false);
 };
 
 CalendarObject.prototype = new CalendarComponent();
@@ -197,7 +208,7 @@ CalendarComponent.registerComponentType("vcalendar", CalendarObject);
 // A container class for VCARD objects
 CardObject = function(cutype, cuaddr, carddata) {
   CalendarComponent.call(this, carddata, null);
-  this._changed = false;
+  this.changed(false);
   this.cutype = cutype;
   this.cuaddr = cuaddr;
 };
@@ -260,8 +271,7 @@ CalendarPoll.newPoll = function(title) {
 
   var poll = new CalendarPoll(vpoll, null);
 
-  var voter = poll.addvoter();
-  var voter = voter.getVoter();
+  var voter = poll.addvoter().getCalendarAddress();
 
   voter.update(gSession.currentPrincipal.defaultAddress(),
       {
@@ -275,14 +285,14 @@ CalendarPoll.newPoll = function(title) {
 // Whether or not current user can make changes (depends on their role as owner too)
 CalendarPoll.prototype.editable = function() {
 	var status = this.status();
-	return status ? status == "IN-PROCESS" : true;
+	return status ? status === "IN-PROCESS" : true;
 };
 
 CalendarComponent.prototype.pollwinner = function(value) {
 	if (value === undefined) {
 		return this.data.getPropertyValue("poll-winner");
 	} else {
-		if (this.pollwinner() != value) {
+		if (this.pollwinner() !== value) {
 			this.data.updateProperty("poll-winner", parseInt(value), {}, "integer");
 			this.changed(true);
 		}
@@ -291,7 +301,7 @@ CalendarComponent.prototype.pollwinner = function(value) {
 
 CalendarComponent.prototype.ispollwinner = function() {
 	var pollid = this.pollitemid();
-	return pollid === undefined ? false : pollid == this.parent.pollwinner();
+	return pollid === undefined ? false : pollid === this.parent.pollwinner();
 };
 
 /** Get an array of choices in the VPOLL
@@ -302,7 +312,7 @@ CalendarPoll.prototype.choices = function() {
 	return $.map(this.data.getComponents(), function(compData, index) {
     var comp = new jcal(compData);
 
-    if (comp.name() === "vvoter") {
+    if (comp.name() === "participant") {
       return null;
     }
 
@@ -315,7 +325,12 @@ CalendarPoll.prototype.choices = function() {
       return new CalendarEvent(comp, this_vpoll);
     }
 
-    return new CalendarTask(comp, this_vpoll);
+    if (comp.name() === "vtodo") {
+      return new CalendarTask(comp, this_vpoll);
+    }
+
+    console.warn("Unknown choice type: " + comp.name())
+    return null;
 	});
 };
 
@@ -441,13 +456,16 @@ CalendarPoll.prototype.makeChoice = function(type, start, end) {
 /** Get an array of voters in the VPOLL
  *
  */
-CalendarPoll.prototype.getvoters = function() {
+CalendarPoll.prototype.getVoters = function() {
   var this_vpoll = this;
   return $.map(this.data.getComponents(), function(compData, index) {
     var comp = new jcal(compData);
 
-    if (comp.name() === "vvoter") {
-      return new Calendarvoter(comp, this_vpoll);
+    if (comp.isParticipant()) {
+        var ptype = comp.getPropertyValue("participant-type");
+        if ((ptype !== null) && (ptype.toLowerCase() === "voter")) {
+            return new CalendarParticipant(comp, this_vpoll);
+        }
     }
 
     return null;
@@ -460,9 +478,9 @@ CalendarPoll.prototype.getvoters = function() {
  * @returns {*}
  */
 CalendarPoll.prototype.getvoter = function(cua) {
-  var voters = this.getvoters();
+  var voters = this.getVoters();
   for (var i = 0; i < voters.length; i++) {
-    var voter = voters[i].getVoter();
+    var voter = voters[i].getCalendarAddress();
     if (voter.cuaddr() === cua) {
       return voters[i];
     }
@@ -479,13 +497,13 @@ CalendarPoll.prototype.getvoter = function(cua) {
 CalendarPoll.prototype.changeVoterResponse = function(itemId, response) {
   /* Locate the current users voter entry */
 
-  var voters = this.getvoters();
+  var voters = this.getVoters();
   var matches = $.grep(voters, function(voter, index) {
-    var voter = voter.getVoter();
-    return gSession.currentPrincipal.matchingAddress(voter.cuaddr());
+    return gSession.currentPrincipal.matchingAddress(
+        voter.getCalendarAddress().cuaddr());
   });
 
-  if (matches.length != 1) {
+  if (matches.length !== 1) {
     alert("No voter entry for " + gSession.currentPrincipal.defaultAddress());
     return;
   }
@@ -505,14 +523,15 @@ CalendarPoll.prototype.changeVoterResponse = function(itemId, response) {
 
 /** Add a voter to the VPOLL
  *
- * @returns {Calendarvoter}
+ * @returns {CalendarParticipant}
  */
 CalendarPoll.prototype.addvoter = function() {
   this.changed(true);
-  var comp = this.data.newComponent("vvoter", false);
-  comp.newProperty("voter", "", {}, "cal-address");
+  var comp = this.data.newComponent("participant", false);
+  comp.newProperty("calendar-address", "", {}, "cal-address");
+  comp.newProperty("participant-type", "VOTER", {}, "text");
 
-  return new Calendarvoter(comp, this);
+  return new CalendarParticipant(comp, this);
 };
 
 /** Remove nth voter from the VPOLL
@@ -520,7 +539,7 @@ CalendarPoll.prototype.addvoter = function() {
  * @returns {CalendarUser}
  */
 CalendarPoll.prototype.removevoter = function(index) {
-  if (this.getvoters().length === 1) {
+  if (this.getVoters().length === 1) {
     alert("Must have at least 1 voter");
   }
   this.changed(true);
@@ -530,15 +549,14 @@ CalendarPoll.prototype.removevoter = function(index) {
 // Mark current user as accepted
 CalendarPoll.prototype.acceptInvite = function() {
   if (!this.isOwned()) {
-    var voters = $.grep(this.getvoters(), function(voter, index) {
-      var voter = voter.getVoter();
-      return gSession.currentPrincipal.matchingAddress(voter.cuaddr());
+    var voters = $.grep(this.getVoters(), function(voter, index) {
+      return gSession.currentPrincipal.matchingAddress(voter.getCalendarAddress().cuaddr());
     });
 
     $.each(voters, function(index, voter) {
-      var voter = voter.getVoter();
-      voter.data[1]["partstat"] = "ACCEPTED";
-      delete voter.data[1]["rsvp"];
+      var vca = voter.getCalendarAddress()();
+      vca.data[1]["partstat"] = "ACCEPTED";
+      delete vca.data[1]["rsvp"];
     })
   }
 };
@@ -577,30 +595,19 @@ CalendarPoll.prototype.syncAttendees = function(comp) {
     // Flag this with an x-prop
     this.data.updateProperty("x-bw-syncattendees", "on");
 
-    $.each(this.data.getComponents(), function(index, compData) {
-      var comp = new jcal(compData);
-
-      if (comp.name() === "voter") {
-        return;
-      }
-
-      var pi = comp.getPropertyValue("poll-item-id");
-      if (pi === null) {
-        return;
-      }
-
-      thisVpoll.syncAttendees(comp);
+    $.each(this.choices(), function(index, choice) {
+      thisVpoll.syncAttendees(choice);
     });
     return;
   }
 
   comp.removeProperties("attendee");
-  var voters = this.getvoters();
+  var voters = this.getVoters();
   $.each(voters, function(index, voter) {
-    var voter = voter.getVoter();
+    var vca = voter.getCalendarAddress();
     var attP = comp.newProperty(
         "attendee",
-        voter.cuaddr(),
+        vca.cuaddr(),
         {},
         "cal-address"
     );
@@ -635,43 +642,43 @@ CalendarTask.prototype = new CalendarComponent();
 CalendarTask.prototype.constructor = CalendarTask;
 CalendarComponent.registerComponentType("vtodo", CalendarTask);
 
-/** A voter component - one of these per voter in a poll
+/** A participant component
  *
  * @param caldata - the data for this component
  * @param parent - a poll
  * @constructor
  */
-Calendarvoter = function(caldata, parent) {
+CalendarParticipant = function(caldata, parent) {
   CalendarComponent.call(this, caldata, parent);
 };
 
-Calendarvoter.prototype = new CalendarComponent();
-Calendarvoter.prototype.constructor = Calendarvoter;
-CalendarComponent.registerComponentType("voter", Calendarvoter);
+CalendarParticipant.prototype = new CalendarComponent();
+CalendarParticipant.prototype.constructor = CalendarParticipant;
+CalendarComponent.registerComponentType("participant", CalendarParticipant);
 
-/** Get a voter voter object
+/** Get a participant calendar-address object
  *
  * @returns {*}
  */
-Calendarvoter.prototype.getVoter = function() {
-  if (this.voter !== undefined) {
-    return this.voter;
+CalendarParticipant.prototype.getCalendarAddress = function() {
+  if (this.caladdr !== undefined) {
+    return this.caladdr;
   }
 
-  var voterP = this.data.getProperty("voter");
+  var caladdrP = this.data.getProperty("calendar-address");
 
-  if (voterP == null) {
+  if (caladdrP == null) {
     return null;
   }
 
-  this.voter = new CalendarUser(voterP, this);
-  return this.voter;
+  this.caladdr = new CalendarUser(caladdrP, this);
+  return this.caladdr;
 };
 
 /** Get an array of votes in the VPOLL
  *
  */
-Calendarvoter.prototype.getVotes = function() {
+CalendarParticipant.prototype.getVotes = function() {
   var this_voter = this;
   return $.map(this.data.getComponents(), function(compData, index) {
     var comp = new jcal(compData);
@@ -689,7 +696,7 @@ Calendarvoter.prototype.getVotes = function() {
  * @param itemId poll-item-id value
  * @returns {*}
  */
-Calendarvoter.prototype.getVote = function(itemId) {
+CalendarParticipant.prototype.getVote = function(itemId) {
   var votes = this.getVotes();
   for (var i = 0; i < votes.length; i++) {
     if (votes[i].pollitemid() === itemId) {
@@ -705,7 +712,7 @@ Calendarvoter.prototype.getVote = function(itemId) {
  * @param itemId poll-item-id
  * @returns int response value normalised
  */
-Calendarvoter.prototype.getResponseNormalised = function(itemId) {
+CalendarParticipant.prototype.getResponseNormalised = function(itemId) {
   var vote = this.getVote(itemId);
   var response = null;
   if (vote !== null) {
@@ -720,7 +727,7 @@ Calendarvoter.prototype.getResponseNormalised = function(itemId) {
  * @param itemId poll-item-id value
  * @returns {CalendarVote} added or existing
  */
-Calendarvoter.prototype.addVote = function(itemId) {
+CalendarParticipant.prototype.addVote = function(itemId) {
   var votes = this.getVotes();
   for (var i = 0; i < votes.length; i++) {
     if (votes[i].pollitemid() === itemId) {
@@ -867,6 +874,7 @@ CalendarUser.prototype.updateFrom = function(value) {
 /** Set the cu-address and params
  *
  * @param value  name<addr> or addr
+ * @param params for the property
  * @returns {*}
  */
 CalendarUser.prototype.update = function(value, params) {
@@ -888,7 +896,7 @@ CalendarUser.prototype.addressDescription = function(value) {
 		return addressDescription(cn, this.data[3]);
 	}
 
-  if (this.addressDescription() != value) {
+  if (this.addressDescription() !== value) {
     var splits = splitAddressDescription(value);
     if (splits[0]) {
       this.data[1]["cn"] = splits[0];
@@ -1000,7 +1008,7 @@ CalendarUser.prototype.cn = function(value) {
     return this.data[1]["cn"];
   }
 
-  if (this.cn() != value) {
+  if (this.cn() !== value) {
     this.data[1]["cn"] = value;
     if (this.parent != null) {
       this.parent.changed(true);
@@ -1018,7 +1026,7 @@ CalendarUser.prototype.response = function(value) {
     return this.data[1]["response"];
   }
 
-  if (this.response() != value) {
+  if (this.response() !== value) {
     this.data[1]["response"] = value;
     if (this.parent != null) {
       this.parent.changed(true);

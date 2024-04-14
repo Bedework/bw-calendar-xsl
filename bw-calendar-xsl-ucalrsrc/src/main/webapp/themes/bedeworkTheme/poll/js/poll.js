@@ -94,8 +94,8 @@ Poll.prototype.writeVpollValues = function() {
     //$("#debug").append(print_r(choice) + '<div style="margin: 4em 0;">new choice</div>');
   });
   $("#bwComp-voterlist").empty();
-  $.each(this.editing_poll.getvoters(), function(index, voter) {
-    this_poll.setVoterPanel(this_poll.addParticipantPanel(false, "voter", "Voter"), voter.getVoter());
+  $.each(this.editing_poll.getVoters(), function(index, voter) {
+    this_poll.setVoterPanel(this_poll.addParticipantPanel(false, "voter", "Voter"), voter.getCalendarAddress());
   });
 };
 
@@ -124,11 +124,10 @@ Poll.prototype.updateVoters = function() {
   }
 
   var this_poll = this;
-  var voters = this.editing_poll.getvoters();
+  var voters = this.editing_poll.getVoters();
 
   $("#bwComp-voterlist").children().each(function(index) {
-    var voter = voters[index];
-    var voter = voter.getVoter();
+    var voter = voters[index].getCalendarAddress();
     var radioName = "voterType" + (index + 1);
     var cutype = $("input:radio[name=" + radioName + "]:checked").val();
 
@@ -801,7 +800,7 @@ Poll.prototype.addVoter = function() {
   poll_syncAttendees = $("#syncPollAttendees").is(":checked");
 
   var voter = this.editing_poll.addvoter();
-  return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter.getVoter());
+  return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter.getCalendarAddress());
 };
 
 // Remove participant button clicked
@@ -907,12 +906,14 @@ Poll.prototype.buildResults = function() {
   var tbodyRows = tbody.children("tr");
   var tb_summary = tbodyRows.eq(0).empty();
   var tb_when = tbodyRows.eq(1).empty();
-  var tb_recur = tbodyRows.eq(2).empty().addClass("invisible");
-  //var tb_desc = tbodyRows.eq(3).empty();
+  var tb_loc = tbodyRows.eq(2).empty();
+  var tb_recur = tbodyRows.eq(3).empty().addClass("invisible");
+  //var tb_desc = tbodyRows.eq(4).empty();
 
   // Add labels to each body row as column 0
   $('<td>Summary:</td>').appendTo(tb_summary);
   $('<td>When:</td>').appendTo(tb_when);
+  $('<td>Location:</td>').appendTo(tb_loc);
   $('<td>Recurs:</td>').appendTo(tb_recur);
   // XXX deprecate? $('<td>Description:</td>').appendTo(tb_desc);
 
@@ -933,6 +934,9 @@ Poll.prototype.buildResults = function() {
     var when = getWhen(choice, "ChoiceDates");
     var td_when = $('<td />').appendTo(tb_when).html(when).addClass("when-td");
 
+    var loc = getLocation(choice, "ChoiceLocations");
+    var td_loc = $('<td />').appendTo(tb_loc).html(loc).addClass("loc-td");
+
     var rinfo = getRecurrenceInfo(choice);
 
     if (rinfo !== null) {
@@ -947,6 +951,7 @@ Poll.prototype.buildResults = function() {
     if (choice.ispollwinner()) {
       td_summary.addClass("poll-winner-td");
       td_when.addClass("poll-winner-td");
+      td_loc.addClass("poll-winner-td");
       td_recur.addClass("poll-winner-td");
     }
     /* XXX Disable while in progress
@@ -957,14 +962,14 @@ Poll.prototype.buildResults = function() {
         this_poll.hoverCalDialogClose
     ); */
   });
-  var voterDetails = this.editing_poll.getvoters();
+  var voterDetails = this.editing_poll.getVoters();
 
-  $.each(voterDetails, function(index, vvoter) {
-    var voter = vvoter.getVoter();
+  $.each(voterDetails, function(index, part) {
+    var voter = part.getCalendarAddress();
     var active = gSession.currentPrincipal.matchingAddress(voter.cuaddr());
     var tr = $("<tr/>").appendTo(tfoot);
     var voterName = voter.nameOrAddress();
-    if (voterName.indexOf("mailto:") == 0) {
+    if (voterName.indexOf("mailto:") === 0) {
       voterName = voterName.substring(7);
     }
     $("<td/>").appendTo(tr).text(voterName);
@@ -975,7 +980,7 @@ Poll.prototype.buildResults = function() {
       if (event.ispollwinner()) {
         td.addClass("poll-winner-td");
       }
-      var response = vvoter.getResponseNormalised(pollItemId);
+      var response = part.getResponseNormalised(pollItemId);
 
       if (!active || !this_poll.editing_poll.editable()) {
         td.text(textForResponse[response]);
@@ -1101,7 +1106,7 @@ Poll.prototype.clickResponse = function() {
 Poll.prototype.updateOverallResults = function() {
   var thisPoll = this;
   var choices = this.editing_poll.choices();
-  var voterDetails = this.editing_poll.getvoters();
+  var voterDetails = this.editing_poll.getVoters();
   var resultTable = $("#editpoll-resulttable");
   var th = resultTable.children("thead").first();
   var tbody = resultTable.children("tbody").first();

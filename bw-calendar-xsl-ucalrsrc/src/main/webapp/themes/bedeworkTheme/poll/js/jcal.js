@@ -102,13 +102,17 @@ jcal.prototype.isTask = function() {
   return this.name() === "vtodo";
 };
 
+jcal.prototype.isParticipant = function() {
+  return this.name() === "participant";
+};
+
 // Return the primary (master) component
 // TODO: currently ignores recurrence - i.e. assumes one top-level component only
 jcal.prototype.mainComponent = function() {
 	var results = $.grep(this.caldata[2], function(component, index) {
-		return (component[0] != "vtimezone");
+		return (component[0] !== "vtimezone");
 	});
-	return (results.length == 1) ? new jcal(results[0]) : null;
+	return (results.length === 1) ? new jcal(results[0]) : null;
 };
 
 function makeJcal(name, defaultProperties) {
@@ -230,7 +234,7 @@ jcal.prototype.hasProperty = function(name) {
 	var result = false;
 	name = name.toLowerCase();
 	$.each(this.caldata[1], function(index, property) {
-		if (property[0] == name) {
+		if (property[0] === name) {
 			result = true;
 			return false;
 		}
@@ -242,7 +246,7 @@ jcal.prototype.getProperty = function(name) {
 	var result = null;
 	name = name.toLowerCase();
 	$.each(this.caldata[1], function(index, property) {
-		if (property[0] == name) {
+		if (property[0] === name) {
 			result = property;
 			return false;
 		}
@@ -254,7 +258,7 @@ jcal.prototype.getPropertyValue = function(name) {
 	var result = null;
 	name = name.toLowerCase();
 	$.each(this.caldata[1], function(index, propdata) {
-		if (propdata[0] == name) {
+		if (propdata[0] === name) {
 			result = propdata[3];
 			return false;
 		}
@@ -270,7 +274,7 @@ jcal.prototype.updateProperty = function(name, value, params, valueType) {
 		valueType = "text";
 	}
 	var props = this.properties(name);
-	if (props.length == 1) {
+	if (props.length === 1) {
 		props[0][1] = params;
 		props[0][2] = valueType;
 		props[0][3] = value;
