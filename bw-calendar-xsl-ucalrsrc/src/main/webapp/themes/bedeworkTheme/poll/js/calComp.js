@@ -474,15 +474,23 @@ CalendarPoll.prototype.getVoters = function() {
 
 /** Get the designated voter element
  *
- * @param cua - the voter cuaddr
+ * @param cua - the voter cuaddr or absent for current
  * @returns {*}
  */
 CalendarPoll.prototype.getvoter = function(cua) {
   var voters = this.getVoters();
+
   for (var i = 0; i < voters.length; i++) {
-    var voter = voters[i].getCalendarAddress();
-    if (voter.cuaddr() === cua) {
-      return voters[i];
+    var voter = voters[i];
+    var vcua = voter.getCalendarAddress().cuaddr();
+    if (cua === undefined) {
+      if (gSession.currentPrincipal.matchingAddress(vcua)) {
+        return voter;
+      }
+    } else {
+      if (vcua === cua) {
+        return voter;
+      }
     }
   }
 
@@ -549,15 +557,10 @@ CalendarPoll.prototype.removevoter = function(index) {
 // Mark current user as accepted
 CalendarPoll.prototype.acceptInvite = function() {
   if (!this.isOwned()) {
-    var voters = $.grep(this.getVoters(), function(voter, index) {
-      return gSession.currentPrincipal.matchingAddress(voter.getCalendarAddress().cuaddr());
-    });
-
-    $.each(voters, function(index, voter) {
-      var vca = voter.getCalendarAddress()();
-      vca.data[1]["partstat"] = "ACCEPTED";
-      delete vca.data[1]["rsvp"];
-    })
+    var voter = this.getVoter();
+    var vca = voter.getCalendarAddress();
+    vca.data[1]["partstat"] = "ACCEPTED";
+    delete vca.data[1]["rsvp"];
   }
 };
 
