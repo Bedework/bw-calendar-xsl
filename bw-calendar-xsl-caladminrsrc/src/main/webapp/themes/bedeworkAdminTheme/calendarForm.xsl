@@ -82,6 +82,18 @@
           </td>
         </tr-->
         <tr>
+          <th><xsl:copy-of select="$bwStr-CuCa-Display"/></th>
+          <td>
+            <input type="checkbox" name="calendar.display"
+                   id="calDisplay" size="40">
+              <xsl:if test="display = 'true'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input><xsl:text> </xsl:text>
+            <label for="calDisplay"><xsl:copy-of select="$bwStr-CuCa-DisplayItemsInCollection"/></label>
+          </td>
+        </tr>
+        <tr>
           <th><xsl:copy-of select="$bwStr-CuCa-Filter"/></th>
           <td>
             <input type="hidden" name="fexpr" value=""/>
