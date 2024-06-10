@@ -536,6 +536,7 @@
           <xsl:choose>
             <xsl:when test="isSubscription='true'">
               <input type="submit" name="delete" value="{$bwStr-CuCa-RemoveSubscription}"/>
+              <input type="submit" name="refresh" value="{$bwStr-CuCa-RefreshSubscription}"/>
             </xsl:when>
             <xsl:when test="calType = '0'">
               <input type="submit" name="delete" value="{$bwStr-CuCa-DeleteFolder}"/>

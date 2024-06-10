@@ -148,6 +148,10 @@
         Timezones successfully fixed
       </xsl:when>
 
+      <xsl:when test="id='org.bedework.client.message.refreshed.calendar'">
+        Calendar refresh has been submitted. May take a few minutes.
+      </xsl:when>
+
       <xsl:when test="id='org.bedework.client.message.mailed.event'">
         Event has been mailed
       </xsl:when>

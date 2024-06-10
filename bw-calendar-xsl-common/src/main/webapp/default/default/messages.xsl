@@ -150,6 +150,10 @@
         Event has been mailed
       </xsl:when>
 
+      <xsl:when test="id='org.bedework.client.message.refreshed.calendar'">
+        Calendar refresh has been submitted. May take a few minutes.
+      </xsl:when>
+
       <xsl:when test="id='org.bedework.client.message.schedule.added'">
         Schedule added
       </xsl:when>

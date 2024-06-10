@@ -698,6 +698,7 @@
 
   <!--  xsl:template match="currentCalendar" mode="displayCalendar" -->
   <xsl:variable name="bwStr-CuCa-RemoveSubscription">Borrar suscripción</xsl:variable>
+  <xsl:variable name="bwStr-CuCa-RefreshSubscription">Refresh Subscription</xsl:variable>
   <xsl:variable name="bwStr-CuCa-FollowingSubscriptionRemoved">La siguiente suscripción será borrada. ¿Continuar?</xsl:variable>
   <xsl:variable name="bwStr-CuCa-DeleteFolder">Borrar carpeta</xsl:variable>
   <xsl:variable name="bwStr-CuCa-FollowingFolderDeleted">La siguiente carpeta <em>y todo su contenido</em> será borrado. ¿Continuar?</xsl:variable>
