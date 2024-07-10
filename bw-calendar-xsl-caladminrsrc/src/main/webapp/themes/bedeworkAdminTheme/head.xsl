@@ -244,12 +244,6 @@
               </xsl:for-each>
             }
 
-            <!-- set up calendar selections -->
-            function bwSetupCalendars() {
-              $("#bwPreferredCalendars").select2();
-              $("#bwAllCalendars").select2();
-            }
-
             <!-- load locations -->
             function bwSetupLocations(selLocUid) {
               var selectedLocUid = selLocUid;

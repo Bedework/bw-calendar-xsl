@@ -167,27 +167,6 @@
       <!-- Provide a placeholder to test which submit button was pressed -->
       <input type="hidden" name="submitVal" value=""/>
 
-      <!-- Set the underlying calendar; if there is more than one publishing calendar, the
-           form below will test for that and allow this value to be changed.  - - >
-
-      Removed all this - probably no need to try to
-       change a calendar
-      <input type="hidden" name="newCalPath" id="newCalPath">
-        <xsl:choose>
-          < ! - - No calendar available - put it in unapproved - - >
-          <xsl:when test="not(form/calendar/all/select/option)">
-            <xsl:attribute name="value">/public/unbrowsable/workflow/unapproved</xsl:attribute>
-          </xsl:when>
-          <xsl:when test="/bedework/creating='true'">
-            <xsl:attribute name="value"><xsl:value-of select="form/calendar/all/select/option/@value"/></xsl:attribute>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:attribute name="value"><xsl:value-of select="form/calendar/all/select/option[@selected]/@value"/></xsl:attribute>
-          </xsl:otherwise>
-        </xsl:choose>
-      </input>
-      -->
-
       <!-- Setup email notification fields -->
       <input type="hidden" id="submitNotification" name="submitNotification" value="false"/>
       <!-- "from" should be a preference: hard code it for now -->
