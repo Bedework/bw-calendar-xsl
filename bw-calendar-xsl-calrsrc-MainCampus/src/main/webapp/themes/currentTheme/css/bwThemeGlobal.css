@@ -27,13 +27,17 @@
    very mobile specific overrides, and so forth. See the comments
    in the bwThemeResponsive-??.css files.  */
 
+html {
+  font-size: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #fff;
   color: #555;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-family: 'MalloryBook',Arial, Helvetica, sans-serif;
+  font-size: 1em;
   line-height: 1.5;
   overflow: scroll;
 }
@@ -89,7 +93,35 @@ label {
 .form-group {
   margin-bottom: 0;
 }
-
+/* SKIP LINK */
+#skip_to_content {
+	background-color: #ddd;
+	display: block;
+	color: #222;
+	font-size: 14px;
+	font-size: .875rem;
+	line-height: 1.21428571;
+	font-family: Mallory-Medium,'Gill Sans','Gill Sans MT',Calibri,Arial,sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: .75px;
+	word-spacing: 1.25px;
+	text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	padding: 20px;
+	text-align: center;
+	-ms-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+#skip_to_content:focus {
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  z-index: 1000;
+  position: unset; /* remove to let the skip link overlay the title */
+}
 /* HEADER, LOGO, and TOP LINKS */
 #header {
   position: relative;
@@ -894,7 +926,8 @@ div.groupDesc {
 .bwEventImage {
   float: right;
   clear: right;
-  margin: 0 0 1em 1em;
+  margin: 0 0 1em 2em;
+  max-width: 40%;
 }
 .singleEvent .eventDescription {
   margin: 1em 1.5em 1em 0;

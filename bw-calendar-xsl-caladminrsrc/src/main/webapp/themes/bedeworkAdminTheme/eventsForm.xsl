@@ -2508,9 +2508,9 @@
               <label for="bwLocationSearch">
                 Search for address:
               </label>
-              <input id="bwLocationSearch" size="60" placeholder="begin typing to search for a location" value="">
-                <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']"/></xsl:attribute>
-              </input>
+              <input id="bwLocationSearch" size="60" placeholder="begin typing to search for a location" value=""/>
+                <!-- <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']"/></xsl:attribute>
+              </input> -->
               <!-- <a href="mailto:calendar.support@example.edu?subject=Request - New Event Location" id="RequestLocationLink" class="requestLink" title="request a new location">request new</a> -->
               <br/>
               <div id="bwLocationSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
@@ -2550,7 +2550,7 @@
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-Contact"/>
           </td>
-          <td>
+          <td id="bwContactsCell">
 <!-- OLD / ORIG:
             <input type="hidden" name="allContactId" id="bwContact">
               <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']/@value"/></xsl:attribute>
@@ -2612,10 +2612,11 @@
               </input>
               <label for="bwContactSearch">
                 Search for contact:
-              </label><br/>
-              <input id="bwContactSearch" size="60" placeholder="begin typing to search for a contact" value="">
-                <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']"/></xsl:attribute>
-              </input>
+              </label>
+              <input id="bwContactSearch" size="60" placeholder="begin typing to search for a contact" value=""/>
+              <!--  <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']"/></xsl:attribute>
+              </input> -->
+              <br/>
               <!-- XXX request new contact mailto link: -->
               <!--<a href="mailto:calendar.support@example.edu?subject=Request - New Event Contact" id="requestContactLink" class="requestLink" title="request a new contact">request new</a><br/>-->
               <div id="bwContactSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>

@@ -120,7 +120,7 @@
         <input type="submit" value="{$bwStr-Cals-Export}" class="bwWidgetSubmit" onclick="fillExportFields(this.form)"/>
       </form>
 
-      <script type="text/javascript">
+      <script>
        $.datepicker.setDefaults({
          constrainInput: true,
          dateFormat: "yy-mm-dd",

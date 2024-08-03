@@ -88,6 +88,7 @@
     <html lang="en">
       <xsl:call-template name="head"/>
       <body>
+        <span role="navigation" aria-labelledby="skip_to_content"><a href="#centerColumn" id="skip_to_content">Skip to Main Content</a></span>
         <!-- HEADER BAR -->
         <header id="header">
           <xsl:call-template name="masthead" />

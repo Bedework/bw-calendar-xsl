@@ -35,13 +35,15 @@
         <span id="bwStartDate"><xsl:value-of select="/bedework/currentdate/longdate"/></span>
       </h2>
 
-      <a href="#exportSubscribePopup" id="expSubLinksList" class="rss" title="{$bwStr-HdBr-ExportSubscribe}">
-        <xsl:copy-of select="$bwStr-HdBr-ExportSubscribe"/><xsl:text> </xsl:text>
-        <img src="{$resourcesRoot}/images/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
-      </a>
-      <xsl:call-template name="exportSubscribeJavascript">
-        <xsl:with-param name="id">expSubLinksList</xsl:with-param>
-      </xsl:call-template>
+      <div id="list-nav-links">
+        <a href="#exportSubscribePopup" id="expSubLinksList" class="rss" title="{$bwStr-HdBr-ExportSubscribe}">
+          <xsl:copy-of select="$bwStr-HdBr-ExportSubscribe"/><xsl:text> </xsl:text>
+          <img src="{$resourcesRoot}/images/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
+        </a>
+        <xsl:call-template name="exportSubscribeJavascript">
+          <xsl:with-param name="id">expSubLinksList</xsl:with-param>
+        </xsl:call-template>
+      </div>
 
     </div>
 
@@ -51,7 +53,7 @@
 
     <xsl:call-template name="queryFilterDisplay"/>
 
-    <div id="listEvents"><xsl:text> </xsl:text></div>
+    <div id="listEvents" aria-live="polite" aria-relevant="additions"><xsl:text> </xsl:text></div>
 
 
     <script type="text/javascript">

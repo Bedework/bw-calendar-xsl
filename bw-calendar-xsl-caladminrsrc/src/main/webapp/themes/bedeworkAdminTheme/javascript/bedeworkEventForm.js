@@ -1256,12 +1256,9 @@ $(function() {
         dataType: 'json',
         contentType: 'application/json',
         data: 'fexpr=loc_all=\'' + request.term + '\'',
-        //data: JSON.stringify({
-        //  "fexpr": 'loc_all=' + request.term
-        //}),
         success: function (result) {
           if (result !== undefined) {
-            if (result.status == 'ok' && result.locations[0]) {
+            if (result.status === 'ok' && result.locations[0]) {
               searchResult = result.locations;
               console.log("found this first: " + searchResult[0].addressField + " - " + searchResult[0].roomField);
               response(searchResult);
@@ -1282,7 +1279,7 @@ $(function() {
       //$(this).val(ui.item.href).removeClass("ui-autocomplete-loading");
 
       var resultString = ui.item.addressField; // this must exist
-      if (ui.item.roomField != undefined && ui.item.roomField != "") {
+      if (ui.item.roomField !== undefined && ui.item.roomField !== "") {
         resultString += " - " + ui.item.roomField;
       }
 
@@ -1292,19 +1289,19 @@ $(function() {
     }
   }).autocomplete("instance")._renderItem = function (ul, item) {
     var resultString = '<div class="loc-result-address">' + item.addressField + '</div>'; // this must exist
-    if (item.roomField != undefined && item.roomField != "") {
+    if (item.roomField !== undefined && item.roomField !== "") {
       resultString += '<div class="loc-result-room">' + item.roomField + '</div>';
     }
-    if ((item.street != undefined && item.street != "") || (item.city != undefined && item.city != "")) {
+    if ((item.street !== undefined && item.street !== "") || (item.city !== undefined && item.city !== "")) {
       resultString += '<div class="loc-result-street-address">';
-      if (item.street != undefined && item.street != "") {
+      if (item.street !== undefined && item.street !== "") {
         resultString += '<span class="loc-result-street">' + item.street;
-        if (item.city != undefined && item.city != "") {
+        if (item.city !== undefined && item.city !== "") {
           resultString += ', ';
         }
         resultString += '</span>';
       }
-      if (item.city != undefined && item.city != "") {
+      if (item.city !== undefined && item.city !== "") {
         resultString += '<span class="loc-result-city">' + item.city + '</span>';
       }
     }
@@ -1316,7 +1313,7 @@ $(function() {
   // Contact autocomplete
   $("#bwContactSearch").autocomplete({
     minLength: 2,
-    appendTo: "#bwConatactSearchResults",
+    appendTo: "#bwContactSearchResults",
     source: function (request, response) {
       var searchResult = [];
       $.ajax({
@@ -1327,7 +1324,7 @@ $(function() {
         data: 'fexpr=contact_all=\'' + request.term + '\'',
         success: function (result) {
           if (result !== undefined) {
-            if (result.status == 'ok' && result.contacts[0]) {
+            if (result.status === 'ok' && result.contacts[0]) {
               searchResult = result.contacts;
               console.log("found this first: " + searchResult[0].cn.value);
               response(searchResult);

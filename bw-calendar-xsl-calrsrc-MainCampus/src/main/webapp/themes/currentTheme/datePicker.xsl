@@ -117,7 +117,7 @@
       </form>
     </div>
 
-    <script type="text/javascript">
+    <script>
        $.datepicker.setDefaults({
          constrainInput: true,
          dateFormat: "yy-mm-dd",

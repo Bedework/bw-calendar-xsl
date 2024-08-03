@@ -78,9 +78,12 @@
       </h2>
 
       <xsl:if test="normalize-space(xproperties/X-BEDEWORK-IMAGE/values/text) != ''">
+        <xsl:variable name="imgHref">
+          <xsl:value-of select="normalize-space(xproperties/X-BEDEWORK-IMAGE/values/text)"/>
+        </xsl:variable>
         <xsl:variable name="imgPrefix">
           <xsl:choose>
-            <xsl:when test="starts-with(xproperties/X-BEDEWORK-IMAGE/values/text,'http')"></xsl:when>
+            <xsl:when test="starts-with($imgHref,'http')"></xsl:when>
             <xsl:otherwise><xsl:value-of select="$bwEventImagePrefix"/></xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
@@ -90,6 +93,9 @@
             <xsl:choose>
               <xsl:when test="xproperties/X-BEDEWORK-IMAGE/parameters/node()[name()='X-BEDEWORK-PARAM-ALT']">
                 <xsl:value-of select="xproperties/X-BEDEWORK-IMAGE/parameters/X-BEDEWORK-PARAM-ALT" />
+              </xsl:when>
+              <xsl:when test="xproperties/X-BEDEWORK-IMAGE/parameters/node()[name()='CN']">
+                <xsl:value-of select="xproperties/X-BEDEWORK-IMAGE/parameters/CN" />
               </xsl:when>
               <xsl:when test="xproperties/X-BEDEWORK-IMAGE/parameters/node()[name()='ALTREP']">
                 <xsl:value-of select="xproperties/X-BEDEWORK-IMAGE/parameters/ALTREP" />

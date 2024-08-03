@@ -833,6 +833,9 @@ label.interiorLabel {
 #bwLocationsSecondaryContainer {
   margin: 0;
 }
+#bwContactsCell label {
+  display: block;
+}
 .requestLink {
   color: #bbb;
   margin: 0.5em;
