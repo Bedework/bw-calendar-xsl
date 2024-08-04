@@ -49,6 +49,7 @@
         <input type="hidden" name="setappvar" id="appvar" value=""/>
         <input type="hidden" name="colPath"  value="{$workflowRootUnencoded}"/>
         <input type="hidden" name="catFilter" value=""/>
+        <input type="hidden" name="ignoreCreator" value="true"/>
 
         <div class="container-nowrap">
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>

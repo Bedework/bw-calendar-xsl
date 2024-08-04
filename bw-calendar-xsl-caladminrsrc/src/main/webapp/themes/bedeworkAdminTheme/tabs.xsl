@@ -49,7 +49,7 @@
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a>
-            <xsl:attribute name="href"><xsl:value-of select="$initApprovalQueueTab"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;sort=dtstart.utc:asc</xsl:attribute>
+            <xsl:attribute name="href"><xsl:value-of select="$initApprovalQueueTab"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;ignoreCreator=true&amp;sort=dtstart.utc:asc</xsl:attribute>
             <xsl:copy-of select="$bwStr-Head-ApprovalQueueEvents"/>
           </a>
         </li>
