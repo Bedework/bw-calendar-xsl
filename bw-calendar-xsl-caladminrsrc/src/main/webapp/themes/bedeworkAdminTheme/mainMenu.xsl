@@ -23,7 +23,7 @@
   <xsl:template name="mainMenu">
 
     <div class="notes">
-      <xsl:if test="/bedework/userInfo/superUser = 'true'">
+      <xsl:if test="$superUser = 'true'">
         <p class="note">
           <strong><xsl:copy-of select="$bwStr-MMnu-LoggedInAs"/></strong>
         </p>
@@ -33,21 +33,21 @@
     <div id="mainMenu">
       <xsl:choose>
         <!-- superusers have 8 buttons -->
-        <xsl:when test="/bedework/userInfo/superUser = 'true'">
+        <xsl:when test="$superUser = 'true'">
           <xsl:attribute name="class">mainMenuFull</xsl:attribute>
         </xsl:when>
         <!-- so do calendar suite administrators when workflow isn't turned on -->
-        <xsl:when test="/bedework/currentCalSuite/group = /bedework/userInfo/group and /bedework/workflowEnabled = 'false'">
+        <xsl:when test="/bedework/currentCalSuite/group = /bedework/userInfo/group and $workflowEnabled = 'false'">
           <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write">
             <xsl:attribute name="class">mainMenuFull</xsl:attribute>
           </xsl:if>
         </xsl:when>
         <!-- regular admins have 6 buttons when workflow isn't turned on -->
-        <xsl:when test="/bedework/workflowEnabled = 'false'">
+        <xsl:when test="$workflowEnabled = 'false'">
           <xsl:attribute name="class">mainMenuMost</xsl:attribute>
         </xsl:when>
         <!-- when using workflow, both calsuite admins and regular admins have one or two buttons in a single row -->
-        <!-- <xsl:when test="/bedework/userInfo/approverUser = 'true'">
+        <!-- <xsl:when test="$approverUser = 'true'">
           <xsl:attribute name="class">mainMenuInline</xsl:attribute>
         </xsl:when> -->
       </xsl:choose>
@@ -61,9 +61,9 @@
             <br/><xsl:copy-of select="$bwStr-MMnu-AddEvent"/>
           </a>
         </li>
-        <xsl:if test="/bedework/workflowEnabled = 'false' or
-                      /bedework/userInfo/approverUser = 'true' or
-                      /bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$workflowEnabled = 'false' or
+                      $approverUser = 'true' or
+                      $superUser = 'true'">
           <li>
             <a id="addContactLink" href="{$contact-initAdd}">
               <img src="{$resourcesRoot}/images/bwAdminAddContactIcon.jpg" width="100" height="100" alt=""/><!-- alt tag empty for accessibility -->
@@ -77,7 +77,7 @@
             </a>
           </li>
           <xsl:if test="/bedework/currentCalSuite/group = /bedework/userInfo/group">
-            <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or /bedework/userInfo/superUser = 'true'">
+            <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser = 'true'">
               <!--
                 Category management is a  super-user and calsuite admin feature;
                 Categories underlie much of the single calendar and filtering model.-->
@@ -91,9 +91,9 @@
           </xsl:if>
         </xsl:if>
       </ul>
-      <xsl:if test="/bedework/workflowEnabled = 'false' or
-                    /bedework/userInfo/approverUser = 'true' or
-                    /bedework/userInfo/superUser = 'true'">
+      <xsl:if test="$workflowEnabled = 'false' or
+                    $approverUser = 'true' or
+                    $superUser = 'true'">
         <xsl:variable name="calendarPath">
           <xsl:choose>
             <xsl:when test="/bedework/appvar[key='calendarPath']/value">
@@ -121,9 +121,9 @@
               <br/><xsl:copy-of select="$bwStr-MMnu-ManageEvents"/>
             </a>
           </li>
-          <xsl:if test="/bedework/workflowEnabled = 'false' or
-                    /bedework/userInfo/approverUser = 'true' or
-                    /bedework/userInfo/superUser = 'true'">
+          <xsl:if test="$workflowEnabled = 'false' or
+                    $approverUser = 'true' or
+                    $superUser = 'true'">
             <li>
               <a href="{$contact-initUpdate}">
                 <img src="{$resourcesRoot}/images/bwAdminManageContactsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
@@ -137,7 +137,7 @@
               </a>
             </li>
             <xsl:if test="/bedework/currentCalSuite/group = /bedework/userInfo/group">
-              <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or /bedework/userInfo/superUser = 'true'">
+              <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser = 'true'">
                 <!--
                   Category management is a super-user and calsuite admin feature;
                   Categories underlie much of the new single calendar and filtering model.-->

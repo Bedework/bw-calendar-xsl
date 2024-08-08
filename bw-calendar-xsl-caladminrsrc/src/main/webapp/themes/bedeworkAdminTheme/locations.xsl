@@ -43,7 +43,7 @@
         <th><xsl:copy-of select="$bwStr-LoLi-Room"/></th>
         <th><xsl:copy-of select="$bwStr-LoLi-Address"/></th>
         <th><xsl:copy-of select="$bwStr-LoLi-URL"/></th>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <th><xsl:copy-of select="$bwStr-LoLi-Status"/></th>
         </xsl:if>
       </tr>
@@ -73,7 +73,7 @@
               <xsl:value-of select="link" />
             </a>
           </td>
-          <xsl:if test="/bedework/userInfo/superUser = 'true'">
+          <xsl:if test="$superUser = 'true'">
             <td>
               <xsl:value-of select="$statusVal"/>
             </td>
@@ -266,7 +266,7 @@
 
           </td>
         </tr>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <tr>
             <td>
               <label for="locDeleted"><xsl:copy-of select="$bwStr-MoLo-Deleted"/></label>
@@ -379,7 +379,7 @@
       <xsl:copy-of select="$bwStr-DeLR-LocationInUseBy"/>
     </p>
 
-    <xsl:if test="/bedework/userInfo/superUser = 'true'">
+    <xsl:if test="$superUser = 'true'">
       <div class="suTitle"><xsl:copy-of select="$bwStr-DeLR-SuperUserMsg"/></div>
       <div id="superUserMenu">
         <!-- List collections that reference the location -->

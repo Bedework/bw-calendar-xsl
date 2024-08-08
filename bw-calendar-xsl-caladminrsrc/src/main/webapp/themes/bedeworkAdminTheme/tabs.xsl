@@ -23,7 +23,8 @@
 
   <xsl:template name="tabs">
     <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
-    <xsl:if test="/bedework/workflowEnabled='false' or /bedework/userInfo/superUser='true' or /bedework/userInfo/approverUser='true'">
+    <xsl:if test="$workflowEnabled='false' or
+                  $superUser='true' or $approverUser='true'">
       <xsl:call-template name="upperSearchForm">
         <xsl:with-param name="toggleLimits">
           <xsl:choose>
@@ -43,7 +44,7 @@
           <xsl:copy-of select="$bwStr-Head-MainMenu"/>
         </a>
       </li>
-      <xsl:if test="/bedework/workflowEnabled='true'">
+      <xsl:if test="$workflowEnabled='true'">
         <li>
           <xsl:if test="/bedework/tab = 'approvalQueue'">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -54,7 +55,7 @@
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="/bedework/suggestionEnabled='true' and /bedework/userInfo/approverUser='true'">
+      <xsl:if test="$suggestionEnabled = 'true' and $approverUser = 'true'">
         <li>
           <xsl:if test="/bedework/tab = 'suggestionQueue'">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -73,24 +74,26 @@
           </a>
         </li>
       </xsl:if>
-      <li>
-        <xsl:if test="/bedework/tab = 'pending'">
-          <xsl:attribute name="class">selected</xsl:attribute>
-        </xsl:if>
-        <a>
-          <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
-          <xsl:variable name="calSuiteLimit">
-            <xsl:choose>
-              <xsl:when test="/bedework/userInfo/superUser = 'true'"></xsl:when>
-              <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
-            </xsl:choose>
-          </xsl:variable>
-          <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
-          <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
-        </a>
-      </li>
+      <xsl:if test="$approverUser = 'true'">
+        <li>
+          <xsl:if test="/bedework/tab = 'pending'">
+            <xsl:attribute name="class">selected</xsl:attribute>
+          </xsl:if>
+          <a>
+            <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
+            <xsl:variable name="calSuiteLimit">
+              <xsl:choose>
+                <xsl:when test="$superUser = 'true'"></xsl:when>
+                <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=(colPath="<xsl:value-of select="$submissionsRootEncoded"/>" and (entity_type="event" or entity_type="todo")<xsl:value-of select="$calSuiteLimit"/>)&amp;sort=dtstart.utc:asc</xsl:attribute>
+            <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
+          </a>
+        </li>
+      </xsl:if>
       <xsl:if test="/bedework/currentCalSuite/group = /bedework/userInfo/group">
-        <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or /bedework/userInfo/superUser = 'true'">
+        <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser = 'true'">
           <li>
             <xsl:if test="/bedework/tab = 'calsuite'">
               <xsl:attribute name="class">selected</xsl:attribute>
@@ -101,7 +104,7 @@
           </li>
         </xsl:if>
       </xsl:if>
-      <xsl:if test="/bedework/userInfo/superUser='true'">
+      <xsl:if test="$superUser='true'">
         <li>
           <xsl:if test="/bedework/tab = 'users'">
             <xsl:attribute name="class">selected</xsl:attribute>

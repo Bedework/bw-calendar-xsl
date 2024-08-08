@@ -28,17 +28,17 @@
 
   <!-- User/Group Tab -->
   <xsl:template name="tabUsers">
-    <xsl:if test="/bedework/userInfo/superUser='true'">
+    <xsl:if test="$superUser='true'">
       <h2><xsl:copy-of select="$bwStr-TaUs-ManageUsersAndGroups"/></h2>
       <ul class="adminMenu">
-        <xsl:if test="/bedework/workflowEnabled='true'">
+        <xsl:if test="$workflowEnabled='true'">
           <li>
             <a href="{$authuser-initUpdate}">
               <xsl:copy-of select="$bwStr-TaUs-ManageAdminRoles"/>
             </a>
           </li>
         </xsl:if>
-        <xsl:if test="/bedework/userInfo/adminGroupMaintOk='true'">
+        <xsl:if test="/bedework/userInfo/adminGroupMaintOk = 'true'">
           <li class="groups">
             <a href="{$admingroup-initUpdate}">
               <xsl:copy-of select="$bwStr-TaUs-ManageAdminGroups"/>

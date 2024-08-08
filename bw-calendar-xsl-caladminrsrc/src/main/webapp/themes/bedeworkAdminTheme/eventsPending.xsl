@@ -26,13 +26,6 @@
 
     <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
 
-    <xsl:variable name="approverUser">
-      <xsl:choose>
-        <xsl:when test="(/bedework/userInfo/approverUser = 'true')">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
     <xsl:variable name="sort">
       <xsl:choose>
         <xsl:when test="/bedework/appvar[key='sort']/value">
@@ -54,7 +47,7 @@
         <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
         <xsl:variable name="calSuiteLimit">
           <xsl:choose>
-            <xsl:when test="/bedework/userInfo/superUser = 'true'"></xsl:when>
+            <xsl:when test="$superUser = 'true'"></xsl:when>
             <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>

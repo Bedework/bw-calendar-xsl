@@ -240,7 +240,7 @@
 
           </td>
         </tr>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <tr>
             <th>
               <label for="categoryMapping">

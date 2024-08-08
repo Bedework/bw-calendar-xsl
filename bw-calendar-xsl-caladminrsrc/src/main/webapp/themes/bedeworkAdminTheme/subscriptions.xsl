@@ -323,7 +323,7 @@
                       <input type="password" name="remotePw" value="" size="40"/>
                     </td>
                   </tr>
-                  <xsl:if test="/bedework/userInfo/superUser='true'">
+                  <xsl:if test="$superUser='true'">
                     <tr>
                       <th><xsl:copy-of select="$bwStr-CuCa-OrgSync"/></th>
                       <td>

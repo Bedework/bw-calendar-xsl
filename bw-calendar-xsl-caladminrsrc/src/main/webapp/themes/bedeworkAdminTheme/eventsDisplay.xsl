@@ -301,7 +301,7 @@
           <xsl:variable name="userPath"><xsl:value-of select="/bedework/syspars/userPrincipalRoot"/>/<xsl:value-of select="/bedework/userInfo/user"/></xsl:variable>
           <input type="button" name="return" onclick="javascript:location.replace('{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}')">
             <xsl:choose>
-              <xsl:when test="$userPath = creator or /bedework/userInfo/superUser = 'true'">
+              <xsl:when test="$userPath = creator or $superUser = 'true'">
                 <xsl:attribute name="value">Edit event</xsl:attribute>
               </xsl:when>
               <xsl:otherwise>

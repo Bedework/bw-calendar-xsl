@@ -93,7 +93,7 @@
 	       <xsl:when test="$global = 'true'">
           <input type="hidden" name="class" value="global"/>
 	       </xsl:when>
-	       <xsl:when test="/bedework/userInfo/superUser = 'true'">
+	       <xsl:when test="$superUser = 'true'">
 		       <label for="resClass">
 		         <xsl:value-of select="$bwStr-Resource-ClassLabel"/>
 		       </label>
@@ -122,7 +122,7 @@
         <th><xsl:copy-of select="$bwStr-Resource-NameCol"/></th>
         <th><xsl:copy-of select="$bwStr-Resource-ContentTypeCol"/></th>
         <th><xsl:copy-of select="$bwStr-Resource-ResourceTypeCol"/></th>
-        <xsl:if test="$global = 'false' and /bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$global = 'false' and $superUser = 'true'">
           <th><xsl:copy-of select="$bwStr-Resource-ResourceClassCol"/></th>
         </xsl:if>
         <th> </th>
@@ -157,7 +157,7 @@
           <td>
           	<xsl:value-of select="$resType"/>
           </td>
-	        <xsl:if test="$global = 'false' and /bedework/userInfo/superUser = 'true'">
+	        <xsl:if test="$global = 'false' and $superUser = 'true'">
 	          <td>
 	            <xsl:value-of select="$resClass"/>
 	          </td>
@@ -303,7 +303,7 @@
 		        </span>
 		        <br/>
 
-		        <xsl:if test="/bedework/userInfo/superUser = 'true' and global != 'true'">
+		        <xsl:if test="$superUser = 'true' and global != 'true'">
 			        <span class="resFormLabel">
 			          <xsl:value-of select="$bwStr-ModRes-ClassLabel"/>
 			        </span>

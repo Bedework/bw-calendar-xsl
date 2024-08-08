@@ -56,6 +56,9 @@
   <!-- Root folder of the workflow collections -->
   <xsl:variable name="workflowRootEncoded" select="/bedework/workflowRoot/encoded"/>
   <xsl:variable name="workflowRootUnencoded" select="/bedework/workflowRoot/unencoded"/>
+  <xsl:variable name="workflowEnabled" select="/bedework/workflowEnabled"/>
+
+  <xsl:variable name="suggestionEnabled" select="/bedework/suggestionEnabled"/>
 
   <xsl:variable name="approverUser" select="/bedework/userInfo/approverUser"/>
   <xsl:variable name="superUser" select="/bedework/userInfo/superUser"/>

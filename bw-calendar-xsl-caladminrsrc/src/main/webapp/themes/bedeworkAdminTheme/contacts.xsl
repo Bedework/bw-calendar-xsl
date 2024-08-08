@@ -41,7 +41,7 @@
         <th><xsl:copy-of select="$bwStr-Cont-Phone"/></th>
         <th><xsl:copy-of select="$bwStr-Cont-Email"/></th>
         <th><xsl:copy-of select="$bwStr-Cont-URL"/></th>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <th><xsl:copy-of select="$bwStr-Cont-Status"/></th>
         </xsl:if>
       </tr>
@@ -77,7 +77,7 @@
               </a>
             </xsl:if>
           </td>
-          <xsl:if test="/bedework/userInfo/superUser = 'true'">
+          <xsl:if test="$superUser = 'true'">
             <td>
               <xsl:value-of select="$statusVal"/>
             </td>
@@ -138,7 +138,7 @@
             <span class="fieldInfo"><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-MdCo-Optional"/></span>
           </td>
         </tr>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <tr>
             <td>
               <label for="contactDeleted"><xsl:copy-of select="$bwStr-MdCo-ContactDeleted"/></label>
@@ -240,7 +240,7 @@
       <xsl:copy-of select="$bwStr-DCoR-ContactInUseBy"/>
     </p>
 
-    <xsl:if test="/bedework/userInfo/superUser = 'true'">
+    <xsl:if test="$superUser = 'true'">
       <div class="suTitle"><xsl:copy-of select="$bwStr-DCoR-SuperUserMsg"/></div>
       <div id="superUserMenu">
         <!-- List collections that reference the contact -->

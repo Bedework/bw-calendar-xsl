@@ -138,7 +138,7 @@
           </select>
         </div>
 
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <div class="container-nowrap">
             <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
               <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">

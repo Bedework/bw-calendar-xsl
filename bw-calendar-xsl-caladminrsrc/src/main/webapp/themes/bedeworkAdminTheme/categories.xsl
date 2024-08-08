@@ -39,7 +39,7 @@
       <tr>
         <th><xsl:copy-of select="$bwStr-CtgL-Keyword"/></th>
         <th><xsl:copy-of select="$bwStr-CtgL-Description"/></th>
-        <xsl:if test="/bedework/userInfo/superUser = 'true'">
+        <xsl:if test="$superUser = 'true'">
           <th><xsl:copy-of select="$bwStr-CtgL-Status"/></th>
         </xsl:if>
       </tr>
@@ -62,7 +62,7 @@
           <td>
             <xsl:value-of select="description"/>
           </td>
-          <xsl:if test="/bedework/userInfo/superUser = 'true'">
+          <xsl:if test="$superUser = 'true'">
             <td>
               <xsl:value-of select="$statusVal"/>
             </td>
@@ -128,7 +128,7 @@
                 </textarea>
               </td>
             </tr>
-            <xsl:if test="/bedework/userInfo/superUser = 'true'">
+            <xsl:if test="$superUser = 'true'">
               <tr>
                 <td>
                   <label for="catDeleted"><xsl:copy-of select="$bwStr-MoCa-Deleted"/></label>
@@ -211,7 +211,7 @@
       <xsl:copy-of select="$bwStr-DeCR-CategoryInUseBy"/>
     </p>
 
-    <xsl:if test="/bedework/userInfo/superUser = 'true'">
+    <xsl:if test="$superUser = 'true'">
       <div class="suTitle"><xsl:copy-of select="$bwStr-DeCR-SuperUserMsg"/></div>
       <div id="superUserMenu">
         <!-- List collections that reference the category -->

@@ -82,7 +82,7 @@
       <input type="submit" value="{$bwStr-Srch-Go}"/>
 
       <xsl:choose>
-        <xsl:when test="/bedework/userInfo/superUser = 'true'">
+        <xsl:when test="$superUser = 'true'">
           <input type="radio" name="colscope" id="colScope-all"
                  value="all">
             <xsl:if test="$bwQueryColScope = 'all'">
@@ -268,7 +268,7 @@
 
           <div id="searchScope">
             <xsl:choose>
-              <xsl:when test="/bedework/userInfo/superUser = 'true'">
+              <xsl:when test="$superUser = 'true'">
                 <input type="radio" name="colscope" id="colScope-all"
                        value="all">
                   <xsl:if test="$bwQueryColScope = 'all'">
@@ -307,7 +307,7 @@
             <input type="radio" name="fexpr" id="searchScope-mine">
               <xsl:attribute name="value">
                 <xsl:choose>
-                  <xsl:when test="/bedework/userInfo/superUser = 'true'">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
+                  <xsl:when test="$superUser = 'true'">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
                   <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator="/principals/users/<xsl:value-of select="/bedework/userInfo/user"/>" and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
                   <xsl:otherwise>((<xsl:for-each select="/bedework/userInfo/groups/group">creator="<xsl:value-of select="ownerHref"/>"<xsl:if test="position() != last()"> or </xsl:if></xsl:for-each>) and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:otherwise>
                 </xsl:choose>

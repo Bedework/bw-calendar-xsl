@@ -3012,9 +3012,9 @@
         </tr>
 
         <!-- Suggestions  -->
-        <xsl:if test="/bedework/suggestionEnabled = 'true' and
+        <xsl:if test="$suggestionEnabled = 'true' and
                       $modEventSuggestionQueue = 'false' and
-                      /bedework/userInfo/approverUser = 'true' and
+                      $approverUser = 'true' and
                       $canEdit = 'true' and
                       recurrenceId = ''">
           <xsl:variable name="calsuiteHref"><xsl:value-of select="/bedework/currentCalSuite/groupHref"/></xsl:variable>

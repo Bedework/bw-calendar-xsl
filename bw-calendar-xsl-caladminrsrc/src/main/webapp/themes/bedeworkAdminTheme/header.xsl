@@ -51,7 +51,7 @@
               </xsl:choose>
             </span>
             <xsl:text> </xsl:text>
-            <xsl:if test="(/bedework/userInfo/group and /bedework/userInfo/oneGroup = 'false') or /bedework/userInfo/superUser = 'true'">
+            <xsl:if test="(/bedework/userInfo/group and /bedework/userInfo/oneGroup = 'false') or $superUser = 'true'">
               <a href="{$admingroup-switch}" class="fieldInfo">
                 <xsl:copy-of select="$bwStr-Head-Change"/>
               </a>
