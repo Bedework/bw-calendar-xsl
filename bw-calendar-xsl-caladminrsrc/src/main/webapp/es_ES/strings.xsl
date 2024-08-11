@@ -46,7 +46,7 @@
   <xsl:variable name="bwStr-Head-PendingEvents">Cola pendiente</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Cola de aprobación</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Cola de sugerencia</xsl:variable>
-  <xsl:variable name="bwStr-Head-Users">Usuarios</xsl:variable>
+  <xsl:variable name="bwStr-Head-Users">Usuarios y grupos</xsl:variable>
   <xsl:variable name="bwStr-Head-System">Sistema</xsl:variable>
   <!-- notifications (in header) -->
   <xsl:variable name="bwStr-Notification-EventSuggestion">Sugerencia:</xsl:variable>

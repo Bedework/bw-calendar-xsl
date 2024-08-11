@@ -46,7 +46,7 @@
   <xsl:variable name="bwStr-Head-PendingEvents">Pending Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Approval Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Suggestion Queue</xsl:variable>
-  <xsl:variable name="bwStr-Head-Users">Users</xsl:variable>
+  <xsl:variable name="bwStr-Head-Users">Users and Groups</xsl:variable>
   <xsl:variable name="bwStr-Head-System">System</xsl:variable>
   <!-- notifications (in header) -->
   <xsl:variable name="bwStr-Notification-EventSuggestion">Suggestion:</xsl:variable>
