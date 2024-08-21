@@ -934,7 +934,7 @@ $(function() {
   // Contact autocomplete
   $("#bwContactSearch").autocomplete({
     minLength: 2,
-    appendTo: "#bwConatactSearchResults",
+    appendTo: "#bwContactSearchResults",
     source: function (request, response) {
       var searchResult = [];
       $.ajax({
