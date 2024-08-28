@@ -798,7 +798,7 @@
             <xsl:value-of select="summary"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:variable name="virtualPath"><xsl:for-each select="ancestor-or-self::calendar/name">/<xsl:value-of select="."/></xsl:for-each></xsl:variable>
+            <xsl:variable name="virtualPath">/user<xsl:for-each select="ancestor-or-self::calendar/name">/<xsl:value-of select="."/></xsl:for-each></xsl:variable>
             <xsl:variable name="displayName" select="summary"/>
             <xsl:if test="$displayName != 'Ongoing'"><!-- Yale: Hide Ongoing from forms for all calsuites; this approach is brittle but will work for all at Yale. -->
               <input type="checkbox" name="alias" id="{generate-id(path)}" onclick="toggleBedeworkXProperty('X-BEDEWORK-SUBMIT-ALIAS','{$displayName}','{$virtualPath}',this.checked)">
