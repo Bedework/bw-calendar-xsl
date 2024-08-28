@@ -29,7 +29,6 @@
   <xsl:include href="/approots/bedework-common/default/default/util.xsl"/>
   <xsl:include href="/approots/bedework-common/default/default/bedeworkAccess.xsl"/>
 
-
   <!-- ======================= -->
   <!-- DEFINE GLOBAL CONSTANTS -->
   <!-- ======================= -->
