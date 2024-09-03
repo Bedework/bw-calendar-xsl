@@ -3202,7 +3202,7 @@
       <xsl:choose>
         <!-- test to see if this has been checked by this calendar suite (or matches a submitted event) -->
         <xsl:when test="$virtualPath = /bedework/formElements/form/xproperties//X-BEDEWORK-ALIAS/values/text or
-                                path = /bedework/formElements/form/xproperties//X-BEDEWORK-SUBMIT-ALIAS/values/text or
+                        $virtualPath = /bedework/formElements/form/xproperties//X-BEDEWORK-SUBMIT-ALIAS/values/text or
                                /bedework/formElements/form/xproperties//X-BEDEWORK-SUBMIT-ALIAS/values/text = substring-after(aliasUri,'bwcal://')">isChecked</xsl:when>
         <!-- if not, test to see if the underlying alias has been checked by a different calendar suite - if there is a match,
              use styling to let the user know, but don't actually check the checkbox -->
