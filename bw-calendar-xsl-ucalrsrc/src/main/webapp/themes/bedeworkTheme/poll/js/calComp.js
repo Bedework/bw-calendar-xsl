@@ -73,11 +73,15 @@ CalendarComponent.prototype.isOwned = function() {
 };
 
 CalendarComponent.prototype.organizer = function() {
-	return this.data.getPropertyValue("organizer");
+	return this.getOwner();
 };
 
 CalendarComponent.prototype.organizerDisplayName = function() {
-	return new CalendarUser(this.data.getProperty("organizer"), this).nameOrAddress();
+	var owner = this.getOwner();
+  if (owner === null) {
+    return "?";
+  }
+  return new CalendarParticipant(owner.data, this).nameOrAddress();
 };
 
 CalendarComponent.prototype.status = function() {
@@ -262,16 +266,15 @@ CalendarPoll.newPoll = function(title) {
 	vpoll.newProperty("summary", title);
 	vpoll.newProperty("poll-mode", "BASIC");
 	vpoll.newProperty("poll-properties", ["DTSTART","DTEND"]);
-	vpoll.newProperty(
-		"organizer",
-		gSession.currentPrincipal.defaultAddress(),
-		{ "cn" : gSession.currentPrincipal.cn },
-		"cal-address"
-	);
 
   var poll = new CalendarPoll(vpoll, null);
 
-  var voter = poll.addvoter().getCalendarAddress();
+  var owner = poll.newComponent("participant", true);
+  owner.newProperty("calendar-address", gSession.currentPrincipal.defaultAddress(), "cal-address");
+  owner.newProperty("participant-type", "VOTER,OWNER", "text");
+  owner.newProperty("cn", gSession.currentPrincipal.cn);
+
+  var voter = poll.addVoter(gSession.currentPrincipal.defaultAddress());
 
   voter.update(gSession.currentPrincipal.defaultAddress(),
       {
@@ -462,14 +465,35 @@ CalendarPoll.prototype.getVoters = function() {
     var comp = new jcal(compData);
 
     if (comp.isParticipant()) {
-        var ptype = comp.getPropertyValue("participant-type");
-        if ((ptype !== null) && (ptype.toLowerCase() === "voter")) {
-            return new CalendarParticipant(comp, this_vpoll);
-        }
+      var part = new CalendarParticipant(comp, this_vpoll);
+      if (part.getPtypes().includes("voter")) {
+        return part;
+      }
     }
 
     return null;
   });
+};
+
+/** Get the participant designated as the owner
+ *
+ * @returns owner participant or null
+ */
+CalendarComponent.prototype.getOwner = function() {
+  var this_vpoll = this;
+  var comps = this.data.getComponents();
+  for (var i = 0; i < comps.length; i++) {
+    var comp = new jcal(comps[i]);
+
+    if (comp.isParticipant()) {
+      var part = new CalendarParticipant(comp, this_vpoll);
+      if (part.getPtypes().includes("owner")) {
+        return part;
+      }
+    }
+  }
+
+  return null;
 };
 
 /** Get the designated voter element
@@ -477,7 +501,7 @@ CalendarPoll.prototype.getVoters = function() {
  * @param cua - the voter cuaddr or absent for current
  * @returns {*}
  */
-CalendarPoll.prototype.getvoter = function(cua) {
+CalendarPoll.prototype.getVoter = function(cua) {
   var voters = this.getVoters();
 
   for (var i = 0; i < voters.length; i++) {
@@ -533,10 +557,10 @@ CalendarPoll.prototype.changeVoterResponse = function(itemId, response) {
  *
  * @returns {CalendarParticipant}
  */
-CalendarPoll.prototype.addvoter = function() {
+CalendarPoll.prototype.addVoter = function(caladdr) {
   this.changed(true);
   var comp = this.data.newComponent("participant", false);
-  comp.newProperty("calendar-address", "", {}, "cal-address");
+  comp.newProperty("calendar-address", caladdr, {}, "cal-address");
   comp.newProperty("participant-type", "VOTER", {}, "text");
 
   return new CalendarParticipant(comp, this);
@@ -692,6 +716,29 @@ CalendarParticipant.prototype.getVotes = function() {
 
     return null;
   });
+};
+
+// Get a suitable display string for this user
+CalendarParticipant.prototype.nameOrAddress = function() {
+  var name = this.data.getPropertyValue("name");
+
+  if (name !== null) {
+    return name;
+  }
+
+  return this.data.getPropertyValue("calendar-address");
+};
+
+/** Get an array of participant types
+ *
+ */
+CalendarParticipant.prototype.getPtypes = function() {
+  var ptype = this.data.getPropertyValue("participant-type");
+  if (ptype === null) {
+    return [];
+  }
+
+  return ptype.trim().toLowerCase().split(/\s*,\s*/);
 };
 
 /** Get the designated vote element

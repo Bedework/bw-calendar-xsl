@@ -799,7 +799,7 @@ Poll.prototype.addVoter = function() {
   // Add new list item
   poll_syncAttendees = $("#syncPollAttendees").is(":checked");
 
-  var voter = this.editing_poll.addvoter();
+  var voter = this.editing_poll.addVoter();
   return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter.getCalendarAddress());
 };
 
@@ -965,10 +965,10 @@ Poll.prototype.buildResults = function() {
   var voterDetails = this.editing_poll.getVoters();
 
   $.each(voterDetails, function(index, part) {
-    var voter = part.getCalendarAddress();
-    var active = gSession.currentPrincipal.matchingAddress(voter.cuaddr());
+    var voterAddr = part.getCalendarAddress();
+    var active = gSession.currentPrincipal.matchingAddress(voterAddr.cuaddr());
     var tr = $("<tr/>").appendTo(tfoot);
-    var voterName = voter.nameOrAddress();
+    var voterName = part.nameOrAddress();
     if (voterName.indexOf("mailto:") === 0) {
       voterName = voterName.substring(7);
     }

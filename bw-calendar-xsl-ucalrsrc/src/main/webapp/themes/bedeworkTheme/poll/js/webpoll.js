@@ -209,7 +209,7 @@ ViewController.prototype.init = function() {
   $("#editpoll-cancelchoice").button().click(function() {
     $.magnificPopup.close();
   });
-  $("#editpoll-addvoter").button({
+  $("#editpoll-addVoter").button({
     icons : {
       primary : "ui-icon-plus"
     }
@@ -408,7 +408,7 @@ ViewController.prototype.clickAddChoice = function() {
 
 // Add voter button clicked
 ViewController.prototype.clickAddVoter = function() {
-  var panel = this.activePoll.addVoter();
+  var panel = this.activePoll.addVoter(gSession.currentPrincipal.defaultAddress());
   panel.find(".voter-address").focus();
 };
 
