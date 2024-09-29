@@ -170,6 +170,16 @@
         </div>
       </div>
     </div>
+    <div id="msgTaskBar" class="sideMenus">
+      <h3>messages</h3>
+      <ul>
+        <!-- show notifications -->
+        <xsl:apply-templates select="/bedework/notifications/notification"/>
+        <!-- only show processed scheduling messages (scheduleState = 1) -->
+        <xsl:apply-templates select="/bedework/schedulingMessages/events/event[scheduleState = 1]" mode="schedNotifications"/>
+      </ul>
+      <xsl:call-template name="notificationReplyWidgets"/>
+    </div>
     <div id="pollsFooter">&#160;</div>
     <div id="debug">&#160;</div>
 

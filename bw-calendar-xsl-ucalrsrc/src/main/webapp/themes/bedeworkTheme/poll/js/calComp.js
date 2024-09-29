@@ -69,7 +69,12 @@ CalendarComponent.prototype.isTask = function() {
 
 // Indicate whether this object is owned by the current user.
 CalendarComponent.prototype.isOwned = function() {
-	return gSession.currentPrincipal.matchingAddress(this.organizer());
+  var owner = this.getOwner()
+  if (owner === null) {
+    return false;
+  }
+	return gSession.currentPrincipal
+                 .matchingAddress(owner.getCalendarAddress().cuaddr());
 };
 
 CalendarComponent.prototype.organizer = function() {
