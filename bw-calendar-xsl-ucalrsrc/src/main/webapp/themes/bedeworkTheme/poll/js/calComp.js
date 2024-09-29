@@ -769,7 +769,7 @@ CalendarParticipant.prototype.setStatus = function(val) {
   if (ps === null) {
     this.data.newProperty("participation-status", val, {}, "text");
   } else {
-    this.data.updateProperty("participation-status", val, {}, val);
+    this.data.updateProperty("participation-status", val, {}, "text");
   }
 };
 
