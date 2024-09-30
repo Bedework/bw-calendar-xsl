@@ -85,9 +85,9 @@ Poll.prototype.writeVpollValues = function() {
   $("#editpoll-choicelist").empty();
 
   var choices = this.editing_poll.choices();
-  choices.sort(function(a, b) {
+/*  choices.sort(function(a, b) {
     return a.start().getEpochMilliseconds() - b.start().getEpochMilliseconds();
-  });
+  });*/
 
   $.each(choices, function(index, choice) {
     this_poll.addChoicePanel(index, choice);
@@ -888,9 +888,9 @@ Poll.prototype.buildResults = function() {
   this.getVpollValues();
 
   var choices = this.editing_poll.choices();
-  choices.sort(function(a, b) {
+/*  choices.sort(function(a, b) {
     return a.start().getEpochMilliseconds() - b.start().getEpochMilliseconds();
-  });
+  });*/
 
   var th = resultTable.children("thead").first();
   var thOverallRows = th.children("tr");
@@ -1135,17 +1135,17 @@ Poll.prototype.updateOverallResults = function() {
     var overallResponse = vpollResponseNone;
 
     if (numResponses > 1) {
-      if ((responses[1] / numResponses) > 0.5) {
+      if ((responses[vpollResponseNo] / numResponses) > 0.5) {
         // At least half said No
         overallResponse = vpollResponseNo;
-      } else if (numResponses === responses[4]) {
+      } else if (numResponses === responses[vpollResponseBest]) {
         // All say Aye
         overallResponse = vpollResponseBest;
-      } else if ((responses[4] > 0) &&
-          (numResponses === (responses[3] + responses[4]))) {
+      } else if ((responses[vpollResponseBest] > 0) &&
+          (numResponses === (responses[vpollResponseOk] + responses[vpollResponseBest]))) {
         // At least some say Aye and the rest are near enough
         overallResponse = vpollResponseBest;
-      } else if (numResponses === responses[3]) {
+      } else if (numResponses === responses[vpollResponseOk]) {
         // All say Ok
         overallResponse = vpollResponseOk;
       } else {
