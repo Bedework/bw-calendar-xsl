@@ -274,18 +274,11 @@ CalendarPoll.newPoll = function(title) {
 
   var poll = new CalendarPoll(vpoll, null);
 
-  var owner = poll.newComponent("participant", true);
+  var owner = poll.data.newComponent("participant", true);
   owner.newProperty("calendar-address", gSession.currentPrincipal.defaultAddress(), "cal-address");
   owner.newProperty("participant-type", "VOTER,OWNER", "text");
   owner.newProperty("name", gSession.currentPrincipal.cn);
-
-  var voter = poll.addVoter(gSession.currentPrincipal.defaultAddress());
-
-  voter.update(gSession.currentPrincipal.defaultAddress(),
-      {
-        "name" : gSession.currentPrincipal.cn,
-        "participation-status" : "ACCEPTED"
-      });
+  owner.newProperty("participation-status", "ACCEPTED");
 
 	return new CalendarObject(calendar);
 };
@@ -444,7 +437,7 @@ CalendarPoll.prototype.makeChoice = function(type, start, end) {
   end.updateProperty(comp, start);
 
 	comp.newProperty("summary", this.summary());
-  comp.copyProperty("organizer", this.data);
+  comp.newProperty("organizer", gSession.currentPrincipal.defaultAddress());
   this.syncAttendees(comp);
 
   var choice;
@@ -540,8 +533,13 @@ CalendarPoll.prototype.changeVoterResponse = function(itemId, response) {
         voter.getCalendarAddress().cuaddr());
   });
 
-  if (matches.length !== 1) {
+  if (matches.length === 0) {
     alert("No voter entry for " + gSession.currentPrincipal.defaultAddress());
+    return;
+  }
+
+  if (matches.length !== 1) {
+    alert("Multiple voter entries for " + gSession.currentPrincipal.defaultAddress());
     return;
   }
 
@@ -632,7 +630,7 @@ CalendarPoll.prototype.syncAttendees = function(comp) {
     return;
   }
 
-  comp.removeProperties("attendee");
+  comp.data.removeProperties("attendee");
   var voters = this.getVoters();
   $.each(voters, function(index, voter) {
     var vca = voter.getCalendarAddress();
@@ -644,8 +642,8 @@ CalendarPoll.prototype.syncAttendees = function(comp) {
     );
 
     var attendee = new CalendarUser(attP, null);
-    attendee.cn(voter.cn());
-    attendee.cutype(voter.cutype());
+    attendee.cn(voter.name());
+    attendee.cutype(voter.kind());
 
     if (gSession.currentPrincipal.matchingAddress(voter[3])) {
       voter.setStatus("ACCEPTED");
@@ -720,6 +718,16 @@ CalendarParticipant.prototype.getVotes = function() {
 
     return null;
   });
+};
+
+// Get the name for this user
+CalendarParticipant.prototype.name = function() {
+  return this.data.getPropertyValue("name");
+};
+
+// Get the kind for this user
+CalendarParticipant.prototype.kind = function() {
+  return this.data.getPropertyValue("kind");
 };
 
 // Get a suitable display string for this user

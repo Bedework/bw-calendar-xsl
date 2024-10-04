@@ -126,7 +126,7 @@
                   <input type="checkbox" name="syncPollAttendees" id="syncPollAttendees" checked="checked" disabled="disabled"/>
                   <label for="syncPollAttendees">synchronize voters with attendees</label>
                 </div>
-                <button id="editpoll-addvoter">Add Voter</button>
+                <button id="editpoll-addVoter">Add Voter</button>
               </div>
               <div id="editpoll-results">
                 <div id="editpoll-resultsbox">

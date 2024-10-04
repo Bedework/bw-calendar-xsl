@@ -396,16 +396,16 @@ JcalDtTime.prototype.diff = function(that, units) {
  * @param comp a jcal object
  * @param start a JcalDtTime object so we can calculate duration.
  */
-JcalDtTime.prototype.updateProperty = function(comp, start) {
+JcalDtTime.prototype.updateProperty = function(compData, start) {
   var params;
   var type;
 
   if (this.fieldType === "duration") {
     var dur = moment.duration(this.moment.diff(start.moment, "seconds"), "seconds").toISOString();
 
-    comp.updateProperty("duration", dur, {}, "duration");
+    compData.updateProperty("duration", dur, {}, "duration");
     // May have switched from end to duration
-    comp.removeProperties(this.pname(comp));
+    compData.removeProperties(this.pname(comp));
 
     return;
   }
@@ -424,18 +424,18 @@ JcalDtTime.prototype.updateProperty = function(comp, start) {
     type = "date-time";
   }
 
-  comp.updateProperty(this.pname(comp), val, params, type);
+  compData.updateProperty(this.pname(comp), val, params, type);
   if (this.name === "end") {
-    comp.removeProperties("duration");
+    compData.removeProperties("duration");
   }
 };
 
-JcalDtTime.prototype.pname = function(comp) {
+JcalDtTime.prototype.pname = function(compData) {
   if (this.name === "start") {
     return "dtstart";
   }
 
-  if (comp.isEvent()) {
+  if (compData.isEvent()) {
     return "dtend";
   }
 
