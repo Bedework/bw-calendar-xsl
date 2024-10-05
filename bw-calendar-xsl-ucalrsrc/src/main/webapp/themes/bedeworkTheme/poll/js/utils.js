@@ -147,7 +147,11 @@ function generateUUID() {
 // Addresses
 
 function addressDescription(cn, addr) {
-	return addr ? (cn ? cn + " " : "") + "<" + addr + ">" : "";
+	if (!addr) {
+		return cn;
+	}
+
+	return cn + " <" + addr + ">";
 }
 
 /**

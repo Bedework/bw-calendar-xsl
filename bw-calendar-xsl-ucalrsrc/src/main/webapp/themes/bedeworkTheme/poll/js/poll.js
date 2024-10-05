@@ -95,7 +95,7 @@ Poll.prototype.writeVpollValues = function() {
   });
   $("#bwComp-voterlist").empty();
   $.each(this.editing_poll.getVoters(), function(index, voter) {
-    this_poll.setVoterPanel(this_poll.addParticipantPanel(false, "voter", "Voter"), voter.getCalendarAddress());
+    this_poll.setVoterPanel(this_poll.addParticipantPanel(false, "voter", "Voter"), voter);
   });
 };
 
@@ -127,11 +127,11 @@ Poll.prototype.updateVoters = function() {
   var voters = this.editing_poll.getVoters();
 
   $("#bwComp-voterlist").children().each(function(index) {
-    var voter = voters[index].getCalendarAddress();
+    var voter = voters[index];
     var radioName = "voterType" + (index + 1);
-    var cutype = $("input:radio[name=" + radioName + "]:checked").val();
+    var kind = $("input:radio[name=" + radioName + "]:checked").val();
 
-    this_poll.updateVoterFromPanel($(this), voter, cutype);
+    this_poll.updateVoterFromPanel($(this), voter, kind);
   });
 
 
@@ -189,6 +189,12 @@ Poll.prototype.addChoicePanel = function(index, choice) {
     chc += '<div class="bwChoiceDesc">' + choice.description() + '</div>';
   }
   chc += '</div></div>';
+
+  if (checkStr(choice.locationProp()) !== null) {
+    chc += '<div class="bwChoiceLoc">' + choice.locationProp() + '</div>';
+  }
+  chc += '</div></div>';
+
   chc = $(chc).appendTo("#editpoll-choicelist");
 
   var thisPoll = this;
@@ -750,16 +756,16 @@ Poll.prototype.addParticipantPanel = function(readOnly, itemType, itemLabel) {
     addrField.autocomplete({
       minLength: 3,
       extraParams: {
-        cutype: function () {
+        kind: function () {
           return  $("input:radio[name=" + radioName + "]:checked").val();
         }
       },
       source: function (request, response) {
-        var cutype = this.options.extraParams.cutype();
-        if (cutype === "ANY") {
-          cutype = null;
+        var kind = this.options.extraParams.kind();
+        if (kind === "ANY") {
+          kind = null;
         }
-        gSession.calendarUserSearch(request.term, cutype, function (results) {
+        gSession.calendarUserSearch(request.term, kind, function (results) {
           response(results);
         });
       }
@@ -783,15 +789,17 @@ Poll.prototype.addParticipantPanel = function(readOnly, itemType, itemLabel) {
 
 // Update UI for this voter
 Poll.prototype.setVoterPanel = function(panel, voter) {
-  panel.find(".voter-address").val(voter.addressDescription());
-  panel.find("[name='voterType']").find("[value='" + voter.cutype() + "']").prop('checked', true);
+  var ad = voter.addressDescription();
+  var va = panel.find(".voter-address");
+  va.val(ad);
+  panel.find("[name='voterType']").find("[value='" + voter.getKind() + "']").prop('checked', true);
   return panel;
 };
 
 // Get details of the voter from the UI
-Poll.prototype.updateVoterFromPanel = function(panel, voter, cutype) {
+Poll.prototype.updateVoterFromPanel = function(panel, voter, kind) {
   voter.addressDescription(panel.find(".voter-address").val());
-  voter.cutype(cutype)
+  voter.setKind(kind)
 };
 
 // Add voter button clicked
@@ -800,7 +808,7 @@ Poll.prototype.addVoter = function() {
   poll_syncAttendees = $("#syncPollAttendees").is(":checked");
 
   var voter = this.editing_poll.addVoter();
-  return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter.getCalendarAddress());
+  return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter);
 };
 
 // Remove participant button clicked
@@ -966,7 +974,7 @@ Poll.prototype.buildResults = function() {
 
   $.each(voterDetails, function(index, part) {
     var voterAddr = part.getCalendarAddress();
-    var active = gSession.currentPrincipal.matchingAddress(voterAddr.cuaddr());
+    var active = gSession.currentPrincipal.matchingAddress(voterAddr);
     var tr = $("<tr/>").appendTo(tfoot);
     var voterName = part.nameOrAddress();
     if (voterName.indexOf("mailto:") === 0) {

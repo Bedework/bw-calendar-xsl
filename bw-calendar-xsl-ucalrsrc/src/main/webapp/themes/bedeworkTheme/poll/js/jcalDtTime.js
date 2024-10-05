@@ -405,7 +405,7 @@ JcalDtTime.prototype.updateProperty = function(compData, start) {
 
     compData.updateProperty("duration", dur, {}, "duration");
     // May have switched from end to duration
-    compData.removeProperties(this.pname(comp));
+    compData.removeProperties(this.pname(compData));
 
     return;
   }
@@ -424,7 +424,7 @@ JcalDtTime.prototype.updateProperty = function(compData, start) {
     type = "date-time";
   }
 
-  compData.updateProperty(this.pname(comp), val, params, type);
+  compData.updateProperty(this.pname(compData), val, params, type);
   if (this.name === "end") {
     compData.removeProperties("duration");
   }
