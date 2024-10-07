@@ -95,7 +95,9 @@ Poll.prototype.writeVpollValues = function() {
   });
   $("#bwComp-voterlist").empty();
   $.each(this.editing_poll.getVoters(), function(index, voter) {
-    this_poll.setVoterPanel(this_poll.addParticipantPanel(false, "voter", "Voter"), voter);
+    this_poll.setVoterPanel(
+        this_poll.addParticipantPanel(false, voter.getCalendarAddress(),
+            "voter", "Voter"), voter);
   });
 };
 
@@ -107,6 +109,10 @@ Poll.prototype.getVpollValues = function() {
   if (this.owned) {
     this.editing_poll.summary($("#editpoll-title-edit").val());
 
+    if (poll_syncAttendees) {
+      this.updateVoters();
+      poll_syncAttendees = false;
+    }
     //var events = this.editing_poll.choices();
     //$("#editpoll-choicelist").children().each(function(index) {
     //  this_poll.updateEventFromPanel($(this), events[index]);
@@ -409,7 +415,8 @@ Poll.prototype.populateChoiceForm = function(choice) {
 
   $("#bwComp-attendeelist").empty();
   $.each(choice.attendees(), function(index, attendee) {
-    thisPoll.setAttendeePanel(thisPoll.addParticipantPanel(true, "attendee", "Attendee"), attendee);
+    thisPoll.setAttendeePanel(thisPoll.addParticipantPanel(
+        true, attendee.cn(), "attendee", "Attendee"), attendee);
   });
 };
 
@@ -692,11 +699,14 @@ Poll.prototype.populateRRule = function() {
 /** Add a new voter or attendee item in the UI
  *
  * @param readOnly true if this is for display only
+ * @param itemAddress calendar-address of participant
  * @param itemType "attendee" or "voter"
  * @param itemLabel currently "Attendee" or "Voter"
  * @returns {string}
  */
-Poll.prototype.addParticipantPanel = function(readOnly, itemType, itemLabel) {
+Poll.prototype.addParticipantPanel = function(readOnly,
+                                              itemAddress, itemType,
+                                              itemLabel) {
   var ctr = $("#bwComp-" + itemType + "list").children().length + 1;
   var iditem = itemType + "-address-" + ctr;
   var iditemTypePrefix = itemType + "-" + ctr;
@@ -780,7 +790,7 @@ Poll.prototype.addParticipantPanel = function(readOnly, itemType, itemLabel) {
       }
     }).click(function () {
       //alert("remove particpant " + ctr);
-      this_poll.removeParticipant(itemType, ctr - 1, idDiv)
+      this_poll.removeParticipant(itemType, itemAddress, idDiv)
     });
   }
 
@@ -808,11 +818,14 @@ Poll.prototype.addVoter = function() {
   poll_syncAttendees = $("#syncPollAttendees").is(":checked");
 
   var voter = this.editing_poll.addVoter();
-  return this.setVoterPanel(this.addParticipantPanel(false, "voter", "Voter"), voter);
+  return this.setVoterPanel(
+      this.addParticipantPanel(false, voter.getCalendarAddress(),
+          "voter", "Voter"),
+      voter);
 };
 
 // Remove participant button clicked
-Poll.prototype.removeParticipant = function(itemType, index, idDiv) {
+Poll.prototype.removeParticipant = function(itemType, address, idDiv) {
   if (itemType !== "voter") {
     alert("Remove attendee not implemented");
     return;
@@ -822,7 +835,7 @@ Poll.prototype.removeParticipant = function(itemType, index, idDiv) {
 
   poll_syncAttendees = $("#syncPollAttendees").is(":checked");
 
-  this.editing_poll.removevoter(index);
+  this.editing_poll.removeVoter(address);
 };
 
 /** Build the results UI based on the poll details

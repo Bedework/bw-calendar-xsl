@@ -32,6 +32,7 @@ var choicesTab = 0;
 var votersTab = 1;
 var resultsTab = 2;
 var activeTab = -1;
+var poll_syncAttendees = false;
 
 // Page load
 $(function() {
@@ -256,9 +257,14 @@ ViewController.prototype.clickRefresh = function() {
     return;
   }
 
-  var currentUID = this.activePoll ? this.activePoll.editing_poll.uid() : null;
+  var currentUID = null;
   activeTab = $("#editpoll-tabs").tabs("option", "active");
   if (this.activePoll) {
+    if (activeTab === votersTab) {
+      // Ensure voters up to date
+      this.activePoll.updateVoters();
+    }
+    currentUID = this.activePoll.editing_poll.uid()
     this.clickPollCancel();
   }
   showLoading(true);
@@ -487,16 +493,16 @@ ViewController.prototype.showResults = function(event, ui) {
     newTab = votersTab;
   }
 
+  if (activeTab === votersTab) {
+    // Moving away from voters - update the state
+    this.activePoll.updateVoters();
+  }
+
   if (newTab === resultsTab) {
     this.activePoll.buildResults();
   }
   $("#editpoll-autofill").toggle(newTab === resultsTab);
   $("#response-key").toggle(newTab === resultsTab);
-
-  if (activeTab === votersTab) {
-    // Moving away from voters - update the state
-    this.activePoll.updateVoters();
-  }
 
   activeTab = newTab;
 };

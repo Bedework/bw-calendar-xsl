@@ -194,20 +194,16 @@ jcal.prototype.removeComponents = function(name) {
 
 /**
  * remove nth (starting at 0) component with given name
- * @param name
- * @param index
+ * @param key for matcher
+ * @param matcher function with 3 parameters -
+ * 						component data
+ * 					  key value
+ * 						index in array
+ *           return true for a match.
  */
-jcal.prototype.removeComponentMatching = function(name, indexToRemove) {
-  name = name.toLowerCase();
-  var i = 0;
+jcal.prototype.removeComponentMatching = function(key, matcher) {
   this.caldata[2] = $.grep(this.caldata[2], function(compdata, index) {
-    if (compdata[0] !== name) {
-      return true;
-    }
-
-    i++;
-
-    return indexToRemove !== (i - 1);
+		return !matcher(compdata, key, index);
   });
 };
 

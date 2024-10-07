@@ -573,13 +573,23 @@ CalendarPoll.prototype.addVoter = function(caladdr) {
  *
  * @returns {CalendarUser}
  */
-CalendarPoll.prototype.removevoter = function(index) {
+CalendarPoll.prototype.removeVoter = function(address) {
   if (this.getVoters().length === 1) {
     alert("Must have at least 1 voter");
   }
   this.changed(true);
-  this.data.removeComponentMatching("voter", index);
+  this.data.removeComponentMatching(address, voterMatcher);
 };
+
+function voterMatcher(compData, key, compIndex) {
+  var comp = new CalendarComponent(compData);
+
+  if (comp.data.name().toLowerCase() !== "participant") {
+    return false;
+  }
+
+  return key === comp.data.getPropertyValue("calendar-address");
+}
 
 // Mark current user as accepted
 CalendarPoll.prototype.acceptInvite = function() {
