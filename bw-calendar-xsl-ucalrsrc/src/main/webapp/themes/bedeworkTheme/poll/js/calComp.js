@@ -588,7 +588,9 @@ function voterMatcher(compData, key, compIndex) {
     return false;
   }
 
-  return key === comp.data.getPropertyValue("calendar-address");
+  var matches = key === comp.data.getPropertyValue("calendar-address");
+
+  return matches;
 }
 
 // Mark current user as accepted
