@@ -39,6 +39,7 @@ Poll.prototype.saveResource = function(whenDone) {
   if (this.editing_poll.changed()) {
     this.resource.object = this.editing_object;
     var this_poll = this;
+    this.editing_poll.data.updateProperty("dtstamp", jcalTimestamp(), {}, "date-time");
     this.resource.saveResource(function() {
       // Reload from the resource as it might change after write to server
       this_poll.editing_object = this_poll.resource.object.duplicate();
