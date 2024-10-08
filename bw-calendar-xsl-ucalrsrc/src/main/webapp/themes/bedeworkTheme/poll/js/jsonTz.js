@@ -44,7 +44,7 @@ TzHandler.prototype.get = function(tzid, year) {
       thisTzHandler.parseExpanded(data, tzid);
     })
     .error(function() {
-      alert("tz error");
+      alert("tz error for id " + tzid);
       exp.status = this.errorStatus;
     });
 
