@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.bedework.bwxsl</groupId>
     <artifactId>bw-calendar-xsl</artifactId>
-    <version>4.1.1-SNAPSHOT</version>
+    <version>4.1.1</version>
   </parent>
 
   <artifactId>bw-calendar-xsl-common</artifactId>
