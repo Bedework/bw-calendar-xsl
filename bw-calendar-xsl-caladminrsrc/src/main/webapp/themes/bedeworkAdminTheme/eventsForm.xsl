@@ -2717,7 +2717,9 @@
                 </xsl:if>
                 <br/>
 
+                <!--
                 <xsl:if test="form/xproperties/node()[name()='X-BEDEWORK-MAX-TICKETS']"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
+                -->
 
                 <label for="xBwMaxTicketsHolder" class="interiorLabel"><xsl:copy-of select="$bwStr-AEEF-MaxTickets"/></label>
                 <input type="text" name="xBwMaxTicketsHolder" id="xBwMaxTicketsHolder" size="3">
