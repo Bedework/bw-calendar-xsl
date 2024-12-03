@@ -488,7 +488,7 @@
                   -->&amp;formName=<xsl:value-of select="substring-after(xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']/values/text,'|')"/><!--
               --></xsl:if><!--
            --></xsl:variable>
-              <iframe src="{$eventReg}?href={$calPath}%2F{$eventName}{$customFieldsSuiteParams}" width="100%" height="600">
+              <iframe id="evregIframe" src="{$eventReg}?href={$calPath}%2F{$eventName}{$customFieldsSuiteParams}" width="100%" height="600">
                 <p>
                   <xsl:copy-of select="$bwStr-Error-IframeUnsupported"/>
                 </p>
