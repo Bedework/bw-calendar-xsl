@@ -56,7 +56,7 @@
           </xsl:choose>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="commonListTableBody">
 
         <xsl:apply-templates select="/bedework/events/event" mode="eventListCommon">
           <xsl:with-param name="pending"><xsl:value-of select="$pending"/></xsl:with-param>

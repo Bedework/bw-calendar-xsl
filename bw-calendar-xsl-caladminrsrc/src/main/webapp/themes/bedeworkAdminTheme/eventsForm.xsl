@@ -2963,7 +2963,10 @@
                       <xsl:if test="$eventRegSsoEnabled = 'false'">
                         <!-- XXX A quick expedient - we'll want to do better (!) -->
                         <!-- We should not get here if SSO is enabled, the iframe below should authenticate the user -->
+                        <!--
+                        Disable this - I think the data needed should be readable unauthenticated. - or at least with the key
                         alert("You are not authenticated to the event registration system yet.\nPlease click 'add/manage' to authenticate.");
+                      -->
                       </xsl:if>
                     });
                   }
