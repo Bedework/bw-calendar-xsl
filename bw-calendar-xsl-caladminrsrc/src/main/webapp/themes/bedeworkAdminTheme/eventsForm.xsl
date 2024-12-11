@@ -2923,7 +2923,7 @@
                   </span>
                 </div>
                 <!-- Set the custom field names if any exist -->
-                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="$bwRegistrationRoot"/>/admin/selectForms.do?calsuite=/principals/users/<xsl:value-of
+                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="$bwWSRegistrationRoot"/>/selectForms?calsuite=/principals/users/<xsl:value-of
                         select="/bedework/userInfo/user"/><![CDATA[&]]>atkn=<xsl:value-of
                         select="eventRegAdminToken"/></xsl:variable>
                 <script type="text/javascript">
@@ -2960,24 +2960,10 @@
                       }
                     })
                     .error(function(msg) {
-                      <xsl:if test="$eventRegSsoEnabled = 'false'">
-                        <!-- XXX A quick expedient - we'll want to do better (!) -->
-                        <!-- We should not get here if SSO is enabled, the iframe below should authenticate the user -->
-                        <!--
-                        Disable this - I think the data needed should be readable unauthenticated. - or at least with the key
-                        alert("You are not authenticated to the event registration system yet.\nPlease click 'add/manage' to authenticate.");
-                      -->
-                      </xsl:if>
+                      alert("Unable to query event registration web service.");
                     });
                   }
                 </script>
-                <xsl:if test="$eventRegSsoEnabled = 'true'">
-                  <!-- single sign on for eventreg - connect to the service under the hood to allow authentication -->
-                  <iframe style="display: none;" height="1" width="1">
-                    <xsl:attribute name="src"><xsl:value-of select="$bwRegistrationRoot"/>/admin/auth.do?atkn=<xsl:value-of select="eventRegAdminToken"/></xsl:attribute>
-                    <xsl:text> </xsl:text>
-                  </iframe>
-                </xsl:if>
                 <xsl:if test="/bedework/creating = 'false'">
                   <p>
                     <xsl:variable name="registrationsHref"><xsl:value-of select="$bwRegistrationRoot"/>/admin/adminAgenda.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of

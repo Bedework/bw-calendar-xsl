@@ -47,6 +47,7 @@
 
   <!-- Registration module application context -->
   <xsl:variable name="bwRegistrationRoot">/eventreg</xsl:variable>
+  <xsl:variable name="bwWSRegistrationRoot">/eventregws</xsl:variable>
 
   <!-- Root folder of the submissions calendars used by the submissions client -->
   <xsl:variable name="submissionsRootEncoded" select="/bedework/submissionsRoot/encoded"/>
