@@ -45,10 +45,6 @@
        and can be safely removed if you so choose. -->
   <xsl:variable name="appRoot" select="/bedework/approot"/>
 
-  <!-- Registration module application context -->
-  <xsl:variable name="bwRegistrationRoot">/eventreg</xsl:variable>
-  <xsl:variable name="bwWSRegistrationRoot">/eventregws</xsl:variable>
-
   <!-- Root folder of the submissions calendars used by the submissions client -->
   <xsl:variable name="submissionsRootEncoded" select="/bedework/submissionsRoot/encoded"/>
   <xsl:variable name="submissionsRootUnencoded" select="/bedework/submissionsRoot/unencoded"/>
@@ -98,6 +94,10 @@
   <xsl:variable name="event-selectCalForEvent" select="/bedework/urlPrefixes/event/selectCalForEvent"/>
   <xsl:variable name="event-initUpload" select="/bedework/urlPrefixes/event/initUpload"/>
   <xsl:variable name="event-upload" select="/bedework/urlPrefixes/event/upload"/>
+
+  <!-- eventreg -->
+  <xsl:variable name="bwRegistrationRoot" select="/bedework/urlPrefixes/eventreg/html"/>
+  <xsl:variable name="bwWSRegistrationRoot" select="/bedework/urlPrefixes/eventreg/webService"/>
 
   <!-- suggestions -->
   <xsl:variable name="suggest-setStatus" select="/bedework/urlPrefixes/suggest/setStatus"/>
