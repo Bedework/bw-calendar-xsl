@@ -263,12 +263,16 @@
   <!-- Location of the event registration application; this is set to the
        default quickstart location. If you move it, you must change this
        value. The value includes the path to initialize the system on page load.  -->
-  <xsl:variable name="eventReg">/eventreg/ureg/init.do</xsl:variable>
+  <xsl:variable name="eventReg">/eventreg/init.do</xsl:variable>
 
   <!-- Location of the external users event registration application; this is set to the
        default quickstart location. If you move it, you must change this
-       value. The value includes the path to initialize the system on page load.  -->
-  <xsl:variable name="extEventReg">/eventregext/ureg/init.do</xsl:variable>
+       value. The value includes the path to initialize the system on page load.
+
+       This is currently not deployed. The 2 links may be used if there are 2 different
+       means of authentication. There may be other ways to achieve this - e.g
+       links on a login page
+  <xsl:variable name="extEventReg">/eventregext/init.do</xsl:variable> -->
 
 
 
