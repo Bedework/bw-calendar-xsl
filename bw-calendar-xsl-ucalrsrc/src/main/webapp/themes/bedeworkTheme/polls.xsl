@@ -225,6 +225,11 @@
               </xsl:choose>
             </a>
           </li>
+          <li>
+            <a href="#bwEventTab-Attachments">
+              <xsl:copy-of select="$bwStr-AEEF-AttachmentsTab"/>
+            </a>
+          </li>
         </ul>
 
         <div id="bwTabContent">
@@ -817,6 +822,8 @@
             </div>
           </div>
 
+          <div id="bwEventTab-Attachments">
+          </div>
         </div>
       </div>
 

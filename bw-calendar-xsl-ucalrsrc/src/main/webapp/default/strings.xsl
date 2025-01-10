@@ -303,6 +303,7 @@
   <xsl:variable name="bwStr-AEEF-Recurrence">recurrence</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Scheduling">scheduling</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Meetingtab">meeting</xsl:variable>
+  <xsl:variable name="bwStr-AEEF-AttachmentsTab">attachments</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Calendar">Calendar:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Title">Title:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-DateAndTime">Date &amp; Time:</xsl:variable>
@@ -428,6 +429,9 @@
   <xsl:variable name="bwStr-AEEF-SaveDraft">save draft</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SaveAndSendInvites">send</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Clear">clear message from Inbox</xsl:variable>
+
+  <!-- Attachments tab -->
+  <xsl:variable name="bwStr-AEEF-Attachment">attachment</xsl:variable>
 
   <!-- xsl:template match="val" mode="weekMonthYearNumbers" -->
 

@@ -303,6 +303,7 @@
   <xsl:variable name="bwStr-AEEF-Recurrence">repetitivo</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Scheduling">planificación</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Meetingtab">reunión</xsl:variable>
+  <xsl:variable name="bwStr-AEEF-AttachmentsTab">attachments</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Calendar">Agenda:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Title">Título:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-DateAndTime">Fecha &amp; Hora:</xsl:variable>

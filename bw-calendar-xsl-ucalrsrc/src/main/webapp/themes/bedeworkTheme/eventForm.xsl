@@ -31,7 +31,7 @@
         <xsl:otherwise><xsl:value-of select="/bedework/userid"/></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <form name="eventForm" method="post" action="{$addEvent}" id="standardForm" onsubmit="setEventFields(this,{$portalFriendly},'{$submitter}')">
+    <form name="eventForm" method="post" enctype="multipart/form-data" action="{$addEvent}" id="standardForm" onsubmit="setEventFields(this,{$portalFriendly},'{$submitter}')">
       <h2>
         <span class="formButtons">
           <xsl:apply-templates select="form" mode="addEditEventFormButtons" />
@@ -56,7 +56,7 @@
         <xsl:otherwise><xsl:value-of select="/bedework/userid"/></xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <form name="eventForm" method="post" action="{$updateEvent}" id="standardForm" onsubmit="setEventFields(this,{$portalFriendly},'{$submitter}')">
+    <form name="eventForm" method="post" enctype="multipart/form-data" action="{$updateEvent}" id="standardForm" onsubmit="setEventFields(this,{$portalFriendly},'{$submitter}')">
       <h2>
         <span class="formButtons">
           <xsl:apply-templates select="form" mode="addEditEventFormButtons" />
@@ -93,7 +93,7 @@
   <xsl:template match="formElements" mode="eventForm">
     <xsl:variable name="calPathEncoded" select="form/calendar/encodedPath"/>
     <xsl:variable name="calPath" select="form/calendar/path"/>
-    <xsl:variable name="guid"><xsl:call-template name="url-encode"><xsl:with-param name="str" select="guid"/></xsl:call-template></xsl:variable>
+    <xsl:variable name="guid" select="guid"/>
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <input type="hidden" name="endType" value="date"/>
 
@@ -177,22 +177,22 @@
       <!-- event form submenu -->
       <ul id="eventFormTabs" class="submenu">
         <li class="selected">
-          <a href="javascript:setTab('eventFormTabs',0); show('bwEventTab-Basic'); hide('bwEventTab-Details','bwEventTab-Recurrence','bwEventTab-Access','bwEventTab-Scheduling');">
+          <a href="javascript:setTab('eventFormTabs',0); show('bwEventTab-Basic'); hide('bwEventTab-Details','bwEventTab-Recurrence','bwEventTab-Access','bwEventTab-Attachments','bwEventTab-Scheduling');">
             <xsl:copy-of select="$bwStr-AEEF-Basic"/>
           </a>
         </li>
         <li>
-          <a href="javascript:setTab('eventFormTabs',1); show('bwEventTab-Details'); hide('bwEventTab-Basic','bwEventTab-Recurrence','bwEventTab-Access','bwEventTab-Scheduling');">
+          <a href="javascript:setTab('eventFormTabs',1); show('bwEventTab-Details'); hide('bwEventTab-Basic','bwEventTab-Recurrence','bwEventTab-Access','bwEventTab-Attachments','bwEventTab-Scheduling');">
             <xsl:copy-of select="$bwStr-AEEF-Details"/>
           </a>
         </li>
         <li>
-          <a href="javascript:setTab('eventFormTabs',2); show('bwEventTab-Recurrence'); hide('bwEventTab-Details','bwEventTab-Basic','bwEventTab-Access','bwEventTab-Scheduling');">
+          <a href="javascript:setTab('eventFormTabs',2); show('bwEventTab-Recurrence'); hide('bwEventTab-Details','bwEventTab-Basic','bwEventTab-Access','bwEventTab-Attachments','bwEventTab-Scheduling');">
             <xsl:copy-of select="$bwStr-AEEF-Recurrence"/>
           </a>
         </li>
         <li>
-          <a href="javascript:setTab('eventFormTabs',3); show('bwEventTab-Scheduling'); hide('bwEventTab-Basic','bwEventTab-Details','bwEventTab-Recurrence','bwEventTab-Access');">
+          <a href="javascript:setTab('eventFormTabs',3); show('bwEventTab-Scheduling'); hide('bwEventTab-Basic','bwEventTab-Details','bwEventTab-Recurrence','bwEventTab-Attachments','bwEventTab-Access');">
             <xsl:choose>
               <xsl:when test="form/entityType = '2'"> <!-- "scheduling" for a task -->
                 <xsl:copy-of select="$bwStr-AEEF-Scheduling"/>
@@ -203,10 +203,15 @@
             </xsl:choose>
           </a>
         </li>
+        <li>
+          <a href="javascript:setTab('eventFormTabs',4); show('bwEventTab-Attachments'); hide('bwEventTab-Details','bwEventTab-Basic','bwEventTab-Access','bwEventTab-Recurrence','bwEventTab-Scheduling');">
+            <xsl:copy-of select="$bwStr-AEEF-AttachmentsTab"/>
+          </a>
+        </li>
         <!-- Hide from use.  If you wish to enable the access control form for
          events, uncomment this block and the access control block further down in this file.
         <li>
-          <a href="javascript:setTab('eventFormTabs',4); show('bwEventTab-Access'); hide('bwEventTab-Details','bwEventTab-Basic','bwEventTab-Recurrence','bwEventTab-Scheduling');">
+          <a href="javascript:setTab('eventFormTabs',5); show('bwEventTab-Access'); hide('bwEventTab-Details','bwEventTab-Basic','bwEventTab-Recurrence','bwEventTab-Scheduling');">
             access
           </a>
         </li>-->
@@ -1525,6 +1530,19 @@
 	      </table>
 
 	    </div>
+    </div>
+
+    <div id="bwEventTab-Attachments">
+      <table cellspacing="0" class="common dottedBorder">
+        <tr>
+          <td class="fieldname">
+            <xsl:copy-of select="$bwStr-AEEF-Attachment"/><xsl:text> </xsl:text>
+          </td>
+          <td class="fieldval">
+            <input type="file" name="uploadFile" id="eventFileUpload" size="45"/>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <div class="eventSubmitButtons">
