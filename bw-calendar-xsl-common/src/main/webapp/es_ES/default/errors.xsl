@@ -308,7 +308,7 @@
 	        The file you attempted to upload is too large:  <em><xsl:value-of select="param[position() = 1]"/> bytes</em>.  Max size allowed: <xsl:value-of select="param[position() = 2]"/> bytes.
 	      </xsl:when>
 	
-	      <!-- Scheduling error codes are defined in CalfacadeException -->
+	      <!-- Scheduling error codes are defined in CalfacadeErroCodes -->
 	
 	      <xsl:when test="id='org.bedework.error.scheduling.attendeeaccessdisallowed'">
 	         Error: Access is disallowed to one or more attendees.
@@ -419,7 +419,7 @@
 	
 	      <!--         End of filters            -->
 	
-	      <!-- Other error codes defined in CalfacadeException -->
+	      <!-- Other error codes defined in CalfacadeErroCodes -->
 	
 	      <xsl:when test="id='org.bedework.exception.duplicatecalendar'">
 	         Error: Duplicate calendar: <em><xsl:value-of select="param"/></em>
