@@ -33,7 +33,10 @@ if (window.innerWidth < 768) {
 }
 
 function changeClass(id, newClass) {
-  identity = document.getElementById(id);
+  var identity = document.getElementById(id);
+  if (identity == null) {
+    alert("No element with id: " + id + " to set to class: " + newClass);
+  }
   identity.className=newClass;
 }
 

@@ -27,10 +27,9 @@
 
     <!-- note: the non-breaking spaces in the script bodies below are to avoid
          losing the script closing tags (which avoids browser problems) -->
-    <script type="text/javascript" src="/approots/bedework-common/javascript/jquery/jquery-1.11.3.min.js"><xsl:text> </xsl:text></script>
-    <script type="text/javascript" src="/approots/bedework-common/javascript/jquery/jquery-ui-1.11.4.min.js"><xsl:text> </xsl:text></script>
-    <link rel="stylesheet" href="/approots/bedework-common/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
-    <!--link rel="stylesheet" href="/approots/bedework-common/javascript/jquery/css/custom-theme/bedeworkJquery.css"/-->
+    <script type="text/javascript" src="/javascript/jquery/jquery-1.11.3.min.js"><xsl:text> </xsl:text></script>
+    <script type="text/javascript" src="/javascript/jquery/jquery-ui-1.11.4.min.js"><xsl:text> </xsl:text></script>
+    <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
 
     <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js"><xsl:text> </xsl:text></script>
 
@@ -112,9 +111,9 @@
         </xsl:comment>
       </script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js?v=2.0.8">&#160;</script>
-      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bedeworkXProperties.js">&#160;</script>
-      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bedeworkUtil.js">&#160;</script>
-      <script type="text/javascript" src="{$resourcesRoot}/javascript/modernizr-2.6.2-input.min.js">&#160;</script>
+      <script type="text/javascript" src="/javascript/bedework/bedeworkXProperties.js">&#160;</script>
+      <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">&#160;</script>
+      <script type="text/javascript" src="/javascript/modernizr-2.6.2-input.min.js">&#160;</script>
     </xsl:if>
     <script type="text/javascript">
       <xsl:comment>

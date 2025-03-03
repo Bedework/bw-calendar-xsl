@@ -82,7 +82,7 @@
 
       <!-- load library css -->
       <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/bootstrap3/css/bootstrap.min.css" />
-      <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/jquery/jquery-ui-1.10.3.custom.min.css" />
+      <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css" />
       <!-- load Bedework css ... you may wish to combine (and minify) these files for a production service. -->
       <link rel="stylesheet" type="text/css" media="all" href="{$resourcesRoot}/css/bwThemeGlobal.css" />
       <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/css/bwThemeResponsive-00-Tiny.css" /><!-- @media (max-width: 767px) -->
@@ -112,10 +112,9 @@
       -->
 
       <!-- load library javascript -->
-      <script type="text/javascript" src="{$resourcesRoot}/javascript/modernizr-2.6.2-input.min.js">/* include modernizr */</script>
-      <script type="text/javascript" src="{$resourcesRoot}/javascript/jquery/jquery-1.10.2.min.js">/* include jquery */</script>
-      <script type="text/javascript" src="{$resourcesRoot}/javascript/jquery/jquery-ui-1.10.3.custom.min.js">/* include jquery UI */</script>
-      <!--script type="text/javascript" src="{$resourcesRoot}/javascript/bootstrap3/js/bootstrap.min.js">/* include bootstrap */</script-->
+      <script type="text/javascript" src="/javascript/modernizr-2.6.2-input.min.js">/* include modernizr */</script>
+      <script type="text/javascript" src="/javascript/jquery/jquery-1.11.3.min.js">/* include jquery */</script>
+      <script type="text/javascript" src="/javascript/jquery/jquery-ui-1.11.4.min.js">/* include jquery UI */</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bootstrap3/respond.min.js">/* include respond for IE6-8 responsive support */</script>
 
       <!-- load Bedework javascript -->
@@ -123,15 +122,15 @@
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/bedework.js">/* bedework */</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/navigation.js">/* bedework navigation (menus, links) */</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/eventList.js">/* bedework list events object */</script>
-      <script type="text/javascript" src="/approots/bedework-common/javascript/bedework/bedeworkUtil.js">/* bedework utilities */</script>
+      <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">/* bedework utilities */</script>
 
       <!-- load conditional javascript -->
       <xsl:if test="/bedework/page='eventList' or /bedework/page='eventscalendar'">
-        <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/magnific/magnific-popup.css" />
-        <script type="text/javascript" src="{$resourcesRoot}/javascript/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
+        <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery/magnific/magnific-popup.css" />
+        <script type="text/javascript" src="/javascript/jquery/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
         <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/css/bwExportSubscribe.css" />
         <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/exportSubscribe.js">/* bedework export/subscribe form */</script>
-        <script src="/approots/bedework-common/javascript/jquery/spin.min.js">/* spinner for event load animations */</script>
+        <script src="/javascript/jquery/spin.min.js">/* spinner for event load animations */</script>
       </xsl:if>
       <xsl:if test="/bedework/page='searchResult'">
         <script type="text/javascript" src="{$resourcesRoot}/javascript/catSearch.js">/* category search */</script> <!-- probably should be deprecated-->
