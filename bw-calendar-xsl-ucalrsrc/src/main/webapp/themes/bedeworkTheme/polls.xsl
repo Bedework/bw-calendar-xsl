@@ -59,7 +59,7 @@
               <xsl:variable name="userid" select="/bedework/userid"/>
               <a href="/bwAddrbookClient/?user={$userid}" target="bwAddrBook">
                 <img height="13" border="0" width="13"
-                     src="{$resourcesRoot}/images/silk/book.png"
+                     src="/images/common/silk/book.png"
                      alt="{$bwStr-SdBr-AddrBook}" />
                 <xsl:text> </xsl:text>
                 <xsl:copy-of select="$bwStr-SdBr-AddrBook"/>
@@ -69,7 +69,7 @@
           <li class="prefs">
             <a href="{$prefs-fetchForUpdate}">
               <img height="13" border="0" width="13"
-                   src="{$resourcesRoot}/images/prefsIcon.gif"
+                   src="/images/common/prefsIcon.gif"
                    alt="upload event" />
               <xsl:text> </xsl:text>
               <xsl:copy-of select="$bwStr-SdBr-Preferences"/>
@@ -314,7 +314,7 @@
                           </select>
                         </xsl:if>
                         <xsl:text> </xsl:text>
-                        <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwStartClock"/>
+                        <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwStartClock"/>
 
                         <select name="eventStartDate.tzid" id="startTzid" class="timezones">
                           <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -368,7 +368,7 @@
                             </select>
                           </xsl:if>
                           <xsl:text> </xsl:text>
-                          <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwEndClock"/>
+                          <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwEndClock"/>
 
                           <select name="eventEndDate.tzid" id="endTzid" class="timezones">
                             <option value="-1"><xsl:copy-of select="$bwStr-AEEF-SelectTimezone"/></option>

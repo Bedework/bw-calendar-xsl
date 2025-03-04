@@ -232,7 +232,7 @@ function formatBwThumbnail(event,bwListOptions) {
     imgSrc = imgPrefix + imgObj.values.text;
   } else if(bwListOptions.usePlaceholderThumb) {
     // use a placeholder thumbnail
-    imgSrc = bwListOptions.resourcesRoot + "/images/placeholder.png";
+    imgSrc = "/images/calpublic/placeholder.png";
   }
 
   // did we end up with an image?

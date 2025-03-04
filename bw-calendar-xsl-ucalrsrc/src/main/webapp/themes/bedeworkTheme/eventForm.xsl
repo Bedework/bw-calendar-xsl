@@ -106,7 +106,7 @@
                 <xsl:choose>
                   <xsl:when test="recurrenceId != ''">
                     <div id="bwDeleteRecurButton" class="bwMenuButton">
-                      <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" border="0" alt="delete"/>
+                      <img src="/images/common/trashicon.gif" width="13" height="13" border="0" alt="delete"/>
                       <xsl:copy-of select="$bwStr-AEEF-Delete"/>
                       <div id="bwDeleteRecurWidget" class="bwMenuWidget">
                         <ul>
@@ -126,7 +126,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                     <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-AEEF-DeleteEvent}" class="bwMenuButton" onclick="return confirm('{$bwStr-AEEF-DeleteThisEvent}');">
-                      <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" border="0" alt="delete"/>
+                      <img src="/images/common/trashicon.gif" width="13" height="13" border="0" alt="delete"/>
                        <xsl:copy-of select="$bwStr-AEEF-Delete"/>
                       <xsl:if test="form/recurringEntity='true'">
                         <xsl:copy-of select="$bwStr-AEEF-All"/>
@@ -137,7 +137,7 @@
                 <xsl:if test="not(form/recurringEntity = 'true' and recurrenceId = '')">
                   <!-- don't display if a master recurring event (because the master can't be viewed) -->
                   <a href="{$eventView}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" class="bwMenuButton">
-                    <img src="{$resourcesRoot}/images/glassFill-icon-viewGray.gif" width="13" height="13" border="0" alt="view"/>
+                    <img src="/images/calcommon/glassFill-icon-viewGray.gif" width="13" height="13" border="0" alt="view"/>
                      <xsl:copy-of select="$bwStr-AEEF-View"/>
                   </a>
                 </xsl:if>
@@ -393,7 +393,7 @@
 	                  </select>
 	                </xsl:if>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwStartClock"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwStartClock"/>
 
                   <select name="eventStartDate.tzid" id="startTzid" class="timezones">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -474,7 +474,7 @@
 	                    </select>
 	                  </xsl:if>
                     <xsl:text> </xsl:text>
-                    <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwEndClock"/>
+                    <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwEndClock"/>
 
                     <select name="eventEndDate.tzid" id="endTzid" class="timezones">
                       <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -1311,7 +1311,7 @@
                     <option value="55">55</option>
                   </select>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwRecExcClock"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwRecExcClock"/>
 
                   <select name="tzid" id="rdateTzid" class="timezones">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -1454,7 +1454,7 @@
                   </select>
                 </xsl:if>
                 <xsl:text> </xsl:text>
-                <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwSchedClock"/>
+                <img src="/images/common/clockIcon.gif" width="16" height="15" border="0" alt="bwClock" id="bwSchedClock"/>
               </span>
 	          </td>
 	        </tr>
@@ -1669,7 +1669,7 @@
            used with bwClock.js and bwClock.css -->
       <xsl:variable name="hour24" select="/bedework/hour24"/><!-- true or false -->
       <div id="bwClockClock">
-        <img id="clockMap" src="{$resourcesRoot}/images/clockMap.gif" width="368" height="368" border="0" alt="bwClock" usemap="#bwClockMap" />
+        <img id="clockMap" src="/images/ucal/clockMap.gif" width="368" height="368" border="0" alt="bwClock" usemap="#bwClockMap" />
       </div>
       <div id="bwClockCover">
         &#160;

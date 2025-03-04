@@ -23,7 +23,7 @@
     <meta name="robots" content="noindex,nofollow"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <link rel="stylesheet" href="{$resourcesRoot}/css/default.css"/>
-    <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+    <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
 
     <!-- note: the non-breaking spaces in the script bodies below are to avoid
          losing the script closing tags (which avoids browser problems) -->
@@ -64,7 +64,7 @@
           constrainInput: true,
           dateFormat: "yy-mm-dd",
           showOn: "both",
-          buttonImage: "<xsl:value-of select='$resourcesRoot'/>/images/calIcon.gif",
+          buttonImage: "<xsl:value-of select='/images/calcommon/calIcon.gif",
           buttonImageOnly: true,
           gotoCurrent: true,
           duration: ""

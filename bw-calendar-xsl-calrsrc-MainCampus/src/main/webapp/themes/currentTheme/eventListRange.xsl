@@ -190,17 +190,17 @@
 
         <xsl:if test="$eventIconDownloadIcs = 'true'">
             <a href="{$export}&amp;href={$href}&amp;nocache=no&amp;contentName={$name}" title="{$bwStr-SgEv-Download}">
-              <img src="{$resourcesRoot}/images/std-ical_icon_small.gif" alt="{$bwStr-SgEv-Download}"/>
+              <img src="/images/calcommon/std-ical-icon-small.gif" alt="{$bwStr-SgEv-Download}"/>
             </a>
           </xsl:if>
           <xsl:if test="$eventIconAddToMyCal = 'true'">
             <a href="{$privateCal}/event/addEventRef.do?href={$href}" title="{$bwStr-LsVw-AddEventToMyCalendar}" target="myCalendar">
-              <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon-small.gif" width="12" height="16" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
+              <img class="addref" src="/images/calcommon/add2mycal-icon-small.gif" width="12" height="16" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
             </a>
           </xsl:if>
           <xsl:if test="$eventIconGoogleCal = 'true'">
             <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;dates={$gStartdate}/{$gEnddate}&amp;text={$gText}&amp;details={$gDetails}&amp;location={$gLocation}">
-              <img title="{$bwStr-SgEv-AddToGoogleCalendar}" src="{$resourcesRoot}/images/gcal_small.gif" alt="{$bwStr-SgEv-AddToGoogleCalendar}"/>
+              <img title="{$bwStr-SgEv-AddToGoogleCalendar}" src="/images/calpublic/gcal_small.gif" alt="{$bwStr-SgEv-AddToGoogleCalendar}"/>
             </a>
           </xsl:if>
         </span>

@@ -35,14 +35,14 @@
               <div id="eventActions">
                 <xsl:choose>
                   <xsl:when test="recurrenceId != ''">
-                    <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="delete"/>
+                    <img src="/images/common/trashicon.gif" width="13" height="13" alt="delete"/>
                     <xsl:copy-of select="$bwStr-FoEl-DeleteColon"/>
                     <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}" title="delete master (recurring event)"><xsl:copy-of select="$bwStr-FoEl-All"/></a>,
                     <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="delete instance (recurring event)"><xsl:copy-of select="$bwStr-FoEl-Instance"/>instance</a>
                   </xsl:when>
                   <xsl:otherwise>
                     <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="delete event">
-                      <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="delete"/>
+                      <img src="/images/common/trashicon.gif" width="13" height="13" alt="delete"/>
                       <xsl:copy-of select="$bwStr-FoEl-Delete"/>
                       <xsl:if test="form/recurringEntity='true'">
                         <xsl:copy-of select="$bwStr-FoEl-All"/>
@@ -91,7 +91,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -103,7 +103,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Details','bwHelp-Details','bwBottomNav-Details'); hide('bwEventTab-Location','bwHelp-Location','bwBottomNav-Location');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -115,7 +115,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -127,7 +127,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Location','bwHelp-Location','bwBottomNav-Location'); hide('bwHelp-Contact','bwEventTab-Contact','bwBottomNav-Contact');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -139,7 +139,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -152,7 +152,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Contact','bwHelp-Contact','bwBottomNav-Contact'); hide('bwHelp-Categories','bwEventTab-Categories','bwBottomNav-Categories');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -163,7 +163,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -175,7 +175,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwHelp-Categories','bwEventTab-Categories','bwBottomNav-Categories'); hide('bwHelp-Review','bwEventTab-Review','bwBottomNav-Review'); ">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -371,7 +371,7 @@
                         </select>
                       </xsl:if>
                     <xsl:text> </xsl:text>
-                    <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwStartClock"/>
+                    <img src="/images/common/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwStartClock"/>
 
                     <select name="eventStartDate.tzid" id="startTzid" class="timezones">
                       <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -469,7 +469,7 @@
                           </select>
                         </xsl:if>
                       <xsl:text> </xsl:text>
-                      <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwEndClock"/>
+                      <img src="/images/common/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwEndClock"/>
 
                       <select name="eventEndDate.tzid" id="endTzid" class="timezones">
                         <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -855,7 +855,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -866,7 +866,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Details','bwHelp-Details','bwBottomNav-Details'); hide('bwEventTab-Location','bwHelp-Location','bwBottomNav-Location');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -878,7 +878,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -889,7 +889,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Location','bwHelp-Location','bwBottomNav-Location'); hide('bwHelp-Contact','bwEventTab-Contact','bwBottomNav-Contact');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -901,7 +901,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -912,7 +912,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwEventTab-Contact','bwHelp-Contact','bwBottomNav-Contact'); hide('bwHelp-Categories','bwEventTab-Categories','bwBottomNav-Categories');">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -924,7 +924,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -935,7 +935,7 @@
         <div class="navButtons">
           <a href="javascript:show('bwHelp-Categories','bwEventTab-Categories','bwBottomNav-Categories'); hide('bwHelp-Review','bwEventTab-Review','bwBottomNav-Review'); ">
             <img alt="{$bwStr-FoEl-Previous}"
-              src="{$resourcesRoot}/images/arrowLeft.gif"
+              src="/images/calcommon/arrowLeft.gif"
               width="13"
               height="13"
              />
@@ -947,7 +947,7 @@
             <xsl:copy-of select="$bwStr-FoEl-Next"/>
             <xsl:text> </xsl:text>
             <img alt="{$bwStr-FoEl-Next}"
-              src="{$resourcesRoot}/images/arrowRight.gif"
+              src="/images/calcommon/arrowRight.gif"
               width="13"
               height="13"
              />
@@ -971,7 +971,7 @@
           <xsl:when test="calType = '0'">
             <!-- no direct selecting of folders or folder aliases: we only want users to select the
                  underlying calendar aliases -->
-            <img src="{$resourcesRoot}/images/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
+            <img src="/images/calcommon/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
             <xsl:value-of select="summary"/>
           </xsl:when>
           <xsl:otherwise>

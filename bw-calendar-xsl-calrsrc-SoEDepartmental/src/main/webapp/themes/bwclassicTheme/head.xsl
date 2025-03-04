@@ -60,7 +60,7 @@
               constrainInput: true,
               dateFormat: "yy-mm-dd",
               showOn: "both",
-              buttonImage: "<xsl:value-of select='$resourcesRoot'/>/images/calIcon.gif",
+              buttonImage: "<xsl:value-of select='/images/calcommon/calIcon.gif",
               buttonImageOnly: true,
               gotoCurrent: true,
               duration: ""
@@ -76,7 +76,7 @@
         </xsl:if>
       </xsl:if>
       <!-- address bar icon -->
-      <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+      <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
     </head>
   </xsl:template>
 

@@ -55,7 +55,7 @@
           <script type="text/javascript" src="/approots/bedework-common/javascript/bedework.js">&#160;</script>
         </xsl:if>
         <!-- address bar icon -->
-        <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+        <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
       </head>
       <body>
         <xsl:if test="/bedework/error">
@@ -163,7 +163,7 @@
      <xsl:text> </xsl:text>
      <xsl:variable name="eventIcalName" select="concat($id,'.ics')"/>
      <a href="{$bwCacheHostUrl}/v1.0/download/{$recurrenceId}/{$guid}/{$eventIcalName}" title="{$bwStr-SgEv-DownloadEvent}">
-       <img src="{$resourcesRoot}/images/std-ical_icon_small.gif" width="12" height="16" border="0" alt="{$bwStr-LsEv-DownloadEvent}"/>
+       <img src="/images/calcommon/std-ical-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsEv-DownloadEvent}"/>
      </a>
    </xsl:if>
    <br/>

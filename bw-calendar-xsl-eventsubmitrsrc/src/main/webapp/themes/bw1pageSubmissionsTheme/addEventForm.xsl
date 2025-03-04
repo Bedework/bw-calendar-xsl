@@ -37,14 +37,14 @@
             <div id="eventActions">
               <xsl:choose>
                 <xsl:when test="recurrenceId != ''">
-                  <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="delete"/>
+                  <img src="/images/common/trashicon.gif" width="13" height="13" alt="delete"/>
                   <xsl:copy-of select="$bwStr-FoEl-DeleteColon"/>
                   <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}" title="delete master (recurring event)"><xsl:copy-of select="$bwStr-FoEl-All"/></a>,
                   <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="delete instance (recurring event)"><xsl:copy-of select="$bwStr-FoEl-Instance"/>instance</a>
                 </xsl:when>
                 <xsl:otherwise>
                   <a href="{$delEvent}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="delete event">
-                    <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="delete"/>
+                    <img src="/images/common/trashicon.gif" width="13" height="13" alt="delete"/>
                     <xsl:copy-of select="$bwStr-FoEl-Delete"/>
                     <xsl:if test="form/recurringEntity='true'">
                       <xsl:copy-of select="$bwStr-FoEl-All"/>
@@ -291,7 +291,7 @@
                       </select>
                     </xsl:if>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwStartClock"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwStartClock"/>
 
                   <select name="eventStartDate.tzid" id="startTzid" class="timezones">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -389,7 +389,7 @@
                         </select>
                       </xsl:if>
                     <xsl:text> </xsl:text>
-                    <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwEndClock"/>
+                    <img src="/images/common/clockIcon.gif" width="16" height="15" alt="bwClock" id="bwEndClock"/>
 
                     <select name="eventEndDate.tzid" id="endTzid" class="timezones">
                       <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -794,7 +794,7 @@
           <xsl:when test="actualCalType = '0' or (calType = '0' and starts-with(path,/bedework/currentCalSuite/resourcesHome))">
             <!-- no direct selecting of folders or folder aliases: we only want users to select the
                  underlying calendar aliases -->
-            <img src="{$resourcesRoot}/images/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
+            <img src="/images/calcommon/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
             <xsl:value-of select="summary"/>
           </xsl:when>
           <xsl:otherwise>

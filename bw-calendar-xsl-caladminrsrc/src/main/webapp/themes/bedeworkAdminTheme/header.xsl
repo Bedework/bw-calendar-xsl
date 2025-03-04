@@ -26,7 +26,7 @@
       <a href="/bedework/">
         <img id="logo"
              alt="Bedework Logo"
-             src="{$resourcesRoot}/images/bedeworkAdminLogo.gif"
+             src="/images/caladmin/bedeworkAdminLogo.gif"
              width="217"
              height="40"/>
       </a>

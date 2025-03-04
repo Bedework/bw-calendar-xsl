@@ -69,7 +69,7 @@
       <xsl:variable name="calPath" select="path"/>
       <span class="exportCalLink">
         <a href="{$calendar-fetchForExport}&amp;calPath={$calPath}&amp;virtualPath={$virtualPath}" title="export calendar as iCal">
-          <img src="{$resourcesRoot}/images/calIconExport-sm.gif" width="13" height="13" alt="export calendar" border="0"/>
+          <img src="/images/calcommon/calIconExport-sm.gif" width="13" height="13" alt="export calendar" border="0"/>
         </a>
       </span>
       <xsl:if test="calendar">

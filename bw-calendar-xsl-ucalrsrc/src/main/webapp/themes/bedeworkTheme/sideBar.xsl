@@ -104,7 +104,7 @@
           <xsl:variable name="userid" select="/bedework/userid"/>
           <a href="/bwAddrbookClient/?user={$userid}" target="bwAddrBook">
             <img height="13" border="0" width="13"
-            src="{$resourcesRoot}/images/silk/book.png"
+            src="/images/common/silk/book.png"
             alt="{$bwStr-SdBr-AddrBook}" />
             <xsl:text> </xsl:text>
             <xsl:copy-of select="$bwStr-SdBr-AddrBook"/>
@@ -114,7 +114,7 @@
       <li class="prefs">
         <a href="{$prefs-fetchForUpdate}">
           <img height="13" border="0" width="13"
-            src="{$resourcesRoot}/images/prefsIcon.gif"
+            src="/images/common/prefsIcon.gif"
             alt="upload event" />
           <xsl:text> </xsl:text>
           <xsl:copy-of select="$bwStr-SdBr-Preferences"/>
@@ -124,7 +124,7 @@
         <li>
           <a href="{$initUpload}" title="{$bwStr-SdBr-UploadEvent}">
             <img height="16" border="0" width="12"
-            src="{$resourcesRoot}/images/std-icalUpload-icon-small.gif"
+            src="/images/ucal/std-icalUpload-icon-small.gif"
             alt="upload ical" />
             <xsl:text> </xsl:text>
             <xsl:copy-of select="$bwStr-SdBr-UploadICal"/>
@@ -134,7 +134,7 @@
       <li>
         <a href="{$calendar-listForExport}" title="{$bwStr-SdBr-ExportCalendars}">
           <img height="16" border="0" width="12"
-            src="{$resourcesRoot}/images/std-icalDownload-icon-small.gif"
+            src="/images/ucal/std-icalDownload-icon-small.gif"
             alt="upload event" />
           <xsl:text> </xsl:text>
           <xsl:copy-of select="$bwStr-SdBr-ExportCalendars"/>

@@ -69,7 +69,7 @@
             <li>
               <a id="expSubLinksGrid" class="rss" href="#exportSubscribePopup" title="{$bwStr-HdBr-ExportSubscribe}">
                 <xsl:copy-of select="$bwStr-HdBr-ExportSubscribe"/><xsl:text> </xsl:text>
-                <img src="{$resourcesRoot}/images/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
+                <img src="/images/calpublic/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
               </a>
             </li>
           </ul>

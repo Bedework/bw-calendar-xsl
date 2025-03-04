@@ -182,11 +182,11 @@
         <th class="icalIcon" rowspan="2">
           <div id="eventIcons">
             <a href="{$privateCal}/event/addEventRef.do?calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-SgEv-AddEventToMyCalendar}" target="myCalendar">
-              <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon.gif" width="20" height="26" border="0" alt="{$bwStr-SgEv-AddEventToMyCalendar}"/>
+              <img class="addref" src="/images/calcommon/add2mycal-icon.gif" width="20" height="26" border="0" alt="{$bwStr-SgEv-AddEventToMyCalendar}"/>
               <xsl:copy-of select="$bwStr-SgEv-AddToMyCalendar"/>
             </a>
             <a href="{$export}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}&amp;nocache=no&amp;contentName={$name}" title="{$bwStr-SgEv-DownloadEvent}">
-              <img src="{$resourcesRoot}/images/std-ical_icon.gif" width="20" height="26" border="0" alt="Download this event"/>
+              <img src="/images/calcommon/std-ical-icon.gif" width="20" height="26" border="0" alt="Download this event"/>
              <xsl:copy-of select="$bwStr-SgEv-Download"/></a>
           </div>
         </th>

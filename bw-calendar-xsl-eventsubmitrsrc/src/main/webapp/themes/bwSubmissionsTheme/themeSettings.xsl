@@ -36,7 +36,7 @@
     </div>
     <div id="siteLogo">
       <a href="/cal">
-        <img src="{$resourcesRoot}/images/bedework.png" width="243" height="40" alt="Bedework Calendar"/>
+        <img src="/images/common/bedework.png" width="243" height="40" alt="Bedework Calendar"/>
       </a>
     </div>
   </xsl:variable>

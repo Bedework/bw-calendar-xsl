@@ -113,7 +113,7 @@ body {
   padding: 0.3em 0 0.3em 1em;
   border-bottom: 1px solid Gray;
   color: black;
-  background: #ff0 url(../images/glassFill-message.gif) repeat-x top;
+  background: #ff0 url(/images/calcommon/glassFill-message.gif) repeat-x top;
 }
 #errors {
   border-bottom: 2px solid red;
@@ -162,7 +162,7 @@ body {
   border-right: 1px solid #999;
 }
 #menuTabs li.selected {
-  background: white url("../images/menuBgGray.gif") repeat-x top;
+  background: white url("/images/common/menuBgGray.gif") repeat-x top;
   border-bottom: 2px solid white;
   color: #333;
 }
@@ -317,7 +317,7 @@ ul.submenu li.selected:hover {
   font-weight: normal;
   margin: -1em -1em 0 -1em;
   padding: 4px 0;
-  background: #233979 url(../images/glassFill-02.gif) repeat-x bottom;
+  background: #233979 url(/images/calcommon/glassFill-02.gif) repeat-x bottom;
   color : #eee;
   text-align: center;
 }
@@ -742,10 +742,10 @@ table#manage td {
   padding-top: 0.25em;
 }
 li.folder {
-  list-style-image: url(../images/catIcon.gif);
+  list-style-image: url(/images/calcommon/catIcon.gif);
 }
  li.calendar {
-  list-style-image: url(../images/calIcon-sm.gif);
+  list-style-image: url(/images/calcommon/calIcon-sm.gif);
 }
 .calendarTree a:link,
 .calendarTree a:active,

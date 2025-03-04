@@ -90,7 +90,7 @@
       </li>
       <li>
         <xsl:copy-of select="$bwStr-Subs-SelectThe"/>
-        <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13" height="13" alt="true"/>
+        <img src="/images/calcommon/calAddIcon.gif" width="13" height="13" alt="true"/>
         <xsl:copy-of select="$bwStr-Subs-IconToAdd"/>
       </li>
     </ul>
@@ -119,12 +119,12 @@
          <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$subscriptions-openCloseMod}&amp;calPath={$calPath}&amp;open=false">
-              <img src="{$resourcesRoot}/images/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
+              <img src="/images/caladmin/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$subscriptions-openCloseMod}&amp;calPath={$calPath}&amp;open=true">
-              <img src="{$resourcesRoot}/images/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
+              <img src="/images/caladmin/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
             </a>
           </xsl:otherwise>
         </xsl:choose>
@@ -150,7 +150,7 @@
       <xsl:if test="calType = '0' and isSubscription='false'">
         <xsl:text> </xsl:text>
         <a href="{$subscriptions-initAdd}&amp;calPath={$calPath}" title="{$bwStr-Cals-AddSubscription}">
-          <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13" height="13" alt="{$bwStr-Cals-AddSubscription}"/>
+          <img src="/images/calcommon/calAddIcon.gif" width="13" height="13" alt="{$bwStr-Cals-AddSubscription}"/>
         </a>
       </xsl:if>
       <xsl:if test="calendar">

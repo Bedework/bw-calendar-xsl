@@ -197,7 +197,7 @@ body {
 }
 #bwAdminMenu li.selected {
   color: #333;
-  background: white url("../images/menuBgGray.gif") repeat-x top;
+  background: white url("/images/caladmin/menuBgGray.gif") repeat-x top;
   border-bottom: 2px solid white;
 }
 #bwAdminMenu a:link,
@@ -569,11 +569,11 @@ ul.adminMenu li {
   color: black;
 }
 #commonListTable tr.cancelled td {
-  background: #fff url("../images/cancelledLines.gif") repeat top left;;
+  background: #fff url("/images/caladmin/cancelledLines.gif") repeat top left;;
   color: black;
 }
 #commonListTable tr.tentative td {
-  background: #fff url("../images/tentativeLines.gif") repeat top left;
+  background: #fff url("/images/caladmin/tentativeLines.gif") repeat top left;
   color: black;
 }
 #commonListTable td.unclaimed {
@@ -922,13 +922,13 @@ a.disabled {
   margin: 0 0 0 -20px;
   padding: 5px 4px 4px 20px;
   cursor: pointer;
-  background: url("../images/checkbox-off.png") left center no-repeat;
+  background: url("/images/caladmin/checkbox-off.png") left center no-repeat;
 }
 #bwTopicalAreas li.checkedByOtherGroup input[type='checkbox'] + label {
-  background-image: url("../images/checkbox-others.png");
+  background-image: url("/images/caladmin/checkbox-others.png");
 }
 #bwTopicalAreas input[type='checkbox']:checked + label {
-  background-image: url("../images/checkbox-on.png") !important;
+  background-image: url("/images/caladmin/checkbox-on.png") !important;
 }
 #remainingChars {
 	margin-left: 2em;
@@ -1243,7 +1243,7 @@ table.common2 th {
   margin: 0;
   text-align: center;
   color: #eee;
-  background: #233979 url(../images/glassFill-02.gif) repeat-x bottom;
+  background: #233979 url(/images/calcommon/glassFill-02.gif) repeat-x bottom;
   border: 2px solid #233979;
 }
 #bwDialogBox #errors,
@@ -1262,7 +1262,7 @@ table.common2 th {
 }
 #contactEmailAlert {
   display: none;
-  background: transparent url('../images/email.gif') no-repeat top left;
+  background: transparent url('/images/common/email.gif') no-repeat top left;
   /*position: relative;
   top: -20px;
   left: 250px;*/
@@ -1571,61 +1571,61 @@ ul.calendarTree {
   padding-top: 0.25em;
 }
 li.folder {
-  list-style-image: url("../images/catIcon.gif");
+  list-style-image: url("/images/calcommon/catIcon.gif");
 }
 li.calendar {
-  list-style-image: url("../images/calIcon-sm.gif");
+  list-style-image: url("/images/calcommon/calIcon-sm.gif");
 }
 li.categories {
-  list-style-image: url("../images/categoryIcon.gif");
+  list-style-image: url("/images/caladmin/categoryIcon.gif");
 }
 li.calsuites {
-  list-style-image: url("../images/calsuitesIcon.gif");
+  list-style-image: url("/images/caladmin/calsuitesIcon.gif");
 }
 li.upload {
-  list-style-image: url("../images/uploadIcon.gif");
+  list-style-image: url("/images/caladmin/uploadIcon.gif");
 }
 li.prefs {
-  list-style-image: url("../images/prefsIcon.gif");
+  list-style-image: url("/images/common/prefsIcon.gif");
 }
 li.timezones {
-  list-style-image: url("../images/clockIcon-sm.gif");
+  list-style-image: url("/images/common/clockIcon-sm.gif");
 }
 li.groups {
-  list-style-image: url("../images/groupIcon.gif");
+  list-style-image: url("/images/common/groupIcon.gif");
 }
 li.user {
-  list-style-image: url("../images/userIcon.gif");
+  list-style-image: url("/images/common/userIcon.gif");
 }
 li.changeGroup {
-  list-style-image: url("../images/changeGroup.gif");
+  list-style-image: url("/images/caladmin/changeGroup.gif");
 }
 .calendarTree  li.trash {
-  list-style-image: url("../images/trashIcon.gif");
+  list-style-image: url("/images/common/trashicon.gif");
 }
 .calendarTree  li.inbox {
-  list-style-image: url("../images/inboxIcon.gif");
+  list-style-image: url("/images/calcommon/inboxIcon.gif");
 }
 .calendarTree  li.outbox {
-  list-style-image: url("../images/outboxIcon.gif");
+  list-style-image: url("/images/calcommon/outboxIcon.gif");
 }
 #bedework  li.unknown,
 #bedework  li.deleted {
-  list-style-image: url(../images/calIconDeleted-sm.gif);
+  list-style-image: url(/images/calcommon/calIconDeleted-sm.gif);
   font-style: italic;
 }
 .calendarTree  li.selected {
-  list-style-image: url("../images/glassFill-icon-view.gif");
+  list-style-image: url("/images/calcommon/glassFill-icon-view.gif");
   font-weight: bold;
 }
 .calendarTree  li.alias {
-  list-style-image: url("../images/calIconAlias-sm.gif");
+  list-style-image: url("/images/calcommon/calIconAlias-sm.gif");
   font-style: italic;
   margin-left: 0;
   padding-left: 0;
 }
 .calendarTree  li.aliasFolder {
-  list-style-image: url("../images/catIconAlias.gif");
+  list-style-image: url("/images/calcommon/catIconAlias.gif");
   font-style: italic;
   margin-left: 0;
   padding-left: 0;

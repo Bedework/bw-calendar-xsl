@@ -57,7 +57,7 @@
             <xsl:if test="not(/bedework/currentCalSuite/name)">
               <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
             </xsl:if>
-            <img src="{$resourcesRoot}/images/bwAdminAddEventIcon.jpg" width="140" height="140" alt=""/><!-- alt tag empty for accessibility -->
+            <img src="/images/caladmin/bwAdminAddEventIcon.jpg" width="140" height="140" alt=""/><!-- alt tag empty for accessibility -->
             <br/><xsl:copy-of select="$bwStr-MMnu-AddEvent"/>
           </a>
         </li>
@@ -66,13 +66,13 @@
                       $superUser = 'true'">
           <li>
             <a id="addContactLink" href="{$contact-initAdd}">
-              <img src="{$resourcesRoot}/images/bwAdminAddContactIcon.jpg" width="100" height="100" alt=""/><!-- alt tag empty for accessibility -->
+              <img src="/images/caladmin/bwAdminAddContactIcon.jpg" width="100" height="100" alt=""/><!-- alt tag empty for accessibility -->
               <br/><xsl:copy-of select="$bwStr-MMnu-AddContact"/>
             </a>
           </li>
           <li>
             <a id="addLocationLink" href="{$location-initAdd}">
-              <img src="{$resourcesRoot}/images/bwAdminAddLocationIcon.jpg" width="100" height="100" alt=""/><!-- alt tag empty for accessibility -->
+              <img src="/images/caladmin/bwAdminAddLocationIcon.jpg" width="100" height="100" alt=""/><!-- alt tag empty for accessibility -->
               <br/><xsl:copy-of select="$bwStr-MMnu-AddLocation"/>
             </a>
           </li>
@@ -83,7 +83,7 @@
                 Categories underlie much of the single calendar and filtering model.-->
               <li>
                 <a id="addCategoryLink" href="{$category-initAdd}">
-                  <img src="{$resourcesRoot}/images/bwAdminAddCategoryIcon.jpg" width="100" height="100" alt=""/>
+                  <img src="/images/caladmin/bwAdminAddCategoryIcon.jpg" width="100" height="100" alt=""/>
                   <br/><xsl:copy-of select="$bwStr-MMnu-AddCategory"/>
                 </a>
               </li>
@@ -117,7 +117,7 @@
               <xsl:if test="not(/bedework/currentCalSuite/name)">
                 <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
               </xsl:if>
-              <img src="{$resourcesRoot}/images/bwAdminManageEventsIcon.jpg" width="100" height="73" alt=""/>
+              <img src="/images/caladmin/bwAdminManageEventsIcon.jpg" width="100" height="73" alt=""/>
               <br/><xsl:copy-of select="$bwStr-MMnu-ManageEvents"/>
             </a>
           </li>
@@ -126,13 +126,13 @@
                     $superUser = 'true'">
             <li>
               <a href="{$contact-initUpdate}">
-                <img src="{$resourcesRoot}/images/bwAdminManageContactsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
+                <img src="/images/caladmin/bwAdminManageContactsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
                 <br/><xsl:copy-of select="$bwStr-MMnu-ManageContacts"/>
               </a>
             </li>
             <li>
               <a href="{$location-initUpdate}">
-                <img src="{$resourcesRoot}/images/bwAdminManageLocsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
+                <img src="/images/caladmin/bwAdminManageLocsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
                 <br/><xsl:copy-of select="$bwStr-MMnu-ManageLocations"/>
               </a>
             </li>
@@ -143,7 +143,7 @@
                   Categories underlie much of the new single calendar and filtering model.-->
                 <li>
                   <a href="{$category-initUpdate}">
-                    <img src="{$resourcesRoot}/images/bwAdminManageCatsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
+                    <img src="/images/caladmin/bwAdminManageCatsIcon.jpg" width="100" height="73" alt=""/><!-- alt tag empty for accessibility -->
                     <br/><xsl:copy-of select="$bwStr-MMnu-ManageCategories"/>
                   </a>
                 </li>

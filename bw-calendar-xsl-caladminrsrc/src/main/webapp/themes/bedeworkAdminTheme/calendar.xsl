@@ -83,7 +83,7 @@
 
       <li><xsl:copy-of select="$bwStr-CaLi-SelectItemFromPublicTree"/></li>
       <li><xsl:copy-of select="$bwStr-CaLi-SelectThe"/><xsl:text> </xsl:text>
-        <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13" height="13" alt="true"/>
+        <img src="/images/calcommon/calAddIcon.gif" width="13" height="13" alt="true"/>
         <xsl:text> </xsl:text><xsl:copy-of select="$bwStr-CaLi-IconToAdd"/>
         <ul>
           <li><xsl:copy-of select="$bwStr-CaLi-FoldersMayContain"/></li>
@@ -246,12 +246,12 @@
         <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$calendar-openCloseSelect}&amp;calPath={$calPath}&amp;open=false">
-              <img src="{$resourcesRoot}/images/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
+              <img src="/images/caladmin/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$calendar-openCloseSelect}&amp;calPath={$calPath}&amp;open=true">
-              <img src="{$resourcesRoot}/images/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
+              <img src="/images/caladmin/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
             </a>
           </xsl:otherwise>
         </xsl:choose>

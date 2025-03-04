@@ -60,7 +60,7 @@
       <a href="{$calendar-fetchForExport}&amp;calPath={$calPath}&amp;virtualPath={$virtualPath}" title="export calendar as iCal">
         <xsl:value-of select="summary"/>
         <span class="exportCalLink">
-          <img src="{$resourcesRoot}/images/calIconExport-sm.gif" width="13" height="13" alt="export calendar"/>
+          <img src="/images/calcommon/calIconExport-sm.gif" width="13" height="13" alt="export calendar"/>
         </span>
       </a>
       <xsl:if test="calendar[not(starts-with(name,'.'))]">
@@ -125,7 +125,7 @@
          constrainInput: true,
          dateFormat: "yy-mm-dd",
          showOn: "both",
-         buttonImage: "<xsl:value-of select='$resourcesRoot'/>/images/calIcon.gif",
+         buttonImage: "<xsl:value-of select='/images/calcommon/calIcon.gif",
          buttonImageOnly: true,
          gotoCurrent: true,
          duration: ""

@@ -368,7 +368,7 @@
                 // $("ul.aliasTree > li:eq(4) > ul").hide();
                 // $("ul.aliasTree > li:eq(11) > ul").hide();
                 // $("ul.aliasTree > li:eq(13) > ul").hide();
-                $("ul.aliasTree > li > img.folderForAliasTree").attr("src", '<xsl:value-of select="$resourcesRoot"/>/images/catExpander.gif');
+                $("ul.aliasTree > li > img.folderForAliasTree").attr("src", '/images/caladmin/catExpander.gif');
                 $("ul.aliasTree > li > img.folderForAliasTree").css("cursor","pointer");
                 $("ul.aliasTree > li > img.folderForAliasTree").click(function(){
                   $(this).next("ul.aliasTree > li > ul").slideToggle("slow");
@@ -500,7 +500,7 @@
           <script type="text/javascript" src="{$resourcesRoot}/javascript/modResources.js">/* Bedework Resource Handling */</script>
           <link rel="stylesheet" href="{$resourcesRoot}/css/featuredEventsForm.css"/>
         </xsl:if>
-        <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+        <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
       </head>
   </xsl:template>
 

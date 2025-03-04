@@ -765,7 +765,7 @@ div.groupDesc {
 #gridCalendarTable a.eventTentative:visited  {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
-  background: #eee url("../images/tentativeLines.gif") top;
+  background: #eee url("/images/calcommon/tentativeLines.gif") top;
   color: black;
 }
 /* example of specialized coloring: */
@@ -832,7 +832,7 @@ div.groupDesc {
 #gridCalendarTable a:hover span.eventTipStatusTentative {
   display: block;
   color: black;
-  background: #eee url('../../images/tentativeLines.gif') top;
+  background: #eee url('/images/calcommon/tentativeLines.gif') top;
   padding: 2px;
   margin-bottom: 6px;
   border: 1px solid #ccc;

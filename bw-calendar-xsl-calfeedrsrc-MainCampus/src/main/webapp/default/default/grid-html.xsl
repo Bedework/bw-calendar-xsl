@@ -81,7 +81,7 @@
                 constrainInput: true,
                 dateFormat: "yy-mm-dd",
                 showOn: "both",
-                buttonImage: "<xsl:value-of select='$resourcesRoot'/>/images/calIcon.gif",
+                buttonImage: "<xsl:value-of select='/images/calcommon/calIcon.gif",
                 buttonImageOnly: true,
                 gotoCurrent: true,
                 duration: ""
@@ -97,7 +97,7 @@
           </xsl:if>
         </xsl:if>
         <!-- address bar icon -->
-        <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+        <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
       </head>
       <body>
         <xsl:if test="/bedework/error">
@@ -319,12 +319,12 @@
         <th class="icalIcon" rowspan="2">
           <div id="eventIcons">
             <a href="{$privateCal}/event/addEventRef.do?calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-SgEv-AddEventToMyCalendar}" target="myCalendar">
-              <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon.gif" width="20" height="26" border="0" alt="Add event to MyCalendar"/>
+              <img class="addref" src="/images/calcommon/add2mycal-icon.gif" width="20" height="26" border="0" alt="Add event to MyCalendar"/>
               <xsl:copy-of select="$bwStr-SgEv-AddToMyCalendar"/>
             </a>
             <xsl:variable name="eventIcalName" select="concat($guid,'.ics')"/>
             <a href="{$export}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}&amp;nocache=no&amp;contentName={$eventIcalName}" title="{$bwStr-SgEv-DownloadEvent}">
-              <img src="{$resourcesRoot}/images/std-ical_icon.gif" width="20" height="26" border="0" alt="Download this event"/>
+              <img src="/images/calcommon/std-ical-icon.gif" width="20" height="26" border="0" alt="Download this event"/>
              <xsl:copy-of select="$bwStr-SgEv-Download"/></a>
           </div>
         </th>
@@ -633,11 +633,11 @@
                 </td>
                 <td class="icons">
                   <a href="{$privateCal}/event/addEventRef.do?calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-LsVw-AddEventToMyCalendar}" target="myCalendar">
-                    <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
+                    <img class="addref" src="/images/calcommon/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
                   </a>
                   <xsl:variable name="eventIcalName" select="concat($id,'.ics')"/>
                   <a href="{$export}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}&amp;nocache=no&amp;contentName={$eventIcalName}" title="{$bwStr-LsVw-DownloadEvent}">
-                    <img src="{$resourcesRoot}/images/std-ical_icon_small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-DownloadEvent}"/>
+                    <img src="/images/calcommon/std-ical-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-DownloadEvent}"/>
                   </a>
                 </td>
               </tr>
@@ -688,12 +688,12 @@
                 </xsl:if>
                 <xsl:text> </xsl:text>
                 <a href="{$privateCal}/event/addEventRef.do?calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-LsVw-AddEventToMyCalendar}" target="myCalendar">
-                  <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
+                  <img class="addref" src="/images/calcommon/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
                 </a>
                 <xsl:text> </xsl:text>
                 <xsl:variable name="eventIcalName" select="concat($id,'.ics')"/>
                 <a href="{$export}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}&amp;nocache=no&amp;contentName={$eventIcalName}" title="{$bwStr-LsEv-DownloadEvent}">
-                  <img src="{$resourcesRoot}/images/std-ical_icon_small.gif" width="12" height="16" border="0" alt="{$bwStr-LsEv-DownloadEvent}"/>
+                  <img src="/images/calcommon/std-ical-icon-small.gif" width="12" height="16" border="0" alt="{$bwStr-LsEv-DownloadEvent}"/>
                 </a>
 
                 <br/>

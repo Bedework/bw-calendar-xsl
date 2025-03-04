@@ -132,7 +132,7 @@
                   <xsl:variable name="subRemoveName" select="."/>
                   <a href="{$view-update}&amp;name={$viewName}&amp;remove={$subRemoveName}">
                     <span class="arrow">
-                        <img src="{$resourcesRoot}/images/arrowLeft.gif"
+                        <img src="/images/calcommon/arrowLeft.gif"
                              width="13" height="13"
                              alt="add subscription"/>
                     </span>
@@ -177,7 +177,7 @@
           <span class="viewCalSummary">
             <xsl:if test="actualCalType = '0' and isSubscription = 'false'">
               <!-- display a folder icon for local folders... -->
-              <img src="{$resourcesRoot}/images/catIcon.gif"
+              <img src="/images/calcommon/catIcon.gif"
                    width="13" height="13"
                    alt="folder"/>
               <xsl:text> </xsl:text>
@@ -194,7 +194,7 @@
             <span class="viewCalSummary">
               <xsl:if test="actualCalType = '0' and isSubscription = 'false'">
                 <!-- display a folder icon for local folders... -->
-                <img src="{$resourcesRoot}/images/catIcon.gif"
+                <img src="/images/calcommon/catIcon.gif"
                      width="13" height="13"
                      alt="folder"/>
                 <xsl:text> </xsl:text>
@@ -202,7 +202,7 @@
               <xsl:value-of select="summary"/>
             </span>
             <span class="arrow">
-              <img src="{$resourcesRoot}/images/arrowRight.gif" width="13" height="13" alt="add subscription"/>
+              <img src="/images/calcommon/arrowRight.gif" width="13" height="13" alt="add subscription"/>
             </span>
           </a>
           <xsl:if test="calendar">

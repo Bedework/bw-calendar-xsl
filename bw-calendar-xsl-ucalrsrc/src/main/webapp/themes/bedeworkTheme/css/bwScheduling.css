@@ -133,7 +133,7 @@
   color: black;
 } 
 #bwScheduleTable td.tentative {
-  background: #eef url("../images/tentativeLines.gif") !important;
+  background: #eef url("/images/calcommon/tentativeLines.gif") !important;
   color: black;
 }
 #bwScheduleTable td.highlight {

@@ -86,7 +86,7 @@
     <div class="navButtons navBox">
       <a href="{$initEvent}"><xsl:copy-of select="$bwStr-Home-Start"/>
         <img alt="previous"
-          src="{$resourcesRoot}/images/arrowRight.gif"
+          src="/images/calcommon/arrowRight.gif"
           width="13"
           height="13"/>
       </a>

@@ -425,7 +425,7 @@
                 <xsl:when test="kind='1'"><!-- kind = user -->
                   <tr>
                     <td>
-                      <img src="{$resourcesRoot}/images/userIcon.gif"
+                      <img src="/images/common/userIcon.gif"
                            width="13" height="13"
                            alt="{$bwStr-MAGM-User}"/>
                     </td>
@@ -436,7 +436,7 @@
                       <xsl:variable name="acct" select="account"/>
                       <a href="{$admingroup-updateMembers}&amp;removeGroupMember={$acct}&amp;kind=user"
                          title="{$bwStr-MAGM-Remove}">
-                        <img src="{$resourcesRoot}/images/trashIcon.gif"
+                        <img src="/images/common/trashicon.gif"
                              width="13" height="13"
                              alt="{$bwStr-MAGM-Remove}"/>
                       </a>
@@ -446,7 +446,7 @@
                 <xsl:otherwise><!-- kind = group -->
                   <tr>
                     <td>
-                      <img src="{$resourcesRoot}/images/groupIcon.gif"
+                      <img src="/images/common/groupIcon.gif"
                            width="13" height="13"
                            alt="group"/>
                     </td>
@@ -459,7 +459,7 @@
                       <xsl:variable name="acct" select="account"/>
                       <a href="{$admingroup-updateMembers}&amp;removeGroupMember={$acct}&amp;kind=group"
                          title="{$bwStr-MAGM-Remove}">
-                        <img src="{$resourcesRoot}/images/trashIcon.gif"
+                        <img src="/images/common/trashicon.gif"
                              width="13" height="13"
                              alt="{$bwStr-MAGM-Remove}"/>
                       </a>
@@ -473,11 +473,11 @@
       </tr>
     </table>
     <p>
-      <img src="{$resourcesRoot}/images/userIcon.gif" width="13"
+      <img src="/images/common/userIcon.gif" width="13"
            height="13" alt="{$bwStr-MAGM-User}"/>
       <xsl:text> </xsl:text>
       <xsl:copy-of select="$bwStr-MAGM-User"/>,
-      <img src="{$resourcesRoot}/images/groupIcon.gif" width="13"
+      <img src="/images/common/groupIcon.gif" width="13"
            height="13" alt="{$bwStr-MAGM-Group}"/>
       <xsl:text> </xsl:text>
       <strong>

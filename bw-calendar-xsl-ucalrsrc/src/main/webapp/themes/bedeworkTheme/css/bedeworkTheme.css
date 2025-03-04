@@ -64,7 +64,7 @@ h2.bwStatusCancelled {
   color: black;
 }
 h2.bwStatusTentative {
-  background: #eee url("../images/tentativeLines.gif") top !important;
+  background: #eee url("/images/calcommon/tentativeLines.gif") top !important;
   color: black;
 }
 .formButtons {
@@ -164,7 +164,7 @@ td {
 #curDateRangeTable {
   width: 100%;
   height: 26px;
-  background: #233979 url("../images/glassFill-02.gif") repeat-x bottom;
+  background: #233979 url("/images/calcommon/glassFill-02.gif") repeat-x bottom;
   color : #eee;
   margin: 0em;
   text-align : center;
@@ -178,7 +178,7 @@ td {
   vertical-align: middle;
 }
 #curDateRangeTable td.sideBarOpenCloseIcon {
-  background: url("../images/glassFill-02-leftBorder.gif") no-repeat top left;
+  background: url("/images/calcommon/glassFill-02-leftBorder.gif") no-repeat top left;
   color: inherit;
   width: 200px;
 }
@@ -189,7 +189,7 @@ td {
   font-size: 0.9em;
 }
 #curDateRangeTable td.rssPrint {
-  background: url("../images/glassFill-02-rightBorder.gif") no-repeat top right;
+  background: url("/images/calcommon/glassFill-02-rightBorder.gif") no-repeat top right;
   color: inherit;
   width: 200px;
   font-weight : bold;
@@ -272,7 +272,7 @@ td {
   min-width: 150px;
   font-size: 0.7em;
   color: black;
-  background: white url("../images/sideBarGrayGradRight.gif") repeat-y left;
+  background: white url("/images/ucal/sideBarGrayGradRight.gif") repeat-y left;
   border-right: 2px solid #333;
   border-bottom: 2px solid #aaa;
   vertical-align: top;
@@ -284,11 +284,11 @@ td {
   padding-left: 0;
 }
 #bodyBlock td#msgTaskBar li.bwSchMsg {
-  list-style-image: url("../images/calIconSchedule-sm.gif");
+  list-style-image: url("/images/ucal/calIconSchedule-sm.gif");
   margin: 0 4px 8px 4px;
 }
 #bodyBlock td#msgTaskBar li.bwPollMsg {
-  list-style-image: url("../images/calIconPoll-sm.gif");
+  list-style-image: url("/images/ucal/calIconPoll-sm.gif");
   margin: 0 4px 8px 4px;
 }
 #bodyBlock td#sideBar h3 {
@@ -370,7 +370,7 @@ td {
   list-style: none;
 }
 #myViews li.selected {
-  list-style-image: url("../images/glassFill-icon-view.gif");
+  list-style-image: url("/images/calcommon/glassFill-icon-view.gif");
   font-weight: bold;
 }
 #bodyBlock td#bodyContent {
@@ -554,13 +554,11 @@ td {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-right: 2px solid #333;
-  /*background: #eee url("../images/std-tab-off-80x20.gif") no-repeat bottom;*/
 }
 #bwTabs li.selected {
   color: black;
   background-color: #fff;
   border-bottom: 1px solid #fff;
-  /*background: #eee url("../images/std-tab-on-80x20.gif") no-repeat top;*/
 }
 #bwTabs a {
   text-decoration: none;
@@ -671,7 +669,7 @@ td {
   border-right : 2px solid #333;
   border-bottom: 1px solid Gray;
   color: black;
-  background: #ff0 url("../images/glassFill-message.gif") repeat-x top;
+  background: #ff0 url("/images/calcommon/glassFill-message.gif") repeat-x top;
 }
 #errors {
   border-top: 2px solid red;
@@ -751,7 +749,7 @@ form {
   font-weight: normal;
   margin: 0 -2em 0 0;
   padding: 4px 0 4px 12px;
-  background: #233979 url("../images/glassFill-02.gif") repeat-x bottom;
+  background: #233979 url("/images/calcommon/glassFill-02.gif") repeat-x bottom;
   color : #eee;
 }
 #calSelectWidget #calSelectWidgetCloser {
@@ -1301,7 +1299,7 @@ table.common #attendees td.status {
   margin: 0;
   text-align: center;
   color: #eee;
-  background: #233979 url("../images/glassFill-02.gif") repeat-x bottom;
+  background: #233979 url("/images/calcommon/glassFill-02.gif") repeat-x bottom;
   border: 2px solid #233979;
 }
 #bwDialogBox #errors,
@@ -1420,7 +1418,7 @@ table.common #attendees td.status {
 #monthCalendarTable a.eventTentative:active  {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
-  background: #eee url("../images/tentativeLines.gif") top;
+  background: #eee url("/images/calcommon/tentativeLines.gif") top;
   color: black;
 }
 #monthCalendarTable a:hover {
@@ -1483,7 +1481,7 @@ table.common #attendees td.status {
 #monthCalendarTable .eventTipStatusTentative {
   display: block;
   color: black;
-  background: #eee url("../images/tentativeLines.gif") top;
+  background: #eee url("/images/calcommon/tentativeLines.gif") top;
   padding: 2px;
   margin-bottom: 6px;
   border: 1px solid #ccc;
@@ -1643,7 +1641,7 @@ a.calendarAdd img {
   color: black;
 }
 #listTable td.bwStatusTentative {
-  background: white url("../images/tentativeLines.gif") top;
+  background: white url("/images/calcommon/tentativeLines.gif") top;
   color: black;
 }
 #listTable td.description a {
@@ -1794,23 +1792,23 @@ a.calendarAdd img {
   margin: 0;
 }
 li.folder {
-  list-style-image: url("../images/catIcon.gif");
+  list-style-image: url("/images/calcommon/catIcon.gif");
 }
  li.calendar {
-  list-style-image: url("../images/calIcon-sm.gif");
+  list-style-image: url("/images/calcommon/calIcon-sm.gif");
 }
  li.trash {
-  list-style-image: url("../images/trashIcon.gif");
+  list-style-image: url("/images/common/trashIcon.gif");
 }
  li.inbox {
-  list-style-image: url("../images/inboxIcon.gif");
+  list-style-image: url("/images/calcommon/inboxIcon.gif");
 }
  li.outbox {
-  list-style-image: url("../images/outboxIcon.gif");
+  list-style-image: url("/images/calcommon/outboxIcon.gif");
 }
  li.unknown,
  li.deleted {
-  list-style-image: url("../images/calIconDeleted-sm.gif");
+  list-style-image: url("/images/calcommon/calIconDeleted-sm.gif");
   font-style: italic;
 }
  li.unknown a,
@@ -1819,17 +1817,17 @@ li.folder {
   background-color: transparent;
 }
  li.selected {
-  list-style-image: url("../images/glassFill-icon-view.gif");
+  list-style-image: url("/images/calcommon/glassFill-icon-view.gif");
   font-weight: bold;
 }
  li.alias {
-  list-style-image: url("../images/calIconAlias-sm.gif");
+  list-style-image: url("/images/calcommon/calIconAlias-sm.gif");
   font-style: italic;
   margin-left: 0;
   padding-left: 0;
 }
  li.aliasFolder {
-  list-style-image: url("../images/catIconAlias.gif");
+  list-style-image: url("/images/calcommon/catIconAlias.gif");
   font-style: italic;
   margin-left: 0;
   padding-left: 0;
@@ -1988,7 +1986,7 @@ form.bwHideDisplayCal input {
 #freeBusy td.tentative,
 #freeBusyKey td.tentative {
   color: #DFE7FB;
-  background: #DFE7FB url("../images/tentativeLines.gif") top;
+  background: #DFE7FB url("/images/calcommon/tentativeLines.gif") top;
   border: 1px solid #ddd;
 }
 #freeBusyKey {

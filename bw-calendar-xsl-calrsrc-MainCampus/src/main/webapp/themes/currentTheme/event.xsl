@@ -54,17 +54,17 @@
 
         <xsl:if test="$eventIconDownloadIcs = 'true'">
           <a href="{$export}&amp;href={$href}&amp;nocache=no&amp;contentName={$name}" title="{$bwStr-SgEv-Download}">
-            <img src="{$resourcesRoot}/images/std-ical_icon_small.gif" alt="{$bwStr-SgEv-Download}"/>
+            <img src="/images/calcommon/std-ical-icon-small.gif" alt="{$bwStr-SgEv-Download}"/>
           </a>
         </xsl:if>
         <xsl:if test="$eventIconAddToMyCal = 'true'">
           <a class="eventIcons" href="{$privateCal}/event/addEventSub.do?calPath={$calPath}&amp;eventName={$name}&amp;recurrenceId={$recurrenceId}" title="{$bwStr-SgEv-AddEventToMyCalendar}" target="myCalendar">
-            <img class="addref" src="{$resourcesRoot}/images/add2mycal-icon-small.gif" width="12" height="16" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
+            <img class="addref" src="/images/calcommon/add2mycal-icon-small.gif" width="12" height="16" alt="{$bwStr-LsVw-AddEventToMyCalendar}"/>
           </a>
         </xsl:if>
         <xsl:if test="$eventIconGoogleCal = 'true'">
           <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;dates={$gStartdate}/{$gEnddate}&amp;text={$gText}&amp;details={$gDetails}&amp;location={$gLocation}">
-            <img title="{$bwStr-SgEv-AddToGoogleCalendar}" src="{$resourcesRoot}/images/gcal_small.gif" alt="{$bwStr-SgEv-AddToGoogleCalendar}"/>
+            <img title="{$bwStr-SgEv-AddToGoogleCalendar}" src="/images/calpublic/gcal_small.gif" alt="{$bwStr-SgEv-AddToGoogleCalendar}"/>
           </a>
         </xsl:if>
       </div>
@@ -256,7 +256,7 @@
                     <xsl:attribute name="href"><xsl:value-of select="location/subField2"/></xsl:attribute>
                     <xsl:value-of select="location/address" />
                     <!--span class="glyphicon glyphicon-map-marker"><xsl:text> </xsl:text></span-->
-                    <img src="{$resourcesRoot}/images/map-24.png" alt="map"/>
+                    <img src="/images/calpublic/map-24.png" alt="map"/>
                   </a>
                 </xsl:when>
                 <xsl:when test="location/street != '' or location/city != '' or location/state != '' or location/zip !=''">
@@ -266,7 +266,7 @@
                     <xsl:attribute name="href"><xsl:value-of select="$googleMapUrl"/></xsl:attribute>
                     <xsl:value-of select="location/address"/>
                     <!--span class="glyphicon glyphicon-map-marker"><xsl:text> </xsl:text></span-->
-                    <img src="{$resourcesRoot}/images/map-24.png" alt="map"/>
+                    <img src="/images/calpublic/map-24.png" alt="map"/>
                   </a>
                 </xsl:when>
                 <xsl:otherwise>

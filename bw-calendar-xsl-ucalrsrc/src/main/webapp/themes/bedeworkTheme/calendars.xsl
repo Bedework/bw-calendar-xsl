@@ -297,7 +297,7 @@
         <!-- <xsl:if test="$publicOnly = 'false'">
           <xsl:text> </xsl:text>
           <a href="{$calendar-initAdd}&amp;calPath={$calPath}" title="{$bwStr-Cals-AddCalendarOrFolder}">
-            <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13" height="13" alt="*" border="0"/>
+            <img src="/images/calcommon/calAddIcon.gif" width="13" height="13" alt="*" border="0"/>
             <span class="addCalText"><xsl:copy-of select="$bwStr-CuCa-AddCalText"/></span>
           </a>
         </xsl:if> -->
@@ -993,7 +993,7 @@
               </td>
               <td class="remove">
                 <a href="{$sharing-shareCollection}&amp;colHref={$calPath}&amp;cua={$sharee}&amp;remove=true">
-                  <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
+                  <img src="/images/common/trashicon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
                 </a>
               </td>
             </tr>
@@ -1007,7 +1007,7 @@
               <td colspan="2">invitation awaiting response</td>
               <td style="text-align: center;">
                 <a href="{$sharing-shareCollection}&amp;colHref={$calPath}&amp;cua={$sharee}&amp;remove=true">
-                  <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
+                  <img src="/images/common/trashicon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
                 </a>
               </td>
             </tr>
@@ -1020,7 +1020,7 @@
               <td colspan="2">invitation declined</td>
               <td style="text-align: center;">
                 <a href="{$sharing-shareCollection}&amp;colHref={$calPath}&amp;cua={$sharee}&amp;remove=true">
-                  <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
+                  <img src="/images/common/trashicon.gif" width="13" height="13" border="0" alt="{$bwStr-Inbx-Delete}"/>
                 </a>
               </td>
             </tr>
@@ -1055,7 +1055,7 @@
 
   <xsl:template name="colorPicker">
     <xsl:param name="colorFieldId"/><!-- required: id of text field to be updated -->
-    <button type="button" id="bwColorPickerButton" value="{$bwStr-CoPi-Pick}"><img src="{$resourcesRoot}/images/colorIcon.gif" width="16" height="13" alt="pick a color"/></button>
+    <button type="button" id="bwColorPickerButton" value="{$bwStr-CoPi-Pick}"><img src="/images/ucal/colorIcon.gif" width="16" height="13" alt="pick a color"/></button>
     <script type="text/javascript">
       $(document).ready(function() {
         $('#bwColorPickerButton').ColorPicker({
@@ -1078,9 +1078,9 @@
     <h3><xsl:copy-of select="$bwStr-CaLi-ManagingCalendars"/></h3>
     <ul>
       <li><xsl:copy-of select="$bwStr-CaLi-SelectFromCalendar"/><xsl:text> </xsl:text>(<img src="{$resourcesRoot}/images/calIcon-sm.gif" width="13" height="13" alt="true" border="0"/>),
-        <xsl:copy-of select="$bwStr-CaLi-Subscription"/><xsl:text> </xsl:text>(<img src="{$resourcesRoot}/images/calIconAlias2-sm.gif" width="17" height="13" alt="true" border="0"/>)<xsl:copy-of select="$bwStr-CaLi-OrFolder"/><xsl:text> </xsl:text>(<img src="{$resourcesRoot}/images/catIcon.gif" width="13" height="13" alt="true" border="0"/>).</li>
+        <xsl:copy-of select="$bwStr-CaLi-Subscription"/><xsl:text> </xsl:text>(<img src="/images/ucal/calIconAlias2-sm.gif" width="17" height="13" alt="true" border="0"/>)<xsl:copy-of select="$bwStr-CaLi-OrFolder"/><xsl:text> </xsl:text>(<img src="/images/calcommon/catIcon.gif" width="13" height="13" alt="true" border="0"/>).</li>
       <li><xsl:copy-of select="$bwStr-CaLi-Select"/><xsl:text> </xsl:text>
-        <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13" height="13" alt="true" border="0"/>
+        <img src="/images/calcommon/calAddIcon.gif" width="13" height="13" alt="true" border="0"/>
         <xsl:text> </xsl:text><xsl:copy-of select="$bwStr-CaLi-Icon"/>
         <ul>
           <li><xsl:copy-of select="$bwStr-CaLi-Folders"/></li>

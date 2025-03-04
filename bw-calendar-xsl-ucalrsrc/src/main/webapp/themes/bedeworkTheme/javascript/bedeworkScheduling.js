@@ -699,10 +699,10 @@ var bwSchedulingGrid = function(displayId, startRange, startHoursRange, endHours
       var navigationHtml = '';
       navigationHtml += '<div id="bwGridNav">';
       navigationHtml += '  <a href="javascript:bwGrid.gotoPreviousRange()" title="previous date range">';
-      navigationHtml += '    <img src="' + this.resourcesRoot + '/images/std-arrow-left-sched.gif" width="13" height="16" alt="previous date range" border="0"/>';
+      navigationHtml += '    <img src="/images/common/std-arrow-left-gray.gif" width="13" height="16" alt="previous date range" border="0"/>';
       navigationHtml += '  </a>';
       navigationHtml += '  <a href="javascript:bwGrid.gotoNextRange()" title="next date range">';
-      navigationHtml += '    <img src="' + this.resourcesRoot + '/images/std-arrow-right-sched.gif" width="13" height="16" alt="next date range" border="0"/>';
+      navigationHtml += '    <img src="/images/common/std-arrow-right-gray.gif" width="13" height="16" alt="next date range" border="0"/>';
       navigationHtml += '  </a>';
       navigationHtml += '</div>';
       navigationHtml += '<div id="bwSchedProcessingMsg">processing...</div>';
@@ -861,7 +861,7 @@ var bwSchedulingGrid = function(displayId, startRange, startHoursRange, endHours
         // the status class is used for rollover descriptions of the icon
         switch (curAttendee.status) {
           case bwAttendeeStatusAccepted: // &#10004; - make an image to avoid font issues
-            $(fbDisplayAttendeeRow).html('<td class="status accepted"><span class="icon"><img src="' + resourcesRoot + '/images/check.gif" alt="accepted" width="15" height="15"/></span><span class="tip">' + bwAttendeeDispStatusAccepted + '</span></td>');
+            $(fbDisplayAttendeeRow).html('<td class="status accepted"><span class="icon"><img src="/images/ucal/check.gif" alt="accepted" width="15" height="15"/></span><span class="tip">' + bwAttendeeDispStatusAccepted + '</span></td>');
             break;
           case bwAttendeeStatusDeclined:
             $(fbDisplayAttendeeRow).html('<td class="status declined"><span class="icon">x</span><span class="tip">' + bwAttendeeDispStatusDeclined + '</span></td>');
@@ -886,10 +886,10 @@ var bwSchedulingGrid = function(displayId, startRange, startHoursRange, endHours
         // the role class is used for rollover descriptions of the icon
         switch (curAttendee.role) {
           case bwAttendeeRoleChair: // displays writing hand icon - &#9997;
-            $(fbDisplayAttendeeRow).append('<td class="role chair"><span class="icon"><img src="' + resourcesRoot + '/images/chair.gif" alt="chair" width="17" height="15"/></span><span class="tip">' + bwAttendeeDispRoleChair + '</span></td>');
+            $(fbDisplayAttendeeRow).append('<td class="role chair"><span class="icon"><img src="/images/ucal/chair.gif" alt="chair" width="17" height="15"/></span><span class="tip">' + bwAttendeeDispRoleChair + '</span></td>');
             break;
           case bwAttendeeRoleRequired: // displays right-pointing arrow icon - &#10137;
-            $(fbDisplayAttendeeRow).append('<td class="role required"><span class="icon"><img src="' + resourcesRoot + '/images/reqArrow.gif" alt="required" width="17" height="12"/></span><span class="tip">' + bwAttendeeDispRoleRequired + '</span></td>');
+            $(fbDisplayAttendeeRow).append('<td class="role required"><span class="icon"><img src="/images/ucal/reqArrow.gif" alt="required" width="17" height="12"/></span><span class="tip">' + bwAttendeeDispRoleRequired + '</span></td>');
             break;
           case bwAttendeeRoleNonParticipant: // non-participant
             $(fbDisplayAttendeeRow).append('<td class="role nonparticipant"><span class="icon">x</span><span class="tip">' + bwAttendeeDispRoleNonParticipant + '</span></td>');

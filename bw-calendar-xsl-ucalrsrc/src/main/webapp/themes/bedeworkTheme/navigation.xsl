@@ -93,8 +93,8 @@
             <xsl:copy-of select="$bwStr-Navi-Timezone"/><xsl:text> </xsl:text>
             <xsl:value-of select="/bedework/now/defaultTzid"/>
           </div>
-          <a href="{$navAction}&amp;date={$prevdate}"><img src="{$resourcesRoot}/images/std-arrow-left.gif" alt="previous" width="13" height="16" class="prevImg" border="0"/></a>
-          <a href="{$navAction}&amp;date={$nextdate}"><img src="{$resourcesRoot}/images/std-arrow-right.gif" alt="next" width="13" height="16" class="nextImg" border="0"/></a>
+          <a href="{$navAction}&amp;date={$prevdate}"><img src="/images/common/std-arrow-left.gif" alt="previous" width="13" height="16" class="prevImg" border="0"/></a>
+          <a href="{$navAction}&amp;date={$nextdate}"><img src="/images/common/std-arrow-right.gif" alt="next" width="13" height="16" class="nextImg" border="0"/></a>
           <xsl:choose>
             <xsl:when test="/bedework/periodname='Year'">
               <xsl:value-of select="substring(/bedework/firstday/date,1,4)"/>
@@ -321,10 +321,6 @@
               </xsl:choose>
             </xsl:otherwise>
           </xsl:choose>
-
-          <!-- refresh button -->
-          <!-- deprecate? -->
-          <!-- <a href="{$setup}"><img src="{$resourcesRoot}/images/std-button-refresh.gif" width="70" height="21" border="0" alt="refresh view"/></a> -->
         </td>
       </tr>
     </table>
@@ -343,30 +339,30 @@
     <br/>
     <div id="{$actionIconsId}" class="bwActionIcons">
       <a href="{$initEvent}&amp;entityType=event&amp;startdate={$dateTime}" title="{$bwStr-Actn-AddEvent}" onclick="javascript:changeClass('{$actionIconsId}','invisible')">
-        <img src="{$resourcesRoot}/images/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="add event"/>
+        <img src="/images/calcommon/add2mycal-icon-small.gif" width="12" height="16" border="0" alt="add event"/>
         <xsl:text> </xsl:text>
         <xsl:copy-of select="$bwStr-Actn-AddEvent"/>
       </a>
       <!--
        <a href="{$event-initMeeting}&amp;entityType=event&amp;schedule=request&amp;startdate={$dateTime}" title="schedule a meeting" onclick="javascript:changeClass('{$actionIconsId}','invisible')">
-          <img src="{$resourcesRoot}/images/std-icalMeeting-icon-small.gif" width="12" height="16" border="0" alt="schedule meeting"/>
+          <img src="/images/ucal/std-icalMeeting-icon-small.gif" width="12" height="16" border="0" alt="schedule meeting"/>
           <xsl:text> </xsl:text>
           <xsl:copy-of select="$bwStr-Actn-ScheduleMeeting"/>
        </a>
        -->
       <a href="{$initEvent}&amp;entityType=task&amp;startdate={$dateTime}" title="{$bwStr-Actn-AddTask}" onclick="javascript:changeClass('{$actionIconsId}','invisible')">
-        <img src="{$resourcesRoot}/images/std-icalTask-icon-small.gif" width="12" height="16" border="0" alt="add task"/>
+        <img src="/images/ucal/std-icalTask-icon-small.gif" width="12" height="16" border="0" alt="add task"/>
         <xsl:text> </xsl:text>
         <xsl:copy-of select="$bwStr-Actn-AddTask"/>
       </a>
       <!--
        <a href="{$event-initMeeting}&amp;entityType=task&amp;schedule=request&amp;startdate={$dateTime}" title="{$bwStr-Actn-ScheduleTask}" onclick="javascript:changeClass('{$actionIconsId}','invisible')">
-          <img src="{$resourcesRoot}/images/std-icalSchTask-icon-small.gif" width="12" height="16" border="0" alt="schedule task"/>
+          <img src="/images/ucals/std-icalSchTask-icon-small.gif" width="12" height="16" border="0" alt="schedule task"/>
           <xsl:text> </xsl:text>
           <xsl:copy-of select="$bwStr-Actn-ScheduleTask"/>
        </a>
        <a href="{$initUpload}" title="{$bwStr-Actn-UploadEvent}" onclick="javascript:changeClass('{$actionIconsId}','invisible')">
-          <img src="{$resourcesRoot}/images/std-icalUpload-icon-small.gif" width="12" height="16" border="0" alt="upload event"/>
+          <img src="/images/ucal/std-icalUpload-icon-small.gif" width="12" height="16" border="0" alt="upload event"/>
           <xsl:text> </xsl:text>
           <xsl:copy-of select="$bwStr-Actn-Upload"/>
        </a>

@@ -38,7 +38,7 @@
       <div id="list-nav-links">
         <a href="#exportSubscribePopup" id="expSubLinksList" class="rss" title="{$bwStr-HdBr-ExportSubscribe}">
           <xsl:copy-of select="$bwStr-HdBr-ExportSubscribe"/><xsl:text> </xsl:text>
-          <img src="{$resourcesRoot}/images/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
+          <img src="/images/calpublic/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
         </a>
         <xsl:call-template name="exportSubscribeJavascript">
           <xsl:with-param name="id">expSubLinksList</xsl:with-param>

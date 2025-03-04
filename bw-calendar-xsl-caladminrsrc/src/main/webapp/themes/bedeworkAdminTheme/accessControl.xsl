@@ -123,10 +123,10 @@
           <td>
             <xsl:choose>
               <xsl:when test="$whoType = 'user' or ($who = 'owner' and $whoType != 'other')">
-                <img src="{$resourcesRoot}/images/userIcon.gif" width="13" height="13" alt="user"/>
+                <img src="/images/common/userIcon.gif" width="13" height="13" alt="user"/>
               </xsl:when>
               <xsl:otherwise>
-                <img src="{$resourcesRoot}/images/groupIcon.gif" width="13" height="13" alt="group"/>
+                <img src="/images/common/groupIcon.gif" width="13" height="13" alt="group"/>
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> </xsl:text>
@@ -175,7 +175,7 @@
           <td>
             <xsl:if test="not(inherited)">
               <a href="{$action}&amp;how=default&amp;what={$what}&amp;who={$shortWho}&amp;whoType={$whoType}&amp;calPath={$calPathEncoded}&amp;calSuiteName={$calSuiteName}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" title="reset to default">
-                <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="reset to default"/>
+                <img src="/images/common/trashicon.gif" width="13" height="13" alt="reset to default"/>
               </a>
             </xsl:if>
           </td>

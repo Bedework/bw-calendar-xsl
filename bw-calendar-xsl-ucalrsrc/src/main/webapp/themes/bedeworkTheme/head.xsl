@@ -28,7 +28,7 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <link rel="stylesheet" href="{$resourcesRoot}/css/bedeworkTheme.css"/>
     <link rel="stylesheet" type="text/css" media="print" href="{$resourcesRoot}/css/print.css" />
-    <link rel="icon" type="image/ico" href="{$resourcesRoot}/images/bedework.ico" />
+    <link rel="icon" type="image/ico" href="/images/common/bedework.ico" />
 
     <!-- set globals that must be passed in from the XSLT -->
     <script type="text/javascript">
@@ -429,9 +429,9 @@
              event.preventDefault();
              $("#accessBox").toggle();
              if($("#accessBox").is(":visible")) {
-               $("#calAccessBoxToggle img").attr('src','<xsl:value-of select="$resourcesRoot"/>/images/minus.gif');
+               $("#calAccessBoxToggle img").attr('src','/images/common/minus.gif');
              } else {
-               $("#calAccessBoxToggle img").attr('src','<xsl:value-of select="$resourcesRoot"/>/images/plus.gif');
+               $("#calAccessBoxToggle img").attr('src','/images/common/plus.gif');
              };
            });
          </xsl:if>

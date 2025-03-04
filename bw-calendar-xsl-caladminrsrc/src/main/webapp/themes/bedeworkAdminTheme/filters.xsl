@@ -83,7 +83,7 @@
             </td>
             <td>
               <a href="{$filter-delete}&amp;name={$filterName}" title="{$bwStr-AdFi-DeleteFilter}">
-                <img src="{$resourcesRoot}/images/trashIcon.gif" width="13" height="13" alt="{$bwStr-AdFi-DeleteFilter}"/>
+                <img src="/images/common/trashicon.gif" width="13" height="13" alt="{$bwStr-AdFi-DeleteFilter}"/>
               </a>
             </td>
           </tr>

@@ -51,14 +51,14 @@
         <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$calendar-openCloseMod}&amp;calPath={$calPath}&amp;open=false">
-              <img src="{$resourcesRoot}/images/minus.gif" width="9"
+              <img src="/images/caladmin/minus.gif" width="9"
                    height="9" alt="close"
                    class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$calendar-openCloseMod}&amp;calPath={$calPath}&amp;open=true">
-              <img src="{$resourcesRoot}/images/plus.gif" width="9"
+              <img src="/images/caladmin/plus.gif" width="9"
                    height="9" alt="open"
                    class="bwPlusMinusIcon"/>
             </a>
@@ -73,7 +73,7 @@
         <xsl:text> </xsl:text>
         <a href="{$calendar-initAdd}&amp;calPath={$calPath}"
            title="{$bwStr-Cals-Add}">
-          <img src="{$resourcesRoot}/images/calAddIcon.gif" width="13"
+          <img src="/images/calcommon/calAddIcon.gif" width="13"
                height="13" alt="{$bwStr-Cals-Add}"/>
         </a>
       </xsl:if>
@@ -107,14 +107,14 @@
         <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$calendar-openCloseDisplay}&amp;calPath={$calPath}&amp;open=false">
-              <img src="{$resourcesRoot}/images/minus.gif" width="9"
+              <img src="/images/caladmin/minus.gif" width="9"
                    height="9" alt="close"
                    class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$calendar-openCloseDisplay}&amp;calPath={$calPath}&amp;open=true">
-              <img src="{$resourcesRoot}/images/plus.gif" width="9"
+              <img src="/images/caladmin/plus.gif" width="9"
                    height="9" alt="open"
                    class="bwPlusMinusIcon"/>
             </a>
@@ -153,14 +153,14 @@
         <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$calendar-openCloseMove}&amp;newCalPath={$calPath}&amp;open=false">
-              <img src="{$resourcesRoot}/images/minus.gif" width="9"
+              <img src="/images/caladmin/minus.gif" width="9"
                    height="9" alt="close"
                    class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$calendar-openCloseMove}&amp;newCalPath={$calPath}&amp;open=true">
-              <img src="{$resourcesRoot}/images/plus.gif" width="9"
+              <img src="/images/caladmin/plus.gif" width="9"
                    height="9" alt="open"
                    class="bwPlusMinusIcon"/>
             </a>

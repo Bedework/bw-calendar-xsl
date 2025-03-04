@@ -126,7 +126,7 @@
               <xsl:value-of select="form/xproperties/node()[name()='X-BEDEWORK-SUBMITTEDBY']/values/text"/>
             </a><xsl:text> </xsl:text>
             (<a href="mailto:{$submitterEmail}?subject=[Event%20Submission] {$eventTitle}" title="Email {$submitterEmail}">
-              <img src="{$resourcesRoot}/images/email.gif" alt="*"/>
+              <img src="/images/common/email.gif" alt="*"/>
               <xsl:text> </xsl:text>
               <xsl:copy-of select="$bwStr-AEEF-SendMsg"/>
             </a>)
@@ -403,7 +403,7 @@
                     </select>
                   </xsl:if>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" id="bwStartClock" alt="*"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" id="bwStartClock" alt="*"/>
 
                   <select name="eventStartDate.tzid" id="startTzid" class="timezones" title="{$bwStr-AEEF-StartDateTimezone}">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -495,7 +495,7 @@
                       </select>
                     </xsl:if>
                     <xsl:text> </xsl:text>
-                    <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" id="bwEndClock" alt="*"/>
+                    <img src="/images/common/clockIcon.gif" width="16" height="15" id="bwEndClock" alt="*"/>
 
                     <select name="eventEndDate.tzid" id="endTzid" class="timezones" title="{$bwStr-AEEF-EndDateTimezone}">
                       <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -2163,7 +2163,7 @@
                                  value="today"
                                  saveFormat="yyyyMMdd"
                                  id="bwEventWidgeRdate"
-                                 iconURL="{$resourcesRoot}/images/calIcon.gif"/-->
+                                 iconURL="/images/calcommon/calIcon.gif"/-->
                         <input type="text" name="eventRdate.date" id="bwEventWidgetRdate" size="10"/>
                         <script type="text/javascript">
                           <xsl:comment>
@@ -2217,7 +2217,7 @@
                           <option value="55">55</option>
                         </select>
                         <xsl:text> </xsl:text>
-                        <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" id="bwRecExcClock" alt="*"/>
+                        <img src="/images/common/clockIcon.gif" width="16" height="15" id="bwRecExcClock" alt="*"/>
 
                         <select name="tzid" id="rdateTzid" class="timezones">
                           <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -2762,7 +2762,7 @@
                     </select>
                   </xsl:if>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" id="xBwRegistrationOpensClock" alt="*"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" id="xBwRegistrationOpensClock" alt="*"/>
 
                   <select name="xBwRegistrationOpens.tzid" id="xBwRegistrationOpensTzid" class="timezones">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -2826,7 +2826,7 @@
                     </select>
                   </xsl:if>
                   <xsl:text> </xsl:text>
-                  <img src="{$resourcesRoot}/images/clockIcon.gif" width="16" height="15" id="xBwRegistrationClosesClock" alt="*"/>
+                  <img src="/images/common/clockIcon.gif" width="16" height="15" id="xBwRegistrationClosesClock" alt="*"/>
 
                   <select name="xBwRegistrationCloses.tzid" id="xBwRegistrationClosesTzid" class="timezones">
                     <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
@@ -3219,7 +3219,7 @@
           <xsl:when test="calType = '0'">
             <!-- no direct selecting of folders or folder aliases: we only want users to select the
                  underlying calendar aliases -->
-            <img src="{$resourcesRoot}/images/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
+            <img src="/images/calcommon/catIcon.gif" width="13" height="13" alt="folder" class="folderForAliasTree"/>
             <xsl:value-of select="summary"/>
           </xsl:when>
           <xsl:otherwise>

@@ -38,11 +38,11 @@
       </div>
       <span class="contextHelp">
         <a href="javascript:launchHelpWidget('bwHelpWidget-shareFreeBusy')">
-          <img src="{$resourcesRoot}/images/std-button-help.gif" width="13" height="13" border="0" alt="help"/>
+          <img src="/images/ucal/std-button-help.gif" width="13" height="13" border="0" alt="help"/>
         </a>
       </span>-->
       <span class="contextHelp">
-        <img src="{$resourcesRoot}/images/std-button-help.gif" width="13" height="13" alt="help" onmouseover="changeClass('helpShareFreeBusy','visible helpBox');" onmouseout="changeClass('helpShareFreeBusy','invisible');"/>
+        <img src="/images/ucal/std-button-help.gif" width="13" height="13" alt="help" onmouseover="changeClass('helpShareFreeBusy','visible helpBox');" onmouseout="changeClass('helpShareFreeBusy','invisible');"/>
       </span>
       <div id="helpShareFreeBusy" class="helpBox invisible">
           <xsl:copy-of select="$bwStr-FrBu-YouMayShareYourFreeBusy"/>

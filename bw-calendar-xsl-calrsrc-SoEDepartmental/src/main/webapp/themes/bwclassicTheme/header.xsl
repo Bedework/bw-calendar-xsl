@@ -24,7 +24,7 @@
   <xsl:template name="headBar">
     <table width="100%" border="0" cellpadding="0" cellspacing="0" id="logoTable">
       <tr>
-        <td colspan="3" id="logoCell"><a href="/bedework/"><img src="{$resourcesRoot}/images/bedeworkLogo.gif" width="292" height="75" border="0" alt="Bedework"/></a></td>
+        <td colspan="3" id="logoCell"><a href="/bedework/"><img src="/images/common/bedeworkLogo.gif" width="292" height="75" border="0" alt="Bedework"/></a></td>
         <td colspan="2" id="schoolLinksCell">
           <h2><xsl:copy-of select="$bwStr-HdBr-SchoolOfEng"/></h2>
           <a href="http://www.youruniversityhere.edu/engineering/"><xsl:copy-of select="$bwStr-HdBr-SchoolOfEngHome"/></a> |
@@ -73,7 +73,7 @@
         </td>
         <td class="rssPrint">
           <a href="javascript:window.print()" title="{$bwStr-HdBr-PrintThisView}">
-            <img alt="print this view" src="{$resourcesRoot}/images/std-print-icon.gif" width="20" height="14" border="0"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-HdBr-Print"/>
+            <img alt="print this view" src="/images/common/std-print-icon.gif" width="20" height="14" border="0"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-HdBr-Print"/>
           </a>
           <a class="rss" href="{$urlbuilder}" title="{$bwStr-HdBr-RSSFeed}"><xsl:copy-of select="$bwStr-HdBr-RSS"/></a>
         </td>
