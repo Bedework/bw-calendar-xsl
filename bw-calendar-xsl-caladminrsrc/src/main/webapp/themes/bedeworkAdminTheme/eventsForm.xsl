@@ -2899,7 +2899,7 @@
                         <xsl:copy-of select="$bwStr-AEEF-CustomFieldsRefresh"/>
                       </a>
                     </div>
-                    <xsl:variable name="listCustomFieldsUrl"><xsl:value-of select="$bwWSRegistrationRoot"/>/listForms.do?calsuite=/principals/users/<xsl:value-of
+                    <xsl:variable name="listCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>/listForms.do?calsuite=/principals/users/<xsl:value-of
                             select="/bedework/userInfo/user"/></xsl:variable>
                     <a href="#" onclick="launchSizedWindow('{$listCustomFieldsUrl}', '1000', '600');return false;">
                       <span class="ui-icon ui-icon-gear"><xsl:text> </xsl:text></span><xsl:copy-of select="$bwStr-AEEF-CustomFieldsManage"/>
@@ -2922,7 +2922,7 @@
                   </span>
                 </div>
                 <!-- Set the custom field names if any exist -->
-                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="$bwWSRegistrationRoot"/>/selectForms?calsuite=/principals/users/<xsl:value-of
+                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>/selectForms?calsuite=/principals/users/<xsl:value-of
                         select="/bedework/userInfo/user"/><![CDATA[&]]>atkn=<xsl:value-of
                         select="eventRegAdminToken"/></xsl:variable>
                 <script type="text/javascript">
@@ -2967,7 +2967,7 @@
                   <p>
                     <xsl:variable name="regFormName">&amp;formName=<xsl:if
                             test="form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']">&amp;formName=<xsl:value-of select="substring-after(form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']/values/text,'|')"/></xsl:if></xsl:variable>
-                    <xsl:variable name="registrationsHref"><xsl:value-of select="$bwWSRegistrationRoot"/>/showRegistrations.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of
+                    <xsl:variable name="registrationsHref"><xsl:value-of select="eventRegWsUrl"/>/showRegistrations.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of
                             select="/bedework/userInfo/user"/></xsl:variable>
                     <button onclick="launchSizedWindow('{$registrationsHref}', '1000', '600');return false;"><xsl:copy-of select="$bwStr-AEEF-ViewRegistrations"/></button>
                     <xsl:text> </xsl:text>
