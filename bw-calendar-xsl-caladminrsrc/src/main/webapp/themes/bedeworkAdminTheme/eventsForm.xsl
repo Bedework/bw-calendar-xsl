@@ -2922,7 +2922,7 @@
                   </span>
                 </div>
                 <!-- Set the custom field names if any exist -->
-                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>/selectForms?calsuite=/principals/users/<xsl:value-of
+                <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>selectForms?calsuite=/principals/users/<xsl:value-of
                         select="/bedework/userInfo/user"/><![CDATA[&]]>atkn=<xsl:value-of
                         select="eventRegAdminToken"/></xsl:variable>
                 <script type="text/javascript">
@@ -2959,7 +2959,7 @@
                       }
                     })
                     .error(function(msg) {
-                      alert("Unable to query event registration web service.");
+                      alert("Unable to query event registration web service: " + msg);
                     });
                   }
                 </script>
