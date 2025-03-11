@@ -31,7 +31,7 @@
           <xsl:text> </xsl:text>
           <strong><xsl:value-of select="/bedework/userid"/></strong>
           <xsl:text> </xsl:text>
-        <span class="logout"><a href="{$setup}&amp;logout=true"><xsl:copy-of select="$bwStr-Hedr-Logout"/></a></span>
+        <span class="logout"><a href="{$setup}&amp;logout=true" id="bwLogoutButton"><xsl:copy-of select="$bwStr-Hedr-Logout"/></a></span>
       </div>
       <xsl:copy-of select="$bwStr-Head-CalendarSuite"/>:
       <xsl:text> </xsl:text>
