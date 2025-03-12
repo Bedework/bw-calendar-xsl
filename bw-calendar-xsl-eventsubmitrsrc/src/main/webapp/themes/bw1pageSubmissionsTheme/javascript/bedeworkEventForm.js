@@ -873,7 +873,7 @@ $(function() {
         method: 'get',
         dataType: 'json',
         contentType: 'application/json',
-        data: 'fexpr=loc_all=\'' + request.term + '\'',
+        data: 'fexpr=loc_all%3d\'' + request.term + '\'',
         //data: JSON.stringify({
         //  "fexpr": 'loc_all=' + request.term
         //}),
@@ -942,7 +942,7 @@ $(function() {
         method: 'get',
         dataType: 'json',
         contentType: 'application/json',
-        data: 'fexpr=contact_all=\'' + request.term + '\'',
+        data: 'fexpr=contact_all%3d\'' + request.term + '\'',
         success: function (result) {
           if (result !== undefined) {
             if (result.status == 'ok' && result.contacts[0]) {

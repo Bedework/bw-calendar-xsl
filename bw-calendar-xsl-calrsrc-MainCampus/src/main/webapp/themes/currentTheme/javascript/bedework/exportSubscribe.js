@@ -211,10 +211,10 @@ function getEventListCacheUrl(action) {
   // build up a query string for full GET request against the cache
   var qstring = "&sort=dtstart.utc:asc"  // always sort by date for now
   if (fexpr.length) {
-    qstring += "&fexpr=" + fexpr;
+    qstring += "&fexpr=" + encodeURIComponent(fexpr);
   }
   if (query.length) {
-    qstring += "&query=" + query;
+    qstring += "&query=" + encodeURIComponent(query);
     // as above, keep the following for now:
     // qstring += "&setappvar=bwQuery(" + query + ")";
   }
@@ -225,10 +225,10 @@ function getEventListCacheUrl(action) {
 
   // return the prefix and the query string, encoded for use in a GET request
   if (qstring.length) {
-    return encodeURI(bwUrls.feedPrefix + "/feeder/main/" + action + "?f=y" + qstring);
+    return bwUrls.feedPrefix + "/feeder/main/" + action + "?f=y" + qstring;
   }
 
   // no query string - just return the prefix ...maybe not valid;
   // perhaps return error, null, or empty string?
-  return encodeURI(bwUrls.feedPrefix + "/feeder/main/" + action);
+  return bwUrls.feedPrefix + "/feeder/main/" + action;
 }
