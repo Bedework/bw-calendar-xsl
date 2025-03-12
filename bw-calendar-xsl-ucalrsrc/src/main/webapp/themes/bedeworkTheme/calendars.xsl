@@ -872,7 +872,7 @@
 
       <div id="calAccessBoxHolder" class="modCalAdvanced">
         <span id="calAccessBoxToggle">
-          <img src="{$resourcesRoot}/images/plus.gif"/> Advanced Access Controls
+          <img src="/images/common/plus.gif"/> Advanced Access Controls
         </span>
         <div id="accessBox">
           <h3><xsl:copy-of select="$bwStr-CuCa-CurrentAccess"/></h3>

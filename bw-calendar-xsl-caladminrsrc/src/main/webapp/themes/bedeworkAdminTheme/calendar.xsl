@@ -246,12 +246,12 @@
         <xsl:choose>
           <xsl:when test="open = 'true'">
             <a href="{$calendar-openCloseSelect}&amp;calPath={$calPath}&amp;open=false">
-              <img src="/images/caladmin/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
+              <img src="/images/common/minus.gif" width="9" height="9" alt="close" class="bwPlusMinusIcon"/>
             </a>
           </xsl:when>
           <xsl:otherwise>
             <a href="{$calendar-openCloseSelect}&amp;calPath={$calPath}&amp;open=true">
-              <img src="/images/caladmin/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
+              <img src="/images/common/plus.gif" width="9" height="9" alt="open" class="bwPlusMinusIcon"/>
             </a>
           </xsl:otherwise>
         </xsl:choose>
