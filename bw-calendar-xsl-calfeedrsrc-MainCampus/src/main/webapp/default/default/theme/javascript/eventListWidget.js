@@ -223,7 +223,7 @@ function formatBwThumbnail(event,bwListOptions) {
     if (!thumbObj.values.text.startsWith('http')) {
       imgPrefix = bwListOptions.eventImagePrefix;
     }
-    imgSrc = imgThumbPrefix + thumbObj.values.text;
+    imgSrc = imgPrefix + thumbObj.values.text;
   } else if (imgObj != undefined && bwListOptions.useFullImageThumbs) {
     // use the full image for thumbnail
     if (!imgObj.values.text.startsWith('http')) {
@@ -232,14 +232,17 @@ function formatBwThumbnail(event,bwListOptions) {
     imgSrc = imgPrefix + imgObj.values.text;
   } else if(bwListOptions.usePlaceholderThumb) {
     // use a placeholder thumbnail
-    imgSrc = "/images/calpublic/placeholder.png";
+    imgSrc = bwListOptions.resourcesRoot + "/images/placeholder.png";
   }
 
   // did we end up with an image?
   if (imgSrc != "") {
+    if (!imgSrc.startsWith('http')) {
+      imgSrc = bwListOptions.calendarServer + imgSrc;
+    }
     bwEventLink = getBwEventLink(event,bwListOptions);
     output += "<a href=\"" + bwEventLink + "\">";
-    output += "<img class=\"eventThumb img-responsive\" width=\"" + bwListOptions.thumbWidth + "\" src=\"" + imgSrc + "\" alt=\" + event.summary + \"/>";
+    output += "<img class=\"eventThumb img-responsive\" width=\"" + bwListOptions.thumbWidth + "\" src=\"" + imgSrc + "\" alt=\"" + event.summary + "\"/>";
     output += "</a>";
   }
 
