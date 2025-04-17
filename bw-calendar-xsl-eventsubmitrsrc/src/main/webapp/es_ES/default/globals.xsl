@@ -42,7 +42,8 @@
        string) so that all links constructed in this stylesheet may begin the
        query string with an ampersand. -->
 
-  <xsl:variable name="submissionsRootEncoded" select="/bedework/submissionsRoot/encoded"/>
+  <xsl:variable name="submissionsRootEncoded">colPath%3d<xsl:value-of select="/bedework/submissionsRoot/encoded"/></xsl:variable>
+
   <xsl:variable name="submissionsRootUnencoded" select="/bedework/submissionsRoot/unencoded"/>
 
   <!-- main -->
