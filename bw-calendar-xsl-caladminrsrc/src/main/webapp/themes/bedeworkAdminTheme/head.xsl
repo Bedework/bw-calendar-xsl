@@ -97,8 +97,6 @@
           <!-- load libraries -->
           <script type="text/javascript" src="/javascript/jquery/autocomplete/select2.min.js">/* Autocomplete combobox */</script>
           <link rel="stylesheet" href="/javascript/jquery/autocomplete/select2.min.css"/>
-          <script type="text/javascript" src="/javascript/jquery/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
-          <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery/magnific/magnific-popup.css" />
 
           <!-- load the bedework event form scripts -->
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
@@ -283,7 +281,6 @@
                   });
                   $("#bwLocation").val($("#bwLocationsSecondary option:selected").val());
                   $("#bwLocationsSecondaryContainer").show();
-                  $("#bwAddRoomLink").removeClass("disabled");
                 });
                 $("#bwLocationsSecondary").on("change",function() {
                   $("#bwLocation").val($(this).val());
@@ -347,22 +344,6 @@
                   };
                 });
 
-                // add room form
-                $("#bwAddRoomLink").magnificPopup({
-                  type:'inline',
-                  fixedBgPos: true,
-                  midClick: true,
-                  callbacks: {
-                    open: function() {
-                      if (!bwCheckPrimaryLoc()) {
-                        this.close();
-                      } else {
-                        bwAddRoomInit();
-                      }
-                    }
-                  }
-                });
-
                 // If you wish to collapse specific topical areas, you can specify them here:
                 // (note that this will be managed from the admin client in time)
                 // $("ul.aliasTree > li:eq(4) > ul").hide();
@@ -383,8 +364,6 @@
           <script type="text/javascript" src="{$resourcesRoot}/javascript/suggestions.js">/* Suggestion queue */</script>
         </xsl:if>
         <xsl:if test="/bedework/page='eventList'">
-          <script type="text/javascript" src="/javascript/jquery/magnific/jquery.magnific-popup.min.js">/* for export/subscribe lightbox */</script>
-          <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery/magnific/magnific-popup.css" />
           <!-- now setup date and time pickers -->
           <script type="text/javascript">
             <xsl:comment>
@@ -402,36 +381,6 @@
                   $("#bwListWidgetStartDate").val('<xsl:value-of select="$curListDate"/>');
                 </xsl:otherwise>
               </xsl:choose>
-
-              // generate a public events link in the listing
-              $(".bwPublicLink").magnificPopup({
-                type:'inline',
-                fixedBgPos: true,
-                midClick: true,
-                callbacks: {
-                  open: function() {
-                    var site = window.location;
-                    var sitePrefix = site.protocol + "//" + site.hostname;
-                    if (site.port != "" || site.port != "80" || site.port != "443") {
-                      sitePrefix += ":" + site.port;
-                    }
-                    var url = sitePrefix + $(this.st.el).attr("data-public-event-path");
-                    var summary = $(this.st.el).attr("data-public-event-summary");
-                    var link = document.createElement('a');
-                    link.setAttribute('href', url);
-                    link.setAttribute('target', 'publicClient');
-                    link.setAttribute('title','public url');
-                    link.innerHTML = summary;
-                    $("#bwPublicEventLink").html(link);
-                    $("#bwPublicEventLinkInput").attr("value",url);
-                    $("#bwPublicEventLinkBox").removeClass("invisible");
-                    $("#bwPublicEventLinkInput").click(function() {
-                      this.select();
-                    });
-                  }
-                }
-              });
-
             });
             </xsl:comment>
           </script>

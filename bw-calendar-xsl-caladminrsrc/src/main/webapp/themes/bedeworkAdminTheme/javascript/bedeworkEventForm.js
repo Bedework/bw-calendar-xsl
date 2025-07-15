@@ -1230,7 +1230,6 @@ function bwAddRoom() {
         // must have been a problem; just keep the original selection in place
         bwSetupLocations(locationUid);
       }
-      $("#bwAddRoomLink").magnificPopup("close");
     }
   })
   .fail(function(jqxhr, textStatus, error ) {

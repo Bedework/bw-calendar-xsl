@@ -72,6 +72,69 @@ $(function() {
   });
 });
 
+function expSubscribeSetup(id) {
+  const expSubscribeButton =
+      document.getElementById(id);
+  const expSubscribeClose =
+      document.getElementById("bwExpSubClose");
+  const expSubscribeDialog =
+      document.getElementById("exportSubscribePopup");
+
+  expSubscribeButton.addEventListener("click", () => {
+    initExpSubFields();
+    expSubscribeDialog.showModal();
+  });
+
+  expSubscribeClose.addEventListener("click", () => {
+    expSubscribeDialog.close();
+  });
+}
+
+function initExpSubFields() {
+  /* set the initial URL display by clicking the feed button */
+  $("#bwExpFeed").click();
+
+  const filtersBox = $("#exportSubscribeFiltersBox");
+  const filters = $("#exportSubscribeFilters");
+  /* grab the filter information right from the DOM and
+       redisplay it at the top of the pop-up */
+  filtersBox.hide(); // hide the filter display box by default
+  filters.html(""); // clear out filter display
+
+  const qlen = $(".bwQueryText").length;
+  if (qlen || $(".calFilterContainer .bwFilterName").length) {
+    if (qlen) { // do we have a query?
+      const queryText =
+          '<div class="eventFilterInfo">' +
+          '<span class="bwExpFilterName">' + $(".bwQueryText .bwQueryTitle").text() + "</span> " +
+          '<span class="bwExpFilterItems">' + $(".bwQueryText .bwQueryQuery").text() + "</span>" +
+          "</div>";
+      filters.append(queryText);
+    }
+
+    $(".calFilterContainer").each(function () {
+      if ($(this).find(".bwFilterName").length) { // do we have a filter?
+        let filterText =
+            '<div class="eventFilterInfo">' +
+              '<span class="bwExpFilterName">' + $(this).find(".bwFilterName").text() + ":</span> ";
+        var filterItemsLength = $(this).find(".bwFilterText .bwFilterItemName").length;
+        filterText += '<span class="bwExpFilterItems">';
+        $(this).find(".bwFilterText .bwFilterItemName").each(function (i) {
+          filterText += $(this).text();
+          if (i !== filterItemsLength - 1) {
+            filterText += ", ";
+          }
+        });
+        filterText += "</span>";
+        filterText += "</div>";
+        filters.append(filterText);
+      }
+    });
+
+    filtersBox.show(); // finally, show the box
+  }
+}
+
 function constructURL() {
 
   var contentType = "";
@@ -189,7 +252,7 @@ function updateUrlDisplay() {
 }
 
 function uncheckAll(checkList) {
-  $("input[name=$checkList]:checked").each(function() {
+  $("input[name=checkList]:checked").each(function() {
     $(this).removeAttr("checked");
   });
   updateUrlDisplay();

@@ -205,7 +205,7 @@
 
       <table class="eventFormTable" title="Event Modification Form">
         <xsl:if test="$canEdit = 'false'">
-          <xsl:if test="creator = /bedework/userInfo/groups//group/ownerHref">
+          <xsl:if test="creator = /bedework/userInfo/groups/group/ownerHref">
             <xsl:variable name="evCreator"><xsl:value-of select="creator"/></xsl:variable>
             <!--
             <xsl:variable name="switchGroupUrl">
@@ -2505,38 +2505,15 @@
                 <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']/@value"/></xsl:attribute>
               </input>
               <div id="bwLocationsPrimaryContainer">
-              <label for="bwLocationSearch">
-                Search for address:
-              </label>
-              <input id="bwLocationSearch" size="60" placeholder="begin typing to search for a location" value="">
-                <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']"/></xsl:attribute>
-              </input>
-              <!-- <a href="mailto:calendar.support@example.edu?subject=Request - New Event Location" id="RequestLocationLink" class="requestLink" title="request a new location">request new</a> -->
-              <br/>
-              <div id="bwLocationSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
-<!-- ORIGINAL:
-                <label for="bwLocationsPrimary">
-                  <xsl:value-of select="$bwStr-AEEF-AddressPrimary"/>
+                <label for="bwLocationSearch">
+                  Search for address:
                 </label>
-                <select id="bwLocationsPrimary">
-                  <option class="bwSelectTopOption"></option>
-                </select>
-              </div>
-              <div id="bwLocationsSecondaryContainer">
-                <label for="bwLocationsSecondary">
-                  <xsl:value-of select="$bwStr-AEEF-AddressSecondary"/>
-                </label>
-                <select id="bwLocationsSecondary">
-                  <option class="bwSelectTopOption"><xsl:value-of select="$bwStr-AEEF-None"/></option>
-                </select>
-                <a href="#bwAddRoomContainer" id="bwAddRoomLink" onclick="return bwCheckPrimaryLoc();">
-                  <xsl:attribute name="title"><xsl:value-of select="$bwStr-AEEF-AddSecAddress"/></xsl:attribute>
-                  <xsl:if test="not(form/location/all/select/option[@selected='selected'])">
-                    <xsl:attribute name="class">disabled</xsl:attribute>
-                  </xsl:if>
-                  <xsl:value-of select="$bwStr-AEEF-Add"/>
-                </a>
--->
+                <input id="bwLocationSearch" size="60" placeholder="begin typing to search for a location" value="">
+                  <xsl:attribute name="value"><xsl:value-of select="form/location/all/select/option[@selected='selected']"/></xsl:attribute>
+                </input>
+                <!-- <a href="mailto:calendar.support@example.edu?subject=Request - New Event Location" id="RequestLocationLink" class="requestLink" title="request a new location">request new</a> -->
+                <br/>
+                <div id="bwLocationSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
               </div>
             </div>
             <xsl:if test="$canEdit = 'false'">
@@ -2685,7 +2662,8 @@
                   <xsl:attribute name="checked">checked</xsl:attribute>
                   <xsl:attribute name="disabled">disabled</xsl:attribute>
                   <xsl:if test="$hasForm = 'false'">
-                    <!-- On update, request custom fields from registration system IF no form is already defined;
+                    <!-- On update, request custom fields from the
+                         registration system IF no form is already defined;
                          On a new event, we retrieve these when clicking the checkbox above; on update, we
                          don't need (or want) them if a form is already defined -->
                     <script type="text/javascript">
@@ -2899,18 +2877,22 @@
                         <xsl:copy-of select="$bwStr-AEEF-CustomFieldsRefresh"/>
                       </a>
                     </div>
-                    <xsl:variable name="listCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>/listForms.do?calsuite=/principals/users/<xsl:value-of
-                            select="/bedework/userInfo/user"/></xsl:variable>
-                    <a href="#" onclick="launchSizedWindow('{$listCustomFieldsUrl}', '1000', '600');return false;">
-                      <span class="ui-icon ui-icon-gear"><xsl:text> </xsl:text></span><xsl:copy-of select="$bwStr-AEEF-CustomFieldsManage"/>
-                    </a>
+                    <div id="bwCustomFieldsManage">
+                      <xsl:variable name="listCustomFieldsUrl"><xsl:value-of select="eventRegAdminUrl"/>listForms.do?calsuite=/principals/users/<xsl:value-of
+                              select="/bedework/userInfo/user"/></xsl:variable>
+                      <a href="{$listCustomFieldsUrl}" target="_blank" rel="noopener noreferrer">
+                        <span class="ui-icon ui-icon-gear"><xsl:text> </xsl:text></span><xsl:copy-of select="$bwStr-AEEF-CustomFieldsManage"/>
+                      </a>
+                    </div>
+                    <xsl:text> </xsl:text>
+                    <span class="fieldInfo">
+                      <xsl:copy-of select="$bwStr-AEEF-CustomFieldsInfo"/>
+                    </span>
                   </div>
-                  <xsl:text> </xsl:text>
-                  <span class="fieldInfo">
-                    <xsl:copy-of select="$bwStr-AEEF-CustomFieldsInfo"/>
+                  <div id="bwShowUnpublished">
                     <span id="bwToggleUnpublishedCustFieldsHolder">
                       <xsl:if test="form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']/values/text">
-                         <xsl:attribute name="style">display:none</xsl:attribute>
+                        <xsl:attribute name="style">display:none</xsl:attribute>
                       </xsl:if>
                       <input type="checkbox" name="bwToggleUnpublishedCustFields"
                              id="bwToggleUnpublishedCustFields"
@@ -2919,7 +2901,7 @@
                         <xsl:copy-of select="$bwStr-AEEF-CustomFieldsShowUnpublished"/>
                       </label>
                     </span>
-                  </span>
+                  </div>
                 </div>
                 <!-- Set the custom field names if any exist -->
                 <xsl:variable name="getCustomFieldsUrl"><xsl:value-of select="eventRegWsUrl"/>selectForms?calsuite=/principals/users/<xsl:value-of
@@ -2964,15 +2946,16 @@
                   }
                 </script>
                 <xsl:if test="/bedework/creating = 'false'">
-                  <p>
+                  <div>
                     <xsl:variable name="regFormName">&amp;formName=<xsl:if
                             test="form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']">&amp;formName=<xsl:value-of select="substring-after(form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']/values/text,'|')"/></xsl:if></xsl:variable>
-                    <xsl:variable name="registrationsHref"><xsl:value-of select="eventRegWsUrl"/>/showRegistrations.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of
+                    <xsl:variable name="registrationsHref"><xsl:value-of select="eventRegAdminUrl"/>/showRegistrations.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of
                             select="/bedework/userInfo/user"/></xsl:variable>
-                    <button onclick="launchSizedWindow('{$registrationsHref}', '1000', '600');return false;"><xsl:copy-of select="$bwStr-AEEF-ViewRegistrations"/></button>
-                    <xsl:text> </xsl:text>
                     <!--<button onclick="location.href='{$registrationsDownloadHref}';return false;"><xsl:copy-of select="$bwStr-AEEF-DownloadRegistrations"/></button>-->
-                  </p>
+                    <a href="{$registrationsHref}" target="_blank" rel="noopener noreferrer">
+                      <xsl:copy-of select="$bwStr-AEEF-ViewRegistrations"/>
+                    </a>
+                  </div>
                 </xsl:if>
               </div>
             </td>

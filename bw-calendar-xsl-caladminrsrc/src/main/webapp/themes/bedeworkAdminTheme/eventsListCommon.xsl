@@ -214,10 +214,9 @@
             </a>
             <xsl:if test="$approvalQueue = 'false'">
               <!-- generate a public link; for now always expose in the main suite. -->
-              <a class="bwPublicLink" href="#bwPublicEventLinkBox">
-                <xsl:attribute name="data-public-event-path">/cal/event/eventView.do?href=<xsl:value-of select="encodedHref"/></xsl:attribute>
-                <xsl:attribute name="data-public-event-summary"><xsl:value-of select="summary"/></xsl:attribute>
-                <xsl:attribute name="title"><xsl:value-of select="$bwStr-EvLC-ShowPublicLink"/></xsl:attribute>
+              <xsl:variable name="publicLink">/cal/event/eventView.do?href=<xsl:value-of select="encodedHref"/></xsl:variable>
+              <a class="bwPublicLink"  target="_blank" rel="noopener noreferrer">
+                <xsl:attribute name="href"><xsl:value-of select="$publicLink"/></xsl:attribute>
                 <span class="ui-icon ui-icon-link"></span>
               </a>
             </xsl:if>

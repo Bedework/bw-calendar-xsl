@@ -23,53 +23,8 @@
   <xsl:template name="exportSubscribeJavascript">
     <xsl:param name="id"/>
     <script type="text/javascript">
-      $(document).ready(function(){
-        $('#<xsl:value-of select="$id"/>').magnificPopup({
-          type:'inline',
-          fixedBgPos: true,
-          midClick: true,
-          callbacks: {
-            open: function() {
-              <!-- set the initial URL display by clicking the feed button -->
-              $("#bwExpFeed").click();
-
-              <!-- grab the filter information right from the DOM and
-                   redisplay it at the top of the pop-up -->
-              $("#exportSubscribeFiltersBox").hide(); <!-- hide the filter display box by default -->
-              $("#exportSubscribeFilters").html(""); <!-- clear out filter display -->
-
-              if ($(".bwQueryText").length || $(".calFilterContainer .bwFilterName").length) {
-                if ($(".bwQueryText").length) { <!-- do we have a query? -->
-                  var queryText = '<div class="eventFilterInfo">';
-                  queryText += '<span class="bwExpFilterName">' + $(".bwQueryText .bwQueryTitle").text() + "</span> ";
-                  queryText += '<span class="bwExpFilterItems">' + $(".bwQueryText .bwQueryQuery").text() + "</span>";
-                  queryText += "</div>";
-                  $("#exportSubscribeFilters").append(queryText);
-                }
-
-                $(".calFilterContainer").each(function() {
-                  if($(this).find(".bwFilterName").length) { <!-- do we have a filter? -->
-                    var filterText = '<div class="eventFilterInfo">';
-                    filterText += '<span class="bwExpFilterName">' + $(this).find(".bwFilterName").text() + ":</span> ";
-                    var filterItemsLength = $(this).find(".bwFilterText .bwFilterItemName").length;
-                    filterText += '<span class="bwExpFilterItems">';
-                    $(this).find(".bwFilterText .bwFilterItemName").each(function(i) {
-                      filterText += $(this).text();
-                      if(i != filterItemsLength - 1) {
-                        filterText += ", ";
-                      }
-                    });
-                    filterText += "</span>";
-                    filterText += "</div>";
-                    $("#exportSubscribeFilters").append(filterText);
-                  }
-                });
-
-                $("#exportSubscribeFiltersBox").show(); <!-- finally, show the box -->
-              }
-            }
-          }
-        });
+      $(document).ready(function() {
+        expSubscribeSetup("<xsl:value-of select="$id"/>");
       });
     </script>
   </xsl:template>
@@ -358,6 +313,10 @@
       <div id="bwExpCodeBox">
         <p class="bwExpOutput"><xsl:copy-of select="$bwStr-exSu-WidgetCode"/></p>
         <div id="bwExpCodeBoxOutput"><xsl:text> </xsl:text></div>
+      </div>
+
+      <div>
+        <button id="bwExpSubClose"><xsl:copy-of select="$bwStr-exSu-Close"/></button>
       </div>
     </div>
 

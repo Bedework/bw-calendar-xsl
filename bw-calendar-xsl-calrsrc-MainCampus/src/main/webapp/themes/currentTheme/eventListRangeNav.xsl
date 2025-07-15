@@ -67,31 +67,21 @@
               </xsl:choose>
             </li>
             <li>
-              <a id="expSubLinksGrid" class="rss" href="#exportSubscribePopup" title="{$bwStr-HdBr-ExportSubscribe}">
+              <button id="expSubLinksGrid" class="rss" title="{$bwStr-HdBr-ExportSubscribe}">
                 <xsl:copy-of select="$bwStr-HdBr-ExportSubscribe"/><xsl:text> </xsl:text>
                 <img src="/images/calpublic/feed-icon-14x14.png" alt="{$bwStr-HdBr-ExportSubscribe}" />
-              </a>
+              </button>
             </li>
           </ul>
-          <xsl:call-template name="exportSubscribeJavascript">
-            <xsl:with-param name="id">expSubLinksGrid</xsl:with-param>
-          </xsl:call-template>
-          <!--
-          <script type="text/javascript">
-            $(document).ready(function(){
-              $('#expSubLinksGrid').magnificPopup({
-                type:'inline',
-                fixedBgPos: true,
-                midClick: true
-              });
-            });
-          </script>
-          -->
         </xsl:if>
 		  </div>
 	  </div>
 
     <xsl:call-template name="queryFilterDisplay"/>
+
+    <xsl:call-template name="exportSubscribeJavascript">
+      <xsl:with-param name="id">expSubLinksGrid</xsl:with-param>
+    </xsl:call-template>
 
   </xsl:template>
 

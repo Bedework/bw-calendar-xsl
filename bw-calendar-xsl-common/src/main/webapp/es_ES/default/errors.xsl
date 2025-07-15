@@ -29,7 +29,7 @@
 	      <xsl:when test="id='org.bedework.client.error.exc'"><!-- trap exceptions first -->
 	        An exception occurred: <em><xsl:value-of select="param"/></em>
 	      </xsl:when>
-	      <xsl:when test="id='edu.rpi.sss.util.error.exc'">
+	      <xsl:when test="id='org.bedework.util.error.exc'">
 	        An exception occurred: <em><xsl:value-of select="param"/></em>
 	      </xsl:when>
 	      <xsl:when test="id='org.bedework.exception.norecurrenceinstances'">

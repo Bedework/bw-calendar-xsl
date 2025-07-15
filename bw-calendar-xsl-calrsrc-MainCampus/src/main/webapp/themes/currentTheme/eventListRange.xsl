@@ -75,9 +75,9 @@
     </table>
 
     <!-- Subscribe/Export Form Popup -->
-    <div id="exportSubscribePopup" class="mfp-hide">
+    <dialog id="exportSubscribePopup">
       <xsl:call-template name="exportSubscribe"/>
-    </div>
+    </dialog>
   </xsl:template>
 
   <xsl:template match="day" mode="dayInList">

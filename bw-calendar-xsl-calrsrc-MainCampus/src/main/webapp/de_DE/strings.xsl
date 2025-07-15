@@ -271,6 +271,7 @@
   <xsl:variable name="bwStr-exSu-DisplayTimezone">Display timezone in event details?</xsl:variable>
   <xsl:variable name="bwStr-exSu-URL">Your URL:</xsl:variable>
   <xsl:variable name="bwStr-exSu-WidgetCode">Widget Code:</xsl:variable>
+  <xsl:variable name="bwStr-exSu-Close">Close</xsl:variable>
 
   <!--  xsl:template name="footer" -->
   <xsl:variable name="bwStr-Foot-BasedOnThe">Basierend auf</xsl:variable>
