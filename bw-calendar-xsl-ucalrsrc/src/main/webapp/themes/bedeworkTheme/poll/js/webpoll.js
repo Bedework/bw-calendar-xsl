@@ -205,10 +205,14 @@ ViewController.prototype.init = function() {
     view.activePoll.writeVpollValues();
 
     // 4. close the popup
-    $.magnificPopup.close();
+    const choiceDialog =
+        document.getElementById("choice-widget");
+    choiceDialog.close();
   });
   $("#editpoll-cancelchoice").button().click(function() {
-    $.magnificPopup.close();
+    const choiceDialog =
+        document.getElementById("choice-widget");
+    choiceDialog.close();
   });
   $("#editpoll-addVoter").button({
     icons : {

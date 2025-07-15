@@ -59,8 +59,6 @@
         <script src="/javascript/jquery/jquery-ui-1.11.4.min.js">&#160;</script>
         <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
         <script src="/javascript/jquery/spin.min.js">&#160;</script>
-        <link href="/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet"/>
-        <script src="/javascript/jquery/magnific/jquery.magnific-popup.min.js">&#160;</script>
         <link href="{$resourcesRoot}/poll/css/webpoll.css" rel="stylesheet"/>
         <script src="{$resourcesRoot}/poll/js/json2.js">&#160;</script>
         <script src="{$resourcesRoot}/poll/js/jsonTz.js">&#160;</script>

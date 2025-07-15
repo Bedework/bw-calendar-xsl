@@ -115,9 +115,9 @@
                     <label for="choiceTypeTask" class="disabled">task</label>
                   </div>
                 </div>
-                <div id="choice-widget" class="mfp-hide">
+                <dialog id="choice-widget">
                   <xsl:call-template name="choiceForm"/>
-                </div>
+                </dialog>
               </div>
               <div id="editpoll-voters">
                 <div id="bwComp-voterlist"><xsl:text> </xsl:text></div>

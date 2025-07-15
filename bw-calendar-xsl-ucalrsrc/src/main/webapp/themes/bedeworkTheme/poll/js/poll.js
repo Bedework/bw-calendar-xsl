@@ -285,22 +285,11 @@ Poll.prototype.addChoice = function() {
 
 Poll.prototype.showChoice = function(choice) {
   currentEntity = choice;
+  const choiceDialog =
+      document.getElementById("choice-widget");
 
-  $.magnificPopup.open({
-    items: {
-      src: "#choice-widget"
-    },
-    type:'inline',
-    fixedBgPos: true,
-    midClick: true,
-    focus: "#bwEventTitle",
-    callbacks: {
-      beforeOpen: this.populateChoiceForm(currentEntity),
-      open: function() {
-        $("#choice-widget #bwEventTitle").select();
-      }
-    }
-  }, 0);
+  this.populateChoiceForm(currentEntity);
+  choiceDialog.showModal();
 
   return true; // this.setEventPanel(this.addChoicePanel(), currentEntity);
 };
