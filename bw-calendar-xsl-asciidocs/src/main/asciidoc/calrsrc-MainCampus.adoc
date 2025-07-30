@@ -1,0 +1,3 @@
+[[calrsrc-MainCampus]]
+== calrsrc-MainCampus
+Provides the main public calendar view for bedework.

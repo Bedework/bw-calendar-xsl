@@ -193,7 +193,7 @@ function BwREXdates(varName, reqParId, tableId, noDatesId,
         curDate.toFormRow(varName, tr, j);
       }
 
-      if (dates.length == 0) {
+      if (dates.length === 0) {
         changeClass(tableId, invisibleClass);
         changeClass(noDatesId, visibleClass);
       } else {
@@ -805,33 +805,33 @@ function showRrules(freq) {
   // reveal and hide rrules fields
   changeClass('recurrenceUntilRules','visible');
 
-  if (freq == 'NONE') {
+  if (freq === 'NONE') {
     changeClass('noneRecurrenceRules','visible');
     changeClass('recurrenceUntilRules','invisible');
   } else {
     changeClass('noneRecurrenceRules','invisible');
   }
-  if (freq == 'HOURLY') {
+  if (freq === 'HOURLY') {
     changeClass('hourlyRecurrenceRules','visible');
   } else {
     changeClass('hourlyRecurrenceRules','invisible');
   }
-  if (freq == 'DAILY') {
+  if (freq === 'DAILY') {
     changeClass('dailyRecurrenceRules','visible');
   } else {
     changeClass('dailyRecurrenceRules','invisible');
   }
-  if (freq == 'WEEKLY') {
+  if (freq === 'WEEKLY') {
     changeClass('weeklyRecurrenceRules','visible');
   } else {
     changeClass('weeklyRecurrenceRules','invisible');
   }
-  if (freq == 'MONTHLY') {
+  if (freq === 'MONTHLY') {
     changeClass('monthlyRecurrenceRules','visible');
   } else {
     changeClass('monthlyRecurrenceRules','invisible');
   }
-  if (freq == 'YEARLY') {
+  if (freq === 'YEARLY') {
     changeClass('yearlyRecurrenceRules','visible');
   } else {
     changeClass('yearlyRecurrenceRules','invisible');
@@ -842,7 +842,7 @@ function recurSelectWeekends(id) {
   if (chkBoxCollection) {
     if (typeof chkBoxCollection.length != 'undefined') {
       for (i = 0; i < chkBoxCollection.length; i++) {
-        if (chkBoxCollection[i].value == 'SU' || chkBoxCollection[i].value == 'SA') {
+        if (chkBoxCollection[i].value === 'SU' || chkBoxCollection[i].value === 'SA') {
            chkBoxCollection[i].checked = true;
         } else {
           chkBoxCollection[i].checked = false;
@@ -856,7 +856,7 @@ function recurSelectWeekdays(id) {
   if (chkBoxCollection) {
     if (typeof chkBoxCollection.length != 'undefined') {
       for (i = 0; i < chkBoxCollection.length; i++) {
-        if (chkBoxCollection[i].value == 'SU' || chkBoxCollection[i].value == 'SA') {
+        if (chkBoxCollection[i].value === 'SU' || chkBoxCollection[i].value === 'SA') {
            chkBoxCollection[i].checked = false;
         } else {
           chkBoxCollection[i].checked = true;
@@ -968,8 +968,6 @@ function setRecurrence(formObj) {
       case "until":
         // the following will not be adequate for recurrences smaller than a day;
         // we will need to set the time properly at that point.
-        // Dojo is deprecated:
-        //formObj.until.value = dojo.widget.byId("bwEventWidgetUntilDate").getValue() + "T000000";
         formObj.until.value = formObj.bwEventUntilDate.value + "T000000";
         break;
     }

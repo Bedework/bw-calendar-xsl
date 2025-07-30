@@ -29,12 +29,11 @@
     DEMONSTRATION CALENDAR STYLESHEET
 
     MainCampus Calendar Suite Theme:
-    responsive, includes jQuery and Bootstrap
+    responsive, includes jQuery
 
     Many theme settings can be made in themeSettings.xsl.
 
     CSS is loaded in this order:
-    - Bootstrap
     - jQuery and jQuery UI
     - bwThemeGlobal - the global styles (mobile first)
     - bwThemeResponsive - responsive overrides

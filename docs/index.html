@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<title>The Bedework Calendar Client modules.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Bedework Calendar Client modules.</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#_client_modules">1. Client modules</a>
+<ul class="sectlevel2">
+<li><a href="#admin">1.1. admin</a></li>
+<li><a href="#appcommon">1.2. appcommon</a></li>
+<li><a href="#rw">1.3. rw</a></li>
+</ul>
+</li>
+<li><a href="#_web_modules">2. Web modules</a>
+<ul class="sectlevel2">
+<li><a href="#struts2">2.1. struts2</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project">2.1.1. Using this project</a></li>
+</ul>
+</li>
+<li><a href="#taglib">2.2. taglib</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project_2">2.2.1. Using this project</a></li>
+</ul>
+</li>
+<li><a href="#util">2.3. util</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project_3">2.3.1. Using this project</a></li>
+</ul>
+</li>
+<li><a href="#web-admin">2.4. web-admin</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project_4">2.4.1. Using this project</a></li>
+</ul>
+</li>
+<li><a href="#web-rw">2.5. web-rw</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project_5">2.5.1. Using this project</a></li>
+</ul>
+</li>
+<li><a href="#webcommon">2.6. webcommon</a>
+<ul class="sectlevel3">
+<li><a href="#_using_this_project_6">2.6.1. Using this project</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#reports">3. Reports</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The calendar client code for bedework.</p>
+</div>
+<div class="paragraph">
+<p>This documentation is mostly a place-holder.</p>
+</div>
+<div class="paragraph">
+<p>The code currently provides 2 main functions: clients which interact with the engine and web clients which use those clients and provide a web based service for users and departmental sites.</p>
+</div>
+<div class="paragraph">
+<p>Work is underway to create a low-level client and a high-level client which will provide better support for different kinds of web and command-line client.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_client_modules">1. Client modules</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="admin">1.1. admin</h3>
+<div class="paragraph">
+<p>This extends the read-write code to provide the administrative functions.
+==== Using this project
+Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-admin&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appcommon">1.2. appcommon</h3>
+<div class="paragraph">
+<p>Code which provides the read-only support and is extended by the read-write code.
+==== Using this project
+Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-appcommon&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rw">1.3. rw</h3>
+<div class="paragraph">
+<p>Code which provides the read-write support and is extended by the admin code.
+==== Using this project
+Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-rw&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_web_modules">2. Web modules</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="struts2">2.1. struts2</h3>
+<div class="paragraph">
+<p>This provides support for the struts2 based web clients.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project">2.1.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-struts2&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="taglib">2.2. taglib</h3>
+<div class="paragraph">
+<p>This provides tags to use in the jsp which generates XML for the XSL filters.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project_2">2.2.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-taglib&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="util">2.3. util</h3>
+<div class="paragraph">
+<p>Some utility classes used by the web clients.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project_3">2.3.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-util&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="web-admin">2.4. web-admin</h3>
+<div class="paragraph">
+<p>Extends the web read-write classes to provide an administrative client.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project_4">2.4.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-web-admin&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="web-rw">2.5. web-rw</h3>
+<div class="paragraph">
+<p>Extends the web read-only classes to provide an read-write client (user client).</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project_5">2.5.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-web-rw&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="webcommon">2.6. webcommon</h3>
+<div class="paragraph">
+<p>Provide a read-only web client plus supporting code used by all web clients.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_this_project_6">2.6.1. Using this project</h4>
+<div class="paragraph">
+<p>Add the artifact(s) as a dependency to your project:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>      &lt;dependency&gt;
+        &lt;groupId&gt;org.bedework.bwwebcl&lt;/groupId&gt;
+        &lt;artifactId&gt;bw-calendar-client-webcommon&lt;/artifactId&gt;
+      &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reports">3. Reports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="reports/dependency-check-report.html">Dependency check</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2025-07-22 02:44:36 UTC
+</div>
+</div>
+</body>
+</html>

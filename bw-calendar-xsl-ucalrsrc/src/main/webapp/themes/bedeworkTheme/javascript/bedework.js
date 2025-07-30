@@ -17,10 +17,6 @@
    under the License.
 */
 
-/* NOTE: this file is different between Bedework web applications and is
-   therefore not currently interchangable between apps.  This will be normalized
-   in the coming versions, but for now don't try to exchange them. */
-
 /* Global variables / properties */
 // URLs
 var timezoneUrl = "/tzsvr/?names";
@@ -54,7 +50,7 @@ function swapVisible(obj,id) {
 // hide a group of items
 // send IDs as parameters
 function hide() {
-  if (arguments.length != 0) {
+  if (arguments.length !== 0) {
     for (i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'invisible');
     }
@@ -63,7 +59,7 @@ function hide() {
 // show a group of items
 // send IDs as parameters
 function show() {
-  if (arguments.length != 0) {
+  if (arguments.length !== 0) {
     for (i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'visible');
     }
@@ -73,8 +69,8 @@ function show() {
 // visibility; if visible, hide it; if invisible
 // show it.
 function toggleVisibility(id,newClass) {
-  if (document.getElementById(id).className == 'invisible') {
-    if (newClass != "") {
+  if (document.getElementById(id).className === 'invisible') {
+    if (newClass !== "") {
       changeClass(id,newClass);
     } else {
       changeClass(id,'visible');
@@ -96,7 +92,7 @@ function toggleActionIcons(id,cl) {
   var currentBox;
   for (i = 0; i < 32; i++) {
     currentBox = prefix + "-" + i;
-    if (i != boxNum && document.getElementById(currentBox)) {
+    if (i !== boxNum && document.getElementById(currentBox)) {
       changeClass(currentBox,"invisible");
     }
   }
@@ -104,14 +100,14 @@ function toggleActionIcons(id,cl) {
 }
 function setTab(listId,listIndex) {
   var list = document.getElementById(listId);
-  var elementArray = new Array();
+  var elementArray = [];
   for (i = 0; i < list.childNodes.length; i++) {
-    if (list.childNodes[i].nodeName == "LI") {
+    if (list.childNodes[i].nodeName === "LI") {
       elementArray.push(list.childNodes[i]);
     }
   }
   for (i = 0; i < elementArray.length; i++) {
-    if (i == listIndex) {
+    if (i === listIndex) {
       elementArray[i].className = 'selected';
     } else {
       elementArray[i].className = '';
@@ -120,7 +116,7 @@ function setTab(listId,listIndex) {
 }
 function getSelectedRadioButtonVal(radioCollection) {
   for(var i = 0; i < radioCollection.length; i++) {
-    if(radioCollection[i].checked == true) {
+    if(radioCollection[i].checked === true) {
        return radioCollection[i].value;
     }
   }
@@ -130,7 +126,7 @@ function collectRecurChkBoxVals(valArray,chkBoxes,dayPos) {
   if (chkBoxes) {
     if (typeof chkBoxes.length != 'undefined') {
       for (i = 0; i < chkBoxes.length; i++) {
-        if (chkBoxes[i].checked == true) {
+        if (chkBoxes[i].checked === true) {
           if (dayPos) {
             valArray.push(dayPos + chkBoxes[i].value);
           } else {
@@ -167,25 +163,18 @@ function launchCalSelectWindow(URL) {
   calSelect = window.open(URL, "calSelect", "width=500,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
   window.calSelect.focus();
 }
-// launch a dojo widget used for contextual help
-/*function launchHelpWidget(id) {
-  var helpWidget = dojo.widget.byId(id);
-  helpWidget.show();
-}*/
+
 // used to update the calendar in various forms from
 // the calSelect pop-up widget.  We must do three things: update the hidden
 // calendar input field, update the displayed text, and close widget
-function updateEventFormCalendar(newCalPath,calDisplay,calendarCollection) {
+function updateEventFormCalendar(newCalPath,calDisplay) {
   newCalPathField = document.getElementById("bwNewCalPathField");
   newCalPathField.value = newCalPath;
   bwCalDisplay = document.getElementById("bwEventCalDisplay");
-  bwCalDisplay.innerHTML = "<strong>" + calDisplay + "</strong>";
-  bwCalCollectionField = document.getElementById("bwCalCollectionField");
-  if (bwCalCollectionField && calendarCollection != '') {
-    bwCalCollectionField.value = calendarCollection;
-  }
+  bwCalDisplay.innerHTML = calDisplay;
   changeClass("calSelectWidget","invisible");
 }
+
 // used to update a calendar subscription (alias) We must do two things: update the hidden
 // calendar input field and update the displayed text
 function updatePublicCalendarAlias(newCalPath,calDisplay,calendarCollection) {
@@ -198,6 +187,7 @@ function updatePublicCalendarAlias(newCalPath,calDisplay,calendarCollection) {
   changeClass("publicSubscriptionTree","invisible");
   changeClass("bwPublicCalSubscribe","visible");
 }
+
 function showPublicCalAliasTree() {
   changeClass("publicSubscriptionTree","calendarTree");
 }
@@ -213,8 +203,8 @@ function setCalendarAlias(formObj) {
 
     // set the aliasUri to an empty string.  Only set it if user
     // has requested a subscription.
-    if (formObj.aliasUri != undefined) {
-      formObj.aliasUri.value == "";
+    if (formObj.aliasUri !== undefined) {
+      formObj.aliasUri.value === "";
       switch (formObj.subType.value) {
         case "public":
           formObj.aliasUri.value = "bwcal://" + formObj.publicAliasHolder.value;
@@ -233,34 +223,36 @@ function setCalendarAlias(formObj) {
     return false;
   }
 }
+
 // set the calendar summary to the calendar name in the form if summary is empty
 function setCalSummary(val,summaryField) {
-  if (summaryField.value == '') {
+  if (summaryField.value === '') {
     summaryField.value = val;
   }
 }
+
 //Stop user from entering invalid characters in calendar names
-//In 3.6 this will only test for & ' " and /
+// As of 3.6 this will only test for & ' " and /
 //In future releases, we will go further and only allow
 //alphanumerics and dashes and underscores.
 function validateCalName(nameObj) {
-  if(nameObj.value.indexOf("'") == -1 &&
-    nameObj.value.indexOf('"') == -1 &&
-    nameObj.value.indexOf("&") == -1 &&
-    nameObj.value.indexOf("/") == -1) {
+  if(nameObj.value.indexOf("'") === -1 &&
+    nameObj.value.indexOf('"') === -1 &&
+    nameObj.value.indexOf("&") === -1 &&
+    nameObj.value.indexOf("/") === -1) {
    return true;
   } else { // we have bad characters
    var badChars = "";
-   if(nameObj.value.indexOf("'") != -1) {
+   if(nameObj.value.indexOf("'") !== -1) {
      badChars += " ' ";
    }
-   if(nameObj.value.indexOf('"') != -1) {
+   if(nameObj.value.indexOf('"') !== -1) {
      badChars += ' \" ';
    }
-   if(nameObj.value.indexOf("&") != -1) {
+   if(nameObj.value.indexOf("&") !== -1) {
      badChars += " & ";
    }
-   if(nameObj.value.indexOf("/") != -1) {
+   if(nameObj.value.indexOf("/") !== -1) {
      badChars += " / ";
    }
    alert("System Names may not include the following characters: " + badChars);
@@ -268,6 +260,7 @@ function validateCalName(nameObj) {
    return false;
   }
 }
+
 function exportCalendar(formId,name,calPath) {
   var formObj = document.getElementById(formId);
   formObj.calPath.value = calPath;
@@ -304,13 +297,8 @@ function launchBwColorPicker() {
     $("#bwColorPicker").dialog();
   });
 }
-function bwUpdateColor(color,colorFieldId) {
-  var colorField = document.getElementById(colorFieldId);
-  colorField.value = color;
-  colorField.style.backgroundColor = color;
-}
 function validateShareForm(acct) {
-  if(acct == "") {
+  if (acct === "") {
     alert("Please enter an account.");
     return false;
   }
@@ -321,3 +309,9 @@ function notificationReply(href,name,accept,colName) {
 function notificationRemoveReply(href,notificationName) {
   $.get(href, { name: notificationName, remove: 'true'});
 }
+// trim function
+function trim(str) {
+  var trimmedStr = str.replace(/^\s+|\s+$/g, '');
+  return trimmedStr.replace(/^(\&nbsp\;)+|(\&nbsp\;)+$/g, '');
+}
+

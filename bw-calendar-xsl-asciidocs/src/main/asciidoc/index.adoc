@@ -1,0 +1,34 @@
+= Bedework XSL modules.
+:title: Bedework XSL modules.
+:safe-mode-unsafe:
+:docinfo: shared
+:docinfodir: ./docinfo
+:docinfo2:
+:scriptsdir: ./tocbot-3.0.2
+:imagesdir: ./resources/
+:toc: left
+:toclevels: 4
+:sectnumlevels: 4
+//
+:reports-dir: reports/
+//
+:sectnums!:
+
+include::introduction.adoc[]
+
+:sectnums:
+
+include::caladminrsrc.adoc[]
+
+include::calfeedrsrc-MainCampus.adoc[]
+
+include::calrsrc-MainCampus.adoc[]
+
+include::calrsrc-SoEDepartmental.adoc[]
+
+include::common.adoc[]
+
+include::eventsubmitrsrc.adoc[]
+
+include::ucalrsrc.adoc[]
+

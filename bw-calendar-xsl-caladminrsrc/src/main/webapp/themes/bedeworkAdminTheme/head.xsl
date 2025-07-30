@@ -33,14 +33,13 @@
           var startTzid = "<xsl:value-of select="/bedework/formElements/form/start/tzid"/>";
           var endTzid = "<xsl:value-of select="/bedework/formElements/form/end/dateTime/tzid"/>";
           var resourcesRoot = "<xsl:value-of select="$resourcesRoot"/>";
-          var imagesRoot = resourcesRoot + "/images";
         </script>
 
         <!-- load jQuery -->
-        <script type="text/javascript" src="/javascript/jquery/jquery-1.11.3.min.js">/* jQuery */</script>
-        <script type="text/javascript" src="/javascript/jquery/jquery-ui-1.11.4.min.js">/* jQuery UI */</script>
-        <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
-        <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.theme.min.css"/>
+        <script type="text/javascript" src="/javascript/jquery-3/jquery-3.7.1.min.js">/* jQuery */</script>
+        <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">/* jQuery UI */</script>
+        <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
+        <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.theme.min.css"/>
 
         <!-- Global Javascript (every page): -->
         <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">/* Bedework Utilities */</script>

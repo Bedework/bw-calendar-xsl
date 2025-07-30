@@ -1,0 +1,3 @@
+[[calfeedrsrc-MainCampus]]
+== calfeedrsrc-MainCampus
+Provides the feeder views for bedework.

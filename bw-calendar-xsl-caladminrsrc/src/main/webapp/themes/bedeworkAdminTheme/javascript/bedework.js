@@ -262,23 +262,23 @@ function checkPrefCategories(formObj){
 // In future releases, we will go further and only allow
 // alphanumerics and dashes and underscores.
 function validateCalName(nameObj) {
-  if(nameObj.value.indexOf("'") == -1 &&
-     nameObj.value.indexOf('"') == -1 &&
-     nameObj.value.indexOf("&") == -1 &&
-     nameObj.value.indexOf("/") == -1) {
+  if(nameObj.value.indexOf("'") === -1 &&
+    nameObj.value.indexOf('"') === -1 &&
+    nameObj.value.indexOf("&") === -1 &&
+    nameObj.value.indexOf("/") === -1) {
     return true;
   } else { // we have bad characters
     var badChars = "";
-    if(nameObj.value.indexOf("'") != -1) {
+   if(nameObj.value.indexOf("'") !== -1) {
       badChars += " ' ";
     }
-    if(nameObj.value.indexOf('"') != -1) {
+   if(nameObj.value.indexOf('"') !== -1) {
       badChars += ' \" ';
     }
-    if(nameObj.value.indexOf("&") != -1) {
+   if(nameObj.value.indexOf("&") !== -1) {
       badChars += " & ";
     }
-    if(nameObj.value.indexOf("/") != -1) {
+   if(nameObj.value.indexOf("/") !== -1) {
       badChars += " / ";
     }
     alert("System Names may not include the following characters: " + badChars);

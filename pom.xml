@@ -32,5 +32,6 @@
     <module>bw-calendar-xsl-common</module>
     <module>bw-calendar-xsl-eventsubmitrsrc</module>
     <module>bw-calendar-xsl-ucalrsrc</module>
+    <module>bw-calendar-xsl-asciidocs</module>
   </modules>
 </project>

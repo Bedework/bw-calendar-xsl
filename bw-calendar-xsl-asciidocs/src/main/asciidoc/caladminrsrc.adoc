@@ -1,0 +1,3 @@
+[[caladminrsrc]]
+== caladminrsrc
+Provides the admin client UI for bedework

@@ -1,0 +1,5 @@
+[[xsl]]
+== Bedework XSL
+The UI and views for the various web clients are created by XSL transforms on XML produced by those clients.
+
+See https://bedework.github.io/bw-util-network/ for the code that carries out transforms.

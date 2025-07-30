@@ -2157,13 +2157,6 @@
                         <input type="checkbox" name="storeUTC" id="rdateStoreUTC" onclick="swapRdateStoreUTC(this)" value="true"/>
                         store as UTC<br/>-->
                       <div class="dateFields">
-                        <!-- input name="eventRdate.date"
-                                 dojoType="dropdowndatepicker"
-                                 formatLength="medium"
-                                 value="today"
-                                 saveFormat="yyyyMMdd"
-                                 id="bwEventWidgeRdate"
-                                 iconURL="/images/calcommon/calIcon.gif"/-->
                         <input type="text" name="eventRdate.date" id="bwEventWidgetRdate" size="10"/>
                         <script type="text/javascript">
                           <xsl:comment>

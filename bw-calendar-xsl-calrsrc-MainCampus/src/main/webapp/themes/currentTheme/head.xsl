@@ -81,8 +81,9 @@
       <link rel="icon" type="image/ico" href="{$favicon}" />
 
       <!-- load library css -->
-      <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/bootstrap3/css/bootstrap.min.css" />
-      <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css" />
+      <!-- Was for IE6-8 do we need this any longer?
+      <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/bootstrap3/css/bootstrap.min.css" /> -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css" />
       <!-- load Bedework css ... you may wish to combine (and minify) these files for a production service. -->
       <link rel="stylesheet" type="text/css" media="all" href="{$resourcesRoot}/css/bwThemeGlobal.css" />
       <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/css/bwThemeResponsive-00-Tiny.css" /><!-- @media (max-width: 767px) -->
@@ -112,10 +113,12 @@
       -->
 
       <!-- load library javascript -->
-      <script type="text/javascript" src="/javascript/modernizr-2.6.2-input.min.js">/* include modernizr */</script>
-      <script type="text/javascript" src="/javascript/jquery/jquery-1.11.3.min.js">/* include jquery */</script>
-      <script type="text/javascript" src="/javascript/jquery/jquery-ui-1.11.4.min.js">/* include jquery UI */</script>
+      <script type="text/javascript" src="/javascript/modernizr-3.6.0-input.min.js">/* include modernizr */</script>
+      <script type="text/javascript" src="/javascript/jquery-3/jquery-3.7.1.min.js">/* include jquery */</script>
+      <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">/* include jquery UI */</script>
+      <!-- Was for IE6-8 do we need this any longer?
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bootstrap3/respond.min.js">/* include respond for IE6-8 responsive support */</script>
+      -->
 
       <!-- load Bedework javascript -->
       <xsl:call-template name="themeJavascriptVariables"/><!-- these are defined in themeSettings.xsl  -->

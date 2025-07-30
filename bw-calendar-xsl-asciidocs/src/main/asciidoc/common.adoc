@@ -1,0 +1,5 @@
+[[common]]
+== common
+Provides some common XSL support for bedework
+
+There's not much here - could probably be eliminated.

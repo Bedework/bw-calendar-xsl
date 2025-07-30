@@ -1,0 +1,3 @@
+[[eventsubmitrsrc]]
+== eventsubmitrsrc
+Provides the UI for the bedework event submission client. These events are added to a pending queue and claimed and published by administrators.

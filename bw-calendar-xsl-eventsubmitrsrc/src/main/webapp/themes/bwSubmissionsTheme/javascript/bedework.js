@@ -17,6 +17,11 @@
    under the License.  
 */
 
+/* Global variables / properties */
+// URLs
+var timezoneUrl = "/tzsvr/?names";
+var carddavUrl = "/ucarddavweb/find";
+
 var debug = false; // very basic debugging for now
 
 /* COMMON and GENERAL FUNCTIONS */
@@ -28,7 +33,12 @@ function changeClass(id, newClass) {
   }
   identity.className=newClass;
 }
-
+// set a field's value by ID
+// typically used to set the value of a hidden field
+function setField(id,val) {
+  field = document.getElementById(id);
+  field.value = val;
+}
 // show hide items using a checkbox
 function swapVisible(obj,id) {
   if (obj.checked) {
@@ -40,7 +50,7 @@ function swapVisible(obj,id) {
 // hide a group of items
 // send IDs as parameters
 function hide() {
-  if (arguments.length != 0) {
+  if (arguments.length !== 0) {
     for (i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'invisible');
     }
@@ -49,7 +59,7 @@ function hide() {
 // show a group of items
 // send IDs as parameters
 function show() {
-  if (arguments.length != 0) {
+  if (arguments.length !== 0) {
     for (i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'visible');
     }
@@ -58,9 +68,13 @@ function show() {
 // show and hide an item based on its current
 // visibility; if visible, hide it; if invisible
 // show it.
-function toggleVisibility(id,cl) {
-  if(document.getElementById(id).className == 'invisible') {
-    changeClass(id,cl);
+function toggleVisibility(id,newClass) {
+  if (document.getElementById(id).className === 'invisible') {
+    if (newClass !== "") {
+      changeClass(id,newClass);
+    } else {
+      changeClass(id,'visible');
+    }
   } else {
     changeClass(id,'invisible');
   }
@@ -78,7 +92,7 @@ function toggleActionIcons(id,cl) {
   var currentBox;
   for (i = 0; i < 32; i++) {
     currentBox = prefix + "-" + i;
-    if (i != boxNum && document.getElementById(currentBox)) {
+    if (i !== boxNum && document.getElementById(currentBox)) {
       changeClass(currentBox,"invisible");
     }
   }
@@ -86,14 +100,14 @@ function toggleActionIcons(id,cl) {
 }
 function setTab(listId,listIndex) {
   var list = document.getElementById(listId);
-  var elementArray = new Array();
+  var elementArray = [];
   for (i = 0; i < list.childNodes.length; i++) {
-    if (list.childNodes[i].nodeName == "LI") {
+    if (list.childNodes[i].nodeName === "LI") {
       elementArray.push(list.childNodes[i]);
     }
   }
   for (i = 0; i < elementArray.length; i++) {
-    if (i == listIndex) {
+    if (i === listIndex) {
       elementArray[i].className = 'selected';
     } else {
       elementArray[i].className = '';
@@ -102,7 +116,7 @@ function setTab(listId,listIndex) {
 }
 function getSelectedRadioButtonVal(radioCollection) {
   for(var i = 0; i < radioCollection.length; i++) {
-    if(radioCollection[i].checked == true) {
+    if(radioCollection[i].checked === true) {
        return radioCollection[i].value;
     }
   }
@@ -112,7 +126,7 @@ function collectRecurChkBoxVals(valArray,chkBoxes,dayPos) {
   if (chkBoxes) {
     if (typeof chkBoxes.length != 'undefined') {
       for (i = 0; i < chkBoxes.length; i++) {
-        if (chkBoxes[i].checked == true) {
+        if (chkBoxes[i].checked === true) {
           if (dayPos) {
             valArray.push(dayPos + chkBoxes[i].value);
           } else {
@@ -145,17 +159,11 @@ function launchPrintWindow(URL) {
 }
 // launch the calSelect pop-up window for selecting a calendar when creating,
 // editing, and importing events
-// DEPRECATED - can't use pop-ups in current portal environments in a
-// portal-agnostic way
 function launchCalSelectWindow(URL) {
   calSelect = window.open(URL, "calSelect", "width=500,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
   window.calSelect.focus();
 }
-// launch a dojo widget used for contextual help
-/*function launchHelpWidget(id) {
-  var helpWidget = dojo.widget.byId(id);
-  helpWidget.show();
-}*/
+
 // used to update the calendar in various forms from
 // the calSelect pop-up widget.  We must do three things: update the hidden
 // calendar input field, update the displayed text, and close widget
@@ -166,24 +174,93 @@ function updateEventFormCalendar(newCalPath,calDisplay) {
   bwCalDisplay.innerHTML = calDisplay;
   changeClass("calSelectWidget","invisible");
 }
-// build a uri based on user and path in the subscription form
-function setSubscriptionUri(formObj,prefix) {
-  if (formObj) {
-    var fullUri =  prefix + formObj.userId.value;
-    if (formObj.userPath.value != "") {
-      if (formObj.userPath.value.substring(0,1) == "/") {
-        fullUri += formObj.userPath.value;
-      } else {
-        fullUri += "/" + formObj.userPath.value;
-      }
-    }
-    formObj.calUri.value = fullUri;
-    return true;
-  } else {
+
+// used to update a calendar subscription (alias) We must do two things: update the hidden
+// calendar input field and update the displayed text
+function updatePublicCalendarAlias(newCalPath,calDisplay,calendarCollection) {
+  var calendarAliasHolder = document.getElementById("publicAliasHolder");
+  var bwCalDisplay = document.getElementById("bwPublicCalDisplay");
+  var calDisplayName = document.getElementById("intSubDisplayName");
+  calendarAliasHolder.value = newCalPath;
+  calDisplayName.value = calDisplay.substring(calDisplay.lastIndexOf("/")+1);
+  bwCalDisplay.innerHTML = '<strong>' + calDisplay + '</strong> <button type="button" onclick="showPublicCalAliasTree();">change</button>';
+  changeClass("publicSubscriptionTree","invisible");
+  changeClass("bwPublicCalSubscribe","visible");
+}
+
+function showPublicCalAliasTree() {
+  changeClass("publicSubscriptionTree","calendarTree");
+}
+// set the subscription URI when creating or updating a subscription
+function setCalendarAlias(formObj) {
+  if (!formObj) {
     alert("The subscription form is not available.");
     return false;
   }
+
+  //check first to make sure we have a valid calendar system name:
+  if (validateCalName(formObj['calendar.name'])) {
+
+    // set the aliasUri to an empty string.  Only set it if user
+    // has requested a subscription.
+    if (formObj.aliasUri !== undefined) {
+      formObj.aliasUri.value === "";
+      switch (formObj.subType.value) {
+        case "public":
+          formObj.aliasUri.value = "bwcal://" + formObj.publicAliasHolder.value;
+          break;
+        case "user":
+          //the "/user/" string is temporary; it needs to be passed as a param.
+          formObj.aliasUri.value = "bwcal:///user/" + formObj.userIdHolder.value + "/" + formObj.userCalHolder.value;
+          break;
+        case "external":
+          formObj.aliasUri.value = formObj.aliasUriHolder.value;
+          break;
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
 }
+
+// set the calendar summary to the calendar name in the form if summary is empty
+function setCalSummary(val,summaryField) {
+  if (summaryField.value === '') {
+    summaryField.value = val;
+  }
+}
+
+//Stop user from entering invalid characters in calendar names
+//In 3.6 this will only test for & ' " and /
+//In future releases, we will go further and only allow
+//alphanumerics and dashes and underscores.
+function validateCalName(nameObj) {
+  if(nameObj.value.indexOf("'") === -1 &&
+    nameObj.value.indexOf('"') === -1 &&
+    nameObj.value.indexOf("&") === -1 &&
+    nameObj.value.indexOf("/") === -1) {
+   return true;
+  } else { // we have bad characters
+   var badChars = "";
+   if(nameObj.value.indexOf("'") !== -1) {
+     badChars += " ' ";
+   }
+   if(nameObj.value.indexOf('"') !== -1) {
+     badChars += ' \" ';
+   }
+   if(nameObj.value.indexOf("&") !== -1) {
+     badChars += " & ";
+   }
+   if(nameObj.value.indexOf("/") !== -1) {
+     badChars += " / ";
+   }
+   alert("System Names may not include the following characters: " + badChars);
+   nameObj.focus();
+   return false;
+  }
+}
+
 function exportCalendar(formId,name,calPath) {
   var formObj = document.getElementById(formId);
   formObj.calPath.value = calPath;
@@ -210,6 +287,21 @@ function setupAccessForm(val,formObj) {
       alert("N");
       break;
   }
+}
+function setCalDisplayFlag(calDisplayFlag, val){
+  calDisplayFlag.value = val;
+}
+function validateShareForm(acct) {
+  if (acct === "") {
+    alert("Please enter an account.");
+    return false;
+  }
+}
+function notificationReply(href,name,accept,colName) {
+  location.href = href + "&name=" + name + "&accept=" + accept + "&colName=" + colName;
+}
+function notificationRemoveReply(href,notificationName) {
+  $.get(href, { name: notificationName, remove: 'true'});
 }
 // trim function
 function trim(str) {

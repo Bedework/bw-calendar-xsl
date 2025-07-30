@@ -20,7 +20,6 @@
 // Bedework event form functions
 
 // ========================================================================
-// ========================================================================
 //   Language and customization
 //   These should come from values in the header or included as a separate cutomization
 //   file.
@@ -159,7 +158,8 @@ function BwREXdates(varName, reqParId, tableId, noDatesId,
 
   // Update the list -
   this.update = function(date, time, allDay, floating, utc, tzid) {
-    this.addRdate(date, time, allDay, floating, utc, tzid);
+    var strippedDate = date.replace(/-/g, ""); // strip out hyphens if present
+    this.addRdate(strippedDate, time, allDay, floating, utc, tzid);
 
     // redraw the display
     this.display();
@@ -193,7 +193,7 @@ function BwREXdates(varName, reqParId, tableId, noDatesId,
         curDate.toFormRow(varName, tr, j);
       }
 
-      if (dates.length == 0) {
+      if (dates.length === 0) {
         changeClass(tableId, invisibleClass);
         changeClass(noDatesId, visibleClass);
       } else {
@@ -481,33 +481,33 @@ function showRrules(freq) {
   // reveal and hide rrules fields
   changeClass('recurrenceUntilRules','visible');
 
-  if (freq == 'NONE') {
+  if (freq === 'NONE') {
     changeClass('noneRecurrenceRules','visible');
     changeClass('recurrenceUntilRules','invisible');
   } else {
     changeClass('noneRecurrenceRules','invisible');
   }
-  if (freq == 'HOURLY') {
+  if (freq === 'HOURLY') {
     changeClass('hourlyRecurrenceRules','visible');
   } else {
     changeClass('hourlyRecurrenceRules','invisible');
   }
-  if (freq == 'DAILY') {
+  if (freq === 'DAILY') {
     changeClass('dailyRecurrenceRules','visible');
   } else {
     changeClass('dailyRecurrenceRules','invisible');
   }
-  if (freq == 'WEEKLY') {
+  if (freq === 'WEEKLY') {
     changeClass('weeklyRecurrenceRules','visible');
   } else {
     changeClass('weeklyRecurrenceRules','invisible');
   }
-  if (freq == 'MONTHLY') {
+  if (freq === 'MONTHLY') {
     changeClass('monthlyRecurrenceRules','visible');
   } else {
     changeClass('monthlyRecurrenceRules','invisible');
   }
-  if (freq == 'YEARLY') {
+  if (freq === 'YEARLY') {
     changeClass('yearlyRecurrenceRules','visible');
   } else {
     changeClass('yearlyRecurrenceRules','invisible');
@@ -518,7 +518,7 @@ function recurSelectWeekends(id) {
   if (chkBoxCollection) {
     if (typeof chkBoxCollection.length != 'undefined') {
       for (i = 0; i < chkBoxCollection.length; i++) {
-        if (chkBoxCollection[i].value == 'SU' || chkBoxCollection[i].value == 'SA') {
+        if (chkBoxCollection[i].value === 'SU' || chkBoxCollection[i].value === 'SA') {
            chkBoxCollection[i].checked = true;
         } else {
           chkBoxCollection[i].checked = false;
@@ -532,7 +532,7 @@ function recurSelectWeekdays(id) {
   if (chkBoxCollection) {
     if (typeof chkBoxCollection.length != 'undefined') {
       for (i = 0; i < chkBoxCollection.length; i++) {
-        if (chkBoxCollection[i].value == 'SU' || chkBoxCollection[i].value == 'SA') {
+        if (chkBoxCollection[i].value === 'SU' || chkBoxCollection[i].value === 'SA') {
            chkBoxCollection[i].checked = false;
         } else {
           chkBoxCollection[i].checked = true;
@@ -550,7 +550,7 @@ function selectRecurCountUntil(id) {
 // possibly: byday, bymonthday, bymonth, byyearday
 function setRecurrence(formObj) {
   var freq = getSelectedRadioButtonVal(formObj.freq);
-  if (freq != 'NONE') {
+  if (freq !== 'NONE') {
     // build up recurrence rules
     switch (freq) {
       case "DAILY":
@@ -565,7 +565,7 @@ function setRecurrence(formObj) {
         var byday = new Array();
         byday = collectRecurChkBoxVals(byday, document.getElementById('weekRecurFields').getElementsByTagName('input'),false);
         formObj.byday.value = byday.join(',');
-        if (formObj.weekWkst.selectedIndex != -1) {
+        if (formObj.weekWkst.selectedIndex !== -1) {
           formObj.wkst.value = formObj.weekWkst[formObj.weekWkst.selectedIndex].value;
         }
         formObj.interval.value = formObj.weeklyInterval.value;

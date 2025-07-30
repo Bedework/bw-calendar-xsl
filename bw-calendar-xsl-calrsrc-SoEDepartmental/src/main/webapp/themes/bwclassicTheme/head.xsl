@@ -49,9 +49,9 @@
       <!-- load javascript -->
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">&#160;</script>
       <xsl:if test="/bedework/page='event' or /bedework/page='displayCalendarForExport'">
-        <script type="text/javascript" src="/javascript/jquery/jquery-1.11.3.min.js">&#160;</script>
-        <script type="text/javascript" src="/javascript/jquery/jquery-ui-1.11.4.min.js">&#160;</script>
-        <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
+        <script type="text/javascript" src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
+        <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
+        <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
         <!-- <link rel="stylesheet" href="/javascript/jquery/css/bedework/bedeworkJquery.css"/> -->
         <xsl:if test="/bedework/page='displayCalendarForExport'">
           <script type="text/javascript">

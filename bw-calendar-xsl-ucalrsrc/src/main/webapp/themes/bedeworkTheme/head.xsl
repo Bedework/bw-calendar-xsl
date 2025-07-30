@@ -37,7 +37,6 @@
       var startTzid = "<xsl:value-of select="/bedework/formElements/form/start/tzid"/>";
       var endTzid = "<xsl:value-of select="/bedework/formElements/form/end/dateTime/tzid"/>";
       var resourcesRoot = "<xsl:value-of select="$resourcesRoot"/>";
-      var imagesRoot = resourcesRoot + "/images";
       var hour24 = <xsl:value-of select="/bedework/hour24"/>;
       var preferredEndType = '<xsl:value-of select="/bedework/preferredEndType"/>';
       if (preferredEndType === "") {
@@ -55,9 +54,9 @@
          losing the script closing tags (which avoids browser problems) -->
     <xsl:choose>
       <xsl:when test="/bedework/page='managePolls'">
-        <script src="/javascript/jquery/jquery-1.11.3.min.js">&#160;</script>
-        <script src="/javascript/jquery/jquery-ui-1.11.4.min.js">&#160;</script>
-        <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
+        <script src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
+        <script src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
+        <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
         <script src="/javascript/jquery/spin.min.js">&#160;</script>
         <link href="{$resourcesRoot}/poll/css/webpoll.css" rel="stylesheet"/>
         <script src="{$resourcesRoot}/poll/js/json2.js">&#160;</script>
@@ -128,9 +127,9 @@
         </script>
       </xsl:when>
       <xsl:otherwise>
-        <script src="/javascript/jquery/jquery-1.11.3.min.js">&#160;</script>
-        <script src="/javascript/jquery/jquery-ui-1.11.4.min.js">&#160;</script>
-        <link rel="stylesheet" href="/javascript/jquery/css/jquery-ui-1.11.0/jquery-ui.min.css"/>
+        <script src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
+        <script src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
+        <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
         <!-- <link rel="stylesheet" href="/javascript/jquery/css/bedework/bedeworkJquery.css"/> -->
       </xsl:otherwise>
     </xsl:choose>
@@ -160,8 +159,8 @@
 
     <xsl:if test="/bedework/page='modCalendar' or
                   /bedework/page='addCalendar'">
-      <link rel="stylesheet" href="/javascript/jquery/colorpicker/colorpicker.css"/>
-      <script src="/javascript/jquery/colorpicker/colorpicker.js">&#160;</script>
+      <link rel="stylesheet" href="/javascript/colorpicker/colorpicker.css"/>
+      <script src="/javascript/colorpicker/colorpicker.js">&#160;</script>
     </xsl:if>
 
     <xsl:if test="/bedework/page='attendees'">
@@ -178,116 +177,107 @@
                   /bedework/page='rdates' or
                   /bedework/page='calendarListForExport'">
 
-      <xsl:choose>
-        <xsl:when test="$portalFriendly = 'true'">
-          <script src="{$resourcesRoot}/javascript/dynCalendarWidget.js">&#160;</script>
-          <link rel="stylesheet" href="{$resourcesRoot}/css/dynCalendarWidget.css"/>
-        </xsl:when>
-        <xsl:otherwise>
+      <!-- include the localized jQuery datepicker defaults -->
+      <xsl:call-template name="jqueryDatepickerDefaults"/>
 
-          <!-- include the localized jQuery datepicker defaults -->
-          <xsl:call-template name="jqueryDatepickerDefaults"/>
+      <!-- now setup date and time pickers -->
+      <script type="text/javascript">
+        <xsl:comment>
+        function bwSetupDatePickers() {
+          // startdate
+          $("#bwEventWidgetStartDate").datepicker({
+            defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>)
+          });
+          $("#bwEventWidgetStartDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
 
-          <!-- now setup date and time pickers -->
-          <script type="text/javascript">
-            <xsl:comment>
-            function bwSetupDatePickers() {
-              // startdate
-              $("#bwEventWidgetStartDate").datepicker({
-                defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>)
-              });
-              $("#bwEventWidgetStartDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
+          // starttime
+          $("#bwStartClock").bwTimePicker({
+            hour24: <xsl:value-of select="/bedework/hour24"/>,
+            attachToId: "calWidgetStartTimeHider",
+            hourIds: ["eventStartDateHour","eventStartDateSchedHour"],
+            minuteIds: ["eventStartDateMinute","eventStartDateSchedMinute"],
+            ampmIds: ["eventStartDateAmpm","eventStartDateSchedAmpm"],
+            hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
+            minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
+            amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
+            pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
+          });
 
-              // starttime
-              $("#bwStartClock").bwTimePicker({
-                hour24: <xsl:value-of select="/bedework/hour24"/>,
-                attachToId: "calWidgetStartTimeHider",
-                hourIds: ["eventStartDateHour","eventStartDateSchedHour"],
-                minuteIds: ["eventStartDateMinute","eventStartDateSchedMinute"],
-                ampmIds: ["eventStartDateAmpm","eventStartDateSchedAmpm"],
-                hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
-                minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
-					      amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
-					      pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
-              });
+          // enddate
+          $("#bwEventWidgetEndDate").datepicker({
+            defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/end/dateTime/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/end/dateTime/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/end/dateTime/day/select/option[@selected = 'selected']/@value"/>)
+          });
+          $("#bwEventWidgetEndDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/end/rfc3339DateTime,'T')"/>');
 
-              // enddate
-              $("#bwEventWidgetEndDate").datepicker({
-                defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/end/dateTime/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/end/dateTime/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/end/dateTime/day/select/option[@selected = 'selected']/@value"/>)
-              });
-              $("#bwEventWidgetEndDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/end/rfc3339DateTime,'T')"/>');
+          // endtime
+          $("#bwEndClock").bwTimePicker({
+            hour24: <xsl:value-of select="/bedework/hour24"/>,
+            attachToId: "calWidgetEndTimeHider",
+            hourIds: ["eventEndDateHour"],
+            minuteIds: ["eventEndDateMinute"],
+            ampmIds: ["eventEndDateAmpm"],
+            hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
+            minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
+            amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
+            pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
+          });
 
-              // endtime
-              $("#bwEndClock").bwTimePicker({
-                hour24: <xsl:value-of select="/bedework/hour24"/>,
-                attachToId: "calWidgetEndTimeHider",
-                hourIds: ["eventEndDateHour"],
-                minuteIds: ["eventEndDateMinute"],
-                ampmIds: ["eventEndDateAmpm"],
-                hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
-                minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
-                amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
-                pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
-              });
-
-              // recurrence until
-              $("#bwEventWidgetUntilDate").datepicker({
-                <xsl:choose>
-                  <xsl:when test="/bedework/formElements/form/recurrence/until">
-                    defaultDate: new Date(<xsl:value-of select="substring(/bedework/formElements/form/recurrence/until,1,4)"/>, <xsl:value-of select="number(substring(/bedework/formElements/form/recurrence/until,5,2)) - 1"/>, <xsl:value-of select="substring(/bedework/formElements/form/recurrence/until,7,2)"/>),
-                  </xsl:when>
-                  <xsl:otherwise>
-                    defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>),
-                  </xsl:otherwise>
-                </xsl:choose>
-                altField: "#bwEventUntilDate",
-                altFormat: "yymmdd"
-              });
-              $("#bwEventWidgetUntilDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
-
-              // rdates and xdates date picker
-              $("#bwEventWidgetRdate").datepicker({
+          // recurrence until
+          $("#bwEventWidgetUntilDate").datepicker({
+            <xsl:choose>
+              <xsl:when test="/bedework/formElements/form/recurrence/until">
+                defaultDate: new Date(<xsl:value-of select="substring(/bedework/formElements/form/recurrence/until,1,4)"/>, <xsl:value-of select="number(substring(/bedework/formElements/form/recurrence/until,5,2)) - 1"/>, <xsl:value-of select="substring(/bedework/formElements/form/recurrence/until,7,2)"/>),
+              </xsl:when>
+              <xsl:otherwise>
                 defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>),
-                dateFormat: "yymmdd"
-              });
-              $("#bwEventWidgetRdate").val('<xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,1,4)"/><xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,6,2)"/><xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,9,2)"/>');
+              </xsl:otherwise>
+            </xsl:choose>
+            altField: "#bwEventUntilDate",
+            altFormat: "yymmdd"
+          });
+          $("#bwEventWidgetUntilDate").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
 
-              // rdates and xdates times
-              $("#bwRecExcClock").bwTimePicker({
-                hour24: true,
-                withPadding: true,
-                attachToId: "rdateTimeFields",
-                hourIds: ["eventRdateHour"],
-                minuteIds: ["eventRdateMinute"],
-                hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
-                minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
-                amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
-                pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
-              });
+          // rdates and xdates date picker
+          $("#bwEventWidgetRdate").datepicker({
+            defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>),
+            dateFormat: "yymmdd"
+          });
+          $("#bwEventWidgetRdate").val('<xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,1,4)"/><xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,6,2)"/><xsl:value-of select="substring(/bedework/formElements/form/start/rfc3339DateTime,9,2)"/>');
 
-              // meeting startdate widget
-              $("#bwEventWidgetStartDateSched").datepicker({
-                defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>)
-              }).attr("readonly", "readonly");
-              $("#bwEventWidgetStartDateSched").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
+          // rdates and xdates times
+          $("#bwRecExcClock").bwTimePicker({
+            hour24: true,
+            withPadding: true,
+            attachToId: "rdateTimeFields",
+            hourIds: ["eventRdateHour"],
+            minuteIds: ["eventRdateMinute"],
+            hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
+            minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
+            amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
+            pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
+          });
 
-              // meeting starttime
-              $("#bwSchedClock").bwTimePicker({
-                hour24: <xsl:value-of select="/bedework/hour24"/>,
-                attachToId: "schedTime",
-                hourIds: ["eventStartDateSchedHour","eventStartDateHour"],
-                minuteIds: ["eventStartDateSchedMinute","eventStartDateMinute"],
-                ampmIds: ["eventStartDateSchedAmpm","eventStartDateAmpm"],
-                hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
-                minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
-                amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
-                pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
-              });
-            }
-            </xsl:comment>
-          </script>
-        </xsl:otherwise>
-      </xsl:choose>
+          // meeting startdate widget
+          $("#bwEventWidgetStartDateSched").datepicker({
+            defaultDate: new Date(<xsl:value-of select="/bedework/formElements/form/start/yearText/input/@value"/>, <xsl:value-of select="number(/bedework/formElements/form/start/month/select/option[@selected = 'selected']/@value) - 1"/>, <xsl:value-of select="/bedework/formElements/form/start/day/select/option[@selected = 'selected']/@value"/>)
+          }).attr("readonly", "readonly");
+          $("#bwEventWidgetStartDateSched").val('<xsl:value-of select="substring-before(/bedework/formElements/form/start/rfc3339DateTime,'T')"/>');
+
+          // meeting starttime
+          $("#bwSchedClock").bwTimePicker({
+            hour24: <xsl:value-of select="/bedework/hour24"/>,
+            attachToId: "schedTime",
+            hourIds: ["eventStartDateSchedHour","eventStartDateHour"],
+            minuteIds: ["eventStartDateSchedMinute","eventStartDateMinute"],
+            ampmIds: ["eventStartDateSchedAmpm","eventStartDateAmpm"],
+            hourLabel: "<xsl:value-of select="$bwStr-Cloc-Hour"/>",
+            minuteLabel: "<xsl:value-of select="$bwStr-Cloc-Minute"/>",
+            amLabel: "<xsl:value-of select="$bwStr-Cloc-AM"/>",
+            pmLabel: "<xsl:value-of select="$bwStr-Cloc-PM"/>"
+          });
+        }
+        </xsl:comment>
+      </script>
     </xsl:if>
 
     <xsl:if test="/bedework/page='addEvent' or

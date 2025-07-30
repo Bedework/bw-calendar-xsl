@@ -1,0 +1,5 @@
+[[calrsrc-SoEDepartmental]]
+== calrsrc-SoEDepartmental
+Provides an example public departmental calendar view for bedework.
+
+This may not be fully functional.
