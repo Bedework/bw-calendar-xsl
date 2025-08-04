@@ -11,7 +11,7 @@
 
   <artifactId>bw-calendar-xsl-asciidocs</artifactId>
   <packaging>pom</packaging>
-  <name>Bedework calendar common: AsciiDoc source and docs generation</name>
+  <name>Bedework calendar XSL: AsciiDoc source and docs generation</name>
 
   <build>
     <plugins>
