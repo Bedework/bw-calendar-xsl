@@ -94,8 +94,8 @@
           <xsl:call-template name="bedeworkEventJsStrings"/>
 
           <!-- load libraries -->
-          <script type="text/javascript" src="/javascript/jquery/autocomplete/select2.min.js">/* Autocomplete combobox */</script>
-          <link rel="stylesheet" href="/javascript/jquery/autocomplete/select2.min.css"/>
+          <script type="text/javascript" src="/javascript/autocomplete/select2.min.js">/* Autocomplete combobox */</script>
+          <link rel="stylesheet" href="/javascript/autocomplete/select2.min.css"/>
 
           <!-- load the bedework event form scripts -->
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
@@ -412,7 +412,7 @@
                       /bedework/page='modSubscription'">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <link rel="stylesheet" href="/javascript/bedework/bedeworkAccess.css"/>
-          <script type="text/javascript" src="/javascript/bedework/bedeworkAccess.js">/* Bedework Access Control handling */</script>
+          <script type="text/javascript" src="/javascript/bedework/bedeworkAccess.min.js">/* Bedework Access Control handling */</script>
           <xsl:call-template name="localeAccessStringsJsInclude"></xsl:call-template>
 
           <!-- initialize calendar acls, if present -->

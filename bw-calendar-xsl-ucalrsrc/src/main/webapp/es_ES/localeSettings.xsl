@@ -29,7 +29,7 @@
   <xsl:template name="jqueryDatepickerDefaults">
     
     <!-- pull in the localization strings and defaults. -->
-    <script type="text/javascript" src="/javascript/jquery/lang-datepicker/jquery.ui.datepicker-es.js">&#160;</script>
+    <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/datepicker/lang/datepicker-es.js">&#160;</script>
 
     <!-- Bedework datepicker defaults.  You can include further overrides to regionalization here. -->
     <script type="text/javascript">

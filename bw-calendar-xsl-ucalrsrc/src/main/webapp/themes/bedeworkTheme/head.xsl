@@ -57,7 +57,7 @@
         <script src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
         <script src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
         <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
-        <script src="/javascript/jquery/spin.min.js">&#160;</script>
+        <script src="/javascript/jquery-3/spinner/spin.min.js">&#160;</script>
         <link href="{$resourcesRoot}/poll/css/webpoll.css" rel="stylesheet"/>
         <script src="{$resourcesRoot}/poll/js/json2.js">&#160;</script>
         <script src="{$resourcesRoot}/poll/js/jsonTz.js">&#160;</script>
@@ -130,7 +130,6 @@
         <script src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
         <script src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
         <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
-        <!-- <link rel="stylesheet" href="/javascript/jquery/css/bedework/bedeworkJquery.css"/> -->
       </xsl:otherwise>
     </xsl:choose>
 
@@ -147,7 +146,7 @@
     <xsl:if test="/bedework/page='modCalendar' or
                   /bedework/page='modSchedulingPrefs'">
       <link rel="stylesheet" href="/javascript/bedework/bedeworkAccess.css"/>
-      <script src="/javascript/bedework/bedeworkAccess.js">&#160;</script>
+      <script src="/javascript/bedework/bedeworkAccess.min.js">&#160;</script>
       <xsl:call-template name="bedeworkAccessStrings"/>
       <!-- initialize calendar acls, if present -->
       <xsl:if test="/bedework/currentCalendar/acl/ace">
@@ -166,10 +165,10 @@
     <xsl:if test="/bedework/page='attendees'">
       <!--  Note: this page is deprecated, but is still maintained for testing.
             The following files are included in the add/edit event pages now as well. -->
-      <script src="/javascript/jquery/autocomplete/bw-jquery.autocomplete.js">&#160;</script>
-      <script src="/javascript/jquery/autocomplete/jquery.bgiframe.min.js">&#160;</script>
+      <script src="/javascript/autocomplete/bw-jquery.autocomplete.min.js">&#160;</script>
+      <script src="/javascript/autocomplete/jquery.bgiframe.min.js">&#160;</script>
       <script src="{$resourcesRoot}/javascript/bedeworkAttendees.js">&#160;</script>
-      <link rel="stylesheet" type="text/css" href="/javascript/jquery/autocomplete/jquery.autocomplete.css" />
+      <link rel="stylesheet" type="text/css" href="/javascript/autocomplete/jquery.autocomplete.css" />
     </xsl:if>
 
     <xsl:if test="/bedework/page='addEvent' or
@@ -303,7 +302,7 @@
       <script src="{$resourcesRoot}/javascript/jcard.js">&#160;</script>
       <link rel="stylesheet" href="{$resourcesRoot}/css/bwScheduling.css"/>
 
-      <script src="/javascript/bedework/bedeworkAccess.js">&#160;</script>
+      <script src="/javascript/bedework/bedeworkAccess.min.js">&#160;</script>
       <xsl:call-template name="bedeworkAccessStrings"/>
       <link rel="stylesheet" href="/javascript/bedework/bedeworkAccess.css"/>
 

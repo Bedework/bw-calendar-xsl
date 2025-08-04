@@ -52,7 +52,6 @@
         <script type="text/javascript" src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
         <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
         <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
-        <!-- <link rel="stylesheet" href="/javascript/jquery/css/bedework/bedeworkJquery.css"/> -->
         <xsl:if test="/bedework/page='displayCalendarForExport'">
           <script type="text/javascript">
             <xsl:comment>

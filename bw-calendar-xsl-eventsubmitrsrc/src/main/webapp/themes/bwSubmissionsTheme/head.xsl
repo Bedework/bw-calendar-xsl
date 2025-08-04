@@ -30,7 +30,6 @@
     <script type="text/javascript" src="/javascript/jquery-3/jquery-3.7.1.min.js"><xsl:text> </xsl:text></script>
     <script type="text/javascript" src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js"><xsl:text> </xsl:text></script>
     <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
-    <!-- <link rel="stylesheet" href="/javascript/jquery/css/bedework/bedeworkJquery.css"/> -->
 
     <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js"><xsl:text> </xsl:text></script>
 

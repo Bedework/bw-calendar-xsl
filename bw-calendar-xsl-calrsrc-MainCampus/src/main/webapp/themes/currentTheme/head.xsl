@@ -131,7 +131,7 @@
         <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/exportSubscribe.js">/* bedework export/subscribe form */</script>
       <!-- load conditional javascript -->
       <xsl:if test="/bedework/page='eventList' or /bedework/page='eventscalendar'">
-        <script src="/javascript/jquery/spin.min.js">/* spinner for event load animations */</script>
+        <script src="/javascript/jquery-3/spinner/spin.min.js">/* spinner for event load animations */</script>
       </xsl:if>
       <xsl:if test="/bedework/page='searchResult'">
         <script type="text/javascript" src="{$resourcesRoot}/javascript/catSearch.js">/* category search */</script> <!-- probably should be deprecated-->
