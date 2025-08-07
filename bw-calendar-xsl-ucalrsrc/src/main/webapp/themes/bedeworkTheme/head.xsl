@@ -57,7 +57,7 @@
         <script src="/javascript/jquery-3/jquery-3.7.1.min.js">&#160;</script>
         <script src="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.js">&#160;</script>
         <link rel="stylesheet" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css"/>
-        <script src="/javascript/jquery-3/spinner/spin.min.js">&#160;</script>
+        <script src="/javascript/spinner/2.0.1/spin.min.js">&#160;</script>
         <link href="{$resourcesRoot}/poll/css/webpoll.css" rel="stylesheet"/>
         <script src="{$resourcesRoot}/poll/js/json2.js">&#160;</script>
         <script src="{$resourcesRoot}/poll/js/jsonTz.js">&#160;</script>

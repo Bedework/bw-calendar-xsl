@@ -81,8 +81,8 @@
       <link rel="icon" type="image/ico" href="{$favicon}" />
 
       <!-- load library css -->
-      <!-- Was for IE6-8 do we need this any longer?
-      <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/javascript/bootstrap3/css/bootstrap.min.css" /> -->
+      <!-- Was for IE6-8 do we need this any longer? (Apparently we do...) -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/javascript/bootstrap/3.3.7/css/bootstrap.min.css" />
       <link rel="stylesheet" type="text/css" media="screen" href="/javascript/jquery-3/jquery-ui/jquery-ui-1.14.1/jquery-ui.min.css" />
       <!-- load Bedework css ... you may wish to combine (and minify) these files for a production service. -->
       <link rel="stylesheet" type="text/css" media="all" href="{$resourcesRoot}/css/bwThemeGlobal.css" />
@@ -124,15 +124,13 @@
       <xsl:call-template name="themeJavascriptVariables"/><!-- these are defined in themeSettings.xsl  -->
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/bedework.js">/* bedework */</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/navigation.js">/* bedework navigation (menus, links) */</script>
+      <!-- load conditional javascript -->
+      <script src="/javascript/spinner/2.0.1/spin.min.js">/* spinner for event load animations */</script>
       <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/eventList.js">/* bedework list events object */</script>
       <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">/* bedework utilities */</script>
 
         <link rel="stylesheet" type="text/css" media="screen" href="{$resourcesRoot}/css/bwExportSubscribe.css" />
         <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework/exportSubscribe.js">/* bedework export/subscribe form */</script>
-      <!-- load conditional javascript -->
-      <xsl:if test="/bedework/page='eventList' or /bedework/page='eventscalendar'">
-        <script src="/javascript/jquery-3/spinner/spin.min.js">/* spinner for event load animations */</script>
-      </xsl:if>
       <xsl:if test="/bedework/page='searchResult'">
         <script type="text/javascript" src="{$resourcesRoot}/javascript/catSearch.js">/* category search */</script> <!-- probably should be deprecated-->
       </xsl:if>
