@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## Unreleased (5.1.0-SNAPSHOT)
 
+## [5.0.1] - 2025-08-08
+* Reinstate old spinner and move bootstrap to common
+
 ## [5.0.0] - 2025-08-04
 * Mostly related to relocation of javascript and upgrade to jquery 3
 * A number of changes related to upgrading to jquery 3.x. 
