@@ -71,7 +71,7 @@
   <xsl:template match="image">
     <xsl:param name="singleMode">false</xsl:param>
     <xsl:param name="isGeneric">false</xsl:param>
-    <xsl:variable name="imgPrefix"><xsl:choose><xsl:when test="not(starts-with(url,'http') or starts-with(url,'/'))"><xsl:value-of select="$resourcesRoot"/>/featured/</xsl:when></xsl:choose></xsl:variable>
+    <xsl:variable name="imgPrefix"><xsl:choose><xsl:when test="not(starts-with(url,'http') or starts-with(url,'/'))">/images/calpublic/featured/</xsl:when></xsl:choose></xsl:variable>
     <xsl:choose>
       <xsl:when test="link = '' or $isGeneric = 'true'">
         <figure class="red">
