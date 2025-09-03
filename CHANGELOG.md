@@ -2,7 +2,7 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Virtually every release involves updating any dependencies.
+Virtually every release involves updating any dependencies. If there are no non-trivial changes, the release will be listed with no content. 
 
 Only major change summaries are shown below. Read the git log for details.
 
