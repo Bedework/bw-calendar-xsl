@@ -28,10 +28,10 @@
 
   <!-- User/Group Tab -->
   <xsl:template name="tabUsers">
-    <xsl:if test="$superUser='true'">
+    <xsl:if test="$superUser = 'true'">
       <h2><xsl:copy-of select="$bwStr-TaUs-ManageUsersAndGroups"/></h2>
       <ul class="adminMenu">
-        <xsl:if test="$workflowEnabled='true'">
+        <xsl:if test="$workflowEnabled = 'true'">
           <li>
             <a href="{$authuser-initUpdate}">
               <xsl:copy-of select="$bwStr-TaUs-ManageAdminRoles"/>

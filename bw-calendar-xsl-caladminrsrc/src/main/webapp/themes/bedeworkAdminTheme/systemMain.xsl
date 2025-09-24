@@ -21,7 +21,7 @@
 
   <!--+++++++++++++++ System Tab ++++++++++++++++++++-->
   <xsl:template name="tabSystem">
-    <xsl:if test="$superUser='true'">
+    <xsl:if test="$superUser = 'true'">
       <h2><xsl:copy-of select="$bwStr-TaSy-ManageSys"/></h2>
       <ul class="adminMenu strong">
         <li class="calendar">

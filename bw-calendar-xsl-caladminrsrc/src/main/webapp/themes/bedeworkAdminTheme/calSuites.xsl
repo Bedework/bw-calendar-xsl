@@ -26,7 +26,7 @@
    -->
 
   <xsl:template name="tabCalsuite">
-    <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser='true'">
+    <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser = 'true'">
       <h2>
         <xsl:copy-of select="$bwStr-TaCS-ManageCalendarSuite"/>
       </h2>

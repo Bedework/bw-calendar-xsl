@@ -2584,7 +2584,7 @@
                 Search for contact:
               </label>
               <input id="bwContactSearch" size="60" placeholder="begin typing to search for a contact" value="">
-              <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']"/></xsl:attribute>
+                <xsl:attribute name="value"><xsl:value-of select="form/contact/all/select/option[@selected='selected']"/></xsl:attribute>
               </input>
               <br/>
               <!-- XXX request new contact mailto link: -->

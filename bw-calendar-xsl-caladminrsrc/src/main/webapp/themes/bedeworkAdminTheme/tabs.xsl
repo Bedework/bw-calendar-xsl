@@ -23,8 +23,8 @@
 
   <xsl:template name="tabs">
     <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
-    <xsl:if test="$workflowEnabled='false' or
-                  $superUser='true' or $approverUser='true'">
+    <xsl:if test="$workflowEnabled = 'false' or
+                  $superUser = 'true' or $approverUser = 'true'">
       <xsl:call-template name="upperSearchForm">
         <xsl:with-param name="toggleLimits">
           <xsl:choose>
@@ -104,7 +104,7 @@
           </li>
         </xsl:if>
       </xsl:if>
-      <xsl:if test="$superUser='true'">
+      <xsl:if test="$superUser = 'true'">
         <li>
           <xsl:if test="/bedework/tab = 'users'">
             <xsl:attribute name="class">selected</xsl:attribute>
