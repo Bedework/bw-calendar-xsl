@@ -31,6 +31,12 @@
       <thead>
         <tr>
           <th><xsl:copy-of select="$bwStr-EvLC-Title"/></th>
+          <xsl:choose>
+            <xsl:when test="$suggestionQueue = 'true'">
+              <th><xsl:copy-of select="$bwStr-EvLC-AcceptQ"/></th>
+            </xsl:when>
+            <xsl:otherwise><th><xsl:text> </xsl:text></th></xsl:otherwise>
+          </xsl:choose>
           <xsl:if test="$pending = 'true'">
             <th><xsl:copy-of select="$bwStr-EvLC-CalSuite"/></th>
             <th><xsl:copy-of select="$bwStr-EvLC-ClaimedBy"/></th>
@@ -48,12 +54,6 @@
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Author"/></th>
           <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
-          <xsl:choose>
-            <xsl:when test="$suggestionQueue = 'true'">
-              <th>Accept?</th>
-            </xsl:when>
-            <xsl:otherwise><th><xsl:text> </xsl:text></th></xsl:otherwise>
-          </xsl:choose>
         </tr>
       </thead>
       <tbody id="commonListTableBody">
@@ -223,6 +223,45 @@
           </xsl:otherwise>
         </xsl:choose>
       </td>
+      <td>
+        <xsl:if test="recurring = 'true' or recurrenceId != ''">
+          <div class="recurrenceEditLinks">
+            <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
+              <xsl:copy-of select="$bwStr-EvLC-Master"/>
+            </button>
+          </div>
+        </xsl:if>
+        <xsl:if test="(($pending = 'true') and ($approverUser = 'true'))">
+          <div class="recurrenceEditLinks">
+            <xsl:choose>
+              <xsl:when test="$claimedPending = 'true'">
+                <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
+                  <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
+                </button>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:copy-of select="$bwStr-EvLC-ClaimBeforeApprove"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </div>
+        </xsl:if>
+        <xsl:if test="(($approvalQueue = 'true') and ($approverUser = 'true'))">
+          <div class="recurrenceEditLinks">
+            <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
+              <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
+            </button>
+          </div>
+        </xsl:if>
+        <xsl:if test="$suggestionQueue = 'true'">
+          <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
+          <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
+            <xsl:value-of select="$bwStr-SEBu-Accept"/>
+          </button>
+          <button onclick="setSuggestionRowStatus('reject','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
+            <xsl:value-of select="$bwStr-SEBu-Reject"/>
+          </button>
+        </xsl:if>
+      </td>
       <xsl:if test="$pending = 'true'">
         <td>
           <xsl:value-of select="calSuite"/>
@@ -363,45 +402,6 @@
           <xsl:text> </xsl:text>
           <xsl:value-of select="substring(created,10,2)"/>:<xsl:value-of select="substring(created,12,2)"/> utc
         </div>
-      </td>
-      <td>
-        <xsl:if test="recurring = 'true' or recurrenceId != ''">
-          <div class="recurrenceEditLinks">
-            <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
-              <xsl:copy-of select="$bwStr-EvLC-Master"/>
-            </button>
-          </div>
-        </xsl:if>
-        <xsl:if test="(($pending = 'true') and ($approverUser = 'true'))">
-          <div class="recurrenceEditLinks">
-            <xsl:choose>
-              <xsl:when test="$claimedPending = 'true'">
-                <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
-                  <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
-                </button>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:copy-of select="$bwStr-EvLC-ClaimBeforeApprove"/>
-              </xsl:otherwise>
-            </xsl:choose>
-          </div>
-        </xsl:if>
-        <xsl:if test="(($approvalQueue = 'true') and ($approverUser = 'true'))">
-          <div class="recurrenceEditLinks">
-            <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
-              <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
-            </button>
-          </div>
-        </xsl:if>
-        <xsl:if test="$suggestionQueue = 'true'">
-          <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
-          <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
-            <xsl:value-of select="$bwStr-SEBu-Accept"/>
-          </button>
-          <button onclick="setSuggestionRowStatus('reject','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
-            <xsl:value-of select="$bwStr-SEBu-Reject"/>
-          </button>
-        </xsl:if>
       </td>
     </tr>
   </xsl:template>

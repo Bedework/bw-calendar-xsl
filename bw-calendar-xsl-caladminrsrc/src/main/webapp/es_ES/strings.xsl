@@ -162,6 +162,7 @@
   <xsl:variable name="bwStr-EvLC-Suggested">Sugerido</xsl:variable>
   <xsl:variable name="bwStr-EvLC-TopicalAreas">Áreas topicas </xsl:variable>
   <xsl:variable name="bwStr-EvLC-Categories">Categorías</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-AcceptQ">Accept?</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Author">Autor</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Description">Descripción</xsl:variable>
   <xsl:variable name="bwStr-EvLC-NoEvents">No hay eventos para mostrar</xsl:variable>
@@ -179,7 +180,7 @@
   <xsl:variable name="bwStr-EvLC-ThisEventCrossTagged">Este evento tiene referencias cruzadas en sus etiquetas.</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Mostrar etiquetas por otros grupos</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Evento recurrente. Editar:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Master">Editar maestro</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Master">Editar&#160;maestro</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
