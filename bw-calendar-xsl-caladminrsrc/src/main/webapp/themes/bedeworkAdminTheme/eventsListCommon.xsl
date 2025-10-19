@@ -35,7 +35,7 @@
             <xsl:when test="$suggestionQueue = 'true'">
               <th><xsl:copy-of select="$bwStr-EvLC-AcceptQ"/></th>
             </xsl:when>
-            <xsl:otherwise><th><xsl:text> </xsl:text></th></xsl:otherwise>
+            <xsl:otherwise><th></th></xsl:otherwise>
           </xsl:choose>
           <xsl:if test="$pending = 'true'">
             <th><xsl:copy-of select="$bwStr-EvLC-CalSuite"/></th>
@@ -145,6 +145,7 @@
     <xsl:param name="suggestionQueue">false</xsl:param>
     <xsl:variable name="calPath" select="calendar/encodedPath"/>
     <xsl:variable name="guid" select="guid"/>
+    <xsl:variable name="href" select="encodedHref"/>
     <xsl:variable name="calSuite" select="calSuite"/>
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="i" select="position()"/>
@@ -224,8 +225,46 @@
         </xsl:choose>
       </td>
       <td>
+        <xsl:choose>
+          <xsl:when test="status = 'CANCELLED'">
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CONFIRMED'">
+                <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
+              </button>
+            </div>
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=TENTATIVE'">
+                <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
+              </button>
+            </div>
+          </xsl:when>
+          <xsl:when test="status = 'TENTATIVE'">
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CONFIRMED'">
+                <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
+              </button>
+            </div>
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CANCELLED'">
+                <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
+              </button>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CANCELLED'">
+                <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
+              </button>
+            </div>
+            <div>
+              <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=TENTATIVE'">
+                <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
+              </button>
+            </div>
+          </xsl:otherwise>
+        </xsl:choose>
         <xsl:if test="recurring = 'true' or recurrenceId != ''">
-          <div class="recurrenceEditLinks">
+          <div>
             <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
               <xsl:copy-of select="$bwStr-EvLC-Master"/>
             </button>

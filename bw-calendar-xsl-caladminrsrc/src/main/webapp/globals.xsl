@@ -90,6 +90,7 @@
   <xsl:variable name="event-delete" select="/bedework/urlPrefixes/event/delete"/>
   <xsl:variable name="event-fetchForDisplay" select="/bedework/urlPrefixes/event/fetchForDisplay"/>
   <xsl:variable name="event-fetchForUpdate" select="/bedework/urlPrefixes/event/fetchForUpdate"/>
+  <xsl:variable name="event-updateStatus" select="/bedework/urlPrefixes/event/updateStatus"/>
   <xsl:variable name="event-update" select="/bedework/urlPrefixes/event/update"/>
   <xsl:variable name="event-selectCalForEvent" select="/bedework/urlPrefixes/event/selectCalForEvent"/>
   <xsl:variable name="event-initUpload" select="/bedework/urlPrefixes/event/initUpload"/>

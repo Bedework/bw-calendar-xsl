@@ -182,6 +182,9 @@
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Show tags by other groups</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Recurring event.  Edit:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Master">Edit&#160;master</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetTentative">Tentative&#160;event</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirmed&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimBeforeApprove">Claim before Approval</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
