@@ -56,6 +56,8 @@
 
   <xsl:variable name="suggestionEnabled" select="/bedework/suggestionEnabled"/>
 
+  <xsl:variable name="searchDone" select="/bedework/searchDone"/>
+
   <xsl:variable name="approverUser" select="/bedework/userInfo/approverUser"/>
   <xsl:variable name="superUser" select="/bedework/userInfo/superUser"/>
 
@@ -66,9 +68,11 @@
 
   <!-- primary navigation, menu tabs -->
   <xsl:variable name="setup" select="/bedework/urlPrefixes/setup"/>
+  <xsl:variable name="initEventList" select="/bedework/urlPrefixes/initEventList"/>
   <xsl:variable name="initPendingTab" select="/bedework/urlPrefixes/initPendingTab"/>
   <xsl:variable name="initApprovalQueueTab" select="/bedework/urlPrefixes/initApprovalQueueTab"/>
   <xsl:variable name="initSuggestionQueueTab" select="/bedework/urlPrefixes/initSuggestionQueueTab"/>
+  <xsl:variable name="showSearchTab" select="/bedework/urlPrefixes/showSearchTab"/>
   <xsl:variable name="showCalsuiteTab" select="/bedework/urlPrefixes/showCalsuiteTab"/>
   <xsl:variable name="showUsersTab" select="/bedework/urlPrefixes/showUsersTab"/>
   <xsl:variable name="showSystemTab" select="/bedework/urlPrefixes/showSystemTab"/>

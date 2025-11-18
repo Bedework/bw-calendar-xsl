@@ -141,9 +141,27 @@
       <input type="hidden" name="ignoreCreator" value="true"/>
     </form>
 
-    <table id="searchTable">
+    <table id="commonListTable" title="event listing">
+      <thead>
+        <tr>
+          <th><xsl:copy-of select="$bwStr-EvLC-Title"/></th>
+          <th></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Start"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-End"/></th>
+          <th class="calcat">
+            <xsl:copy-of select="$bwStr-EvLC-TopicalAreas"/>
+          </th>
+          <th class="calcat"><xsl:copy-of select="$bwStr-EvLC-Categories"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Author"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
+        </tr>
+      </thead>
+      <tbody id="commonListTableBody">
       <xsl:choose>
-        <xsl:when test="/bedework/searchResults/searchResult">
+        <xsl:when test="/bedework/searchResults/event">
+          <xsl:apply-templates select="/bedework/searchResults/event" mode="eventListCommon">
+          </xsl:apply-templates>
+          <!--
           <tr class="fieldNames">
             <th>
               <xsl:copy-of select="$bwStr-Srch-Title"/>
@@ -151,53 +169,50 @@
             <th>
               <xsl:copy-of select="$bwStr-Srch-DateAndTime"/>
             </th>
-            <!-- <td>  XXX would like to restore these
-              topical areas
-            </td>-->
             <th>
               <xsl:copy-of select="$bwStr-Srch-Location"/>
             </th>
           </tr>
-          <xsl:for-each select="/bedework/searchResults/searchResult">
-            <xsl:variable name="calPath" select="event/calendar/encodedPath"/>
-            <xsl:variable name="guid" select="event/guid"/>
-            <xsl:variable name="recurrenceId" select="event/recurrenceId"/>
-            <tr>
-              <td>
-                <a href="{$event-fetchForDisplay}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}">
-                  <xsl:value-of select="event/summary"/>
-                  <xsl:if test="event/summary = ''"><em><xsl:copy-of select="$bwStr-Srch-NoTitle"/></em></xsl:if>
-                </a>
-              </td>
-              <td>
-                <xsl:value-of select="event/start/longdate"/>
+      <xsl:for-each select="/bedework/searchResults/searchResult">
+        <xsl:variable name="calPath" select="event/calendar/encodedPath"/>
+        <xsl:variable name="guid" select="event/guid"/>
+        <xsl:variable name="recurrenceId" select="event/recurrenceId"/>
+        <tr>
+          <td>
+            <a href="{$event-fetchForDisplay}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}">
+              <xsl:value-of select="event/summary"/>
+              <xsl:if test="event/summary = ''"><em><xsl:copy-of select="$bwStr-Srch-NoTitle"/></em></xsl:if>
+            </a>
+          </td>
+          <td>
+            <xsl:value-of select="event/start/longdate"/>
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="event/start/time"/>
+            <xsl:choose>
+              <xsl:when test="event/start/longdate != event/end/longdate">
+                - <xsl:value-of select="event/end/longdate"/>
                 <xsl:text> </xsl:text>
-                <xsl:value-of select="event/start/time"/>
-                <xsl:choose>
-                  <xsl:when test="event/start/longdate != event/end/longdate">
-                    - <xsl:value-of select="event/end/longdate"/>
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="event/end/time"/>
-                  </xsl:when>
-                  <xsl:when test="event/start/time != event/end/time">
-                    - <xsl:value-of select="event/end/time"/>
-                  </xsl:when>
-                </xsl:choose>
-              </td>
-              <!--
-              <td>
-                <xsl:for-each select="xproperties/X-BEDEWORK-ALIAS">
-                  <xsl:call-template name="substring-afterLastInstanceOf">
-                    <xsl:with-param name="string" select="values/text"/>
-                    <xsl:with-param name="char">/</xsl:with-param>
-                  </xsl:call-template><br/>
-                </xsl:for-each>
-              </td>-->
+                <xsl:value-of select="event/end/time"/>
+              </xsl:when>
+              <xsl:when test="event/start/time != event/end/time">
+                - <xsl:value-of select="event/end/time"/>
+              </xsl:when>
+            </xsl:choose>
+          </td>
+          <td>
+            <xsl:for-each select="xproperties/X-BEDEWORK-ALIAS">
+              <xsl:call-template name="substring-afterLastInstanceOf">
+                <xsl:with-param name="string" select="values/text"/>
+                <xsl:with-param name="char">/</xsl:with-param>
+              </xsl:call-template><br/>
+            </xsl:for-each>
+          </td>
               <td>
                 <xsl:value-of select="event/location/address"/>
               </td>
             </tr>
           </xsl:for-each>
+          -->
         </xsl:when>
         <xsl:otherwise>
           <tr>
@@ -210,6 +225,7 @@
           </tr>
         </xsl:otherwise>
       </xsl:choose>
+      </tbody>
     </table>
     <div class="bwEventListNav">
       <button class="searchPrevious" onclick="location.href='{$search-next}&amp;prev=prev'"><span class="searchArrow searchArrowLeft">&#9668;</span> <xsl:copy-of select="$bwStr-Srch-PrevFull"/></button>

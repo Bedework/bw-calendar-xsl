@@ -93,6 +93,12 @@
                                 (/bedework/tab = 'suggestionQueue')">
                   <xsl:call-template name="tabSuggestionQueueEvents"/>
                 </xsl:when>
+                <xsl:when test="(/bedework/page='eventList') and
+                                (/bedework/tab = 'searchResult')">
+                  <xsl:call-template name="eventList">
+                    <xsl:with-param name="searchResult">true</xsl:with-param>
+                  </xsl:call-template>
+                </xsl:when>
                 <xsl:when test="/bedework/page='tabCalsuite'">
                   <xsl:call-template name="tabCalsuite"/>
                 </xsl:when>

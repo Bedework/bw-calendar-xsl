@@ -3342,7 +3342,7 @@
                   <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="{$backToListLink}" class="noFocus"/>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:variable name="backToListLink">location.href='<xsl:value-of select="$event-initUpdateEvent"/>&amp;start=<xsl:value-of select="/bedework/currentdate/date"/>&amp;listMode=true&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))&amp;sort=dtstart.utc:asc'</xsl:variable>
+                  <xsl:variable name="backToListLink">location.href='<xsl:value-of select="$initEventList"/>&amp;start=<xsl:value-of select="/bedework/currentdate/date"/>&amp;listMode=true&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))&amp;sort=dtstart.utc:asc'</xsl:variable>
                   <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="{$backToListLink}" class="noFocus"/>
                 </xsl:otherwise>
               </xsl:choose>

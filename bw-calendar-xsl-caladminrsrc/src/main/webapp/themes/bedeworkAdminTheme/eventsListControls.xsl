@@ -24,9 +24,17 @@
     <xsl:param name="extra"/>
     <xsl:param name="bottom">false</xsl:param>
     <xsl:param name="sort">dtstart.utc:asc</xsl:param>
+    <xsl:param name="searchResult">false</xsl:param>
 
     <!-- search meta-data -->
-    <xsl:variable name="nextAction" select="$event-nextUpdateList"/>
+    <xsl:variable name="nextAction">
+      <xsl:choose>
+        <xsl:when test="$searchResult = 'true'">
+          <xsl:value-of select="$search-next"/>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="$event-nextUpdateList"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="resultSize" select="/bedework/events/resultSize"/>
     <xsl:variable name="pageSize" select="/bedework/events/pageSize"/>
     <xsl:variable name="offset">

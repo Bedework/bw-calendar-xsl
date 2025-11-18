@@ -44,7 +44,7 @@
           <xsl:copy-of select="$bwStr-Head-MainMenu"/>
         </a>
       </li>
-      <xsl:if test="$workflowEnabled='true'">
+      <xsl:if test="$workflowEnabled = 'true'">
         <li>
           <xsl:if test="/bedework/tab = 'approvalQueue'">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -89,6 +89,17 @@
             </xsl:variable>
             <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=%28colPath%3d"<xsl:value-of select="$submissionsRootEncoded"/>" and %28entity_type="event" or entity_type="todo"%29<xsl:value-of select="$calSuiteLimit"/>%29&amp;sort=dtstart.utc:asc</xsl:attribute>
             <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
+          </a>
+        </li>
+      </xsl:if>
+      <xsl:if test="$searchDone = 'true'">
+        <li>
+          <xsl:if test="/bedework/tab = 'searchResult'">
+            <xsl:attribute name="class">selected</xsl:attribute>
+          </xsl:if>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="$showSearchTab"/></xsl:attribute>
+            <xsl:copy-of select="$bwStr-Head-SearchResult"/>
           </a>
         </li>
       </xsl:if>

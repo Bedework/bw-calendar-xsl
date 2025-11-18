@@ -46,6 +46,7 @@
   <xsl:variable name="bwStr-Head-PendingEvents">Cola pendiente</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Cola de aprobación</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Cola de sugerencia</xsl:variable>
+  <xsl:variable name="bwStr-Head-SearchResult">Resultados de la Búsqueda</xsl:variable>
   <xsl:variable name="bwStr-Head-Users">Usuarios y grupos</xsl:variable>
   <xsl:variable name="bwStr-Head-System">Sistema</xsl:variable>
   <!-- notifications (in header) -->
@@ -133,6 +134,7 @@
 
   <!--  xsl:template name="eventList" -->
   <xsl:variable name="bwStr-EvLs-ManageEvents">Gestionar eventos</xsl:variable>
+  <xsl:variable name="bwStr-EvLs-SearchResult">Resultados de la Búsqueda</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectEvent">Seleccione el evento que desearía actualizar:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-PageTitle">Añadir nuevo evento</xsl:variable>
   <xsl:variable name="bwStr-EvLs-StartDate">Fecha de inicio:</xsl:variable>
