@@ -23,8 +23,10 @@
 
   <xsl:template name="tabs">
     <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
-    <xsl:if test="$workflowEnabled = 'false' or
-                  $superUser = 'true' or $approverUser = 'true'">
+    <xsl:if test="($allowSearchForAll = 'true') or
+                  ($workflowEnabled = 'false') or
+                  ($superUser = 'true') or
+                  ($approverUser = 'true')">
       <xsl:call-template name="upperSearchForm">
         <xsl:with-param name="toggleLimits">
           <xsl:choose>

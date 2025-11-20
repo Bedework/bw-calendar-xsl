@@ -34,6 +34,9 @@
   <!-- ======================= -->
 
   <!-- Root context of uploaded event images -->
+  <xsl:variable name="allowSearchForAll">true</xsl:variable>
+
+  <!-- Root context of uploaded event images -->
   <xsl:variable name="bwEventImagePrefix">/pubcaldav</xsl:variable>
 
   <!-- URL of the XSL template directory -->
@@ -59,7 +62,13 @@
   <xsl:variable name="searchDone" select="/bedework/searchDone"/>
 
   <xsl:variable name="approverUser" select="/bedework/userInfo/approverUser"/>
+  <xsl:variable name="isApproverUser" select="/bedework/userInfo/approverUser = 'true'"/>
   <xsl:variable name="superUser" select="/bedework/userInfo/superUser"/>
+  <xsl:variable name="isSuperUser" select="/bedework/userInfo/superUser = 'true'"/>
+
+  <xsl:variable name="isNonApproverUser"
+                select="not($isSuperUser) and not($isApproverUser)"/>
+
 
   <!-- Properly encoded prefixes to the application actions; use these to build
        urls; allows the application to be used without cookies or within a portal.
@@ -89,12 +98,14 @@
   <xsl:variable name="event-showUpdateList" select="/bedework/urlPrefixes/event/showUpdateList"/>
   <xsl:variable name="event-nextUpdateList" select="/bedework/urlPrefixes/event/nextUpdateList"/>
   <xsl:variable name="event-showDeleteConfirm" select="/bedework/urlPrefixes/event/showDeleteConfirm"/>
+  <xsl:variable name="event-displayEventForNonApprover" select="/bedework/urlPrefixes/event/displayEventForNonApprover"/>
   <xsl:variable name="event-initAddEvent" select="/bedework/urlPrefixes/event/initAddEvent"/>
   <xsl:variable name="event-initUpdateEvent" select="/bedework/urlPrefixes/event/initUpdateEvent"/>
   <xsl:variable name="event-delete" select="/bedework/urlPrefixes/event/delete"/>
   <xsl:variable name="event-fetchForDisplay" select="/bedework/urlPrefixes/event/fetchForDisplay"/>
   <xsl:variable name="event-fetchForUpdate" select="/bedework/urlPrefixes/event/fetchForUpdate"/>
   <xsl:variable name="event-updateStatus" select="/bedework/urlPrefixes/event/updateStatus"/>
+  <xsl:variable name="event-updateStatusFromSearch" select="/bedework/urlPrefixes/event/updateStatusFromSearch"/>
   <xsl:variable name="event-update" select="/bedework/urlPrefixes/event/update"/>
   <xsl:variable name="event-selectCalForEvent" select="/bedework/urlPrefixes/event/selectCalForEvent"/>
   <xsl:variable name="event-initUpload" select="/bedework/urlPrefixes/event/initUpload"/>

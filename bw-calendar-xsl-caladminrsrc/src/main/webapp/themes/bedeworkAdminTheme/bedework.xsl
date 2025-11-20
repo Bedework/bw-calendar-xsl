@@ -116,6 +116,7 @@
                 </xsl:when>
                 <xsl:when test="/bedework/page='displayEvent' or
                                 /bedework/page='deleteEventConfirm' or
+                                /bedework/page='displayEventForNonApprover' or
                                 /bedework/page='approvePublish'">
                   <xsl:apply-templates select="/bedework/event" mode="displayEvent"/>
                 </xsl:when>

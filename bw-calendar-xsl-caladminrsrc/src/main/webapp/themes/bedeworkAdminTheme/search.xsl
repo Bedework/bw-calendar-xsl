@@ -160,6 +160,7 @@
       <xsl:choose>
         <xsl:when test="/bedework/searchResults/event">
           <xsl:apply-templates select="/bedework/searchResults/event" mode="eventListCommon">
+            <xsl:with-param name="searchResults">true</xsl:with-param>
           </xsl:apply-templates>
           <!--
           <tr class="fieldNames">

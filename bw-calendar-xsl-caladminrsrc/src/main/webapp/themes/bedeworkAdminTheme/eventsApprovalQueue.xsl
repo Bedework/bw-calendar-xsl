@@ -58,7 +58,6 @@
 
     <xsl:call-template name="eventListCommon">
       <xsl:with-param name="approvalQueue">true</xsl:with-param>
-      <xsl:with-param name="approverUser"><xsl:copy-of select="$approverUser"/></xsl:with-param>
     </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
