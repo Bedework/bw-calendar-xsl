@@ -183,6 +183,9 @@
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Mostrar etiquetas por otros grupos</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Evento recurrente. Editar:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Master">Editar&#160;maestro</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetTentative">Mark&#160;Tentative</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
@@ -462,6 +465,7 @@
   <xsl:variable name="bwStr-DsEv-Title">Título:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-When">Cuando:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-TopicalAreas">Áreas tópicas:</xsl:variable>
+  <xsl:variable name="bwStr-DsEv-Status">Estado:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Description">Descripción:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Price">Precio:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-URL">URL:</xsl:variable>

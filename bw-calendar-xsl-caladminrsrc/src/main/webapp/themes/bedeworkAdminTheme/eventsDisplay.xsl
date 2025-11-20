@@ -25,12 +25,30 @@
     <xsl:variable name="guid" select="guid"/>
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="href" select="encodedHref"/>
+    <xsl:variable name="mainTab"
+                  select="/bedework/tab = 'main'"/>
+    <xsl:variable name="deleteConfirm"
+                  select="/bedework/page='deleteEventConfirm'"/>
+    <xsl:variable name="approvePublish"
+                  select="/bedework/page = 'approvePublish'"/>
+    <xsl:variable name="displayForNonApprover"
+                  select="/bedework/page = 'displayEventForNonApprover'"/>
+    <xsl:variable name="updateStatusHref">
+      <xsl:choose>
+        <xsl:when test="$displayForNonApprover">
+          <xsl:value-of select="$event-updateStatusFromSearch"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$event-updateStatus"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
 
     <xsl:choose>
-      <xsl:when test="/bedework/page='deleteEventConfirm'">
+      <xsl:when test="$deleteConfirm">
         <h2><xsl:copy-of select="$bwStr-DsEv-OkayToDelete"/></h2>
 
-        <xsl:if test="/bedework/tab='main'">
+        <xsl:if test="$mainTab">
           <p style="width: 400px;"><xsl:copy-of select="$bwStr-DsEv-NoteDontEncourageDeletes"/></p>
         </xsl:if>
         <xsl:variable name="deleteConfirmValue">
@@ -87,7 +105,7 @@
           </form>
         </div>
       </xsl:when>
-      <xsl:when test="/bedework/page='approvePublish'">
+      <xsl:when test="$approvePublish">
         <div id="confirmButtons">
           <form method="post">
             <xsl:attribute name="action"><xsl:value-of select="$event-approvePublish"/></xsl:attribute>
@@ -130,30 +148,30 @@
           </form>
         </div>
       </xsl:when>
-      <xsl:when test="/bedework/page='displayEventForNonApprover'">
+      <xsl:when test="$displayForNonApprover">
         <div id="confirmButtons">
           <xsl:choose>
             <xsl:when test="status = 'CANCELLED'">
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CONFIRMED'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
                   <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
                 </button>
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=TENTATIVE'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
                   <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
                 </button>
             </xsl:when>
             <xsl:when test="status = 'TENTATIVE'">
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CONFIRMED'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
                   <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
                 </button>
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CANCELLED'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
                   <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
                 </button>
             </xsl:when>
             <xsl:otherwise>
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=CANCELLED'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
                   <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
                 </button>
-                <button type="button" class="next" onclick="location.href='{$event-updateStatus}&amp;href={$href}&amp;status=TENTATIVE'">
+                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
                   <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
                 </button>
             </xsl:otherwise>
@@ -171,6 +189,12 @@
 
     <table class="eventFormTable">
       <tr>
+        <xsl:if test="status = 'TENTATIVE'">
+          <xsl:attribute name="class">tentative</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="status = 'CANCELLED'">
+          <xsl:attribute name="class">cancelled</xsl:attribute>
+        </xsl:if>
         <th>
           <xsl:copy-of select="$bwStr-DsEv-Title"/>
         </th>
@@ -204,6 +228,16 @@
               <span class="time"><xsl:value-of select="end/time"/></span>
             </xsl:when>
           </xsl:choose>
+        </td>
+      </tr>
+
+      <!--  Status  -->
+      <tr>
+        <th>
+          <xsl:copy-of select="$bwStr-DsEv-Status"/>
+        </th>
+        <td>
+          <xsl:value-of select="status"/>
         </td>
       </tr>
 

@@ -160,7 +160,9 @@
       </form>
       </xsl:if>
     </div>
-    <xsl:call-template name="eventListCommon"/>
+    <xsl:call-template name="eventListCommon">
+      <xsl:with-param name="searchResult" select="$searchResult"/>
+    </xsl:call-template>
 
     <xsl:call-template name="eventListControls">
       <xsl:with-param name="sort" select="$sort"/>

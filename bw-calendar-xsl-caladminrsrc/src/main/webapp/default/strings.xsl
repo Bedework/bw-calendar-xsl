@@ -185,8 +185,8 @@
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Recurring event.  Edit:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Master">Edit&#160;master</xsl:variable>
   <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-SetTentative">Tentative&#160;event</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirmed&#160;event</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetTentative">Mark&#160;Tentative</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimBeforeApprove">Claim before Approval</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
@@ -469,6 +469,7 @@
   <xsl:variable name="bwStr-DsEv-Title">Title:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-When">When:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-TopicalAreas">Topical Areas:</xsl:variable>
+  <xsl:variable name="bwStr-DsEv-Status">Status:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Description">Description:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Price">Price:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-URL">URL:</xsl:variable>
