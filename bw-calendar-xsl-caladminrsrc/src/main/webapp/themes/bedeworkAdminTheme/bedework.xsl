@@ -239,9 +239,6 @@
                 <xsl:when test="/bedework/page='addFilter'">
                   <xsl:call-template name="addFilter"/>
                 </xsl:when>
-                <xsl:when test="/bedework/page='searchResult'">
-                  <xsl:call-template name="searchResult"/>
-                </xsl:when>
                 <xsl:when test="/bedework/page='noGroup'">
                   <h2><xsl:copy-of select="$bwStr-Root-NoAdminGroup"/></h2>
                   <p><xsl:copy-of select="$bwStr-Root-YourUseridNotAssigned"/></p>

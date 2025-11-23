@@ -1194,29 +1194,6 @@
   <xsl:variable name="bwStr-Srch-ScopeAll">todos los grupos</xsl:variable>
   <xsl:variable name="bwStr-Srch-ColScopeAll">all calendars</xsl:variable>
   <xsl:variable name="bwStr-Srch-ColScopeMain">main calendar</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Limit">Limitar:</xsl:variable>
-  <xsl:variable name="bwStr-Srch-TodayForward">de hoy en adelante</xsl:variable>
-  <xsl:variable name="bwStr-Srch-PastDates">fechas pasadas</xsl:variable>
-  <xsl:variable name="bwStr-Srch-AllDates">todas las fechas</xsl:variable>
-  <xsl:variable name="bwStr-Srch-SearchResult">Resultados de la búsqueda</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Page">página:</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Prev">ant</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Next">sig</xsl:variable>
-  <xsl:variable name="bwStr-Srch-PrevFull">Anterior</xsl:variable>
-  <xsl:variable name="bwStr-Srch-NextFull">Siguiente </xsl:variable>
-  <xsl:variable name="bwStr-Srch-Starting">Comenzando:</xsl:variable>
-  <xsl:variable name="bwStr-Srch-ResultReturnedFor">resultado(s) devueltos para</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Relevance">relevancia</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Summary">resumen</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Title">título</xsl:variable>
-  <xsl:variable name="bwStr-Srch-DateAndTime">fecha y hora</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Calendar">calendario</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Location">localización</xsl:variable>
-  <xsl:variable name="bwStr-Srch-NoTitle">sin título</xsl:variable>
-  <xsl:variable name="bwStr-Srch-NoResults">no resultados</xsl:variable>
-  <xsl:variable name="bwStr-Srch-NoMoreResults">No hay más resultados</xsl:variable>
-
-  <!--  xsl:template name="searchResultPageNav" -->
 
   <!--  xsl:template name="footer" -->
   <xsl:variable name="bwStr-Foot-BedeworkWebsite">Bedework Website</xsl:variable>
