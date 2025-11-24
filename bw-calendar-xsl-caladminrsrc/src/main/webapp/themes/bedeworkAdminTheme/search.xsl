@@ -103,33 +103,35 @@
               </xsl:otherwise>
             </xsl:choose>
 
-            <!-- superuser gets radio - this group or all groups
-                 Others can only see own group.
-            -->
-            <xsl:if test="not($isSuperUser)">
-              <input type="hidden" name="fexpr" id="searchScope-local">
+            <input type="radio" name="fexpr" id="searchScope-local">
               <xsl:attribute name="value">(creator="/principals/users/<xsl:value-of select="/bedework/userInfo/user"/>" and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:attribute>
-              </input>
-            </xsl:if>
+              <xsl:if test="$bwQueryScope = 'local'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="searchScope-local"><xsl:value-of select="$bwStr-Srch-ScopeLocal"/></label>
 
-            <xsl:if test="$isSuperUser">
-              <!-- This group radio button -->
-              <input type="radio" name="fexpr" id="searchScope-local">
-                <xsl:attribute name="value">(creator="/principals/users/<xsl:value-of select="/bedework/userInfo/user"/>" and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:attribute>
-                <xsl:if test="$bwQueryScope = 'local'">
-                  <xsl:attribute name="checked">checked</xsl:attribute>
-                </xsl:if>
-              </input>
-              <label for="searchScope-local"><xsl:value-of select="$bwStr-Srch-ScopeLocal"/></label>
+            <input type="radio" name="fexpr" id="searchScope-mine">
+              <xsl:attribute name="value">
+                <xsl:choose>
+                  <xsl:when test="$superUser = 'true'">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
+                  <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator="/principals/users/<xsl:value-of select="/bedework/userInfo/user"/>" and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
+                  <xsl:otherwise>((<xsl:for-each select="/bedework/userInfo/groups/group">creator="<xsl:value-of select="ownerHref"/>"<xsl:if test="position() != last()"> or </xsl:if></xsl:for-each>) and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
+              <xsl:if test="$bwQueryScope = 'mine'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="searchScope-mine"><xsl:value-of select="$bwStr-Srch-ScopeMine"/></label>
 
-              <input type="radio" name="fexpr" id="searchScope-all">
-                <xsl:attribute name="value">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:attribute>
-                <xsl:if test="$bwQueryScope = 'all'">
-                  <xsl:attribute name="checked">checked</xsl:attribute>
-                </xsl:if>
-              </input>
-              <label for="searchScope-all"><xsl:value-of select="$bwStr-Srch-ScopeAll"/></label>
-            </xsl:if>
+            <input type="radio" name="fexpr" id="searchScope-all">
+              <xsl:attribute name="value">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:attribute>
+              <xsl:if test="$bwQueryScope = 'all'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="searchScope-all"><xsl:value-of select="$bwStr-Srch-ScopeAll"/></label>
 
           </div>
         </div>
