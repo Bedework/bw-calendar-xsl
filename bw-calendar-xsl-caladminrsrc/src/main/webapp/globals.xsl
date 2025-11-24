@@ -69,6 +69,12 @@
   <xsl:variable name="isNonApproverUser"
                 select="not($isSuperUser) and not($isApproverUser)"/>
 
+  <xsl:variable name="isApprovalQueueTab"
+                select="/bedework/tab = 'approvalQueue'"/>
+  <xsl:variable name="isSuggestionQueueTab"
+                select="/bedework/tab = 'suggestionQueue'"/>
+  <xsl:variable name="isSearchResultTab"
+                select="/bedework/tab = 'searchResult'"/>
 
   <!-- Properly encoded prefixes to the application actions; use these to build
        urls; allows the application to be used without cookies or within a portal.

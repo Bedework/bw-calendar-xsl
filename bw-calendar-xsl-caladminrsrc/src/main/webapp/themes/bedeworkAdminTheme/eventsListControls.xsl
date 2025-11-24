@@ -24,12 +24,11 @@
     <xsl:param name="extra"/>
     <xsl:param name="bottom">false</xsl:param>
     <xsl:param name="sort">dtstart.utc:asc</xsl:param>
-    <xsl:param name="searchResult">false</xsl:param>
 
     <!-- search meta-data -->
     <xsl:variable name="nextAction">
       <xsl:choose>
-        <xsl:when test="$searchResult = 'true'">
+        <xsl:when test="$isSearchResultTab">
           <xsl:value-of select="$search-next"/>
         </xsl:when>
         <xsl:otherwise><xsl:value-of select="$event-nextUpdateList"/></xsl:otherwise>

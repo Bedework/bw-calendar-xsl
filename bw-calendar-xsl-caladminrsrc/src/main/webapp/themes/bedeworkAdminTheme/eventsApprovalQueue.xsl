@@ -56,9 +56,7 @@
       </form>
     </div>
 
-    <xsl:call-template name="eventListCommon">
-      <xsl:with-param name="approvalQueue">true</xsl:with-param>
-    </xsl:call-template>
+    <xsl:call-template name="eventListCommon"/>
 
     <xsl:call-template name="eventListControls">
       <xsl:with-param name="bottom">true</xsl:with-param>

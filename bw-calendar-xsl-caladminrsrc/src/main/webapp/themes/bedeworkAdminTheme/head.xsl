@@ -358,7 +358,7 @@
             </xsl:comment>
           </script>
         </xsl:if>
-        <xsl:if test="(/bedework/tab = 'suggestionQueue') and
+        <xsl:if test="($isSuggestionQueueTab) and
              ((/bedework/page='eventList') or (/bedework/page='modEvent'))">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/suggestions.js">/* Suggestion queue */</script>
         </xsl:if>
@@ -384,7 +384,7 @@
             </xsl:comment>
           </script>
         </xsl:if>
-        <xsl:if test="/bedework/page='searchResult'">
+        <xsl:if test="$isSearchResultTab">
           <!-- now setup date and time pickers -->
           <script type="text/javascript">
             <xsl:comment>

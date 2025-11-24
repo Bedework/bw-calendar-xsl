@@ -30,7 +30,7 @@
       <xsl:call-template name="upperSearchForm">
         <xsl:with-param name="toggleLimits">
           <xsl:choose>
-            <xsl:when test="/bedework/page='searchResult'">false</xsl:when>
+            <xsl:when test="$isSearchResultTab">false</xsl:when>
             <xsl:otherwise>true</xsl:otherwise>
           </xsl:choose>
         </xsl:with-param>
@@ -48,18 +48,18 @@
       </li>
       <xsl:if test="$workflowEnabled = 'true'">
         <li>
-          <xsl:if test="/bedework/tab = 'approvalQueue'">
+          <xsl:if test="$isApprovalQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a>
-            <xsl:attribute name="href"><xsl:value-of select="$initApprovalQueueTab"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;ignoreCreator=true&amp;sort=dtstart.utc:asc</xsl:attribute>
+            <xsl:attribute name="href"><xsl:value-of select="$initApprovalQueueTab"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;sort=dtstart.utc:asc</xsl:attribute>
             <xsl:copy-of select="$bwStr-Head-ApprovalQueueEvents"/>
           </a>
         </li>
       </xsl:if>
       <xsl:if test="$suggestionEnabled = 'true' and $approverUser = 'true'">
         <li>
-          <xsl:if test="/bedework/tab = 'suggestionQueue'">
+          <xsl:if test="$isSuggestionQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <xsl:variable name="suggestedListType">
@@ -96,7 +96,7 @@
       </xsl:if>
       <xsl:if test="$searchDone = 'true'">
         <li>
-          <xsl:if test="/bedework/tab = 'searchResult'">
+          <xsl:if test="$isSearchResultTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a>

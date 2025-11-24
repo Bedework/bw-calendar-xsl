@@ -135,7 +135,7 @@
             </xsl:if>
             -->
             <xsl:choose>
-              <xsl:when test="/bedework/tab = 'approvalQueue'">
+              <xsl:when test="$isApprovalQueueTab">
                 <input type="submit" name="approveEvent" value="{$bwStr-SEBu-ApproveEvent}"/>
               </xsl:when>
               <xsl:otherwise>

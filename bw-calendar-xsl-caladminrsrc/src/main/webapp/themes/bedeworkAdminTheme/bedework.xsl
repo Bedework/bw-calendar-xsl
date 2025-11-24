@@ -86,18 +86,16 @@
                   <xsl:call-template name="tabPendingEvents"/>
                 </xsl:when>
                 <xsl:when test="(/bedework/page='eventList') and
-                                (/bedework/tab = 'approvalQueue')">
+                                $isApprovalQueueTab">
                   <xsl:call-template name="tabApprovalQueueEvents"/>
                 </xsl:when>
                 <xsl:when test="(/bedework/page='eventList') and
-                                (/bedework/tab = 'suggestionQueue')">
+                                $isSuggestionQueueTab">
                   <xsl:call-template name="tabSuggestionQueueEvents"/>
                 </xsl:when>
                 <xsl:when test="(/bedework/page='eventList') and
-                                (/bedework/tab = 'searchResult')">
-                  <xsl:call-template name="eventList">
-                    <xsl:with-param name="searchResult">true</xsl:with-param>
-                  </xsl:call-template>
+                                $isSearchResultTab">
+                  <xsl:call-template name="eventList"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabCalsuite'">
                   <xsl:call-template name="tabCalsuite"/>

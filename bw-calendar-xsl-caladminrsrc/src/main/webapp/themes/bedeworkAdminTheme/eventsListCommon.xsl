@@ -24,15 +24,13 @@
 
   <xsl:template name="eventListCommon">
     <xsl:param name="pending">false</xsl:param>
-    <xsl:param name="approvalQueue">false</xsl:param>
-    <xsl:param name="suggestionQueue">false</xsl:param>
-    <xsl:param name="searchResults">false</xsl:param>
+
     <table id="commonListTable" title="event listing">
       <thead>
         <tr>
           <th><xsl:copy-of select="$bwStr-EvLC-Title"/></th>
           <xsl:choose>
-            <xsl:when test="$suggestionQueue = 'true'">
+            <xsl:when test="$isSuggestionQueueTab">
               <th><xsl:copy-of select="$bwStr-EvLC-AcceptQ"/></th>
             </xsl:when>
             <xsl:otherwise><th></th></xsl:otherwise>
@@ -43,7 +41,7 @@
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Start"/></th>
           <th><xsl:copy-of select="$bwStr-EvLC-End"/></th>
-          <xsl:if test="$suggestionQueue = 'false'">
+          <xsl:if test="not($isSuggestionQueueTab)">
             <th class="calcat">
               <xsl:if test="$pending = 'true'"><xsl:copy-of select="$bwStr-EvLC-Suggested"/><xsl:text> </xsl:text></xsl:if>
               <xsl:copy-of select="$bwStr-EvLC-TopicalAreas"/>
@@ -60,15 +58,12 @@
 
         <xsl:apply-templates select="/bedework/events/event" mode="eventListCommon">
           <xsl:with-param name="pending"><xsl:value-of select="$pending"/></xsl:with-param>
-          <xsl:with-param name="approvalQueue"><xsl:value-of select="$approvalQueue"/></xsl:with-param>
-          <xsl:with-param name="suggestionQueue"><xsl:value-of select="$suggestionQueue"/></xsl:with-param>
-          <xsl:with-param name="searchResults"><xsl:value-of select="$searchResults"/></xsl:with-param>
         </xsl:apply-templates>
 
         <xsl:if test="not(/bedework/events/event)">
           <tr>
             <td colspan="7">
-              <!--xsl:if test="$pending = 'true' or $approvalQueue = 'true' or $suggestionQueue = 'true'">
+              <!--xsl:if test="$pending = 'true' or $isApprovalQueueTab or $isSuggestionQueueTab">
                 <xsl:attribute name="colspan">7</xsl:attribute>
               </xsl:if-->
               <xsl:copy-of select="$bwStr-EvLC-NoEvents"/>
@@ -139,10 +134,7 @@
   </xsl:template>
 
   <xsl:template match="event" mode="eventListCommon">
-    <xsl:param name="pending">false</xsl:param>
-    <xsl:param name="approvalQueue">false</xsl:param>
-    <xsl:param name="suggestionQueue">false</xsl:param>
-    <xsl:param name="searchResults">false</xsl:param><!--
+    <xsl:param name="pending">false</xsl:param><!--
     -->
     <xsl:variable name="calPath" select="calendar/encodedPath"/>
     <xsl:variable name="guid" select="guid"/>
@@ -206,10 +198,10 @@
                 <xsl:when test="($workflowEnabled = 'false') or
                   ($isSuperUser) or
                   ($approverUser = 'true') or
-                  ($approvalQueue = 'true')">
+                  ($isApprovalQueueTab)">
                   <xsl:attribute name="title"><xsl:copy-of select="$bwStr-EvLC-EditEvent"/></xsl:attribute>
                   <xsl:choose>
-                    <xsl:when test="$suggestionQueue = 'true'">
+                    <xsl:when test="$isSuggestionQueueTab">
                       <!-- only link to master events - do not link to recurrence instances -->
                       <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/></xsl:attribute>
                     </xsl:when>
@@ -224,7 +216,7 @@
               </xsl:choose>
               <xsl:copy-of select="$eventTitle"/>
             </a>
-            <xsl:if test="$approvalQueue = 'false'">
+            <xsl:if test="not($isApprovalQueueTab)">
               <!-- generate a public link; for now always expose in the main suite. -->
               <xsl:variable name="publicLink">/cal/event/eventView.do?href=<xsl:value-of select="encodedHref"/></xsl:variable>
               <a class="bwPublicLink"  target="_blank" rel="noopener noreferrer">
@@ -238,7 +230,7 @@
       <td>
         <xsl:variable name="updateStatusHref">
           <xsl:choose>
-            <xsl:when test="$searchResults = 'true'">
+            <xsl:when test="$isSearchResultTab">
               <xsl:value-of select="$event-updateStatusFromSearch"/>
             </xsl:when>
             <xsl:otherwise>
@@ -284,7 +276,7 @@
             </div>
           </xsl:otherwise>
         </xsl:choose>
-        <xsl:if test="(not($isNonApproverUser)
+        <xsl:if test="((not($isNonApproverUser) or $isApprovalQueueTab)
                 and ((recurring = 'true') or (recurrenceId != '')))">
           <div>
             <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
@@ -306,14 +298,14 @@
             </xsl:choose>
           </div>
         </xsl:if>
-        <xsl:if test="(($approvalQueue = 'true') and ($approverUser = 'true'))">
+        <xsl:if test="($isApprovalQueueTab and ($approverUser = 'true'))">
           <div class="recurrenceEditLinks">
             <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
               <xsl:copy-of select="$bwStr-EvLC-ApproveDDD"/>
             </button>
           </div>
         </xsl:if>
-        <xsl:if test="$suggestionQueue = 'true'">
+        <xsl:if test="$isSuggestionQueueTab">
           <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
             <xsl:value-of select="$bwStr-SEBu-Accept"/>
@@ -364,7 +356,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </td>
-      <xsl:if test="$suggestionQueue = 'false'">
+      <xsl:if test="not($isSuggestionQueueTab)">
         <!-- List topical areas for pending (suggested) and approval -->
         <td class="calcat">
           <xsl:choose>

@@ -54,7 +54,7 @@
     <xsl:variable name="modEventApprovalQueue">
       <xsl:choose>
         <xsl:when test="(/bedework/page = 'modEvent') and
-                        (/bedework/tab = 'approvalQueue')">true</xsl:when>
+                        ($isApprovalQueueTab)">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -62,7 +62,7 @@
     <xsl:variable name="modEventSuggestionQueue">
       <xsl:choose>
         <xsl:when test="(/bedework/page = 'modEvent') and
-                        (/bedework/tab = 'suggestionQueue')">true</xsl:when>
+                        $isSuggestionQueueTab">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -75,7 +75,7 @@
         <xsl:when test="($userPath = creator) or
                         ($modEventPending = 'true') or
                         ($modEventApprovalQueue = 'true') or
-                        ($superUser = 'true') or
+                        ($isSuperUser) or
                         (/bedework/creating = 'true')">true</xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
       </xsl:choose>

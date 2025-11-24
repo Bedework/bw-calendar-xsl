@@ -21,7 +21,6 @@
 
   <!--++++++++++++++++++ Manage Events List ++++++++++++++++++++-->
   <xsl:template name="eventList">
-    <xsl:param name="searchResult">false</xsl:param>
     <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
     <xsl:variable name="calendarPath">
       <xsl:choose>
@@ -48,10 +47,10 @@
       </xsl:choose>
     </xsl:variable>
 
-    <xsl:if test="$searchResult = 'true'">
+    <xsl:if test="$isSearchResultTab">
       <h2 class="leftTitle"><xsl:copy-of select="$bwStr-EvLs-SearchResult"/></h2>
     </xsl:if>
-    <xsl:if test="$searchResult = 'false'">
+    <xsl:if test="not($isSearchResultTab)">
       <h2 class="leftTitle"><xsl:copy-of select="$bwStr-EvLs-ManageEvents"/></h2>
       <button id="bwEventListAddEventButton" onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/></button>
     </xsl:if>
@@ -59,10 +58,9 @@
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
         <xsl:with-param name="sort" select="$sort"/>
-        <xsl:with-param name="searchResult" select="$searchResult"/>
       </xsl:call-template>
 
-      <xsl:if test="$searchResult = 'false'">
+      <xsl:if test="not($isSearchResultTab)">
       <form name="bwManageEventListControls"
             id="bwManageEventListControls"
             method="get"
@@ -160,9 +158,7 @@
       </form>
       </xsl:if>
     </div>
-    <xsl:call-template name="eventListCommon">
-      <xsl:with-param name="searchResult" select="$searchResult"/>
-    </xsl:call-template>
+    <xsl:call-template name="eventListCommon"/>
 
     <xsl:call-template name="eventListControls">
       <xsl:with-param name="sort" select="$sort"/>

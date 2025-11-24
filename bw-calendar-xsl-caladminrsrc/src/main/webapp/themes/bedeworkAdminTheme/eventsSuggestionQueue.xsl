@@ -85,9 +85,7 @@
       </form>
     </div>
 
-    <xsl:call-template name="eventListCommon">
-      <xsl:with-param name="suggestionQueue">true</xsl:with-param>
-    </xsl:call-template>
+    <xsl:call-template name="eventListCommon"/>
 
     <xsl:call-template name="eventListControls">
       <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>
