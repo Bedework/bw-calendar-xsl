@@ -42,57 +42,28 @@
     <xsl:variable name="eventUrlPrefix"><xsl:value-of select="$publicCal"/>/event/eventView.do?guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
     <xsl:variable name="userPath"><xsl:value-of select="/bedework/syspars/userPrincipalRoot"/><xsl:value-of select="/bedework/userInfo/user"/></xsl:variable>
 
-    <!-- Set some booleans for our page types for shorter testing of true and false -->
-    <xsl:variable name="modEventPending">
-      <xsl:choose>
-        <xsl:when test="(/bedework/page = 'modEvent') and
-                        (/bedework/tab = 'pending')">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="modEventApprovalQueue">
-      <xsl:choose>
-        <xsl:when test="(/bedework/page = 'modEvent') and
-                        ($isApprovalQueueTab)">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="modEventSuggestionQueue">
-      <xsl:choose>
-        <xsl:when test="(/bedework/page = 'modEvent') and
-                        $isSuggestionQueueTab">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-
     <!-- Determine if the current user can edit this event.
          If canEdit is false, we will only allow tagging by topical area,
          and other fields will be disabled. -->
-    <xsl:variable name="canEdit">
-      <xsl:choose>
-        <xsl:when test="($userPath = creator) or
-                        ($modEventPending = 'true') or
-                        ($modEventApprovalQueue = 'true') or
-                        ($isSuperUser) or
-                        (/bedework/creating = 'true')">true</xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+    <xsl:variable name="canEdit"
+                  select="($userPath = creator) or
+                        $isModEventPending or
+                        $isModEventApproval or
+                        $isSuperUser or
+                        (/bedework/creating = 'true')"/>
 
     <h2><xsl:copy-of select="$bwStr-AEEF-EventInfo"/></h2>
 
-    <xsl:if test="$canEdit = 'false'">
+    <xsl:if test="not($canEdit)">
       <p>
-        <xsl:if test="$modEventSuggestionQueue = 'true'">
+        <xsl:if test="$isModEventSuggestion">
           <xsl:copy-of select="$bwStr-AEEF-TheFollowingEvent"/><br/>
         </xsl:if>
         <xsl:copy-of select="$bwStr-AEEF-YouMayTag"/>
       </p>
     </xsl:if>
 
-    <xsl:if test="$modEventPending = 'true'">
+    <xsl:if test="$isModEventPending">
       <!-- if a submitted event has topical areas that match with
            those in the calendar suite, convert them -->
       <script type="text/javascript">
@@ -135,7 +106,7 @@
           <a href="javascript:toggleVisibility('bwSubmittedEventComment','visible');" class="toggle"><xsl:copy-of select="$bwStr-AEEF-ShowHide"/></a>
           <a href="javascript:bwSubmitComment.launch();" class="toggle"><xsl:copy-of select="$bwStr-AEEF-PopUp"/></a>
           <div id="bwSubmittedEventComment">
-            <xsl:if test="/bedework/page = 'modEvent'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+            <xsl:if test="$isModEventPage"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
             <xsl:text> </xsl:text>
           </div>
         </div>
@@ -178,16 +149,13 @@
         <xsl:with-param name="eventTitle" select="$eventTitle"/>
         <xsl:with-param name="eventUrlPrefix" select="$eventUrlPrefix"/>
         <xsl:with-param name="canEdit" select="$canEdit"/>
-        <xsl:with-param name="modEventPending" select="$modEventPending"/>
-        <xsl:with-param name="modEventApprovalQueue" select="$modEventApprovalQueue"/>
-        <xsl:with-param name="modEventSuggestionQueue" select="$modEventSuggestionQueue"/>
         <xsl:with-param name="actionPrefix"><xsl:value-of select="$suggest-setStatusForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:with-param>
         <xsl:with-param name="calPath" select="form/calendar/event/path"/>
         <xsl:with-param name="guid" select="guid"/>
         <xsl:with-param name="recurrenceId" select="recurrenceId"/>
       </xsl:call-template>
 
-      <xsl:if test="$modEventSuggestionQueue = 'true'">
+      <xsl:if test="$isModEventSuggestion">
         <div class="suggestionStatus">
           <xsl:value-of select="$bwStr-AEEF-SuggestionStatus"/>
           <xsl:text> </xsl:text>
@@ -204,7 +172,7 @@
       </xsl:if>
 
       <table class="eventFormTable" title="Event Modification Form">
-        <xsl:if test="$canEdit = 'false'">
+        <xsl:if test="not($canEdit)">
           <xsl:if test="creator = /bedework/userInfo/groups/group/ownerHref">
             <xsl:variable name="evCreator"><xsl:value-of select="creator"/></xsl:variable>
             <!--
@@ -229,9 +197,9 @@
           <td>
             <input type="text" size="60" name="summary" id="bwSummary" required="required">
               <xsl:attribute name="value"><xsl:value-of select="form/title/input/@value"/></xsl:attribute>
-              <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+              <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
             </input>
-            <xsl:if test="$canEdit = 'false'">
+            <xsl:if test="not($canEdit)">
               <div class="bwHighlightBox">
                 <strong><xsl:value-of select="form/title/input/@value"/></strong>
               </div>
@@ -250,7 +218,7 @@
         </xsl:if>
         <!--
                 <tr>
-                  <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                  <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                   <td class="fieldName">
                     <xsl:copy-of select="$bwStr-AEEF-Type"/>
                   </td>
@@ -261,7 +229,7 @@
                 </tr>
         -->
         <tr>
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-DateAndTime"/>
           </td>
@@ -588,7 +556,7 @@
                 </div>
               </div>
               <br/>
-              <xsl:if test="($allowNoDuration = 'true') or ($superUser = 'true')">
+              <xsl:if test="($allowNoDuration = 'true') or $isSuperUser">
                 <div class="dateFields" id="noDuration">
                   <xsl:choose>
                     <xsl:when test="form/end/type='N'">
@@ -606,8 +574,8 @@
             </fieldset>
           </td>
         </tr>
-        <xsl:if test="$canEdit = 'false'">
-          <!-- admin user can't edit this, so just dispaly some useful information -->
+        <xsl:if test="not($canEdit)">
+          <!-- admin user can't edit this, so just display some useful information -->
           <tr>
             <td class="fieldName">
               <xsl:copy-of select="$bwStr-AEEF-DateAndTime"/>
@@ -639,7 +607,7 @@
 
         <!-- Recurrence fields --><!-- ================= -->
         <tr>
-          <xsl:if test="($canEdit = 'false') and (form/recurringEntity = 'false') and (recurrenceId = '')"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit) and (form/recurringEntity = 'false') and (recurrenceId = '')"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-RECURRANCE"/>
           </td>
@@ -658,7 +626,7 @@
                   <xsl:when test="form/recurringEntity = 'false'">
                     <!-- the switch is required to turn recurrence on - maybe we can infer this instead? -->
                     <div id="recurringSwitch">
-                      <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                      <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                       <!-- set or remove "recurring" and show or hide all recurrence fields: -->
                       <input type="radio" name="recurring" id="bwRecurringOnButton" value="true" onclick="swapRecurrence(this)">
                         <xsl:if test="form/recurringEntity = 'true'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
@@ -685,15 +653,15 @@
                   <xsl:if test="form/recurringEntity = 'true'"><xsl:attribute name="class">visible</xsl:attribute></xsl:if>
 
                   <h4>
-                    <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                    <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                     <xsl:copy-of select="$bwStr-AEEF-RecurrenceRules"/>
                   </h4>
                   <!-- show or hide rrules fields when editing: -->
                   <xsl:if test="form/recurrence">
                     <span id="rrulesSwitch">
-                      <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                      <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                       <input type="checkbox" name="rrulesFlag" onclick="swapRrules(this)" value="on">
-                        <xsl:if test="$canEdit = 'false'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
+                        <xsl:if test="not($canEdit)"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
                       </input>
                       <xsl:copy-of select="$bwStr-AEEF-ChangeRecurrenceRules"/>
                     </span>
@@ -881,7 +849,7 @@
                         <div id="recurrenceUntilRules" class="invisible">
                           <em><xsl:copy-of select="$bwStr-AEEF-Repeat"/></em>
                           <p>
-                            <xsl:if test="($unlimitedRecurrences = 'true') or ($superUser = 'true')">
+                            <xsl:if test="($unlimitedRecurrences = 'true') or $isSuperUser">
                               <input type="radio" name="recurCountUntil" value="forever">
                                 <xsl:if test="not(form/recurring) or form/recurring/count = '-1'">
                                   <xsl:attribute name="checked">checked</xsl:attribute>
@@ -2142,12 +2110,12 @@
                     </tr>
                   </table>
                   <h4>
-                    <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                    <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                     <xsl:copy-of select="$bwStr-AEEF-RecurrenceAndExceptionDates"/>
                   </h4>
                   <div id="raContent">
                     <div class="dateStartEndBox" id="rdatesFormFields">
-                      <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                      <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                       <!--
                         <input type="checkbox" name="dateOnly" id="rdateDateOnly" onclick="swapRdateAllDay(this)" value="true"/>
                         all day
@@ -2215,11 +2183,10 @@
                         <select name="tzid" id="rdateTzid" class="timezones">
                           <xsl:if test="form/floating/input/@checked='checked'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if>
                           <option value=""><xsl:copy-of select="$bwStr-AEEF-SelectTimezone"/></option>
-                          <xsl:variable name="rdateTzId" select="/bedework/now/defaultTzid"/>
                           <xsl:for-each select="/bedework/timezones/timezone">
                             <option>
                               <xsl:attribute name="value"><xsl:value-of select="id"/></xsl:attribute>
-                              <xsl:if test="$rdateTzId = id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+                              <xsl:if test="$defaultTzid = id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
                               <xsl:value-of select="name"/>
                             </option>
                           </xsl:for-each>
@@ -2228,7 +2195,7 @@
                       <xsl:text> </xsl:text>
                       <!--bwRdates.update() accepts: date, time, allDay, floating, utc, tzid-->
                       <span>
-                        <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+                        <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
                         <input type="button" name="rdate" value="{$bwStr-AEEF-AddRecurance}" onclick="bwRdates.update(this.form['eventRdate.date'].value,this.form['eventRdate.hour'].value + this.form['eventRdate.minute'].value,false,false,false,this.form.tzid.value)"/>
                         <!-- input type="button" name="exdate" value="add exception" onclick="bwExdates.update(this.form['eventRdate.date'].value,this.form['eventRdate.hour'].value + this.form['eventRdate.minute'].value,false,false,false,this.form.tzid.value)"/-->
                       </span>
@@ -2290,7 +2257,7 @@
           </td>
           <td>
             <span>
-              <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+              <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
               <input type="radio" name="eventStatus" id="bwStatusConfirmedButton" value="CONFIRMED" checked="checked">
                 <xsl:if test="form/status = 'CONFIRMED'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
               </input>
@@ -2310,14 +2277,14 @@
                 <xsl:copy-of select="$bwStr-AEEF-Canceled"/>
               </label>
             </span>
-            <xsl:if test="$canEdit = 'false'">
+            <xsl:if test="not($canEdit)">
               <xsl:value-of select="form/status"/>
             </xsl:if>
           </td>
         </tr>
         <!--  Transparency  --><!-- let's not set this in the public client, and let the defaults hold
         <tr>
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-AffectsFreeBusy"/>
           </td>
@@ -2340,16 +2307,16 @@
           </td>
           <td>
             <textarea name="description" id="description" cols="80" rows="8" placeholder="{$bwStr-AEEF-EnterPertientInfo}" required="required">
-              <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+              <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
               <xsl:value-of select="form/desc/textarea"/>
               <xsl:if test="form/desc/textarea = ''"><xsl:text> </xsl:text></xsl:if>
             </textarea>
             <div class="fieldInfo">
-              <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+              <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
               <span class="maxCharNotice"><xsl:value-of select="form/descLength"/><xsl:text> </xsl:text><xsl:copy-of select="$bwStr-AEEF-CharsMax"/></span>
               <span id="remainingChars">&#160;</span>
             </div>
-            <xsl:if test="$canEdit = 'false'">
+            <xsl:if test="not($canEdit)">
               <div class="bwHighlightBox">
                 <xsl:value-of select="form/desc/textarea"/>
               </div>
@@ -2358,7 +2325,7 @@
         </tr>
         <!-- Cost -->
         <tr class="optional">
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-Cost"/>
           </td>
@@ -2370,20 +2337,20 @@
         </tr>
         <!-- Url -->
         <tr class="optional">
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-EventURL"/>
           </td>
           <td>
             <input type="text" name="eventLink" size="80" placeholder="{$bwStr-AEEF-OptionalMoreEventInfo}">
               <xsl:attribute name="value"><xsl:value-of select="form/link/input/@value"/></xsl:attribute>
-              <!-- xsl:if test="$canEdit = 'false'"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if-->
+              <!-- xsl:if test="not($canEdit)"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if-->
             </input>
           </td>
         </tr>
         <!-- Virtual registration link -->
         <tr class="optional">
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-VirtualRegURL"/>
           </td>
@@ -2395,7 +2362,7 @@
         </tr>
         <!-- Image Url -->
         <tr class="optional" id="bwImageUrl">
-          <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-Image"/>
           </td>
@@ -2488,7 +2455,7 @@
           </td>
           <td id="bwLocationsCell">
             <div id="bwLocationsFormContainer">
-              <xsl:if test="$canEdit = 'false'">
+              <xsl:if test="not($canEdit)">
                 <xsl:attribute name="class">invisible</xsl:attribute>
               </xsl:if>
               <!--input type="hidden" name="allLocationId" id="bwLocation">
@@ -2509,7 +2476,7 @@
                 <div id="bwLocationSearchResults" class="autocompleteSearchResults"><xsl:text> </xsl:text></div>
               </div>
             </div>
-            <xsl:if test="$canEdit = 'false'">
+            <xsl:if test="not($canEdit)">
               <xsl:value-of select="form/location/all/select/option[@selected]"/>
             </xsl:if>
           </td>
@@ -2529,7 +2496,7 @@
               <xsl:attribute name="value"><xsl:value-of select="form/contact/preferred/select/option[@selected='selected']/@value"/></xsl:attribute>
             </input>
             <div id="bwContactsFormContainer">
-              <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+              <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
               <xsl:variable name="showAllContactsListOnFirstLoad">
                 <xsl:choose>
                   <xsl:when test="not(form/contact/preferred/select/option) or
@@ -2618,13 +2585,13 @@
             </div>
 -->
 
-            <xsl:if test="$canEdit = 'false'">
+            <xsl:if test="not($canEdit)">
               <xsl:value-of select="form/contact/all/select/option[@selected]"/>
             </xsl:if>
           </td>
         </tr>
 
-        <xsl:if test="$canEdit = 'false'">
+        <xsl:if test="not($canEdit)">
           <tr>
             <td class="fieldName">
               <xsl:copy-of select="$bwStr-AEEF-Creator"/>
@@ -2641,7 +2608,7 @@
         <!-- Registration settings --><!-- Display and use only if we've set an event reg admin token in the admin web client's system parameters -->
         <xsl:if test="eventRegAdminToken != ''">
           <tr class="optional">
-            <xsl:if test="$canEdit = 'false'"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+            <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
             <td class="fieldName"><xsl:copy-of select="$bwStr-AEEF-Registration"/></td>
             <td>
               <xsl:variable name="hasForm">
@@ -2976,10 +2943,9 @@
         </tr>
 
         <!-- Suggestions  -->
-        <xsl:if test="$suggestionEnabled = 'true' and
-                      $modEventSuggestionQueue = 'false' and
-                      $approverUser = 'true' and
-                      $canEdit = 'true' and
+        <xsl:if test="$suggestionEnabled and
+                      $isModEventSuggestion and
+                      $isApproverUser and $canEdit and
                       recurrenceId = ''">
           <xsl:variable name="calsuiteHref"><xsl:value-of select="/bedework/currentCalSuite/groupHref"/></xsl:variable>
           <tr class="optional">
@@ -3069,7 +3035,7 @@
           </td>
         </tr> -->
 
-        <xsl:if test="form/contact/name and $canEdit = 'true'">
+        <xsl:if test="form/contact/name and $canEdit">
           <tr>
             <td class="fieldName" colspan="2">
               <span class="std-text">
@@ -3126,9 +3092,6 @@
           <xsl:with-param name="eventTitle" select="$eventTitle"/>
           <xsl:with-param name="eventUrlPrefix" select="$eventUrlPrefix"/>
           <xsl:with-param name="canEdit" select="$canEdit"/>
-          <xsl:with-param name="modEventPending" select="$modEventPending"/>
-          <xsl:with-param name="modEventApprovalQueue" select="$modEventApprovalQueue"/>
-          <xsl:with-param name="modEventSuggestionQueue" select="$modEventSuggestionQueue"/>
           <xsl:with-param name="actionPrefix"><xsl:value-of select="$suggest-setStatusForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:with-param>
           <xsl:with-param name="calPath" select="form/calendar/event/path"/>
           <xsl:with-param name="guid" select="guid"/>
@@ -3253,9 +3216,6 @@
     <xsl:param name="eventTitle"/>
     <xsl:param name="eventUrlPrefix"/>
     <xsl:param name="canEdit"/>
-    <xsl:param name="modEventPending"/>
-    <xsl:param name="modEventApprovalQueue"/>
-    <xsl:param name="modEventSuggestionQueue"/>
     <xsl:param name="actionPrefix"/>
     <xsl:param name="calPath" select="form/calendar/event/path"/>
     <xsl:param name="guid" select="guid"/>
@@ -3265,7 +3225,7 @@
     <div class="submitBox">
       <xsl:choose>
         <!-- xsl:when test="starts-with(form/calendar/event/path,$submissionsRootUnencoded)"-->
-        <xsl:when test="$modEventPending = 'true'">
+        <xsl:when test="$isModEventPending">
           <div class="right">
             <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
           </div>
@@ -3285,7 +3245,7 @@
             </xsl:choose>
           </span>
         </xsl:when>
-        <xsl:when test="$modEventSuggestionQueue = 'true'">
+        <xsl:when test="$isModEventSuggestion">
           <xsl:variable name="suggestedListType">
             <xsl:choose>
               <xsl:when test="/bedework/appvar[key='suggestType']/value = 'A'">A</xsl:when>
@@ -3299,7 +3259,7 @@
           <input type="button" name="rejectEvent" value="{$bwStr-SEBu-RejectEvent}" class="noFocus" onclick="setSuggestionStatus('reject','{$actionPrefix}','{$backToListLink}')"/>
           <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="location.href='{$backToListLink}'" class="noFocus"/>
         </xsl:when>
-        <xsl:when test="($modEventApprovalQueue = 'true') and (($superUser = 'true') or ($approverUser = 'true'))">
+        <xsl:when test="$isModEventApproval and $isApproverUser">
           <div class="right">
             <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
           </div>
@@ -3313,9 +3273,9 @@
               <input type="button" name="cancelled" onclick="location.href='{$setup}'" value="{$bwStr-SEBu-Cancel}" class="noFocus"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:if test="$canEdit = 'true'">
+              <xsl:if test="$canEdit">
                 <xsl:choose>
-                  <xsl:when test="(/bedework/eventInfo.currentAccess/current-user-privilege-set/privilege/unbind) or ($superUser = 'true')">
+                  <xsl:when test="(/bedework/eventInfo.currentAccess/current-user-privilege-set/privilege/unbind) or $isSuperUser">
                     <div class="right">
                       <input type="submit" name="delete" value="{$bwStr-SEBu-DeleteEvent}" class="noFocus"/>
                     </div>
@@ -3326,18 +3286,18 @@
                 </div>
               </xsl:if>
               <input type="submit" name="updateEvent" value="{$bwStr-SEBu-UpdateEvent}" class="noFocus">
-                <!--xsl:if test="$modEventSuggestionQueue = 'true'">
+                <!--xsl:if test="$isModEventSuggestion">
                   <xsl:attribute name="value"><xsl:value-of select="$bwStr-SEBu-AcceptEvent"/></xsl:attribute>
                 </xsl:if-->
               </input>
-              <xsl:if test="recurrenceId = '' and $canEdit = 'true'">
+              <xsl:if test="recurrenceId = '' and $canEdit">
                 <!-- Cannot duplicate recurring instances. -->
                 <input type="button" name="copy" value="{$bwStr-SEBu-CopyEvent}" class="noFocus">
                   <xsl:attribute name="onclick">location.href='<xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;copy=true'</xsl:attribute>
                 </input>
               </xsl:if>
               <xsl:choose>
-                <xsl:when test="$modEventApprovalQueue = 'true'">
+                <xsl:when test="$isModEventApproval">
                   <xsl:variable name="backToListLink">location.href='<xsl:value-of select="$initApprovalQueueTab"/>&amp;start=<xsl:value-of select="/bedework/currentdate/date"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;sort=dtstart.utc:asc'</xsl:variable>
                   <input type="button" name="returnToList" value="{$bwStr-SEBu-ReturnToList}" onclick="{$backToListLink}" class="noFocus"/>
                 </xsl:when>

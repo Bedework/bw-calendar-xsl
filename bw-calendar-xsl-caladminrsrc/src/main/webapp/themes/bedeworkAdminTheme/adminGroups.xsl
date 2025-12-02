@@ -169,7 +169,7 @@
         </p>
       </xsl:if>
       <!--
-      <xsl:if test="$superUser = 'true'">
+      <xsl:if test="$isSuperUser">
         <p class="note"><xsl:copy-of select="$bwStr-Grps-Superuser"/></p>
       </xsl:if>
       -->

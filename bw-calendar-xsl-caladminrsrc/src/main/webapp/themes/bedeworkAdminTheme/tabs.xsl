@@ -24,9 +24,7 @@
   <xsl:template name="tabs">
     <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
     <xsl:if test="($allowSearchForAll = 'true') or
-                  ($workflowEnabled = 'false') or
-                  ($superUser = 'true') or
-                  ($approverUser = 'true')">
+                  not($workflowEnabled) or $isApproverUser">
       <xsl:call-template name="upperSearchForm">
         <xsl:with-param name="toggleLimits">
           <xsl:choose>
@@ -39,14 +37,26 @@
 
     <ul id="bwAdminMenu">
       <li>
-        <xsl:if test="/bedework/tab = 'main'">
+        <xsl:if test="$isMainTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
         <a href="{$setup}&amp;listMode=true&amp;sort=dtstart.utc:asc">
           <xsl:copy-of select="$bwStr-Head-MainMenu"/>
         </a>
       </li>
-      <xsl:if test="$workflowEnabled = 'true'">
+      <li>
+        <xsl:if test="$isEventsTab">
+          <xsl:attribute name="class">selected</xsl:attribute>
+        </xsl:if>
+        <a id="manageEventsLink">
+          <xsl:attribute name="href"><xsl:value-of select="$initEventList"/>&amp;listMode=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$calendarPath"/>" and (entity_type="event" or entity_type="todo"))&amp;sort=<xsl:value-of select="$sort"/>&amp;setappvar=catFilter()</xsl:attribute>
+          <xsl:if test="not(/bedework/currentCalSuite/name)">
+            <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
+          </xsl:if>
+          <xsl:copy-of select="$bwStr-Head-Events"/>
+        </a>
+      </li>
+      <xsl:if test="$workflowEnabled">
         <li>
           <xsl:if test="$isApprovalQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -57,7 +67,7 @@
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="$suggestionEnabled = 'true' and $approverUser = 'true'">
+      <xsl:if test="$suggestionEnabled and $isApproverUser">
         <li>
           <xsl:if test="$isSuggestionQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -76,16 +86,16 @@
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="$approverUser = 'true'">
+      <xsl:if test="$isApproverUser">
         <li>
-          <xsl:if test="/bedework/tab = 'pending'">
+          <xsl:if test="$isPendingQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a>
             <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
             <xsl:variable name="calSuiteLimit">
               <xsl:choose>
-                <xsl:when test="$superUser = 'true'"></xsl:when>
+                <xsl:when test="$isSuperUser"></xsl:when>
                 <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
@@ -105,10 +115,10 @@
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="/bedework/currentCalSuite/group = /bedework/userInfo/group">
-        <xsl:if test="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $superUser = 'true'">
+      <xsl:if test="$inThisGroup">
+        <xsl:if test="$canWrite">
           <li>
-            <xsl:if test="/bedework/tab = 'calsuite'">
+            <xsl:if test="$isCalsuiteTab">
               <xsl:attribute name="class">selected</xsl:attribute>
             </xsl:if>
             <a href="{$showCalsuiteTab}">
@@ -117,9 +127,9 @@
           </li>
         </xsl:if>
       </xsl:if>
-      <xsl:if test="$superUser = 'true'">
+      <xsl:if test="$isSuperUser">
         <li>
-          <xsl:if test="/bedework/tab = 'users'">
+          <xsl:if test="$isUsersTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a href="{$showUsersTab}">
@@ -127,7 +137,7 @@
           </a>
         </li>
         <li>
-          <xsl:if test="/bedework/tab = 'system'">
+          <xsl:if test="$isSystemTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a href="{$showSystemTab}">

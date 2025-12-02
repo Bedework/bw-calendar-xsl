@@ -261,7 +261,7 @@
       <xsl:copy-of select="$bwStr-DeLR-LocationInUseBy"/>
     </p>
 
-    <xsl:if test="$superUser = 'true'">
+    <xsl:if test="$isSuperUser">
       <div class="suTitle"><xsl:copy-of select="$bwStr-DeLR-SuperUserMsg"/></div>
       <div id="superUserMenu">
         <!-- List collections that reference the location -->

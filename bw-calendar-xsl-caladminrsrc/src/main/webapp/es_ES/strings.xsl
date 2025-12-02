@@ -43,6 +43,7 @@
   <xsl:variable name="bwStr-Head-LoggedInAs">Conectado como:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">desconectar</xsl:variable>
   <xsl:variable name="bwStr-Head-MainMenu">Menu Principal</xsl:variable>
+  <xsl:variable name="bwStr-Head-Events">Events</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-Head-PendingEvents">Cola pendiente</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Cola de aprobación</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Cola de sugerencia</xsl:variable>
@@ -159,8 +160,11 @@
   <xsl:variable name="bwStr-EvLC-Title">Título</xsl:variable>
   <xsl:variable name="bwStr-EvLC-CalSuite">Suite</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimedBy">Solicitado por</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Dates">Dates</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Start">Comienzo</xsl:variable>
   <xsl:variable name="bwStr-EvLC-End">Final</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Suggested">Sugerido</xsl:variable>
   <xsl:variable name="bwStr-EvLC-TopicalAreas">Áreas topicas </xsl:variable>
   <xsl:variable name="bwStr-EvLC-Categories">Categorías</xsl:variable>
@@ -188,8 +192,6 @@
   <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
-  <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Cancelled">CANCELLED:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EditEvent">editar evento</xsl:variable>

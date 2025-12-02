@@ -47,7 +47,7 @@
         <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
         <xsl:variable name="calSuiteLimit">
           <xsl:choose>
-            <xsl:when test="$superUser = 'true'"></xsl:when>
+            <xsl:when test="$isSuperUser"></xsl:when>
             <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
@@ -95,9 +95,7 @@
       </form>
     </div>
 
-    <xsl:call-template name="eventListCommon">
-      <xsl:with-param name="pending">true</xsl:with-param>
-    </xsl:call-template>
+    <xsl:call-template name="eventListCommon"/>
 
     <xsl:call-template name="eventListControls">
       <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>

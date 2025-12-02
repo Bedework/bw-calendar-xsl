@@ -22,7 +22,7 @@
   <!--+++++++++++++++ Approval Queue Tab ++++++++++++++++++++-->
   <xsl:template name="tabApprovalQueueEvents">
     <h2><xsl:copy-of select="$bwStr-TaAQ-ApprovalQueueEvents"/></h2>
-    <xsl:if test="$approverUser = 'false'">
+    <xsl:if test="not($isApproverUser)">
       <button onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/></button>
     </xsl:if>
     <p><xsl:copy-of select="$bwStr-TaAQ-EventsAwaitingApproval"/></p>

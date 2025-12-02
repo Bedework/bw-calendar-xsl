@@ -25,8 +25,6 @@
     <xsl:variable name="guid" select="guid"/>
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="href" select="encodedHref"/>
-    <xsl:variable name="mainTab"
-                  select="/bedework/tab = 'main'"/>
     <xsl:variable name="deleteConfirm"
                   select="/bedework/page='deleteEventConfirm'"/>
     <xsl:variable name="approvePublish"
@@ -48,7 +46,7 @@
       <xsl:when test="$deleteConfirm">
         <h2><xsl:copy-of select="$bwStr-DsEv-OkayToDelete"/></h2>
 
-        <xsl:if test="$mainTab">
+        <xsl:if test="$isMainTab">
           <p style="width: 400px;"><xsl:copy-of select="$bwStr-DsEv-NoteDontEncourageDeletes"/></p>
         </xsl:if>
         <xsl:variable name="deleteConfirmValue">
@@ -74,7 +72,7 @@
         <div id="confirmButtons">
           <form method="post">
             <xsl:attribute name="action"><xsl:value-of select="$event-delete"/></xsl:attribute>
-            <xsl:if test="/bedework/tab = 'pending'">
+            <xsl:if test="$isPendingQueueTab">
               <xsl:attribute name="onsubmit">doRejectEvent(this,'<xsl:value-of select="summary"/>','<xsl:value-of select="$eventDatesForEmail"/>');</xsl:attribute>
               <!-- Setup email notification fields -->
               <input type="hidden" id="submitNotification" name="submitNotification" value="true"/>
@@ -110,7 +108,7 @@
           <form method="post">
             <xsl:attribute name="action"><xsl:value-of select="$event-approvePublish"/></xsl:attribute>
             <!--
-            <xsl:if test="/bedework/tab = 'pending'">
+            <xsl:if test="$isPendingQueueTab">
               <xsl:attribute name="onsubmit">doRejectEvent(this,'<xsl:value-of select="summary"/>','<xsl:value-of select="$eventDatesForEmail"/>');</xsl:attribute>
               < ! - - Setup email notification fields - - >
               <input type="hidden" id="submitNotification" name="submitNotification" value="true"/>
@@ -371,7 +369,7 @@
           <xsl:variable name="userPath"><xsl:value-of select="/bedework/syspars/userPrincipalRoot"/>/<xsl:value-of select="/bedework/userInfo/user"/></xsl:variable>
           <input type="button" name="return" onclick="javascript:location.replace('{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}')">
             <xsl:choose>
-              <xsl:when test="$userPath = creator or $superUser = 'true'">
+              <xsl:when test="$userPath = creator or $isSuperUser">
                 <xsl:attribute name="value">Edit event</xsl:attribute>
               </xsl:when>
               <xsl:otherwise>

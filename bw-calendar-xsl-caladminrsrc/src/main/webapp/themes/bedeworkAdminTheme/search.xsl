@@ -114,7 +114,7 @@
             <input type="radio" name="fexpr" id="searchScope-mine">
               <xsl:attribute name="value">
                 <xsl:choose>
-                  <xsl:when test="$superUser = 'true'">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
+                  <xsl:when test="$isSuperUser">(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
                   <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator="/principals/users/<xsl:value-of select="/bedework/userInfo/user"/>" and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:when>
                   <xsl:otherwise>((<xsl:for-each select="/bedework/userInfo/groups/group">creator="<xsl:value-of select="ownerHref"/>"<xsl:if test="position() != last()"> or </xsl:if></xsl:for-each>) and colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo"))</xsl:otherwise>
                 </xsl:choose>

@@ -23,22 +23,22 @@
 
   <xsl:template name="notifications">
     <xsl:if test="/bedework/notifications/notification/message and
-                  ($approverUser = 'true' or
-                  ($approverUser = 'false' and
+                  ($isApproverUser or
+                  (not($isApproverUser) and
                    /bedework/notifications/notification[type = 'approvalResponse']))">
       <div id="notificationMenu">
         <div id="notificationIcon">
           <span class="ui-icon ui-icon-mail-closed"><xsl:text> </xsl:text></span>
           <span class="notificationCount">
             <xsl:choose>
-              <xsl:when test="$approverUser = 'false'"><xsl:value-of select="count(/bedework/notifications/notification[type = 'approvalResponse'])"/></xsl:when>
+              <xsl:when test="not($isApproverUser)"><xsl:value-of select="count(/bedework/notifications/notification[type = 'approvalResponse'])"/></xsl:when>
               <xsl:otherwise><xsl:value-of select="count(/bedework/notifications/notification)"/></xsl:otherwise>
             </xsl:choose>
           </span>
         </div>
         <ul id="notificationMessages">
           <xsl:choose>
-            <xsl:when test="$approverUser = 'false'">
+            <xsl:when test="not($isApproverUser)">
               <xsl:apply-templates select="/bedework/notifications/notification[type = 'approvalResponse']" mode="notificationMenu"/>
             </xsl:when>
             <xsl:otherwise>

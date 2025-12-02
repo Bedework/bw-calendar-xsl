@@ -240,7 +240,7 @@
 
           </td>
         </tr>
-        <xsl:if test="$superUser = 'true'">
+        <xsl:if test="$isSuperUser">
           <tr>
             <th>
               <label for="categoryMapping">

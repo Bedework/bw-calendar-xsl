@@ -81,21 +81,27 @@
             <xsl:call-template name="tabs"/>
             <div id="content">
               <xsl:choose>
-                <xsl:when test="(/bedework/page='eventList') and
-                                (/bedework/tab = 'pending')">
-                  <xsl:call-template name="tabPendingEvents"/>
-                </xsl:when>
-                <xsl:when test="(/bedework/page='eventList') and
-                                $isApprovalQueueTab">
-                  <xsl:call-template name="tabApprovalQueueEvents"/>
-                </xsl:when>
-                <xsl:when test="(/bedework/page='eventList') and
-                                $isSuggestionQueueTab">
-                  <xsl:call-template name="tabSuggestionQueueEvents"/>
-                </xsl:when>
-                <xsl:when test="(/bedework/page='eventList') and
-                                $isSearchResultTab">
-                  <xsl:call-template name="eventList"/>
+                <xsl:when test="$isEventListPage">
+                  <xsl:choose>
+                    <xsl:when test="$isEventsTab">
+                      <xsl:call-template name="eventList"/>
+                    </xsl:when>
+                    <xsl:when test="$isPendingQueueTab">
+                      <xsl:call-template name="tabPendingEvents"/>
+                    </xsl:when>
+                    <xsl:when test="$isApprovalQueueTab">
+                      <xsl:call-template name="tabApprovalQueueEvents"/>
+                    </xsl:when>
+                    <xsl:when test="$isSuggestionQueueTab">
+                      <xsl:call-template name="tabSuggestionQueueEvents"/>
+                    </xsl:when>
+                    <xsl:when test="$isSearchResultTab">
+                      <xsl:call-template name="eventList"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:call-template name="mainMenu"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabCalsuite'">
                   <xsl:call-template name="tabCalsuite"/>
@@ -105,9 +111,6 @@
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabSystem'">
                   <xsl:call-template name="tabSystem"/>
-                </xsl:when>
-                <xsl:when test="/bedework/page='eventList'">
-                  <xsl:call-template name="eventList"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='modEvent'">
                   <xsl:apply-templates select="/bedework/formElements" mode="modEvent"/>

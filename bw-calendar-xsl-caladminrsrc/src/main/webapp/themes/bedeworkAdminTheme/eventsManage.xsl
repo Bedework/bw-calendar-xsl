@@ -22,14 +22,7 @@
   <!--++++++++++++++++++ Manage Events List ++++++++++++++++++++-->
   <xsl:template name="eventList">
     <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
-    <xsl:variable name="calendarPath">
-      <xsl:choose>
-        <xsl:when test="/bedework/appvar[key='calendarPath']/value">
-          <xsl:value-of select="/bedework/appvar[key='calendarPath']/value"/>
-        </xsl:when>
-        <xsl:otherwise>/public/cals/MainCal</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+    <!--
     <xsl:variable name="catFilter">
       <xsl:choose>
         <xsl:when test="/bedework/appvar[key='catFilter']/value">
@@ -37,22 +30,18 @@
         </xsl:when>
         <xsl:otherwise></xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="sort">
-      <xsl:choose>
-        <xsl:when test="/bedework/appvar[key='sort']/value">
-          <xsl:value-of select="/bedework/appvar[key='sort']/value"/>
-        </xsl:when>
-        <xsl:otherwise>dtstart.utc:asc</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+    </xsl:variable> -->
 
     <xsl:if test="$isSearchResultTab">
       <h2 class="leftTitle"><xsl:copy-of select="$bwStr-EvLs-SearchResult"/></h2>
     </xsl:if>
     <xsl:if test="not($isSearchResultTab)">
       <h2 class="leftTitle"><xsl:copy-of select="$bwStr-EvLs-ManageEvents"/></h2>
-      <button id="bwEventListAddEventButton" onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/></button>
+      <button id="bwEventListAddEventButton" onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/>
+        <xsl:if test="not(/bedework/currentCalSuite/name)">
+          <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
+        </xsl:if>
+      </button>
     </xsl:if>
 
     <div id="bwEventListControls">
@@ -144,7 +133,7 @@
           </select>
         </div>
 
-        <xsl:if test="$superUser = 'true'">
+        <xsl:if test="$isSuperUser">
           <div class="container-nowrap">
             <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
               <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">

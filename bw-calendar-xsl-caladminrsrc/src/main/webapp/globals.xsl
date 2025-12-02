@@ -49,32 +49,83 @@
   <xsl:variable name="appRoot" select="/bedework/approot"/>
 
   <!-- Root folder of the submissions calendars used by the submissions client -->
-  <xsl:variable name="submissionsRootEncoded" select="/bedework/submissionsRoot/encoded"/>
-  <xsl:variable name="submissionsRootUnencoded" select="/bedework/submissionsRoot/unencoded"/>
+  <xsl:variable name="submissionsRootEncoded"
+                select="/bedework/submissionsRoot/encoded"/>
+  <xsl:variable name="submissionsRootUnencoded"
+                select="/bedework/submissionsRoot/unencoded"/>
 
   <!-- Root folder of the workflow collections -->
-  <xsl:variable name="workflowRootEncoded" select="/bedework/workflowRoot/encoded"/>
-  <xsl:variable name="workflowRootUnencoded" select="/bedework/workflowRoot/unencoded"/>
-  <xsl:variable name="workflowEnabled" select="/bedework/workflowEnabled"/>
+  <xsl:variable name="workflowRootEncoded"
+                select="/bedework/workflowRoot/encoded"/>
+  <xsl:variable name="workflowRootUnencoded"
+                select="/bedework/workflowRoot/unencoded"/>
 
-  <xsl:variable name="suggestionEnabled" select="/bedework/suggestionEnabled"/>
+  <xsl:variable name="workflowEnabled"
+                select="/bedework/workflowEnabled = 'true'"/>
+  <xsl:variable name="suggestionEnabled"
+                select="/bedework/suggestionEnabled = 'true'"/>
 
   <xsl:variable name="searchDone" select="/bedework/searchDone"/>
 
-  <xsl:variable name="approverUser" select="/bedework/userInfo/approverUser"/>
-  <xsl:variable name="isApproverUser" select="/bedework/userInfo/approverUser = 'true'"/>
-  <xsl:variable name="superUser" select="/bedework/userInfo/superUser"/>
-  <xsl:variable name="isSuperUser" select="/bedework/userInfo/superUser = 'true'"/>
+  <xsl:variable name="isSuperUser"
+                select="/bedework/userInfo/superUser = 'true'"/>
+  <xsl:variable name="isApproverUser"
+                select="(/bedework/userInfo/approverUser = 'true') or $isSuperUser"/>
+  <xsl:variable name="canWrite"
+                select="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $isSuperUser"/>
+  <xsl:variable name="inThisGroup"
+                select="/bedework/currentCalSuite/group = /bedework/userInfo/group"/>
 
-  <xsl:variable name="isNonApproverUser"
-                select="not($isSuperUser) and not($isApproverUser)"/>
-
+  <xsl:variable name="isMainTab"
+                select="/bedework/tab = 'main'"/>
+  <xsl:variable name="isEventsTab"
+                select="/bedework/tab = 'events'"/>
   <xsl:variable name="isApprovalQueueTab"
                 select="/bedework/tab = 'approvalQueue'"/>
+  <xsl:variable name="isPendingQueueTab"
+                select="/bedework/tab = 'pending'"/>
   <xsl:variable name="isSuggestionQueueTab"
                 select="/bedework/tab = 'suggestionQueue'"/>
   <xsl:variable name="isSearchResultTab"
                 select="/bedework/tab = 'searchResult'"/>
+
+  <xsl:variable name="isCalsuiteTab"
+                select="/bedework/tab = 'calsuite'"/>
+  <xsl:variable name="isSystemTab"
+                select="/bedework/tab = 'system'"/>
+  <xsl:variable name="isUsersTab"
+                select="/bedework/tab = 'users'"/>
+
+  <xsl:variable name="isEventListPage"
+                select="/bedework/page = 'eventList'"/>
+  <xsl:variable name="isModEventPage"
+                select="/bedework/page = 'modEvent'"/>
+
+  <xsl:variable name="isModEventPending"
+                select="$isModEventPage and $isPendingQueueTab"/>
+  <xsl:variable name="isModEventApproval"
+                select="$isModEventPage and $isApprovalQueueTab"/>
+  <xsl:variable name="isModEventSuggestion"
+                select="$isModEventPage and $isSuggestionQueueTab"/>
+
+  <xsl:variable name="calendarPath">
+    <xsl:choose>
+      <xsl:when test="/bedework/appvar[key='calendarPath']/value">
+        <xsl:value-of select="/bedework/appvar[key='calendarPath']/value"/>
+      </xsl:when>
+      <xsl:otherwise>/public/cals/MainCal</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="defaultTzid"
+                select="/bedework/now/defaultTzid"/>
+  <xsl:variable name="sort">
+    <xsl:choose>
+      <xsl:when test="/bedework/appvar[key='sort']/value">
+        <xsl:value-of select="/bedework/appvar[key='sort']/value"/>
+      </xsl:when>
+      <xsl:otherwise>dtstart.utc:asc</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <!-- Properly encoded prefixes to the application actions; use these to build
        urls; allows the application to be used without cookies or within a portal.

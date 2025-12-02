@@ -43,6 +43,7 @@
   <xsl:variable name="bwStr-Head-LoggedInAs">Logged in as:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">log out</xsl:variable>
   <xsl:variable name="bwStr-Head-MainMenu">Main Menu</xsl:variable>
+  <xsl:variable name="bwStr-Head-Events">Events</xsl:variable>
   <xsl:variable name="bwStr-Head-PendingEvents">Pending Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Approval Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Suggestion Queue</xsl:variable>
@@ -159,8 +160,11 @@
   <xsl:variable name="bwStr-EvLC-Title">Title</xsl:variable>
   <xsl:variable name="bwStr-EvLC-CalSuite">Suite</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimedBy">Claimed By</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Dates">Dates</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Start">Start</xsl:variable>
   <xsl:variable name="bwStr-EvLC-End">End</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Suggested">Suggested</xsl:variable>
   <xsl:variable name="bwStr-EvLC-TopicalAreas">Topical Areas</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Categories">Categories</xsl:variable>
@@ -190,8 +194,6 @@
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimBeforeApprove">Claim before Approval</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Cancelled">CANCELLED:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EditEvent">edit event</xsl:variable>

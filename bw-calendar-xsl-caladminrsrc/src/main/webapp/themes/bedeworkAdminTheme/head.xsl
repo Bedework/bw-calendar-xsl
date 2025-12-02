@@ -29,7 +29,7 @@
 
         <!-- set globals that must be passed in from the XSLT -->
         <script type="text/javascript">
-          var defaultTzid = "<xsl:value-of select="/bedework/now/defaultTzid"/>";
+          var defaultTzid = "<xsl:value-of select="$defaultTzid"/>";
           var startTzid = "<xsl:value-of select="/bedework/formElements/form/start/tzid"/>";
           var endTzid = "<xsl:value-of select="/bedework/formElements/form/end/dateTime/tzid"/>";
           var resourcesRoot = "<xsl:value-of select="$resourcesRoot"/>";
@@ -358,8 +358,8 @@
             </xsl:comment>
           </script>
         </xsl:if>
-        <xsl:if test="($isSuggestionQueueTab) and
-             ((/bedework/page='eventList') or (/bedework/page='modEvent'))">
+        <xsl:if test="$isSuggestionQueueTab and
+             ($isEventListPage or (/bedework/page='modEvent'))">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/suggestions.js">/* Suggestion queue */</script>
         </xsl:if>
         <xsl:if test="/bedework/page='eventList'">
@@ -433,7 +433,7 @@
         </xsl:if>
         <xsl:if test="/bedework/page='upload' or
                       /bedework/page='selectCalForEvent' or
-                      ((/bedework/page = 'deleteEventConfirm') and (/bedework/tab = 'pending')) or
+                      ((/bedework/page = 'deleteEventConfirm') and $isPendingQueueTab) or
                       /bedework/page='addFilter' or
                       /bedework/page='calSuitePrefs' or
                       /bedework/page='eventList'">
