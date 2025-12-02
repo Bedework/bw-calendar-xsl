@@ -50,6 +50,9 @@
   <xsl:variable name="bwStr-Head-SearchResult">Resultados de la Búsqueda</xsl:variable>
   <xsl:variable name="bwStr-Head-Users">Usuarios y grupos</xsl:variable>
   <xsl:variable name="bwStr-Head-System">Sistema</xsl:variable>
+  <xsl:variable name="bwStr-Head-Contacts">Contactos</xsl:variable>
+  <xsl:variable name="bwStr-Head-Locations">Localizaciones</xsl:variable>
+  <xsl:variable name="bwStr-Head-Categories">Categorías</xsl:variable>
   <!-- notifications (in header) -->
   <xsl:variable name="bwStr-Notification-EventSuggestion">Sugerencia:</xsl:variable>
   <xsl:variable name="bwStr-Notification-SuggestionTo">Sugerencia a</xsl:variable>

@@ -46,7 +46,7 @@
       <xsl:when test="$deleteConfirm">
         <h2><xsl:copy-of select="$bwStr-DsEv-OkayToDelete"/></h2>
 
-        <xsl:if test="$isMainTab">
+        <xsl:if test="$isEventsTab">
           <p style="width: 400px;"><xsl:copy-of select="$bwStr-DsEv-NoteDontEncourageDeletes"/></p>
         </xsl:if>
         <xsl:variable name="deleteConfirmValue">

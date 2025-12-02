@@ -31,7 +31,6 @@
   <xsl:include href="notifications.xsl" />
   <xsl:include href="tabs.xsl" />
   <xsl:include href="messagesErrors.xsl" />
-  <xsl:include href="mainMenu.xsl" />
   <xsl:include href="eventsManage.xsl" />
   <xsl:include href="eventsListCommon.xsl" />
   <xsl:include href="eventsListControls.xsl" />
@@ -99,7 +98,12 @@
                       <xsl:call-template name="eventList"/>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:call-template name="mainMenu"/>
+                      <h2>Unknown tab</h2>
+                      <p>Page:<xsl:copy-of select="/bedework/page"/></p>
+                      <p>Tab:<xsl:copy-of select="/bedework/tab"/></p>
+                      <p>
+                        <a href="{$setup}"><xsl:copy-of select="$bwStr-Root-Continue"/></a>
+                      </p>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
@@ -267,7 +271,12 @@
                   </p>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:call-template name="mainMenu"/>
+                  <h2>Unknown page or tab</h2>
+                  <p>Page:<xsl:copy-of select="/bedework/page"/></p>
+                  <p>Tab:<xsl:copy-of select="/bedework/tab"/></p>
+                  <p>
+                    <a href="{$setup}"><xsl:copy-of select="$bwStr-Root-Continue"/></a>
+                  </p>
                 </xsl:otherwise>
               </xsl:choose>
             </div>

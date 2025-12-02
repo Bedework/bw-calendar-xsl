@@ -37,14 +37,6 @@
 
     <ul id="bwAdminMenu">
       <li>
-        <xsl:if test="$isMainTab">
-          <xsl:attribute name="class">selected</xsl:attribute>
-        </xsl:if>
-        <a href="{$setup}&amp;listMode=true&amp;sort=dtstart.utc:asc">
-          <xsl:copy-of select="$bwStr-Head-MainMenu"/>
-        </a>
-      </li>
-      <li>
         <xsl:if test="$isEventsTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
@@ -104,28 +96,52 @@
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="$searchDone = 'true'">
+      <li>
+        <xsl:if test="$isSearchResultTab">
+          <xsl:attribute name="class">selected</xsl:attribute>
+        </xsl:if>
+        <a>
+          <xsl:attribute name="href"><xsl:value-of select="$showSearchTab"/></xsl:attribute>
+          <xsl:copy-of select="$bwStr-Head-SearchResult"/>
+        </a>
+      </li>
+      <xsl:if test="not($workflowEnabled) or $isApproverUser">
         <li>
-          <xsl:if test="$isSearchResultTab">
+          <xsl:if test="$isContactsTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
           <a>
-            <xsl:attribute name="href"><xsl:value-of select="$showSearchTab"/></xsl:attribute>
-            <xsl:copy-of select="$bwStr-Head-SearchResult"/>
+            <xsl:attribute name="href"><xsl:value-of select="$showContactsTab"/></xsl:attribute>
+            <xsl:copy-of select="$bwStr-Head-Contacts"/>
+          </a>
+        </li>
+        <li>
+          <xsl:if test="$isLocationsTab">
+            <xsl:attribute name="class">selected</xsl:attribute>
+          </xsl:if>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="$showLocationsTab"/></xsl:attribute>
+            <xsl:copy-of select="$bwStr-Head-Locations"/>
           </a>
         </li>
       </xsl:if>
-      <xsl:if test="$inThisGroup">
-        <xsl:if test="$canWrite">
-          <li>
-            <xsl:if test="$isCalsuiteTab">
-              <xsl:attribute name="class">selected</xsl:attribute>
-            </xsl:if>
-            <a href="{$showCalsuiteTab}">
-              <xsl:copy-of select="$bwStr-Head-CalendarSuite"/>
-            </a>
-          </li>
-        </xsl:if>
+      <xsl:if test="$inThisGroup and $canWrite">
+        <li>
+          <xsl:if test="$isCategoriesTab">
+            <xsl:attribute name="class">selected</xsl:attribute>
+          </xsl:if>
+          <a href="{$showCategoriesTab}">
+            <xsl:copy-of select="$bwStr-Head-Categories"/>
+          </a>
+        </li>
+        <li>
+          <xsl:if test="$isCalsuiteTab">
+            <xsl:attribute name="class">selected</xsl:attribute>
+          </xsl:if>
+          <a href="{$showCalsuiteTab}">
+            <xsl:copy-of select="$bwStr-Head-CalendarSuite"/>
+          </a>
+        </li>
       </xsl:if>
       <xsl:if test="$isSuperUser">
         <li>

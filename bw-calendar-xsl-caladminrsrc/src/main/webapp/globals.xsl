@@ -76,8 +76,6 @@
   <xsl:variable name="inThisGroup"
                 select="/bedework/currentCalSuite/group = /bedework/userInfo/group"/>
 
-  <xsl:variable name="isMainTab"
-                select="/bedework/tab = 'main'"/>
   <xsl:variable name="isEventsTab"
                 select="/bedework/tab = 'events'"/>
   <xsl:variable name="isApprovalQueueTab"
@@ -91,6 +89,12 @@
 
   <xsl:variable name="isCalsuiteTab"
                 select="/bedework/tab = 'calsuite'"/>
+  <xsl:variable name="isCategoriesTab"
+                select="/bedework/tab = 'categories'"/>
+  <xsl:variable name="isContactsTab"
+                select="/bedework/tab = 'contacts'"/>
+  <xsl:variable name="isLocationsTab"
+                select="/bedework/tab = 'locations'"/>
   <xsl:variable name="isSystemTab"
                 select="/bedework/tab = 'system'"/>
   <xsl:variable name="isUsersTab"
@@ -142,6 +146,9 @@
   <xsl:variable name="showCalsuiteTab" select="/bedework/urlPrefixes/showCalsuiteTab"/>
   <xsl:variable name="showUsersTab" select="/bedework/urlPrefixes/showUsersTab"/>
   <xsl:variable name="showSystemTab" select="/bedework/urlPrefixes/showSystemTab"/>
+  <xsl:variable name="showContactsTab" select="/bedework/urlPrefixes/showContactsTab"/>
+  <xsl:variable name="showLocationsTab" select="/bedework/urlPrefixes/showLocationsTab"/>
+  <xsl:variable name="showCategoriesTab" select="/bedework/urlPrefixes/showCategoriesTab"/>
   <xsl:variable name="logout" select="/bedework/urlPrefixes/logout"/>
   <xsl:variable name="search" select="/bedework/urlPrefixes/search/search"/>
   <xsl:variable name="search-next" select="/bedework/urlPrefixes/search/next"/>
