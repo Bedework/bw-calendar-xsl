@@ -29,7 +29,7 @@
   <xsl:include href="head.xsl" />
   <xsl:include href="header.xsl" />
   <xsl:include href="notifications.xsl" />
-  <xsl:include href="tabs.xsl" />
+  <xsl:include href="adminMenu.xsl" />
   <xsl:include href="messagesErrors.xsl" />
   <xsl:include href="eventsManage.xsl" />
   <xsl:include href="eventsListCommon.xsl" />
@@ -77,7 +77,9 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="header"/>
-            <xsl:call-template name="tabs"/>
+            <div id="menu">
+              <xsl:call-template name="adminMenu"/>
+            </div>
             <div id="content">
               <xsl:choose>
                 <xsl:when test="$isEventListPage">
@@ -114,7 +116,7 @@
                   <xsl:call-template name="tabUsers"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='tabSystem'">
-                  <xsl:call-template name="tabSystem"/>
+                  <xsl:call-template name="menuSystem"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='modEvent'">
                   <xsl:apply-templates select="/bedework/formElements" mode="modEvent"/>

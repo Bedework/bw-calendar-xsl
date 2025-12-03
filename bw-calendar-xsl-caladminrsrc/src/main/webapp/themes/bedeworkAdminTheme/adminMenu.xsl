@@ -21,7 +21,7 @@
 
   <!--==== BANNER and MENU TABS  ====-->
 
-  <xsl:template name="tabs">
+  <xsl:template name="adminMenu">
     <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
     <xsl:if test="($allowSearchForAll = 'true') or
                   not($workflowEnabled) or $isApproverUser">
@@ -40,23 +40,22 @@
         <xsl:if test="$isEventsTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
-        <a id="manageEventsLink">
-          <xsl:attribute name="href"><xsl:value-of select="$initEventList"/>&amp;listMode=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="<xsl:value-of select="$calendarPath"/>" and (entity_type="event" or entity_type="todo"))&amp;sort=<xsl:value-of select="$sort"/>&amp;setappvar=catFilter()</xsl:attribute>
+        <button type="button" id="manageEventsLink"
+                onclick="location.href='{$initEventList}&amp;listMode=true&amp;start={$curListDate}&amp;fexpr=(colPath=&quot;{$calendarPath}&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;))&amp;sort={$sort}&amp;setappvar=catFilter()'">
           <xsl:if test="not(/bedework/currentCalSuite/name)">
             <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
           </xsl:if>
           <xsl:copy-of select="$bwStr-Head-Events"/>
-        </a>
+        </button>
       </li>
       <xsl:if test="$workflowEnabled">
         <li>
           <xsl:if test="$isApprovalQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a>
-            <xsl:attribute name="href"><xsl:value-of select="$initApprovalQueueTab"/>&amp;listMode=true&amp;fexpr=(colPath="<xsl:value-of select="$workflowRootEncoded"/>")&amp;sort=dtstart.utc:asc</xsl:attribute>
+          <button type="button" onclick="location.href='{$initApprovalQueueTab}&amp;listMode=true&amp;fexpr=(colPath=&quot;{$workflowRootEncoded}&quot;)&amp;sort=dtstart.utc:asc'">
             <xsl:copy-of select="$bwStr-Head-ApprovalQueueEvents"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
       <xsl:if test="$suggestionEnabled and $isApproverUser">
@@ -71,11 +70,11 @@
               <xsl:otherwise>P</xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
-          <a>
-            <xsl:attribute name="href"><xsl:value-of select="$initSuggestionQueueTab"/>&amp;listMode=true&amp;sg=true&amp;start=<xsl:value-of select="$curListDate"/>&amp;fexpr=(colPath="/public/cals/MainCal" and (entity_type="event" or entity_type="todo") and suggested-to="<xsl:value-of select="$suggestedListType"/>:<xsl:value-of
-                    select="/bedework/currentCalSuite/groupHref"/>")&amp;master=true&amp;sort=dtstart.utc:asc</xsl:attribute>
+          <xsl:variable name="suggestedListHref"
+                        select="/bedework/currentCalSuite/groupHref"/>
+          <button type="button" onclick="location.href='{$initSuggestionQueueTab}&amp;listMode=true&amp;sg=true&amp;start={$curListDate}&amp;fexpr=(colPath=&quot;/public/cals/MainCal&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;) and suggested-to=&quot;{$suggestedListType}:{$suggestedListHref}&quot;)&amp;master=true&amp;sort=dtstart.utc:asc'">
             <xsl:copy-of select="$bwStr-Head-SuggestionQueueEvents"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
       <xsl:if test="$isApproverUser">
@@ -83,46 +82,45 @@
           <xsl:if test="$isPendingQueueTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a>
-            <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
-            <xsl:variable name="calSuiteLimit">
-              <xsl:choose>
-                <xsl:when test="$isSuperUser"></xsl:when>
-                <xsl:otherwise> and calSuite='<xsl:value-of select="$calSuite"/>'</xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable>
-            <xsl:attribute name="href"><xsl:value-of select="$initPendingTab"/>&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=%28colPath%3d"<xsl:value-of select="$submissionsRootEncoded"/>" and %28entity_type="event" or entity_type="todo"%29<xsl:value-of select="$calSuiteLimit"/>%29&amp;sort=dtstart.utc:asc</xsl:attribute>
+          <xsl:variable name="calSuite" select="/bedework/calSuiteName"/>
+          <xsl:variable name="calSuiteLimit">
+            <xsl:choose>
+              <xsl:when test="$isSuperUser"></xsl:when>
+              <xsl:otherwise> and calSuite="<xsl:value-of select="$calSuite"/>"</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <button type="button" onclick="location.href='{$initPendingTab}&amp;listMode=true&amp;sg=true&amp;searchLimits=none&amp;fexpr=%28colPath%3d&quot;{$submissionsRootEncoded}&quot; and %28entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;%29{$calSuiteLimit}%29&amp;sort=dtstart.utc:asc'">
             <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
       <li>
         <xsl:if test="$isSearchResultTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
-        <a>
-          <xsl:attribute name="href"><xsl:value-of select="$showSearchTab"/></xsl:attribute>
+        <button type="button"
+                onclick="location.href='{$showSearchTab}'">
           <xsl:copy-of select="$bwStr-Head-SearchResult"/>
-        </a>
+        </button>
       </li>
       <xsl:if test="not($workflowEnabled) or $isApproverUser">
         <li>
           <xsl:if test="$isContactsTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a>
-            <xsl:attribute name="href"><xsl:value-of select="$showContactsTab"/></xsl:attribute>
+          <button type="button"
+                  onclick="location.href='{$showContactsTab}'">
             <xsl:copy-of select="$bwStr-Head-Contacts"/>
-          </a>
+          </button>
         </li>
         <li>
           <xsl:if test="$isLocationsTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a>
-            <xsl:attribute name="href"><xsl:value-of select="$showLocationsTab"/></xsl:attribute>
+          <button type="button"
+                  onclick="location.href='{$showLocationsTab}'">
             <xsl:copy-of select="$bwStr-Head-Locations"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
       <xsl:if test="$inThisGroup and $canWrite">
@@ -130,17 +128,19 @@
           <xsl:if test="$isCategoriesTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a href="{$showCategoriesTab}">
+          <button type="button"
+                  onclick="location.href='{$showCategoriesTab}'">
             <xsl:copy-of select="$bwStr-Head-Categories"/>
-          </a>
+          </button>
         </li>
         <li>
           <xsl:if test="$isCalsuiteTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a href="{$showCalsuiteTab}">
+          <button type="button"
+                  onclick="location.href='{$showCalsuiteTab}'">
             <xsl:copy-of select="$bwStr-Head-CalendarSuite"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
       <xsl:if test="$isSuperUser">
@@ -148,17 +148,19 @@
           <xsl:if test="$isUsersTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a href="{$showUsersTab}">
+          <button type="button"
+                  onclick="location.href='{$showUsersTab}'">
             <xsl:copy-of select="$bwStr-Head-Users"/>
-          </a>
+          </button>
         </li>
         <li>
           <xsl:if test="$isSystemTab">
             <xsl:attribute name="class">selected</xsl:attribute>
           </xsl:if>
-          <a href="{$showSystemTab}">
+          <button type="button"
+                  onclick="location.href='{$showSystemTab}'">
             <xsl:copy-of select="$bwStr-Head-System"/>
-          </a>
+          </button>
         </li>
       </xsl:if>
     </ul>

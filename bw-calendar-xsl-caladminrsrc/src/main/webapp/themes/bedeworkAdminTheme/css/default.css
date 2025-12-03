@@ -27,9 +27,18 @@ body {
   min-width: 680px;
 }
 #bedework {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "statusBar statusBar"
+    "menu content"
+    "footer footer";
+  grid-template-columns: 1fr 8fr;
+  gap: 0px;
   min-width: 800px;
 }
 #header {
+  grid-area: header;
   color: #eee;
   background-color : #333;
   margin: 0;
@@ -73,6 +82,7 @@ body {
   float: left;
 }
 #statusBar {
+  grid-area: statusBar;
   clear: both;
   margin: 0;
   color: #eee;
@@ -177,34 +187,33 @@ body {
 #notificationMessages a.awaitingApproval {
   color: purple !important;
 }
-/* Tabs */
-#bwAdminMenu {
+/* Menu items */
+#menu {
+  grid-area: menu;
   margin: 0;
-  padding: 0;
+  padding: 40px 0px 0px 0px;
   color: #eee;
   background-color: #ddd;
+}
+#bwAdminMenu {
   font-size: 0.8em;
-  border-bottom: 1px solid #ccc;
-  height: 28px;
+  padding-left: 0;
 }
 #bwAdminMenu li {
-  display: inline;
   margin: 0;
-  padding: 8px 0;
   color: #777;
   background-color: #eee;
-  border-right: 1px solid #999;
 }
 #bwAdminMenu li.selected {
   color: #333;
   background: white url("/images/caladmin/menuBgGray.gif") repeat-x top;
   border-bottom: 2px solid white;
 }
-#bwAdminMenu a:link,
-#bwAdminMenu a:active,
-#bwAdminMenu a:hover,
-#bwAdminMenu a:visited {
-  display: inline-block;
+#bwAdminMenu li button:link,
+#bwAdminMenu li button:active,
+#bwAdminMenu li button:hover,
+#bwAdminMenu li button:visited {
+  border: none;
   color: #777;
   background-color: transparent;
   text-decoration: none;
@@ -215,10 +224,10 @@ body {
   margin: 0;
   white-space: nowrap;
 }
-#bwAdminMenu li.selected a:link,
-#bwAdminMenu li.selected a:active,
-#bwAdminMenu li.selected a:hover,
-#bwAdminMenu li.selected a:visited {
+#bwAdminMenu li.selected button:link,
+#bwAdminMenu li.selected button:active,
+#bwAdminMenu li.selected button:hover,
+#bwAdminMenu li.selected button:visited {
   color: black;
   background-color: transparent;
   text-decoration: none;
@@ -234,8 +243,9 @@ body {
   text-align: center;
 }
 #content {
+  grid-area: content;
   margin: 0;
-  padding: 1em 2em;
+  padding: 2px 2px;
 }
 #content h2 {
   margin: 0 0 1em 0;
@@ -275,60 +285,6 @@ body {
 th {
   text-align: left;
   font-size: 0.9em;
-}
-/* mainMenu = manage events tab icons and links */
-#mainMenu {
-  width: 100%;
-  margin: 0;
-  font-size: 0.9em;
-}
-#mainMenu.mainMenuMost {
-  width: 550px;
-  margin: 2em auto 6em auto;
-}
-#mainMenu.mainMenuMost #mainMenuRow2 {
-  margin-left: 1em;
-}
-#mainMenu.mainMenuFull {
-  width: 750px;
-  margin: 0 auto;
-}
-#mainMenu.mainMenuFull #mainMenuRow2 {
-  padding-left: 5em;
-}
-#mainMenu.mainMenuInline {
-  /* for approver, when workflow is enabled */
-  position: relative;
-  height: 200px;
-}
-#mainMenu.mainMenuInline ul {
-  position: absolute;
-  bottom: 0;
-}
-#mainMenu.mainMenuInline ul + ul {
-   left: 180px;
-}
-#mainMenu.mainMenuMost ul,
-#mainMenu.mainMenuFull ul {
-  clear: both;
-}
-#mainMenu li {
-  text-align: center;
-  vertical-align: middle;
-  padding: 1em 0.5em;
-  list-style: none;
-  display: inline-block;
-}
-#mainMenu img {
-  text-align: center;
-  border: 0;
-}
-#mainMenu a {
-  display: block;
-  padding: 0.2em 1em 0.2em 1em;
-  text-decoration: none;
-  color: #483D8B;
-  background-color: transparent;
 }
 input:focus,
 textarea:focus,
@@ -383,6 +339,8 @@ select:focus option {
   font-size: 11px;
   margin-top: 3px;
   margin-right: 1em;
+  margin-bottom: 1em;
+  color: black;
 }
 #searchFilter input {
   font-size: 11px;
@@ -1854,6 +1812,7 @@ a:hover {
 }
 /* FOOTER */
 #footer {
+  grid-area: footer;
   clear: both;
   padding: 1em;
   margin-top: 2em;

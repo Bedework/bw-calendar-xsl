@@ -20,7 +20,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!--+++++++++++++++ System Tab ++++++++++++++++++++-->
-  <xsl:template name="tabSystem">
+  <xsl:template name="menuSystem">
     <xsl:if test="$isSuperUser">
       <h2><xsl:copy-of select="$bwStr-TaSy-ManageSys"/></h2>
       <ul class="adminMenu strong">
