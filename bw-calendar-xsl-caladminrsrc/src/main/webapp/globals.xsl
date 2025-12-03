@@ -73,8 +73,12 @@
                 select="(/bedework/userInfo/approverUser = 'true') or $isSuperUser"/>
   <xsl:variable name="canWrite"
                 select="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $isSuperUser"/>
+  <xsl:variable name="currentGroup"
+                select="/bedework/currentCalSuite/group"/>
+  <xsl:variable name="userGroup"
+                select="/bedework/userInfo/group"/>
   <xsl:variable name="inThisGroup"
-                select="/bedework/currentCalSuite/group = /bedework/userInfo/group"/>
+                select="$currentGroup = $userGroup"/>
 
   <xsl:variable name="isEventsTab"
                 select="/bedework/tab = 'events'"/>

@@ -161,6 +161,7 @@
 
   <!--  xsl:template name="eventListCommon" -->
   <xsl:variable name="bwStr-EvLC-Title">Title</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Group">Group</xsl:variable>
   <xsl:variable name="bwStr-EvLC-CalSuite">Suite</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimedBy">Claimed By</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Dates">Dates</xsl:variable>

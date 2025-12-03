@@ -36,7 +36,7 @@
         <strong><xsl:value-of select="/bedework/currentCalSuite/name"/></strong>
         <xsl:text> </xsl:text>
         <xsl:copy-of select="$bwStr-TaCS-Group"/><xsl:text> </xsl:text>
-        <strong><xsl:value-of select="/bedework/currentCalSuite/group"/></strong>
+        <strong><xsl:value-of select="$currentGroup"/></strong>
         <xsl:text> </xsl:text>
         <a href="{$admingroup-switch}" class="fieldInfo"><xsl:copy-of select="$bwStr-TaCS-Change"/></a>
       </div>

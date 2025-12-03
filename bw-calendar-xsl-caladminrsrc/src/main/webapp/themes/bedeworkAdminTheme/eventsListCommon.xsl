@@ -33,6 +33,7 @@
             </xsl:when>
             <xsl:otherwise><th></th></xsl:otherwise>
           </xsl:choose>
+          <th><xsl:copy-of select="$bwStr-EvLC-Group"/></th>
           <xsl:if test="$isPendingQueueTab">
             <th><xsl:copy-of select="$bwStr-EvLC-CalSuite"/></th>
             <th><xsl:copy-of select="$bwStr-EvLC-ClaimedBy"/></th>
@@ -322,6 +323,10 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if> <!--
+      =============================  Group -->
+      <td>
+        <xsl:value-of select="creatorGroup/name"/>
+      </td><!--
       =============================  Dates -->
       <td>
         <xsl:copy-of select="$bwStr-DsEv-When"/>
