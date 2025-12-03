@@ -42,12 +42,12 @@
   <xsl:variable name="bwStr-Head-Change">change</xsl:variable>
   <xsl:variable name="bwStr-Head-LoggedInAs">Logged in as:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">log out</xsl:variable>
-  <xsl:variable name="bwStr-Head-MainMenu">Main Menu</xsl:variable>
+  <xsl:variable name="bwStr-Head-HomePage">Home</xsl:variable>
   <xsl:variable name="bwStr-Head-Events">Events</xsl:variable>
   <xsl:variable name="bwStr-Head-PendingEvents">Pending Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Approval Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Suggestion Queue</xsl:variable>
-  <xsl:variable name="bwStr-Head-SearchResult">Search Result</xsl:variable>
+  <xsl:variable name="bwStr-Head-SearchResult">Search</xsl:variable>
   <xsl:variable name="bwStr-Head-Users">Users and Groups</xsl:variable>
   <xsl:variable name="bwStr-Head-System">System</xsl:variable>
   <xsl:variable name="bwStr-Head-Contacts">Contacts</xsl:variable>

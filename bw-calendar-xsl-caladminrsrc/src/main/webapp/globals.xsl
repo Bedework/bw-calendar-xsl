@@ -93,6 +93,8 @@
                 select="/bedework/tab = 'categories'"/>
   <xsl:variable name="isContactsTab"
                 select="/bedework/tab = 'contacts'"/>
+  <xsl:variable name="isHomePage"
+                select="/bedework/tab = 'homePage'"/>
   <xsl:variable name="isLocationsTab"
                 select="/bedework/tab = 'locations'"/>
   <xsl:variable name="isSystemTab"
@@ -138,6 +140,7 @@
 
   <!-- primary navigation, menu tabs -->
   <xsl:variable name="setup" select="/bedework/urlPrefixes/setup"/>
+  <xsl:variable name="showHomePage" select="/bedework/urlPrefixes/showHomePage"/>
   <xsl:variable name="initEventList" select="/bedework/urlPrefixes/initEventList"/>
   <xsl:variable name="initPendingTab" select="/bedework/urlPrefixes/initPendingTab"/>
   <xsl:variable name="initApprovalQueueTab" select="/bedework/urlPrefixes/initApprovalQueueTab"/>

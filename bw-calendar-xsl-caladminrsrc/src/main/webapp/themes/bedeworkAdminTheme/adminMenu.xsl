@@ -37,6 +37,15 @@
 
     <ul id="bwAdminMenu">
       <li>
+        <xsl:if test="$isHomePage">
+          <xsl:attribute name="class">selected</xsl:attribute>
+        </xsl:if>
+        <button type="button"
+                onclick="location.href='{$showHomePage}'">
+          <xsl:copy-of select="$bwStr-Head-HomePage"/>
+        </button>
+      </li>
+      <li>
         <xsl:if test="$isEventsTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>

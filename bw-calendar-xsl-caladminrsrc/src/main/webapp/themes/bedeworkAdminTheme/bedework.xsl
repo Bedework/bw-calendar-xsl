@@ -28,6 +28,7 @@
   <!-- Site subsections -->
   <xsl:include href="head.xsl" />
   <xsl:include href="header.xsl" />
+  <xsl:include href="homePage.xsl" />
   <xsl:include href="notifications.xsl" />
   <xsl:include href="adminMenu.xsl" />
   <xsl:include href="messagesErrors.xsl" />
@@ -82,6 +83,9 @@
             </div>
             <div id="content">
               <xsl:choose>
+                <xsl:when test="/bedework/page='homePage'">
+                  <xsl:call-template name="homePage"/>
+                </xsl:when>
                 <xsl:when test="$isEventListPage">
                   <xsl:choose>
                     <xsl:when test="$isEventsTab">
