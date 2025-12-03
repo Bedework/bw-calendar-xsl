@@ -148,36 +148,10 @@
       </xsl:when>
       <xsl:when test="$displayForNonApprover">
         <div id="confirmButtons">
-          <xsl:choose>
-            <xsl:when test="status = 'CANCELLED'">
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
-                </button>
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
-                </button>
-            </xsl:when>
-            <xsl:when test="status = 'TENTATIVE'">
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
-                </button>
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
-                </button>
-            </xsl:when>
-            <xsl:otherwise>
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
-                </button>
-                <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
-                  <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
-                </button>
-            </xsl:otherwise>
-          </xsl:choose>
-
-          <button type="button" class="next" onclick="location.href='{$showSearchTab}'">
-            <xsl:copy-of select="$bwStr-SEBu-ReturnToList"/>
-          </button>
+          <xsl:call-template name="changeStatusButtons">
+            <xsl:with-param name="status" select="status"/>
+            <xsl:with-param name="href" select="$href" />
+          </xsl:call-template>
         </div>
       </xsl:when>
       <xsl:otherwise>

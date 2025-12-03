@@ -22,6 +22,96 @@
   <!--++++++++++++++++++ Events List Common ++++++++++++++++++++-->
   <!--            included in most event listings               -->
 
+  <xsl:template name="changeStatusButton">
+    <xsl:param name="href"/>
+    <xsl:param name="newStatus"/>
+    <xsl:param name="name"/><!--
+    -->
+    <xsl:variable name="updateStatusHref">
+      <xsl:choose>
+        <xsl:when test="$isSearchResultTab or
+                (/bedework/page = 'displayEventForNonApprover')">
+          <xsl:value-of select="$event-updateStatusFromSearch"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$event-updateStatus"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <div>
+      <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status={$newStatus}'">
+        <xsl:copy-of select="$name"/>
+      </button>
+    </div>
+  </xsl:template>
+
+  <xsl:template name="changeStatusCancelled">
+    <xsl:param name="href"/>
+    <xsl:call-template name="changeStatusButton">
+      <xsl:with-param name="href" select="$href"/>
+      <xsl:with-param name="newStatus" select="CANCELLED" />
+      <xsl:with-param name="name"
+                      select="$bwStr-EvLC-SetCancelled"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="changeStatusConfirmed">
+    <xsl:param name="href"/>
+    <xsl:call-template name="changeStatusButton">
+      <xsl:with-param name="href" select="$href"/>
+      <xsl:with-param name="newStatus" select="CONFIRMED" />
+      <xsl:with-param name="name"
+                      select="$bwStr-EvLC-SetConfirmed"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="changeStatusTentative">
+    <xsl:param name="href"/>
+    <xsl:call-template name="changeStatusButton">
+      <xsl:with-param name="href" select="$href"/>
+      <xsl:with-param name="newStatus" select="TENTATIVE" />
+      <xsl:with-param name="name"
+                      select="$bwStr-EvLC-SetTentative"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="changeStatusButtons">
+    <xsl:param name="status"/>
+    <xsl:param name="href"/>
+    <xsl:choose>
+      <xsl:when test="$status = 'CANCELLED'"><!--
+            CONFIRMED and TENTATIVE buttons -->
+        <xsl:call-template name="changeStatusConfirmed">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template><!--
+             -->
+        <xsl:call-template name="changeStatusTentative">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$status = 'TENTATIVE'"><!--
+            CONFIRMED and CANCELLED buttons -->
+        <xsl:call-template name="changeStatusConfirmed">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template><!--
+             -->
+        <xsl:call-template name="changeStatusCancelled">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise><!--
+            CANCELLED and TENTATIVE buttons -->
+        <xsl:call-template name="changeStatusCancelled">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template><!--
+             -->
+        <xsl:call-template name="changeStatusTentative">
+          <xsl:with-param name="href" select="$href"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="eventListCommon">
     <table id="commonListTable" title="event listing">
       <thead>
@@ -50,6 +140,7 @@
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Author"/></th>
           <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="commonListTableBody">
@@ -134,7 +225,7 @@
     <xsl:variable name="guid" select="guid"/>
     <xsl:variable name="href" select="encodedHref"/>
     <xsl:variable name="calSuite" select="calSuite"/>
-    <xsl:variable name="updateStatusHref" select="updateStatusHref"/>
+    <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="i" select="position()"/>
     <xsl:variable name="eventTitle">
       <xsl:choose>
@@ -175,7 +266,7 @@
               <xsl:otherwise>
                 <a>
                   <xsl:attribute name="href">
-                    <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;updateStatusHref=<xsl:value-of select="$updateStatusHref"/>
+                    <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/>
                   </xsl:attribute>
                   <xsl:copy-of select="$eventTitle"/>
                 </a>
@@ -197,12 +288,12 @@
                       <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/></xsl:attribute>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;updateStatusHref=<xsl:value-of select="$updateStatusHref"/></xsl:attribute>
+                      <xsl:attribute name="href"><xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:attribute name="href"><xsl:value-of select="$event-displayEventForNonApprover"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;updateStatusHref=<xsl:value-of select="$updateStatusHref"/></xsl:attribute>
+                    <xsl:attribute name="href"><xsl:value-of select="$event-displayEventForNonApprover"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:attribute>
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:copy-of select="$eventTitle"/>
@@ -219,56 +310,8 @@
         </xsl:choose>
       </td>
       <td>
-        <xsl:variable name="updateStatusHref">
-          <xsl:choose>
-            <xsl:when test="$isSearchResultTab">
-              <xsl:value-of select="$event-updateStatusFromSearch"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$event-updateStatus"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:choose>
-          <xsl:when test="status = 'CANCELLED'">
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
-                <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
-              </button>
-            </div>
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
-                <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
-              </button>
-            </div>
-          </xsl:when>
-          <xsl:when test="status = 'TENTATIVE'">
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CONFIRMED'">
-                <xsl:copy-of select="$bwStr-EvLC-SetConfirmed"/>
-              </button>
-            </div>
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
-                <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
-              </button>
-            </div>
-          </xsl:when>
-          <xsl:otherwise>
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=CANCELLED'">
-                <xsl:copy-of select="$bwStr-EvLC-SetCancelled"/>
-              </button>
-            </div>
-            <div>
-              <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status=TENTATIVE'">
-                <xsl:copy-of select="$bwStr-EvLC-SetTentative"/>
-              </button>
-            </div>
-          </xsl:otherwise>
-        </xsl:choose>
         <xsl:if test="(($isApproverUser or $isApprovalQueueTab)
-                and ((recurring = 'true') or (updateStatusHref != '')))">
+                and ((recurring = 'true') or (recurrenceId != '')))">
           <div>
             <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={$guid}'">
               <xsl:copy-of select="$bwStr-EvLC-Master"/>
@@ -288,7 +331,8 @@
               </xsl:otherwise>
             </xsl:choose>
           </div>
-        </xsl:if>
+        </xsl:if><!--
+                ======== Approve/publish button -->
         <xsl:if test="$isApprovalQueueTab and $isApproverUser">
           <div class="recurrenceEditLinks">
             <button type="button" class="next" onclick="location.href='{$event-fetchForApprovePublish}&amp;calPath={$calPath}&amp;guid={$guid}'">
@@ -297,7 +341,7 @@
           </div>
         </xsl:if>
         <xsl:if test="$isSuggestionQueueTab">
-          <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;updateStatusHref=<xsl:value-of select="$updateStatusHref"/></xsl:variable>
+          <xsl:variable name="actionPrefix"><xsl:value-of select="$suggest-setStatus"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
           <button onclick="setSuggestionRowStatus('accept','{$actionPrefix}','suggestionRow{$i}','{$bwStr-EvLC-NoEvents}')">
             <xsl:value-of select="$bwStr-SEBu-Accept"/>
           </button>
@@ -437,6 +481,12 @@
               <br/>
             </div>
           </xsl:if>
+      </td>
+      <td class="statusButtons">
+        <xsl:call-template name="changeStatusButtons">
+          <xsl:with-param name="status" select="status"/>
+          <xsl:with-param name="href" select="$href" />
+        </xsl:call-template>
       </td>
     </tr>
   </xsl:template>
