@@ -52,25 +52,27 @@
   <xsl:variable name="submissionsRootEncoded"
                 select="/bedework/submissionsRoot/encoded"/>
   <xsl:variable name="submissionsRootUnencoded"
-                select="/bedework/submissionsRoot/unencoded"/>
+                select="/bedework/submissionsRoot/unencoded"/><!--
 
-  <!-- Root folder of the workflow collections -->
+                 Root folder of the workflow collections -->
   <xsl:variable name="workflowRootEncoded"
                 select="/bedework/workflowRoot/encoded"/>
   <xsl:variable name="workflowRootUnencoded"
-                select="/bedework/workflowRoot/unencoded"/>
+                select="/bedework/workflowRoot/unencoded"/><!--
 
+                 Features -->
   <xsl:variable name="workflowEnabled"
                 select="/bedework/workflowEnabled = 'true'"/>
   <xsl:variable name="suggestionEnabled"
-                select="/bedework/suggestionEnabled = 'true'"/>
+                select="/bedework/suggestionEnabled = 'true'"/><!--
 
-  <xsl:variable name="searchDone" select="/bedework/searchDone"/>
-
+                 User capabilites -->
   <xsl:variable name="isSuperUser"
                 select="/bedework/userInfo/superUser = 'true'"/>
   <xsl:variable name="isApproverUser"
-                select="(/bedework/userInfo/approverUser = 'true') or $isSuperUser"/>
+                select="not($workflowEnabled)
+                        or (/bedework/userInfo/approverUser = 'true')
+                        or $isSuperUser"/>
   <xsl:variable name="canWrite"
                 select="/bedework/currentCalSuite/currentAccess/current-user-privilege-set/privilege/write or $isSuperUser"/>
   <xsl:variable name="currentGroup"

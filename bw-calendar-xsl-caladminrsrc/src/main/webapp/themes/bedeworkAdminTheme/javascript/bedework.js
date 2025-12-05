@@ -345,7 +345,7 @@ function setSuggestListDateToday(dateString,formObj) {
 // Change the event list widgets (for the main modify events listing)
 function setEventList(formObj,changed) {
   var catFilter = "";
-  if (formObj.catFilter.value != "") {
+  if (formObj.catFilter.value !== "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
   formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
@@ -355,6 +355,9 @@ function setEventList(formObj,changed) {
       break;
     case "cat":
       formObj.appvar.value = "catFilter(" + formObj.catFilter.value + ")";
+      break;
+    case "query":
+      formObj.appvar.value = "query(" + formObj.query.value + ")";
       break;
     case "sort":
       formObj.appvar.value = "sort(" + formObj.sort.value + ")";

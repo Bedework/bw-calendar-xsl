@@ -49,8 +49,11 @@
         <xsl:if test="$isEventsTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
+        <xsl:variable name="ignoreCreator">&amp;ignoreCreator=<xsl:value-of
+                select="$isSuperUser"/>
+        </xsl:variable>
         <button type="button" id="manageEventsLink"
-                onclick="location.href='{$initEventList}&amp;listMode=true&amp;start={$curListDate}&amp;fexpr=(colPath=&quot;{$calendarPath}&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;))&amp;sort={$sort}&amp;setappvar=catFilter()'">
+                onclick="location.href='{$initEventList}{$ignoreCreator}&amp;listMode=true&amp;start={$curListDate}&amp;fexpr=(colPath=&quot;{$calendarPath}&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;))&amp;sort={$sort}&amp;setappvar=catFilter()'">
           <xsl:if test="not(/bedework/currentCalSuite/name)">
             <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
           </xsl:if>

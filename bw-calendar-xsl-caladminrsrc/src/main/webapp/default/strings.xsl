@@ -191,16 +191,18 @@
   <xsl:variable name="bwStr-EvLC-ThisEventCrossTagged">This event is cross-tagged.</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Show tags by other groups</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Recurring event.  Edit:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Master">Edit&#160;master</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditMaster">Edit&#160;master</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditInstance">Edit&#160;instance</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditEvent">Edit&#160;event</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-DisplayInstance">Display&#160;instance</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-DisplayEvent">Display&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-SetTentative">Mark&#160;Tentative</xsl:variable>
   <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimBeforeApprove">Claim before Approval</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Cancelled">CANCELLED:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-EditEvent">edit event</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowPublicLink">show public link</xsl:variable>
 
   <!--  xsl:template match="formElements" mode="modEvent" -->

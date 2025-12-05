@@ -47,27 +47,46 @@
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
         <xsl:with-param name="sort" select="$sort"/>
-      </xsl:call-template>
-
+      </xsl:call-template><!--
+        -->
       <xsl:if test="not($isSearchResultTab)">
       <form name="bwManageEventListControls"
             id="bwManageEventListControls"
             method="get"
             action="{$event-initUpdateEvent}">
-
         <input type="hidden" name="listMode" value="true"/>
-        <!-- following two params set by JavaScript -->
+        <!-- following params set by JavaScript -->
         <input type="hidden" name="fexpr" value=""/>
-        <input type="hidden" name="setappvar" id="appvar" value=""/>
-
+        <input type="hidden" name="setappvar" id="appvar" value=""/><!--
+                     query -->
+        <xsl:variable name="queryVal">
+          <xsl:choose>
+            <xsl:when test="/bedework/appvar[key='query']">
+              <xsl:value-of select="/bedework/appvar[key='bwQuery']/value"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:text/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <div class="container-nowrap">
+          <label for="query">
+            <xsl:copy-of select="$bwStr-Srch-Search"/>
+          </label>
+          <input type="text" name="query"
+                 onchange="setEventList(this.form,'query');"
+                 id="query" size="27">
+            <xsl:attribute name="value"><xsl:value-of select="$queryVal"/></xsl:attribute>
+            <xsl:attribute name="class">noFocus</xsl:attribute>
+          </input>
+        </div><!--
+             Start date -->
         <div class="container-nowrap">
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
                  onchange="setListDate(this.form,this.value);"/>
           <input id="bwListWidgetToday" type="submit" value="{$bwStr-EvLs-Today}"
                  onclick="setListDateToday('{$today}',this.form);"/>
-        </div>
-
+        </div><!--
+                     colpath -->
         <div class="container-nowrap">
           <label for="colPathSetter"><xsl:copy-of select="$bwStr-EvLs-Calendar"/></label>
           <select name="colPath"
@@ -83,8 +102,8 @@
               </option>
             </xsl:for-each>
           </select>
-        </div>
-
+        </div><!--
+                     categories -->
         <div class="container-nowrap">
           <label for="listEventsCatFilter"><xsl:copy-of select="$bwStr-EvLs-FilterBy"/></label>
           <select name="catFilter"
@@ -108,8 +127,8 @@
           <xsl:if test="/bedework/appvar[key='catFilter'] and /bedework/appvar[key='catFilter']/value != ''">
             <input type="button" value="{$bwStr-EvLs-ClearFilter}" onclick="clearCat(this.form);"/>
           </xsl:if>
-        </div>
-
+        </div><!--
+                     sort -->
         <div class="container-nowrap">
           <label for="listEventsSort"><xsl:copy-of select="$bwStr-EvLs-SortBy"/></label>
           <select name="sort"
@@ -131,19 +150,16 @@
               <xsl:copy-of select="$bwStr-EvLs-SortByModified"/>
             </option>
           </select>
+        </div><!--
+        -->
+        <div class="container-nowrap">
+          <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
+            <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">
+              <xsl:attribute name="checked">checked</xsl:attribute>
+            </xsl:if>
+          </input>
+          <label for="listEventsAllGroups"><xsl:copy-of select="$bwStr-Srch-ScopeAll"/></label>
         </div>
-
-        <xsl:if test="$isSuperUser">
-          <div class="container-nowrap">
-            <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
-              <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">
-                <xsl:attribute name="checked">checked</xsl:attribute>
-              </xsl:if>
-            </input>
-            <label for="listEventsAllGroups"><xsl:copy-of select="$bwStr-Srch-ScopeAll"/></label>
-          </div>
-        </xsl:if>
-
       </form>
       </xsl:if>
     </div>

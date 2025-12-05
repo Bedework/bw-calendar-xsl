@@ -40,7 +40,7 @@
     <xsl:variable name="recurrenceId" select="recurrenceId"/>
     <xsl:variable name="eventTitle" select="form/title/input/@value"/>
     <xsl:variable name="eventUrlPrefix"><xsl:value-of select="$publicCal"/>/event/eventView.do?guid=<xsl:value-of select="$guid"/>&amp;recurrenceId=<xsl:value-of select="$recurrenceId"/></xsl:variable>
-    <xsl:variable name="userPath"><xsl:value-of select="/bedework/syspars/userPrincipalRoot"/><xsl:value-of select="/bedework/userInfo/user"/></xsl:variable>
+    <xsl:variable name="userPath"><xsl:value-of select="/bedework/userInfo/userRef"/></xsl:variable>
 
     <!-- Determine if the current user can edit this event.
          If canEdit is false, we will only allow tagging by topical area,
@@ -49,7 +49,7 @@
                   select="($userPath = creator) or
                         $isModEventPending or
                         $isModEventApproval or
-                        $isSuperUser or
+                        $isApproverUser or
                         (/bedework/creating = 'true')"/>
 
     <h2><xsl:copy-of select="$bwStr-AEEF-EventInfo"/></h2>

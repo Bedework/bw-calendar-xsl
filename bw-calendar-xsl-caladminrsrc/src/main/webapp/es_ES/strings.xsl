@@ -190,15 +190,17 @@
   <xsl:variable name="bwStr-EvLC-ThisEventCrossTagged">Este evento tiene referencias cruzadas en sus etiquetas.</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Mostrar etiquetas por otros grupos</xsl:variable>
   <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Evento recurrente. Editar:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Master">Editar&#160;maestro</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-SetTentative">Mark&#160;Tentative</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Instance">instance</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditMaster">Editar&#160;maestro</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditInstance">Editar instance</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-EditEvent">Editar evento</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-DisplayInstance">Display&#160;instance</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-DisplayEvent">Display&#160;event</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-SetCancelled">Cancel&#160;event</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-SetTentative">Mark&#160;Tentative</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-SetConfirmed">Confirm&#160;event</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Cancelled">CANCELLED:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-EditEvent">editar evento</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowPublicLink">mostrar enlace pública</xsl:variable>
 
   <!--  xsl:template match="formElements" mode="modEvent" -->
