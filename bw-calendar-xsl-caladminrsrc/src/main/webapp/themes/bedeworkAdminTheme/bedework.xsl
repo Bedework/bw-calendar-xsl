@@ -56,7 +56,6 @@
   <xsl:include href="user.xsl" />
   <xsl:include href="userPrefs.xsl" />
   <xsl:include href="adminGroups.xsl" />
-  <xsl:include href="search.xsl" />
   <xsl:include href="systemMain.xsl" />
   <xsl:include href="systemParams.xsl" />
   <xsl:include href="filters.xsl" />

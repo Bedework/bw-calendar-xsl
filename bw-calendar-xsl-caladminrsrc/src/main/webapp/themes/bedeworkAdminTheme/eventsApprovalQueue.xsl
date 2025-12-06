@@ -45,7 +45,7 @@
         <input type="hidden" name="catFilter" value=""/>
         <input type="hidden" name="ignoreCreator" value="true"/>
 
-        <div class="container-nowrap">
+        <div>
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
                  onchange="setListDate(this.form,this.value);"/>

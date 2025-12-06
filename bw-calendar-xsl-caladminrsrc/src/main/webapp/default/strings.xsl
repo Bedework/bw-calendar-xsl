@@ -138,7 +138,6 @@
 
   <!--  xsl:template name="eventList" -->
   <xsl:variable name="bwStr-EvLs-ManageEvents">Manage Events</xsl:variable>
-  <xsl:variable name="bwStr-EvLs-SearchResult">Search Result</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectEvent">Select the event that you would like to update:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-PageTitle">Add new event</xsl:variable>
   <xsl:variable name="bwStr-EvLs-StartDate">Start Date:</xsl:variable>
@@ -153,6 +152,7 @@
   <xsl:variable name="bwStr-EvLs-SortByStart">Start Date</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SortByModified">Modified Date</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SortByCreated">Created Date</xsl:variable>
+  <xsl:variable name="bwStr-EvLs-SelectGroup">select a group</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectCategory">select a category</xsl:variable>
   <xsl:variable name="bwStr-EvLs-ClearFilter">clear filter</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Previous">Previous</xsl:variable>

@@ -22,19 +22,6 @@
   <!--==== BANNER and MENU TABS  ====-->
 
   <xsl:template name="adminMenu">
-    <!-- When workflow is enabled, only show the search form to approvers and superusers (otherwise, show to all) -->
-    <xsl:if test="($allowSearchForAll = 'true') or
-                  not($workflowEnabled) or $isApproverUser">
-      <xsl:call-template name="upperSearchForm">
-        <xsl:with-param name="toggleLimits">
-          <xsl:choose>
-            <xsl:when test="$isSearchResultTab">false</xsl:when>
-            <xsl:otherwise>true</xsl:otherwise>
-          </xsl:choose>
-        </xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
-
     <ul id="bwAdminMenu">
       <li>
         <xsl:if test="$isHomePage">
@@ -59,7 +46,8 @@
           </xsl:if>
           <xsl:copy-of select="$bwStr-Head-Events"/>
         </button>
-      </li>
+      </li><!--
+               Approval queue -->
       <xsl:if test="$workflowEnabled">
         <li>
           <xsl:if test="$isApprovalQueueTab">
@@ -69,7 +57,8 @@
             <xsl:copy-of select="$bwStr-Head-ApprovalQueueEvents"/>
           </button>
         </li>
-      </xsl:if>
+      </xsl:if><!--
+               Suggestion queue -->
       <xsl:if test="$suggestionEnabled and $isApproverUser">
         <li>
           <xsl:if test="$isSuggestionQueueTab">
@@ -88,7 +77,8 @@
             <xsl:copy-of select="$bwStr-Head-SuggestionQueueEvents"/>
           </button>
         </li>
-      </xsl:if>
+      </xsl:if><!--
+               Pending queue -->
       <xsl:if test="$isApproverUser">
         <li>
           <xsl:if test="$isPendingQueueTab">
@@ -105,17 +95,9 @@
             <xsl:copy-of select="$bwStr-Head-PendingEvents"/>
           </button>
         </li>
-      </xsl:if>
-      <li>
-        <xsl:if test="$isSearchResultTab">
-          <xsl:attribute name="class">selected</xsl:attribute>
-        </xsl:if>
-        <button type="button"
-                onclick="location.href='{$showSearchTab}'">
-          <xsl:copy-of select="$bwStr-Head-SearchResult"/>
-        </button>
-      </li>
-      <xsl:if test="not($workflowEnabled) or $isApproverUser">
+      </xsl:if><!--
+               Contacts -->
+      <xsl:if test="$isApproverUser">
         <li>
           <xsl:if test="$isContactsTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -124,7 +106,8 @@
                   onclick="location.href='{$showContactsTab}'">
             <xsl:copy-of select="$bwStr-Head-Contacts"/>
           </button>
-        </li>
+        </li><!--
+               Locations -->
         <li>
           <xsl:if test="$isLocationsTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -135,7 +118,8 @@
           </button>
         </li>
       </xsl:if>
-      <xsl:if test="$inThisGroup and $canWrite">
+      <xsl:if test="$inThisGroup and $canWrite"><!--
+               Categories -->
         <li>
           <xsl:if test="$isCategoriesTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -144,7 +128,8 @@
                   onclick="location.href='{$showCategoriesTab}'">
             <xsl:copy-of select="$bwStr-Head-Categories"/>
           </button>
-        </li>
+        </li><!--
+               Calsuite -->
         <li>
           <xsl:if test="$isCalsuiteTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -155,7 +140,8 @@
           </button>
         </li>
       </xsl:if>
-      <xsl:if test="$isSuperUser">
+      <xsl:if test="$isSuperUser"><!--
+               Users -->
         <li>
           <xsl:if test="$isUsersTab">
             <xsl:attribute name="class">selected</xsl:attribute>
@@ -164,7 +150,8 @@
                   onclick="location.href='{$showUsersTab}'">
             <xsl:copy-of select="$bwStr-Head-Users"/>
           </button>
-        </li>
+        </li><!--
+               System -->
         <li>
           <xsl:if test="$isSystemTab">
             <xsl:attribute name="class">selected</xsl:attribute>

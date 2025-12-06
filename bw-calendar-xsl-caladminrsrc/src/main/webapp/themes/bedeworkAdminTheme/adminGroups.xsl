@@ -99,8 +99,7 @@
         </th>
       </tr>
       <xsl:for-each select="/bedework/groups/group">
-        <xsl:sort select="name" order="ascending"
-                  case-order="lower-first"/>
+        <xsl:sort select="name" case-order="lower-first"/>
         <xsl:variable name="groupName" select="name"/>
         <tr>
           <xsl:if test="position() mod 2 = 0">

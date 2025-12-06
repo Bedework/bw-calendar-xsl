@@ -282,6 +282,37 @@ body {
 #content ol li {
   padding-bottom: 1em;
 }
+#bwManageEventListControls {
+  display: grid;
+  grid-template-areas:
+    "melStart melSort melCol"
+    "melQuery melGroups melCats";
+  gap: 0px;
+}
+div#bwEventListStart {
+  white-space: nowrap;
+  grid-area: melStart;
+}
+div#bwEventListSort {
+  white-space: nowrap;
+  grid-area: melSort;
+}
+div#bwEventListCol {
+  white-space: nowrap;
+  grid-area: melCol;
+}
+div#bwEventListQuery {
+  white-space: nowrap;
+  grid-area: melQuery;
+}
+div#bwEventListGroups {
+  white-space: nowrap;
+  grid-area: melGroups;
+}
+div#bwEventListCats {
+  white-space: nowrap;
+  grid-area: melCats;
+}
 th {
   text-align: left;
   font-size: 0.9em;

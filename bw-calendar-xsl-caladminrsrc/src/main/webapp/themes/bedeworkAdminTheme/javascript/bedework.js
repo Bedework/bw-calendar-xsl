@@ -353,6 +353,9 @@ function setEventList(formObj,changed) {
     case "calPath":
       formObj.appvar.value = "calendarPath(" + formObj.colPath.value + ")";
       break;
+    case "group":
+      formObj.appvar.value = "groupFilter(" + formObj.groupFilter.value + ")";
+      break;
     case "cat":
       formObj.appvar.value = "catFilter(" + formObj.catFilter.value + ")";
       break;
@@ -366,6 +369,12 @@ function setEventList(formObj,changed) {
       formObj.appvar.value = "listEventsAllGroups(" + formObj.sg.checked + ")";
       break;
   }
+  formObj.submit();
+}
+// Clear the group filter
+function clearGroup(formObj) {
+  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
+  formObj.appvar.value = "groupFilter()";
   formObj.submit();
 }
 // Clear the category filter

@@ -52,37 +52,6 @@
             // focus first visible,enabled form element:
             $(':input[type=text]:visible:enabled:first:not(.noFocus)').focus();
           });
-
-          // hold the most recent search query, start date, and scope
-          function setBwQuery(formObj,dateString,submit) {
-            if (trim(formObj.query.value) != "") {
-              var date = dateString;
-              var scope = "mine";
-              if (date == "today" || date == undefined || date == "") {
-                date = "<xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/>";
-                formObj.start.value = date;
-              }
-              if (formObj.fexpr[1].checked) {
-                scope = "all";
-              }
-
-              var colscope="main";
-              if (formObj.colscope[0].checked) {
-                colscope="all";
-                formObj.fexpr[0].value = formObj.fexpr[0].value.replace("/public/cals/MainCal", "/public/cals");
-                formObj.fexpr[1].value = formObj.fexpr[1].value.replace("/public/cals/MainCal", "/public/cals");
-                formObj.fexpr[2].value = formObj.fexpr[2].value.replace("/public/cals/MainCal", "/public/cals");
-              }
-              formObj.setappvar.value = "bwQuery(" + date + "|" +
-                    formObj.query.value  + "|" +
-                    scope + "|" + colscope + ")";
-              if (submit == true) {
-                formObj.submit();
-              }
-              return true;
-            }
-            return false;
-          }
         </script>
 
         <!-- conditional javascript and css only for modifying events -->

@@ -50,7 +50,7 @@
         <input type="hidden" name="fexpr" value=""/>
         <input type="hidden" name="setappvar" id="appvar" value="suggestType(P)"/>
 
-        <div class="container-nowrap">
+        <div>
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
                  onchange="setSuggestListDate(this.form,this.value);"/>

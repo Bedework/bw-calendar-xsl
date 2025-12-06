@@ -34,9 +34,6 @@
   <!-- ======================= -->
 
   <!-- Root context of uploaded event images -->
-  <xsl:variable name="allowSearchForAll">true</xsl:variable>
-
-  <!-- Root context of uploaded event images -->
   <xsl:variable name="bwEventImagePrefix">/pubcaldav</xsl:variable>
 
   <!-- URL of the XSL template directory -->
