@@ -92,14 +92,14 @@ function toggleVisibility(id,newClass) {
 }
 function setTab(listId,listIndex) {
   var list = document.getElementById(listId);
-  var elementArray = new Array();
+  var elementArray = [];
   for (i = 0; i < list.childNodes.length; i++) {
-    if (list.childNodes[i].nodeName == "LI") {
+    if (list.childNodes[i].nodeName === "LI") {
       elementArray.push(list.childNodes[i]);
     }
   }
   for (i = 0; i < elementArray.length; i++) {
-    if (i == listIndex) {
+    if (i === listIndex) {
       elementArray[i].className = 'selected';
     } else {
       elementArray[i].className = '';
@@ -108,7 +108,7 @@ function setTab(listId,listIndex) {
 }
 function getSelectedRadioButtonVal(radioCollection) {
   for(var i = 0; i < radioCollection.length; i++) {
-    if(radioCollection[i].checked == true) {
+    if (radioCollection[i].checked) {
        return radioCollection[i].value;
     }
   }
@@ -193,11 +193,11 @@ function setCalendarAlias(formObj) {
 
     // set the aliasUri to an empty string.  Only set it if user
     // has requested a subscription.
-    formObj.aliasUri.value == "";
+    formObj.aliasUri.value === "";
 
-    if (formObj.type.value == "folder") {
+    if (formObj.type.value === "folder") {
       formObj.calendarCollection.value = "false";
-    } else if (formObj.type.value == "subscription") {
+    } else if (formObj.type.value === "subscription") {
       switch (formObj.subType.value) {
         case "publicTree":
           // do nothing: when adding a subscription to the public tree, we set the fields directly.
@@ -307,34 +307,14 @@ function setCatFilters(formObj) {
 }
 // set the calendar summary to the calendar name in the form if summary is empty
 function setCalSummary(val,summaryField) {
-  if (summaryField.value == '') {
+  if (summaryField.value === '') {
     summaryField.value = val;
   }
-}
-// set the event list date
-function setListDate(formObj,dateString) {
-  $("#appvar").val("curListDate(" + dateString + ")");
-  var catFilter = "";
-  if (formObj.catFilter.value != "") {
-    catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
-  }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
-  formObj.submit();
 }
 function setSuggestListDate(formObj,dateString) {
   $("#appvar").val("curListDate(" + dateString + ")");
   formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
   formObj.submit();
-}
-function setListDateToday(dateString,formObj) {
-  // note that the today button is a submit, so no need to submit it via JS
-  $("#bwListWidgetStartDate").val(dateString);
-  $("#appvar").val("curListDate(" + dateString + ")");
-  var catFilter = "";
-  if (formObj.catFilter.value != "") {
-    catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
-  }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
 }
 function setSuggestListDateToday(dateString,formObj) {
   // note that the today button is a submit, so no need to submit it via JS
@@ -343,21 +323,34 @@ function setSuggestListDateToday(dateString,formObj) {
   formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo") and suggested-to="' + formObj.suggestedListType.value + ':' + formObj.suggestedTo.value + '")';
 }
 // Change the event list widgets (for the main modify events listing)
-function setEventList(formObj,changed) {
+function setEventList(formObj, changed, value) {
+  var doSubmit = true;
   var catFilter = "";
+  var groupFilter = "";
   if (formObj.catFilter.value !== "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
-  formObj.fexpr.value = '(' + catFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
+  if (formObj.groupFilter.value !== "") {
+    groupFilter = "creator=\"" + formObj.groupFilter.value + "\" and ";
+    formObj.ignoreCreator.value = "true";
+  }
+  formObj.fexpr.value = '(' + catFilter + groupFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   switch (changed) {
+    case "allGroups":
+      formObj.appvar.value = "listEventsAllGroups(" + formObj.sg.checked + ")";
+      break;
     case "calPath":
       formObj.appvar.value = "calendarPath(" + formObj.colPath.value + ")";
       break;
-    case "group":
-      formObj.appvar.value = "groupFilter(" + formObj.groupFilter.value + ")";
-      break;
     case "cat":
       formObj.appvar.value = "catFilter(" + formObj.catFilter.value + ")";
+      break;
+    case "date":
+      $("#appvar").val("curListDate(" + value + ")");
+      doSubmit = false;// today button is a submit
+      break
+    case "group":
+      formObj.appvar.value = "groupFilter(" + formObj.groupFilter.value + ")";
       break;
     case "query":
       formObj.appvar.value = "query(" + formObj.query.value + ")";
@@ -365,23 +358,25 @@ function setEventList(formObj,changed) {
     case "sort":
       formObj.appvar.value = "sort(" + formObj.sort.value + ")";
       break;
-    case "allGroups":
-      formObj.appvar.value = "listEventsAllGroups(" + formObj.sg.checked + ")";
-      break;
+    case "today":
+      $("#bwListWidgetStartDate").val(value);
+      $("#appvar").val("curListDate(" + value + ")");
+      doSubmit = false;// today button is a submit
+      break
   }
-  formObj.submit();
+  if (doSubmit) {
+    formObj.submit();
+  }
 }
 // Clear the group filter
 function clearGroup(formObj) {
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
-  formObj.appvar.value = "groupFilter()";
-  formObj.submit();
+  formObj.groupFilter.value = null;
+  setEventList(formObj, 'group');
 }
 // Clear the category filter
 function clearCat(formObj) {
-  formObj.fexpr.value = '(colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
-  formObj.appvar.value = "catFilter()";
-  formObj.submit();
+  formObj.catFilter.value = null;
+  setEventList(formObj, 'cat');
 }
 // Stand-alone sort for pending queue
 function setListSort(formObj,sortVal) {

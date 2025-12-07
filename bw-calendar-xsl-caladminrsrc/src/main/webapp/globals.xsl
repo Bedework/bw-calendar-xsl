@@ -87,8 +87,6 @@
                 select="/bedework/tab = 'pending'"/>
   <xsl:variable name="isSuggestionQueueTab"
                 select="/bedework/tab = 'suggestionQueue'"/>
-  <xsl:variable name="isSearchResultTab"
-                select="/bedework/tab = 'searchResult'"/>
 
   <xsl:variable name="isCalsuiteTab"
                 select="/bedework/tab = 'calsuite'"/>
@@ -148,7 +146,6 @@
   <xsl:variable name="initPendingTab" select="/bedework/urlPrefixes/initPendingTab"/>
   <xsl:variable name="initApprovalQueueTab" select="/bedework/urlPrefixes/initApprovalQueueTab"/>
   <xsl:variable name="initSuggestionQueueTab" select="/bedework/urlPrefixes/initSuggestionQueueTab"/>
-  <xsl:variable name="showSearchTab" select="/bedework/urlPrefixes/showSearchTab"/>
   <xsl:variable name="showCalsuiteTab" select="/bedework/urlPrefixes/showCalsuiteTab"/>
   <xsl:variable name="showUsersTab" select="/bedework/urlPrefixes/showUsersTab"/>
   <xsl:variable name="showSystemTab" select="/bedework/urlPrefixes/showSystemTab"/>

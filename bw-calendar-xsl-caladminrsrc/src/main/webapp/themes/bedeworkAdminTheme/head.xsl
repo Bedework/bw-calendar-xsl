@@ -350,29 +350,27 @@
             </xsl:comment>
           </script>
         </xsl:if>
-        <xsl:if test="$isSearchResultTab">
-          <!-- now setup date and time pickers -->
-          <script type="text/javascript">
-            <xsl:comment>
+        <!-- now setup date and time pickers -->
+        <script type="text/javascript">
+          <xsl:comment>
             $(document).ready(function(){
-              // startdate for search
-              $("#bwSearchWidgetStartDate").datepicker({
-                showOn: "button",
-                defaultDate: new Date(<xsl:value-of select="substring(/bedework/now/date,1,4)"/>, <xsl:value-of select="number(substring(/bedework/now/date,5,2)) - 1"/>, <xsl:value-of select="substring(/bedework/now/date,7,2)"/>)
-              });
-              <xsl:choose>
-                <xsl:when test="/bedework/appvar[key='bwQuery']">
-                  $("#bwSearchWidgetStartDate").val('<xsl:value-of select="substring-before(/bedework/appvar[key='bwQuery']/value,'|')"/>');
-                </xsl:when>
-                <xsl:otherwise>
-                  $("#bwSearchWidgetStartDate").val('<xsl:value-of select="$curListDate"/>');
-                </xsl:otherwise>
-              </xsl:choose>
+            // startdate for search
+            $("#bwSearchWidgetStartDate").datepicker({
+            showOn: "button",
+            defaultDate: new Date(<xsl:value-of select="substring(/bedework/now/date,1,4)"/>, <xsl:value-of select="number(substring(/bedework/now/date,5,2)) - 1"/>, <xsl:value-of select="substring(/bedework/now/date,7,2)"/>)
+            });
+            <xsl:choose>
+              <xsl:when test="/bedework/appvar[key='bwQuery']">
+                $("#bwSearchWidgetStartDate").val('<xsl:value-of select="substring-before(/bedework/appvar[key='bwQuery']/value,'|')"/>');
+              </xsl:when>
+              <xsl:otherwise>
+                $("#bwSearchWidgetStartDate").val('<xsl:value-of select="$curListDate"/>');
+              </xsl:otherwise>
+            </xsl:choose>
 
             });
-            </xsl:comment>
-          </script>
-        </xsl:if>
+          </xsl:comment>
+        </script>
         <xsl:if test="/bedework/page='modCalendar' or
                       /bedework/page='modCalSuite' or
                       /bedework/page='modSubscription'">

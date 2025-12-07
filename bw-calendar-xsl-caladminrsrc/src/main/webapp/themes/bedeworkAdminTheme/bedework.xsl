@@ -99,9 +99,6 @@
                     <xsl:when test="$isSuggestionQueueTab">
                       <xsl:call-template name="tabSuggestionQueueEvents"/>
                     </xsl:when>
-                    <xsl:when test="$isSearchResultTab">
-                      <xsl:call-template name="eventList"/>
-                    </xsl:when>
                     <xsl:otherwise>
                       <h2>Unknown tab</h2>
                       <p>Page:<xsl:copy-of select="/bedework/page"/></p>

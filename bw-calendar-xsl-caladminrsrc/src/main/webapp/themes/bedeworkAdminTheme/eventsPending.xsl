@@ -61,14 +61,6 @@
         <input type="hidden" name="colPath"  value="{$submissionsRootUnencoded}"/>
         <input type="hidden" name="searchLimits"  value="none"/>
 
-        <!--
-        <div>
-          <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
-          <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
-                 onchange="setListDate(this.form,this.value);"/>
-          <input id="bwListWidgetToday" type="submit" value="{$bwStr-EvLs-Today}"
-                 onclick="setListDateToday('{$today}',this.form);"/>
-        </div> -->
         <div>
           <label for="listEventsSort"><xsl:copy-of select="$bwStr-EvLs-SortBy"/></label>
           <select name="sort"

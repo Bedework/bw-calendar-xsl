@@ -48,9 +48,9 @@
         <div>
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
-                 onchange="setListDate(this.form,this.value);"/>
+                 onchange="setEventList(this.form, 'date', this.value);"/>
           <input id="bwListWidgetToday" type="submit" value="{$bwStr-EvLs-Today}"
-                 onclick="setListDateToday('{$today}',this.form);"/>
+                 onclick="setEventList(this.form, 'today', '{$today}');"/>
         </div>
 
       </form>

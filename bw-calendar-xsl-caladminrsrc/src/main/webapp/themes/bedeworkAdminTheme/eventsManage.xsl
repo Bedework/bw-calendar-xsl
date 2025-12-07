@@ -35,7 +35,6 @@
         <xsl:with-param name="sort" select="$sort"/>
       </xsl:call-template><!--
         -->
-      <xsl:if test="not($isSearchResultTab)">
       <form name="bwManageEventListControls"
             id="bwManageEventListControls"
             method="get"
@@ -43,14 +42,15 @@
         <input type="hidden" name="listMode" value="true"/>
         <!-- following params set by JavaScript -->
         <input type="hidden" name="fexpr" value=""/>
-        <input type="hidden" name="setappvar" id="appvar" value=""/><!--
+        <input type="hidden" name="setappvar" id="appvar" value=""/>
+        <input type="hidden" name="ignoreCreator" id="ignoreCreator" value="{$isSuperUser}"/><!--
              Start date -->
         <div id="bwEventListStart">
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
-                 onchange="setListDate(this.form,this.value);"/>
+                 onchange="setEventList(this.form,'today', this.value);"/>
           <input id="bwListWidgetToday" type="submit" value="{$bwStr-EvLs-Today}"
-                 onclick="setListDateToday('{$today}',this.form);"/>
+                 onclick="setEventList(this.form, 'today', '{$today}');"/>
         </div><!--
                      sort -->
         <div id="bwEventListSort">
@@ -95,7 +95,7 @@
           </div>
         </xsl:if>
         <xsl:if test="count(/bedework/calendars/calendar) &lt;= 1">
-          <div><xsl:text> </xsl:text></div>
+          <div><input type="hidden" name="colPath" value="{/bedework/calendars/calendar/path}"/></div>
         </xsl:if><!--
                              query -->
         <xsl:variable name="queryVal">
@@ -128,13 +128,13 @@
             </option>
             <xsl:for-each select="/bedework/groups/group">
               <xsl:sort select="value"/>
-              <xsl:variable name="groupName" select="name"/>
+              <xsl:variable name="groupRef" select="ownerHref"/>
               <option>
-                <xsl:attribute name="value"><xsl:value-of select="$groupName"/></xsl:attribute>
-                <xsl:if test="/bedework/appvar[key='groupFilter']/value = $groupName">
+                <xsl:attribute name="value"><xsl:value-of select="$groupRef"/></xsl:attribute>
+                <xsl:if test="/bedework/appvar[key='groupFilter']/value = $groupRef">
                   <xsl:attribute name="selected">selected</xsl:attribute>
                 </xsl:if>
-                <xsl:value-of select="value"/>
+                <xsl:value-of select="name"/>
               </option>
             </xsl:for-each>
           </select>
@@ -175,7 +175,6 @@
           </xsl:if>
         </div>
       </form>
-      </xsl:if>
     </div>
     <xsl:call-template name="eventListCommon"/>
 

@@ -29,8 +29,7 @@
     -->
     <xsl:variable name="updateStatusHref">
       <xsl:choose>
-        <xsl:when test="$isSearchResultTab or
-                (/bedework/page = 'displayEventForNonApprover')">
+        <xsl:when test="/bedework/page = 'displayEventForNonApprover'">
           <xsl:value-of select="$event-updateStatusFromSearch"/>
         </xsl:when>
         <xsl:otherwise>
