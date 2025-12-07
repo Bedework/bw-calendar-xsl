@@ -368,6 +368,16 @@ function setEventList(formObj, changed, value) {
     formObj.submit();
   }
 }
+function setGroupFilter(formObj, value) {
+  let element = formObj.groupFilter;
+  element.value = value;
+  element.dispatchEvent(new Event('change'))
+}
+function setCatFilter(formObj, value) {
+  let element = formObj.catFilter;
+  element.value = value;
+  element.dispatchEvent(new Event('change'))
+}
 // Clear the group filter
 function clearGroup(formObj) {
   formObj.groupFilter.value = null;

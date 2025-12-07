@@ -142,12 +142,14 @@
             <input type="button" value="{$bwStr-EvLs-ClearFilter}" onclick="clearGroup(this.form);"/>
           </xsl:if><!--
             -->
-          <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
-            <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">
-              <xsl:attribute name="checked">checked</xsl:attribute>
-            </xsl:if>
-          </input>
-          <label for="listEventsAllGroups"><xsl:copy-of select="$bwStr-Srch-ScopeAll"/></label>
+          <xsl:if test="not($isSuperUser)">
+            <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
+              <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">
+                <xsl:attribute name="checked">checked</xsl:attribute>
+              </xsl:if>
+            </input>
+            <label for="listEventsAllGroups"><xsl:copy-of select="$bwStr-Srch-ScopeAll"/></label>
+          </xsl:if>
         </div><!--
                      categories -->
         <div id="bwEventListCats">

@@ -408,12 +408,15 @@
       </xsl:if> <!--
       =============================  Group -->
       <td>
-        <xsl:value-of select="creatorGroup/name"/>
+        <a title = "{$bwStr-EvLs-SelectThisGroup}"
+           onclick = 'setGroupFilter(document.getElementById("bwManageEventListControls"), "{creatorGroup/ownerHref}")'>
+          <xsl:value-of select="creatorGroup/name"/>
+        </a>
       </td><!--
       =============================  Dates -->
       <td>
-        <xsl:copy-of select="$bwStr-DsEv-When"/>
-        <xsl:value-of select="start/dayname"/>, <xsl:value-of select="start/longdate"/><xsl:text> </xsl:text>
+        <em><xsl:copy-of select="$bwStr-DsEv-When"/></em>
+        <xsl:value-of select="start/longdate"/><xsl:text> </xsl:text>
         <xsl:if test="start/allday = 'false'">
           <span class="time"><xsl:value-of select="start/time"/></span>
         </xsl:if>
@@ -435,14 +438,14 @@
         </xsl:choose>
 
         <div>
-          <xsl:copy-of select="$bwStr-EvLC-Lastmod"/>
+        <em><xsl:copy-of select="$bwStr-EvLC-Lastmod"/></em>
           <xsl:text> </xsl:text>
           <xsl:value-of select="substring(lastmod,1,4)"/>-<xsl:value-of select="substring(lastmod,5,2)"/>-<xsl:value-of select="substring(lastmod,7,2)"/>
           <xsl:text> </xsl:text>
           <xsl:value-of select="substring(lastmod,10,2)"/>:<xsl:value-of select="substring(lastmod,12,2)"/> utc
         </div>
         <div>
-          <xsl:copy-of select="$bwStr-EvLC-Created"/>
+        <em><xsl:copy-of select="$bwStr-EvLC-Created"/></em>
           <xsl:text> </xsl:text>
           <xsl:value-of select="substring(created,1,4)"/>-<xsl:value-of select="substring(created,5,2)"/>-<xsl:value-of select="substring(created,7,2)"/>
           <xsl:text> </xsl:text>
@@ -495,7 +498,12 @@
           <xsl:if test="categories/category">
             <ul>
               <xsl:for-each select="categories/category">
-                <li><xsl:value-of select="value"/></li>
+                <li>
+                  <a title = "{$bwStr-EvLs-SelectThisCategory}"
+                     onclick = 'setCatFilter(document.getElementById("bwManageEventListControls"), "{href}")'>
+                    <xsl:value-of select="value"/>
+                  </a>
+                </li>
               </xsl:for-each>
             </ul>
           </xsl:if>

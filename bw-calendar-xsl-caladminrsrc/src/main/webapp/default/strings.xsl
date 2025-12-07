@@ -153,7 +153,9 @@
   <xsl:variable name="bwStr-EvLs-SortByModified">Modified Date</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SortByCreated">Created Date</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectGroup">select a group</xsl:variable>
+  <xsl:variable name="bwStr-EvLs-SelectThisGroup">select this group</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectCategory">select a category</xsl:variable>
+  <xsl:variable name="bwStr-EvLs-SelectThisCategory">select this category</xsl:variable>
   <xsl:variable name="bwStr-EvLs-ClearFilter">clear filter</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Previous">Previous</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Next">Next</xsl:variable>
