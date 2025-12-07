@@ -36,11 +36,15 @@
         <xsl:if test="$isEventsTab">
           <xsl:attribute name="class">selected</xsl:attribute>
         </xsl:if>
-        <xsl:variable name="ignoreCreator">&amp;ignoreCreator=<xsl:value-of
-                select="$isSuperUser"/>
+        <xsl:variable name="creator">
+          <xsl:choose>
+            <xsl:when test="$isSuperUser"></xsl:when>
+            <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator=<xsl:value-of select="/bedework/userInfo/userRef"/>) and </xsl:when>
+            <xsl:otherwise>(<xsl:for-each select="/bedework/userInfo/groups/group">(creator="<xsl:value-of select="ownerHref"/>")<xsl:if test="position() != last()"> or </xsl:if></xsl:for-each>) and </xsl:otherwise>
+          </xsl:choose>
         </xsl:variable>
         <button type="button" id="manageEventsLink"
-                onclick="location.href='{$initEventList}{$ignoreCreator}&amp;listMode=true&amp;start={$curListDate}&amp;fexpr=(colPath=&quot;{$calendarPath}&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;))&amp;sort={$sort}&amp;setappvar=catFilter()'">
+                onclick="location.href='{$initEventList}&amp;ignoreCreator=true&amp;listMode=true&amp;start={$curListDate}&amp;fexpr=({$creator}colPath=&quot;{$calendarPath}&quot; and (entity_type=&quot;event&quot; or entity_type=&quot;todo&quot;))&amp;sort={$sort}&amp;setappvar=catFilter()'">
           <xsl:if test="not(/bedework/currentCalSuite/name)">
             <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
           </xsl:if>

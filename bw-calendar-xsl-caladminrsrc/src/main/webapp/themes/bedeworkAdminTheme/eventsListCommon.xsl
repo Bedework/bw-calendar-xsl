@@ -133,6 +133,13 @@
       </xsl:choose>
     </xsl:variable><!--
     -->
+    <xsl:variable name="evCreator" select="creator"/><!--
+    -->
+    <xsl:variable name="canEdit"
+                  select="$isSuperUser or
+                  (($isApproverUser or $isApprovalQueueTab) and
+                     (/bedework/userInfo/groups/group[ownerHref = $evCreator]))"/><!--
+    -->
     <xsl:copy-of select="$eventTitle"/>
     <xsl:choose>
       <xsl:when test="$isPendingQueueTab">
@@ -154,7 +161,7 @@
         </xsl:choose><!--
           Add an edit event button if appropriate -->
         <xsl:choose>
-          <xsl:when test="$isApproverUser or $isApprovalQueueTab">
+          <xsl:when test="$canEdit">
             <!-- suggestion queue can only edit master -->
             <xsl:if test="not($isSuggestionQueueTab)
                           or recurrenceId = ''">
@@ -167,7 +174,8 @@
             </xsl:if>
           </xsl:when>
           <xsl:otherwise><!--
-               non-approver - can only display event or instance -->
+               non-approver or not ours -
+               can only display event or instance -->
             <xsl:variable name="eventDisplayLabel">
               <xsl:choose>
                 <xsl:when test="recurrenceId = ''"><xsl:copy-of select="$bwStr-EvLC-DisplayEvent"/></xsl:when>
@@ -192,7 +200,7 @@
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:if test="(($isApproverUser or $isApprovalQueueTab)
+    <xsl:if test="($canEdit
                 and ((recurring = 'true') or (recurrenceId != '')))">
       <div>
         <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}'">
