@@ -29,11 +29,6 @@
             <xsl:copy-of select="$bwStr-TaSy-ManageCalsAndFolders"/>
           </a>
         </li>
-        <li class="categories">
-          <a href="{$category-initUpdate}">
-            <xsl:copy-of select="$bwStr-TaSy-ManageCategories"/>
-          </a>
-        </li>
         <li class="calsuites">
           <a href="{$calsuite-fetch}">
             <xsl:copy-of select="$bwStr-TaSy-ManageCalSuites"/>
@@ -50,16 +45,6 @@
           </a>
         </li>
       </ul>
-      <!-- System preferences are now almost exclusively managed in JMX-Console
-           ... but leave this here for now.
-      <ul class="adminMenu">
-        <li class="prefs">
-          <a href="{$system-fetch}">
-            <xsl:copy-of select="$bwStr-TaSy-ManageSysPrefs"/>
-          </a>
-        </li>
-      </ul>
-      -->
       <ul class="adminMenu">
         <li>
           <a href="{$filter-showAddForm}">
