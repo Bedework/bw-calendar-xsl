@@ -39,7 +39,7 @@
         <xsl:variable name="creator">
           <xsl:choose>
             <xsl:when test="$isSuperUser"></xsl:when>
-            <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator=<xsl:value-of select="/bedework/userInfo/userRef"/>) and </xsl:when>
+            <xsl:when test="/bedework/userInfo/oneGroup = 'true'">(creator="<xsl:value-of select="/bedework/userInfo/userRef"/>") and </xsl:when>
             <xsl:otherwise>(<xsl:for-each select="/bedework/userInfo/groups/group">(creator="<xsl:value-of select="ownerHref"/>")<xsl:if test="position() != last()"> or </xsl:if></xsl:for-each>) and </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
