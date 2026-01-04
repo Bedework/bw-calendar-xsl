@@ -140,74 +140,95 @@
                   (($isApproverUser or $isApprovalQueueTab) and
                      (/bedework/userInfo/groups/group[ownerHref = $evCreator]))"/><!--
     -->
-    <xsl:copy-of select="$eventTitle"/>
-    <xsl:choose>
-      <xsl:when test="$isPendingQueueTab">
-        <xsl:variable name="isSubmissionClaimant"
-                      select="not(xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT) or xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group"/><!--
+    <td>
+      <xsl:if test="deleted = 'true'">
+        <div>
+          <xsl:copy-of select="$bwStr-EvLC-EventDeleted"/>
+          <br/>
+        </div>
+      </xsl:if>
+      <xsl:choose>
+        <xsl:when test="$isPendingQueueTab">
+          <xsl:variable name="isSubmissionClaimant"
+                        select="not(xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT) or xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group"/><!--
            -->
-        <xsl:if test="not($isSubmissionClaimant)">
-          <div>
-            <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}&amp;recurrenceId={recurrenceId}'">
-              <xsl:copy-of select="$eventEditLabel"/>
-            </button>
-          </div>
-        </xsl:if>
-      </xsl:when>
-      <xsl:otherwise><!-- NOT pending queue -->
-        <xsl:choose>
-          <xsl:when test="status = 'CANCELLED'"><strong><xsl:copy-of select="$bwStr-EvLC-Cancelled"/></strong><br/></xsl:when>
-          <xsl:when test="status = 'TENTATIVE'"><xsl:copy-of select="$bwStr-EvLC-Tentative"/><br/></xsl:when>
-        </xsl:choose><!--
-          Add an edit event button if appropriate -->
-        <xsl:choose>
-          <xsl:when test="$canEdit">
-            <!-- suggestion queue can only edit master -->
-            <xsl:if test="not($isSuggestionQueueTab)
-                          or recurrenceId = ''">
-              <!-- edit event/instance button -->
-              <div>
-                <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}&amp;recurrenceId={recurrenceId}'">
-                  <xsl:copy-of select="$eventEditLabel"/>
-                </button>
-              </div>
-            </xsl:if>
-          </xsl:when>
-          <xsl:otherwise><!--
-               non-approver or not ours -
-               can only display event or instance -->
-            <xsl:variable name="eventDisplayLabel">
-              <xsl:choose>
-                <xsl:when test="recurrenceId = ''"><xsl:copy-of select="$bwStr-EvLC-DisplayEvent"/></xsl:when>
-                <xsl:otherwise><xsl:copy-of select="$bwStr-EvLC-DisplayInstance"/></xsl:otherwise>
-              </xsl:choose>
-            </xsl:variable><!--
-            -->
+          <xsl:if test="not($isSubmissionClaimant)">
             <div>
-              <button type="button" class="next" onclick="location.href='{$event-displayEventForNonApprover}&amp;calPath={$calPath}&amp;guid={guid}&amp;recurrenceId={recurrenceId}'">
-                <xsl:copy-of select="$eventDisplayLabel"/>
+              <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}&amp;recurrenceId={recurrenceId}'">
+                <xsl:copy-of select="$eventEditLabel"/>
               </button>
             </div>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:if test="not($isApprovalQueueTab)">
-          <!-- generate a public link; for now always expose in the main suite. -->
-          <xsl:variable name="publicLink">/cal/event/eventView.do?href=<xsl:value-of select="encodedHref"/></xsl:variable>
-          <a class="bwPublicLink"  target="_blank" rel="noopener noreferrer">
-            <xsl:attribute name="href"><xsl:value-of select="$publicLink"/></xsl:attribute>
-            <span class="ui-icon ui-icon-link"></span>
-          </a>
-        </xsl:if>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:if test="($canEdit
+          </xsl:if>
+        </xsl:when>
+        <xsl:otherwise><!-- NOT pending queue -->
+          <xsl:choose>
+            <xsl:when test="status = 'CANCELLED'"><strong><xsl:copy-of select="$bwStr-EvLC-Cancelled"/></strong><br/></xsl:when>
+            <xsl:when test="status = 'TENTATIVE'"><xsl:copy-of select="$bwStr-EvLC-Tentative"/><br/></xsl:when>
+          </xsl:choose><!--
+          Add an edit event link if appropriate -->
+          <xsl:choose>
+            <xsl:when test="$canEdit">
+              <!-- suggestion queue can only edit master -->
+              <xsl:if test="not($isSuggestionQueueTab)
+                          or recurrenceId = ''">
+                <!-- edit event/instance -->
+                <a>
+                  <xsl:attribute name="href">
+                    <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>&amp;recurrenceId=<xsl:value-of select="recurrenceId"/>
+                  </xsl:attribute>
+                  <xsl:attribute name="title">
+                    <xsl:copy-of select="$eventEditLabel"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$eventTitle"/>
+                </a>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise><!--
+               non-approver or not ours -
+               can only display event or instance -->
+              <xsl:variable name="eventDisplayLabel">
+                <xsl:choose>
+                  <xsl:when test="recurrenceId = ''"><xsl:copy-of select="$bwStr-EvLC-DisplayEvent"/></xsl:when>
+                  <xsl:otherwise><xsl:copy-of select="$bwStr-EvLC-DisplayInstance"/></xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable><!--
+            -->
+              <a>
+                <xsl:attribute name="href">
+                  <xsl:value-of select="$event-displayEventForNonApprover"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>&amp;recurrenceId=<xsl:value-of select="recurrenceId"/>
+                </xsl:attribute>
+                <xsl:attribute name="title">
+                  <xsl:copy-of select="$eventDisplayLabel"/>
+                </xsl:attribute>
+                <xsl:copy-of select="$eventTitle"/>
+              </a>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:if test="not($isApprovalQueueTab)">
+            <!-- generate a public link; for now always expose in the main suite. -->
+            <xsl:variable name="publicLink">/cal/event/eventView.do?href=<xsl:value-of select="encodedHref"/></xsl:variable>
+            <a class="bwPublicLink"  target="_blank" rel="noopener noreferrer">
+              <xsl:attribute name="href"><xsl:value-of select="$publicLink"/></xsl:attribute>
+              <span class="ui-icon ui-icon-link"></span>
+            </a>
+          </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
+    </td>
+    <td>
+      <xsl:if test="($canEdit
                 and ((recurring = 'true') or (recurrenceId != '')))">
-      <div>
-        <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}'">
-          <xsl:copy-of select="$bwStr-EvLC-EditMaster"/>
-        </button>
-      </div>
-    </xsl:if>
+        <a>
+          <xsl:attribute name="href">
+            <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>
+          </xsl:attribute>
+          <xsl:attribute name="title">
+            <xsl:value-of select="$bwStr-EvLC-EditMaster"/>
+          </xsl:attribute>
+          <xsl:value-of select="$bwStr-EvLC-EditMaster"/>
+        </a>
+      </xsl:if>
+    </td>
   </xsl:template><!--
   -->
   <xsl:template name="eventListCommon">
@@ -215,27 +236,32 @@
       <thead>
         <tr>
           <th><xsl:copy-of select="$bwStr-EvLC-Title"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Master"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-DateTime"/></th>
           <xsl:if test="$isSuggestionQueueTab">
-            <th><xsl:copy-of select="$bwStr-EvLC-AcceptQ"/></th>
+            <th><xsl:copy-of select="$bwStr-EvLC-AcceptQuery"/></th>
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Group"/></th>
           <xsl:if test="$isPendingQueueTab">
             <th><xsl:copy-of select="$bwStr-EvLC-CalSuite"/></th>
             <th><xsl:copy-of select="$bwStr-EvLC-ClaimedBy"/></th>
           </xsl:if>
-          <th><xsl:copy-of select="$bwStr-EvLC-Dates"/></th>
           <xsl:if test="not($isSuggestionQueueTab)">
-            <th class="calcat">
+            <th>
               <xsl:if test="$isPendingQueueTab"><xsl:copy-of select="$bwStr-EvLC-Suggested"/><xsl:text> </xsl:text></xsl:if>
               <xsl:copy-of select="$bwStr-EvLC-TopicalAreas"/>
             </th>
           </xsl:if>
           <xsl:if test="not($isPendingQueueTab)">
-            <th class="calcat"><xsl:copy-of select="$bwStr-EvLC-Categories"/></th>
+            <th><xsl:copy-of select="$bwStr-EvLC-Categories"/></th>
           </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-Author"/></th>
-          <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
-          <th></th>
+          <xsl:if test="$evlistShowDescription">
+            <th><xsl:copy-of select="$bwStr-EvLC-Description"/></th>
+          </xsl:if>
+          <th><xsl:copy-of select="$bwStr-EvLC-Lastmod"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Created"/></th>
+          <th><xsl:copy-of select="$bwStr-EvLC-Actions"/></th>
         </tr>
       </thead>
       <tbody id="commonListTableBody">
@@ -347,11 +373,32 @@
       <xsl:if test="status = 'CANCELLED'">
         <xsl:attribute name="class">cancelled</xsl:attribute>
       </xsl:if><!--
-             =========== Title cell -->
+             =========== Title and master cells -->
+      <xsl:call-template name="eventListTitleCell"/><!--
+      End of title cell --><!--
+            =============================  DateTime -->
       <td>
-        <xsl:call-template name="eventListTitleCell"/>
-      </td><!-- End of title cell
-      -->
+        <xsl:value-of select="start/longdate"/><xsl:text> </xsl:text>
+        <xsl:if test="start/allday = 'false'">
+          <span class="time"><xsl:value-of select="start/time"/></span>
+        </xsl:if>
+        <xsl:if test="(end/longdate != start/longdate) or
+                        ((end/longdate = start/longdate) and (end/time != start/time))"> - </xsl:if>
+        <xsl:if test="end/longdate != start/longdate">
+          <xsl:value-of select="end/longdate"/><xsl:text> </xsl:text>
+        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="start/allday = 'true'">
+            <span class="time"><em><xsl:copy-of select="$bwStr-DsEv-AllDay"/></em></span>
+          </xsl:when>
+          <xsl:when test="end/longdate != start/longdate">
+            <span class="time"><xsl:value-of select="end/time"/></span>
+          </xsl:when>
+          <xsl:when test="end/time != start/time">
+            <span class="time"><xsl:value-of select="end/time"/></span>
+          </xsl:when>
+        </xsl:choose>
+      </td>
       <xsl:if test="$isPendingQueueTab and $isApproverUser">
         <td>
           <div class="recurrenceEditLinks">
@@ -412,45 +459,6 @@
            onclick = 'setGroupFilter(document.getElementById("bwManageEventListControls"), "{creatorGroup/ownerHref}")'>
           <xsl:value-of select="creatorGroup/name"/>
         </a>
-      </td><!--
-      =============================  Dates -->
-      <td>
-        <em><xsl:copy-of select="$bwStr-DsEv-When"/></em>
-        <xsl:value-of select="start/longdate"/><xsl:text> </xsl:text>
-        <xsl:if test="start/allday = 'false'">
-          <span class="time"><xsl:value-of select="start/time"/></span>
-        </xsl:if>
-        <xsl:if test="(end/longdate != start/longdate) or
-                        ((end/longdate = start/longdate) and (end/time != start/time))"> - </xsl:if>
-        <xsl:if test="end/longdate != start/longdate">
-          <xsl:value-of select="substring(end/dayname,1,3)"/>, <xsl:value-of select="end/longdate"/><xsl:text> </xsl:text>
-        </xsl:if>
-        <xsl:choose>
-          <xsl:when test="start/allday = 'true'">
-            <span class="time"><em><xsl:copy-of select="$bwStr-DsEv-AllDay"/></em></span>
-          </xsl:when>
-          <xsl:when test="end/longdate != start/longdate">
-            <span class="time"><xsl:value-of select="end/time"/></span>
-          </xsl:when>
-          <xsl:when test="end/time != start/time">
-            <span class="time"><xsl:value-of select="end/time"/></span>
-          </xsl:when>
-        </xsl:choose>
-
-        <div>
-        <em><xsl:copy-of select="$bwStr-EvLC-Lastmod"/></em>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="substring(lastmod,1,4)"/>-<xsl:value-of select="substring(lastmod,5,2)"/>-<xsl:value-of select="substring(lastmod,7,2)"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="substring(lastmod,10,2)"/>:<xsl:value-of select="substring(lastmod,12,2)"/> utc
-        </div>
-        <div>
-        <em><xsl:copy-of select="$bwStr-EvLC-Created"/></em>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="substring(created,1,4)"/>-<xsl:value-of select="substring(created,5,2)"/>-<xsl:value-of select="substring(created,7,2)"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="substring(created,10,2)"/>:<xsl:value-of select="substring(created,12,2)"/> utc
-        </div>
       </td>
       <xsl:if test="not($isSuggestionQueueTab)">
         <!-- List topical areas for pending (suggested) and approval -->
@@ -520,14 +528,22 @@
           </xsl:otherwise>
         </xsl:choose>
       </td>
-      <td class="description">
-        <xsl:value-of select="description"/>
-          <xsl:if test="deleted = 'true'">
-            <div>
-              <xsl:copy-of select="$bwStr-EvLC-EventDeleted"/>
-              <br/>
-            </div>
-          </xsl:if>
+      <xsl:if test="$evlistShowDescription">
+        <td class="description">
+          <xsl:value-of select="description"/>
+        </td>
+      </xsl:if><!--
+          Lastmod -->
+      <td>
+        <xsl:value-of select="substring(lastmod,1,4)"/>-<xsl:value-of select="substring(lastmod,5,2)"/>-<xsl:value-of select="substring(lastmod,7,2)"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="substring(lastmod,10,2)"/>:<xsl:value-of select="substring(lastmod,12,2)"/> utc
+      </td><!--
+          Created -->
+      <td>
+        <xsl:value-of select="substring(created,1,4)"/>-<xsl:value-of select="substring(created,5,2)"/>-<xsl:value-of select="substring(created,7,2)"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="substring(created,10,2)"/>:<xsl:value-of select="substring(created,12,2)"/> utc
       </td>
       <td class="statusButtons">
         <xsl:call-template name="changeStatusButtons">

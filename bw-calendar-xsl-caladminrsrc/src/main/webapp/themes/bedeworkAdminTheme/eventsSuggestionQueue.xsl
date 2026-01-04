@@ -25,8 +25,6 @@
 
     <p><xsl:copy-of select="$bwStr-TaAQ-SuggestedEvents"/></p>
 
-    <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
-
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">
         <xsl:with-param name="extra">&amp;sg=true</xsl:with-param>

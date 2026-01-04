@@ -24,8 +24,6 @@
     <h2><xsl:copy-of select="$bwStr-TaPE-PendingEvents"/></h2>
     <p><xsl:copy-of select="$bwStr-TaPE-EventsAwaitingModeration"/></p>
 
-    <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
-
     <xsl:variable name="sort">
       <xsl:choose>
         <xsl:when test="/bedework/appvar[key='sort']/value">

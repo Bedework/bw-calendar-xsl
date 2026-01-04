@@ -43,7 +43,7 @@
   <xsl:variable name="bwStr-Head-LoggedInAs">Logged in as:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">log out</xsl:variable>
   <xsl:variable name="bwStr-Head-HomePage">Home</xsl:variable>
-  <xsl:variable name="bwStr-Head-Events">Events</xsl:variable>
+  <xsl:variable name="bwStr-Head-ManageEvents">Manage&#160;Events</xsl:variable>
   <xsl:variable name="bwStr-Head-PendingEvents">Pending Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Approval Queue</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Suggestion Queue</xsl:variable>
@@ -92,7 +92,6 @@
   <xsl:variable name="bwStr-TaPE-EventsAwaitingModeration">The following events are awaiting moderation:</xsl:variable>
 
   <!--  xsl:template name="tabApprovalQueueEvents" -->
-  <xsl:variable name="bwStr-TaAQ-ApprovalQueueEvents">Approval Queue</xsl:variable>
   <xsl:variable name="bwStr-TaAQ-EventsAwaitingApproval">The following events are awaiting approval:</xsl:variable>
 
   <!--  xsl:template name="tabSuggestionQueueEvents" -->
@@ -137,9 +136,8 @@
   <xsl:variable name="bwStr-TaSy-ManageGlobalResources">Manage global resources</xsl:variable>
 
   <!--  xsl:template name="eventList" -->
-  <xsl:variable name="bwStr-EvLs-ManageEvents">Manage Events</xsl:variable>
   <xsl:variable name="bwStr-EvLs-SelectEvent">Select the event that you would like to update:</xsl:variable>
-  <xsl:variable name="bwStr-EvLs-PageTitle">Add new event</xsl:variable>
+  <xsl:variable name="bwStr-EvLs-AddEvent">Add new event</xsl:variable>
   <xsl:variable name="bwStr-EvLs-StartDate">Start Date:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Today">Today</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Days">Days:</xsl:variable>
@@ -163,10 +161,11 @@
 
   <!--  xsl:template name="eventListCommon" -->
   <xsl:variable name="bwStr-EvLC-Title">Title</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Master">Master</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-DateTime">Date/Time</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Group">Group</xsl:variable>
   <xsl:variable name="bwStr-EvLC-CalSuite">Suite</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimedBy">Claimed By</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Dates">Dates</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Start">Start</xsl:variable>
   <xsl:variable name="bwStr-EvLC-End">End</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable>
@@ -174,9 +173,10 @@
   <xsl:variable name="bwStr-EvLC-Suggested">Suggested</xsl:variable>
   <xsl:variable name="bwStr-EvLC-TopicalAreas">Topical Areas</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Categories">Categories</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-AcceptQ">Accept?</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-AcceptQuery">Accept?</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Author">Author</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Description">Description</xsl:variable>
+  <xsl:variable name="bwStr-EvLC-Actions">Actions</xsl:variable>
   <xsl:variable name="bwStr-EvLC-NoEvents">No events to display</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EventDeleted">Deleted</xsl:variable>
 
@@ -477,7 +477,6 @@
   <xsl:variable name="bwStr-DsEv-Reason">Reason (leave blank to exclude):</xsl:variable>
   <xsl:variable name="bwStr-DsEv-EventInfo">Event Information</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Title">Title:</xsl:variable>
-  <xsl:variable name="bwStr-DsEv-When">When:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-TopicalAreas">Topical Areas:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Status">Status:</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Description">Description:</xsl:variable>

@@ -29,11 +29,12 @@ body {
 #bedework {
   display: grid;
   grid-template-areas:
-    "header header"
-    "statusBar statusBar"
-    "menu content"
-    "footer footer";
-  grid-template-columns: 1fr 8fr;
+    "header "
+    "statusBar "
+    "menu1"
+    "menu2"
+    "content"
+    "footer ";
   gap: 0px;
   min-width: 800px;
 }
@@ -188,32 +189,43 @@ body {
   color: purple !important;
 }
 /* Menu items */
-#menu {
-  grid-area: menu;
+#menu1 {
+  grid-area: menu1;
   margin: 0;
-  padding: 40px 0px 0px 0px;
+  color: #eee;
+  background-color: #ddd;
+}
+#menu2 {
+  grid-area: menu2;
+  margin: 0;
   color: #eee;
   background-color: #ddd;
 }
 #bwAdminMenu {
+  margin: 0;
+  padding: 0;
   font-size: 0.8em;
-  padding-left: 0;
+  border-bottom: 1px solid #ccc;
+  height: 28px;
 }
 #bwAdminMenu li {
+  display: inline;
   margin: 0;
+  padding: 8px 0;
   color: #777;
   background-color: #eee;
+  border-right: 1px solid #999;
 }
 #bwAdminMenu li.selected {
   color: #333;
   background: white url("/images/caladmin/menuBgGray.gif") repeat-x top;
   border-bottom: 2px solid white;
 }
-#bwAdminMenu li button:link,
-#bwAdminMenu li button:active,
-#bwAdminMenu li button:hover,
-#bwAdminMenu li button:visited {
-  border: none;
+#bwAdminMenu a:link,
+#bwAdminMenu a:active,
+#bwAdminMenu a:hover,
+#bwAdminMenu a:visited {
+  display: inline-block;
   color: #777;
   background-color: transparent;
   text-decoration: none;
@@ -224,10 +236,10 @@ body {
   margin: 0;
   white-space: nowrap;
 }
-#bwAdminMenu li.selected button:link,
-#bwAdminMenu li.selected button:active,
-#bwAdminMenu li.selected button:hover,
-#bwAdminMenu li.selected button:visited {
+#bwAdminMenu li.selected a:link,
+#bwAdminMenu li.selected a:active,
+#bwAdminMenu li.selected a:hover,
+#bwAdminMenu li.selected a:visited {
   color: black;
   background-color: transparent;
   text-decoration: none;
@@ -287,7 +299,7 @@ body {
   grid-template-areas:
     "melStart melSort melCol"
     "melQuery melGroups melCats";
-  gap: 0px;
+  gap: 4px;
 }
 div#bwEventListStart {
   white-space: nowrap;
@@ -518,6 +530,7 @@ ul.adminMenu li {
   background-color: white;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  max-width: 180px;
 }
 #commonListTable td.date {
   white-space: nowrap;

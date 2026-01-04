@@ -79,6 +79,8 @@
   <xsl:variable name="inThisGroup"
                 select="$currentGroup = $userGroup"/>
 
+  <xsl:variable name="isAddEventTab"
+                select="/bedework/tab = 'addEvent'"/>
   <xsl:variable name="isEventsTab"
                 select="/bedework/tab = 'events'"/>
   <xsl:variable name="isApprovalQueueTab"
@@ -115,6 +117,10 @@
   <xsl:variable name="isModEventSuggestion"
                 select="$isModEventPage and $isSuggestionQueueTab"/>
 
+  <!-- Flags for display of event list columns -->
+  <xsl:variable name="evlistShowDescription"
+                select="false()"/>
+
   <xsl:variable name="calendarPath">
     <xsl:choose>
       <xsl:when test="/bedework/appvar[key='calendarPath']/value">
@@ -133,6 +139,8 @@
       <xsl:otherwise>dtstart.utc:asc</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable>
+
 
   <!-- Properly encoded prefixes to the application actions; use these to build
        urls; allows the application to be used without cookies or within a portal.

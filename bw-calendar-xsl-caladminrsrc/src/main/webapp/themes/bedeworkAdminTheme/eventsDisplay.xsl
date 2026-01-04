@@ -177,7 +177,7 @@
 
       <tr>
         <th>
-          <xsl:copy-of select="$bwStr-DsEv-When"/>
+          <xsl:copy-of select="$bwStr-EvLC-DateTime"/>
         </th>
         <td>
           <xsl:value-of select="start/dayname"/>, <xsl:value-of select="start/longdate"/><xsl:text> </xsl:text>

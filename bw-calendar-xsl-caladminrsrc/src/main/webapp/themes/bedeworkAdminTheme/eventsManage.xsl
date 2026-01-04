@@ -21,14 +21,7 @@
 
   <!--++++++++++++++++++ Manage Events List ++++++++++++++++++++-->
   <xsl:template name="eventList">
-    <xsl:variable name="today"><xsl:value-of select="substring(/bedework/now/date,1,4)"/>-<xsl:value-of select="substring(/bedework/now/date,5,2)"/>-<xsl:value-of select="substring(/bedework/now/date,7,2)"/></xsl:variable><!--
-         -->
-    <h2 class="leftTitle"><xsl:copy-of select="$bwStr-EvLs-ManageEvents"/></h2>
-    <button id="bwEventListAddEventButton" onclick="javascript:location.replace('{$event-initAddEvent}')"><xsl:value-of select="$bwStr-EvLs-PageTitle"/>
-      <xsl:if test="not(/bedework/currentCalSuite/name)">
-        <xsl:attribute name="onclick">alert("<xsl:copy-of select="$bwStr-MMnu-YouMustBeOperating"/>");return false;</xsl:attribute>
-      </xsl:if>
-    </button>
+    <h2><xsl:copy-of select="$bwStr-Head-ManageEvents"/></h2>
 
     <div id="bwEventListControls">
       <xsl:call-template name="eventListControls">

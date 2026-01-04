@@ -77,7 +77,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="header"/>
-            <div id="menu">
+            <div id="menu1">
               <xsl:call-template name="adminMenu"/>
             </div>
             <div id="content">
