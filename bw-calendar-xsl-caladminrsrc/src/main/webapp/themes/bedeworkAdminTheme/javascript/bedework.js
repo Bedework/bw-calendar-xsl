@@ -324,6 +324,7 @@ function setSuggestListDateToday(dateString,formObj) {
 }
 // Change the event list widgets (for the main modify events listing)
 function setEventList(formObj, changed, value) {
+  let fa=formObj.appvar;
   var doSubmit = true;
   var catFilter = "";
   var groupFilter = "";
@@ -337,30 +338,37 @@ function setEventList(formObj, changed, value) {
   formObj.fexpr.value = '(' + catFilter + groupFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   switch (changed) {
     case "allGroups":
-      formObj.appvar.value = "listEventsAllGroups(" + formObj.sg.checked + ")";
+      var val;
+      if (formObj.sg.checked) {
+        val = "**allGroups**";
+      } else {
+        val = "";
+      }
+
+      fa.value = "groupFilter(" + val + ")";
       break;
     case "calPath":
-      formObj.appvar.value = "calendarPath(" + formObj.colPath.value + ")";
+      fa.value = "calendarPath(" + formObj.colPath.value + ")";
       break;
     case "cat":
-      formObj.appvar.value = "catFilter(" + formObj.catFilter.value + ")";
+      fa.value = "catFilter(" + formObj.catFilter.value + ")";
       break;
     case "date":
-      $("#appvar").val("curListDate(" + value + ")");
-      doSubmit = false;// today button is a submit
+      fa.value = "curListDate(" + value + ")";
+      //doSubmit = false;// today button is a submit
       break
     case "group":
-      formObj.appvar.value = "groupFilter(" + formObj.groupFilter.value + ")";
+      fa.value = "groupFilter(" + formObj.groupFilter.value + ")";
       break;
     case "query":
-      formObj.appvar.value = "query(" + formObj.query.value + ")";
+      fa.value = "query(" + formObj.query.value + ")";
       break;
     case "sort":
-      formObj.appvar.value = "sort(" + formObj.sort.value + ")";
+      fa.value = "sort(" + formObj.sort.value + ")";
       break;
     case "today":
       $("#bwListWidgetStartDate").val(value);
-      $("#appvar").val("curListDate(" + value + ")");
+      fa.value = "curListDate(" + value + ")";
       doSubmit = false;// today button is a submit
       break
   }

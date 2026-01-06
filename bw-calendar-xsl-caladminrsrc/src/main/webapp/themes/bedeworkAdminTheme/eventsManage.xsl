@@ -41,7 +41,7 @@
         <div id="bwEventListStart">
           <label for="bwListWidgetStartDate"><xsl:copy-of select="$bwStr-EvLs-StartDate"/></label>
           <input id="bwListWidgetStartDate" type="text" class="noFocus" name="start" size="10"
-                 onchange="setEventList(this.form,'today', this.value);"/>
+                 onchange="setEventList(this.form,'date', this.value);"/>
           <input id="bwListWidgetToday" type="submit" value="{$bwStr-EvLs-Today}"
                  onclick="setEventList(this.form, 'today', '{$today}');"/>
         </div><!--
@@ -133,18 +133,19 @@
                 <xsl:value-of select="name"/>
               </option>
             </xsl:for-each>
-          </select>
-          <xsl:if test="/bedework/appvar[key='groupFilter'] and /bedework/appvar[key='groupFilter']/value != ''">
-            <input type="button" value="{$bwStr-EvLs-ClearFilter}" onclick="clearGroup(this.form);"/>
-          </xsl:if><!--
+          </select><!--
             -->
           <xsl:if test="not($isSuperUser)">
             <input type="checkbox" name="sg" id="listEventsAllGroups" value="true" onchange="setEventList(this.form,'allGroups');">
-              <xsl:if test="/bedework/appvar[key='listEventsAllGroups']/value = 'true'">
+              <xsl:if test="/bedework/appvar[key='groupFilter']/value = '**allGroups**'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>
             <label for="listEventsAllGroups"><xsl:copy-of select="$bwStr-Srch-ScopeAll"/></label>
+          </xsl:if><!--
+            -->
+          <xsl:if test="/bedework/appvar[key='groupFilter'] and /bedework/appvar[key='groupFilter']/value != ''">
+            <input type="button" value="{$bwStr-EvLs-ClearFilter}" onclick="clearGroup(this.form);"/>
           </xsl:if>
         </div><!--
                      categories -->
