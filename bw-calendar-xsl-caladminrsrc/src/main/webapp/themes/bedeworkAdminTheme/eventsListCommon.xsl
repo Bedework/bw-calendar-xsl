@@ -249,7 +249,12 @@
           <xsl:if test="$isSuggestionQueueTab">
             <th><xsl:copy-of select="$bwStr-EvLC-AcceptQuery"/></th>
           </xsl:if>
-          <th><xsl:copy-of select="$bwStr-EvLC-Group"/></th>
+          <!--
+                          ======== Approve/publish button -->
+          <xsl:if test="$isApprovalQueueTab and $isApproverUser">
+            <th>
+            </th>
+          </xsl:if>          <th><xsl:copy-of select="$bwStr-EvLC-Group"/></th>
           <xsl:if test="$isPendingQueueTab">
             <th><xsl:copy-of select="$bwStr-EvLC-CalSuite"/></th>
             <th><xsl:copy-of select="$bwStr-EvLC-ClaimedBy"/></th>
