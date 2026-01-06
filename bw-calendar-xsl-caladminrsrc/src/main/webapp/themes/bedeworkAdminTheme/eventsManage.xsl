@@ -87,8 +87,11 @@
             </select>
           </div>
         </xsl:if>
-        <xsl:if test="count(/bedework/calendars/calendar) &lt;= 1">
+        <xsl:if test="count(/bedework/calendars/calendar) = 1">
           <div><input type="hidden" name="colPath" value="{/bedework/calendars/calendar/path}"/></div>
+        </xsl:if>
+        <xsl:if test="count(/bedework/calendars/calendar) = 0">
+          <div><input type="hidden" name="colPath" value="/public/cals/MainCal"/></div>
         </xsl:if><!--
                              query -->
         <xsl:variable name="queryVal">

@@ -153,11 +153,15 @@
                         select="not(xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT) or xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group"/><!--
            -->
           <xsl:if test="not($isSubmissionClaimant)">
-            <div>
-              <button type="button" class="next" onclick="location.href='{$event-fetchForUpdate}&amp;calPath={$calPath}&amp;guid={guid}&amp;recurrenceId={recurrenceId}'">
+            <a>
+              <xsl:attribute name="href">
+                <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>&amp;recurrenceId=<xsl:value-of select="recurrenceId"/>
+              </xsl:attribute>
+              <xsl:attribute name="title">
                 <xsl:copy-of select="$eventEditLabel"/>
-              </button>
-            </div>
+              </xsl:attribute>
+              <xsl:copy-of select="$eventTitle"/>
+            </a>
           </xsl:if>
         </xsl:when>
         <xsl:otherwise><!-- NOT pending queue -->
@@ -215,20 +219,22 @@
         </xsl:otherwise>
       </xsl:choose>
     </td>
-    <td>
-      <xsl:if test="($canEdit
-                and ((recurring = 'true') or (recurrenceId != '')))">
-        <a>
-          <xsl:attribute name="href">
-            <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>
-          </xsl:attribute>
-          <xsl:attribute name="title">
+    <xsl:if test="$isApproverUser">
+      <td>
+        <xsl:if test="($canEdit
+                  and ((recurring = 'true') or (recurrenceId != '')))">
+          <a>
+            <xsl:attribute name="href">
+              <xsl:value-of select="$event-fetchForUpdate"/>&amp;calPath=<xsl:value-of select="$calPath"/>&amp;guid=<xsl:value-of select="guid"/>
+            </xsl:attribute>
+            <xsl:attribute name="title">
+              <xsl:value-of select="$bwStr-EvLC-EditMaster"/>
+            </xsl:attribute>
             <xsl:value-of select="$bwStr-EvLC-EditMaster"/>
-          </xsl:attribute>
-          <xsl:value-of select="$bwStr-EvLC-EditMaster"/>
-        </a>
-      </xsl:if>
-    </td>
+          </a>
+        </xsl:if>
+      </td>
+    </xsl:if>
   </xsl:template><!--
   -->
   <xsl:template name="eventListCommon">
@@ -236,7 +242,9 @@
       <thead>
         <tr>
           <th><xsl:copy-of select="$bwStr-EvLC-Title"/></th>
-          <th><xsl:copy-of select="$bwStr-EvLC-Master"/></th>
+          <xsl:if test="$isApproverUser">
+            <th><xsl:copy-of select="$bwStr-EvLC-Master"/></th>
+          </xsl:if>
           <th><xsl:copy-of select="$bwStr-EvLC-DateTime"/></th>
           <xsl:if test="$isSuggestionQueueTab">
             <th><xsl:copy-of select="$bwStr-EvLC-AcceptQuery"/></th>
