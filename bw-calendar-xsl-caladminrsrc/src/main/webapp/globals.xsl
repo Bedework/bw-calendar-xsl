@@ -98,6 +98,8 @@
                 select="/bedework/tab = 'contacts'"/>
   <xsl:variable name="isHomePage"
                 select="/bedework/tab = 'homePage'"/>
+  <xsl:variable name="isHelpPage"
+                select="/bedework/tab = 'helpPage'"/>
   <xsl:variable name="isLocationsTab"
                 select="/bedework/tab = 'locations'"/>
   <xsl:variable name="isSystemTab"
@@ -149,6 +151,7 @@
 
   <!-- primary navigation, menu tabs -->
   <xsl:variable name="setup" select="/bedework/urlPrefixes/setup"/>
+  <xsl:variable name="showHelpPage" select="/bedework/urlPrefixes/showHelpPage"/>
   <xsl:variable name="showHomePage" select="/bedework/urlPrefixes/showHomePage"/>
   <xsl:variable name="initEventList" select="/bedework/urlPrefixes/initEventList"/>
   <xsl:variable name="initPendingTab" select="/bedework/urlPrefixes/initPendingTab"/>
@@ -162,8 +165,7 @@
   <xsl:variable name="showCategoriesTab" select="/bedework/urlPrefixes/showCategoriesTab"/>
   <xsl:variable name="logout" select="/bedework/urlPrefixes/logout"/>
   <xsl:variable name="search" select="/bedework/urlPrefixes/search/search"/>
-  <xsl:variable name="search-next" select="/bedework/urlPrefixes/search/next"/>
-  <xsl:variable name="index-unindex" select="/bedework/urlPrefixes/search/unindex"/>
+  <xsl:variable name="index-unindex" select="/bedework/urlPrefixes/unindex"/>
 
   <!-- events -->
   <xsl:variable name="event-fetchForApprovePublish" select="/bedework/urlPrefixes/event/fetchForApprovePublish"/>
@@ -180,7 +182,6 @@
   <xsl:variable name="event-fetchForDisplay" select="/bedework/urlPrefixes/event/fetchForDisplay"/>
   <xsl:variable name="event-fetchForUpdate" select="/bedework/urlPrefixes/event/fetchForUpdate"/>
   <xsl:variable name="event-updateStatus" select="/bedework/urlPrefixes/event/updateStatus"/>
-  <xsl:variable name="event-updateStatusFromSearch" select="/bedework/urlPrefixes/event/updateStatusFromSearch"/>
   <xsl:variable name="event-update" select="/bedework/urlPrefixes/event/update"/>
   <xsl:variable name="event-selectCalForEvent" select="/bedework/urlPrefixes/event/selectCalForEvent"/>
   <xsl:variable name="event-initUpload" select="/bedework/urlPrefixes/event/initUpload"/>

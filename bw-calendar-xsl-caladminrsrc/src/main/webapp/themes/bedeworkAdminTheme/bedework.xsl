@@ -28,6 +28,7 @@
   <!-- Site subsections -->
   <xsl:include href="head.xsl" />
   <xsl:include href="header.xsl" />
+  <xsl:include href="helpPage.xsl" />
   <xsl:include href="homePage.xsl" />
   <xsl:include href="notifications.xsl" />
   <xsl:include href="adminMenu.xsl" />
@@ -66,7 +67,7 @@
 
   <!--==== MAIN TEMPLATE  ====-->
   <xsl:template match="/">
-<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text><!-- HTML5 -->
+    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text><!-- HTML5 -->
     <html lang="en">
       <xsl:call-template name="head"/>
       <body>
@@ -82,6 +83,9 @@
             </div>
             <div id="content">
               <xsl:choose>
+                <xsl:when test="/bedework/page='helpPage'">
+                  <xsl:call-template name="helpPage"/>
+                </xsl:when>
                 <xsl:when test="/bedework/page='homePage'">
                   <xsl:call-template name="homePage"/>
                 </xsl:when>

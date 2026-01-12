@@ -177,7 +177,17 @@
             <xsl:copy-of select="$bwStr-Head-System"/>
           </a>
         </li>
-      </xsl:if>
+      </xsl:if><!--
+          help page -->
+      <li>
+        <xsl:if test="$isHelpPage">
+          <xsl:attribute name="class">selected</xsl:attribute>
+        </xsl:if>
+        <a id="helpLink">
+          <xsl:attribute name="href"><xsl:value-of select="$showHelpPage"/></xsl:attribute>
+          <xsl:copy-of select="$bwStr-Head-HelpPage"/>
+        </a>
+      </li>
     </ul>
     <xsl:call-template name="messagesAndErrors"/>
   </xsl:template>

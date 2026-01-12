@@ -42,6 +42,7 @@
   <xsl:variable name="bwStr-Head-Change">change</xsl:variable>
   <xsl:variable name="bwStr-Head-LoggedInAs">Logged in as:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">log out</xsl:variable>
+  <xsl:variable name="bwStr-Head-HelpPage">Help</xsl:variable>
   <xsl:variable name="bwStr-Head-HomePage">Home</xsl:variable>
   <xsl:variable name="bwStr-Head-ManageEvents">Manage&#160;Events</xsl:variable>
   <xsl:variable name="bwStr-Head-PendingEvents">Pending Queue</xsl:variable>

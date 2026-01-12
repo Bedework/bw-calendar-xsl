@@ -42,6 +42,7 @@
   <xsl:variable name="bwStr-Head-Change">cambiar</xsl:variable>
   <xsl:variable name="bwStr-Head-LoggedInAs">Conectado como:</xsl:variable>
   <xsl:variable name="bwStr-Head-LogOut">desconectar</xsl:variable>
+  <xsl:variable name="bwStr-Head-HelpPage">Help</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-Head-HomePage">Home</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-Head-ManageEvents">Gestionar&#160;eventos</xsl:variable>
   <xsl:variable name="bwStr-Head-PendingEvents">Cola pendiente</xsl:variable>

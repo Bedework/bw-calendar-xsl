@@ -18,11 +18,11 @@
     under the License.
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template name="homePage">
-    <div id="homeContentContainer">
-      <iframe id="homeContent"
-              title="Bedework Home"
-              src="/approots/caladminrsrc/default/homeContent.html">
+  <xsl:template name="helpPage">
+    <div id="helpContentContainer">
+      <iframe id="helpContent"
+              title="Bedework Help"
+              src="https://nashville-public-library.github.io/bedework-docs/">
       </iframe>
     </div>
   </xsl:template>

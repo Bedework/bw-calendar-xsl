@@ -28,14 +28,7 @@
     <xsl:param name="name"/><!--
     -->
     <xsl:variable name="updateStatusHref">
-      <xsl:choose>
-        <xsl:when test="/bedework/page = 'displayEventForNonApprover'">
-          <xsl:value-of select="$event-updateStatusFromSearch"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$event-updateStatus"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="$event-updateStatus"/>
     </xsl:variable>
     <div>
       <button type="button" class="next" onclick="location.href='{$updateStatusHref}&amp;href={$href}&amp;status={$newStatus}'">
@@ -48,7 +41,7 @@
     <xsl:param name="href"/>
     <xsl:call-template name="changeStatusButton">
       <xsl:with-param name="href" select="$href"/>
-      <xsl:with-param name="newStatus" select="CANCELLED" />
+      <xsl:with-param name="newStatus" select="'CANCELLED'" />
       <xsl:with-param name="name"
                       select="$bwStr-EvLC-SetCancelled"/>
     </xsl:call-template>
@@ -58,7 +51,7 @@
     <xsl:param name="href"/>
     <xsl:call-template name="changeStatusButton">
       <xsl:with-param name="href" select="$href"/>
-      <xsl:with-param name="newStatus" select="CONFIRMED" />
+      <xsl:with-param name="newStatus" select="'CONFIRMED'" />
       <xsl:with-param name="name"
                       select="$bwStr-EvLC-SetConfirmed"/>
     </xsl:call-template>
@@ -68,7 +61,7 @@
     <xsl:param name="href"/>
     <xsl:call-template name="changeStatusButton">
       <xsl:with-param name="href" select="$href"/>
-      <xsl:with-param name="newStatus" select="TENTATIVE" />
+      <xsl:with-param name="newStatus" select="'TENTATIVE'" />
       <xsl:with-param name="name"
                       select="$bwStr-EvLC-SetTentative"/>
     </xsl:call-template>

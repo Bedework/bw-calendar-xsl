@@ -32,14 +32,7 @@
     <xsl:variable name="displayForNonApprover"
                   select="/bedework/page = 'displayEventForNonApprover'"/>
     <xsl:variable name="updateStatusHref">
-      <xsl:choose>
-        <xsl:when test="$displayForNonApprover">
-          <xsl:value-of select="$event-updateStatusFromSearch"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$event-updateStatus"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of select="$event-updateStatus"/>
     </xsl:variable>
 
     <xsl:choose>
