@@ -69,30 +69,32 @@
           </select>
         </div><!--
                      colpath -->
-        <xsl:if test="count(/bedework/calendars/calendar) > 1">
-          <div id="bwEventListCol">
-            <label for="colPathSetter"><xsl:copy-of select="$bwStr-EvLs-Calendar"/></label>
-            <select name="colPath"
-                    onchange="setEventList(this.form,'calPath');"
-                    id="colPathSetter">
-              <xsl:for-each select="/bedework/calendars/calendar">
-                <option>
-                  <xsl:attribute name="value"><xsl:value-of select="path"/></xsl:attribute>
-                  <xsl:if test="$calendarPath = path">
-                    <xsl:attribute name="selected">selected</xsl:attribute>
-                  </xsl:if>
-                  <xsl:value-of select="path"/>
-                </option>
-              </xsl:for-each>
-            </select>
-          </div>
-        </xsl:if>
-        <xsl:if test="count(/bedework/calendars/calendar) = 1">
-          <div><input type="hidden" name="colPath" value="{/bedework/calendars/calendar/path}"/></div>
-        </xsl:if>
-        <xsl:if test="count(/bedework/calendars/calendar) = 0">
-          <div><input type="hidden" name="colPath" value="/public/cals/MainCal"/></div>
-        </xsl:if><!--
+        <div id="bwEventListCol">
+          <xsl:choose>
+            <xsl:when test="count(/bedework/calendars/calendar) > 1">
+              <label for="colPathSetter"><xsl:copy-of select="$bwStr-EvLs-Calendar"/></label>
+              <select name="colPath"
+                      onchange="setEventList(this.form,'calPath');"
+                      id="colPathSetter">
+                <xsl:for-each select="/bedework/calendars/calendar">
+                  <option>
+                    <xsl:attribute name="value"><xsl:value-of select="path"/></xsl:attribute>
+                    <xsl:if test="$calendarPath = path">
+                      <xsl:attribute name="selected">selected</xsl:attribute>
+                    </xsl:if>
+                    <xsl:value-of select="path"/>
+                  </option>
+                </xsl:for-each>
+              </select>
+            </xsl:when>
+            <xsl:otherwise>
+              <input type="hidden" name="colPath">
+                <xsl:attribute name="value"><xsl:value-of select="$calendarPath"/>
+                </xsl:attribute>
+              </input>
+            </xsl:otherwise>
+          </xsl:choose>
+        </div><!--
                              query -->
         <xsl:variable name="queryVal">
           <xsl:choose>
