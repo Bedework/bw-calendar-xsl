@@ -23,13 +23,13 @@
 
 /* Global variables / properties */
 // URLs
-var timezoneUrl = "/tzsvr/?names";
-var carddavUrl = "/ucarddav/find";
+const timezoneUrl = "/tzsvr/?names";
+const carddavUrl = "/ucarddav/find";
 
 /* javascript debugging switch for Bedework Admin Client.  When true,
  debugging statements will be placed in console.log. If no console is
  available, force debugging off so we don't do any debug processing at all. */
-var bwJsDebug = true;
+let bwJsDebug = true;
 if (!window.console) {
   bwJsDebug = false;
 }
@@ -37,7 +37,7 @@ if (!window.console) {
 /* COMMON and GENERAL FUNCTIONS */
 
 function changeClass(id, newClass) {
-  var identity = document.getElementById(id);
+  const identity = document.getElementById(id);
   if (identity == null) {
     alert("No element with id: " + id + " to set to class: " + newClass);
   }
@@ -46,8 +46,7 @@ function changeClass(id, newClass) {
 // set a field's value by ID
 // typically used to set the value of a hidden field
 function setField(id,val) {
-  field = document.getElementById(id);
-  field.value = val;
+  document.getElementById(id).value = val;
 }
 
 // show hide items using a checkbox
@@ -61,8 +60,8 @@ function swapVisible(obj,id) {
 // hide a group of items
 // send IDs as parameters
 function hide() {
-  if (arguments.length != 0) {
-    for (i = 0; i < arguments.length; i++) {
+  if (arguments.length !== 0) {
+    for (let i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'invisible');
     }
   }
@@ -70,8 +69,8 @@ function hide() {
 // show a group of items
 // send IDs as parameters
 function show() {
-  if (arguments.length != 0) {
-    for (i = 0; i < arguments.length; i++) {
+  if (arguments.length !== 0) {
+    for (let i = 0; i < arguments.length; i++) {
       changeClass(arguments[i],'visible');
     }
   }
@@ -80,8 +79,8 @@ function show() {
 // visibility; if visible, hide it; if invisible
 // show it.
 function toggleVisibility(id,newClass) {
-  if (document.getElementById(id).className == 'invisible') {
-    if (newClass != "") {
+  if (document.getElementById(id).className === 'invisible') {
+    if (newClass !== "") {
       changeClass(id,newClass);
     } else {
       changeClass(id,'visible');
@@ -91,14 +90,14 @@ function toggleVisibility(id,newClass) {
   }
 }
 function setTab(listId,listIndex) {
-  var list = document.getElementById(listId);
-  var elementArray = [];
-  for (i = 0; i < list.childNodes.length; i++) {
+  const list = document.getElementById(listId);
+  const elementArray = [];
+  for (let i = 0; i < list.childNodes.length; i++) {
     if (list.childNodes[i].nodeName === "LI") {
       elementArray.push(list.childNodes[i]);
     }
   }
-  for (i = 0; i < elementArray.length; i++) {
+  for (let i = 0; i < elementArray.length; i++) {
     if (i === listIndex) {
       elementArray[i].className = 'selected';
     } else {
@@ -107,7 +106,7 @@ function setTab(listId,listIndex) {
   }
 }
 function getSelectedRadioButtonVal(radioCollection) {
-  for(var i = 0; i < radioCollection.length; i++) {
+  for (let i = 0; i < radioCollection.length; i++) {
     if (radioCollection[i].checked) {
        return radioCollection[i].value;
     }
@@ -117,8 +116,8 @@ function getSelectedRadioButtonVal(radioCollection) {
 function collectRecurChkBoxVals(valArray,chkBoxes,dayPos) {
   if (chkBoxes) {
     if (typeof chkBoxes.length != 'undefined') {
-      for (i = 0; i < chkBoxes.length; i++) {
-        if (chkBoxes[i].checked == true) {
+      for (let i = 0; i < chkBoxes.length; i++) {
+        if (chkBoxes[i].checked === true) {
           if (dayPos) {
             valArray.push(dayPos + chkBoxes[i].value);
           } else {
@@ -133,28 +132,28 @@ function collectRecurChkBoxVals(valArray,chkBoxes,dayPos) {
 
 // launch a simple window for displaying information; no header or status bar
 function launchSimpleWindow(URL) {
-  simpleWindow = window.open(URL, "simpleWindow", "width=800,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
-  window.simpleWindow.focus();
+  let simpleWindow = window.open(URL, "simpleWindow", "width=800,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
+  simpleWindow.focus();
 }
 
 // launch a size parameterized window for displaying information; no header or status bar
 function launchSizedWindow(URL,width,height) {
-  paramStr = "width=" + width + ",height=" + height + ",scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=yes,toolbar=yes";
-  sizedWindow = window.open(URL, "sizedWindow", paramStr);
-  window.sizedWindow.focus();
+  let paramStr = "width=" + width + ",height=" + height + ",scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=yes,toolbar=yes";
+  let sizedWindow = window.open(URL, "sizedWindow", paramStr);
+  sizedWindow.focus();
 }
 
 // launches new browser window with print-friendly version of page when
 // print icon is clicked
 function launchPrintWindow(URL) {
-  printWindow = window.open(URL, "printWindow", "width=640,height=500,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=yes,toolbar=yes");
-  window.printWindow.focus();
+  let printWindow = window.open(URL, "printWindow", "width=640,height=500,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=yes,toolbar=yes");
+  printWindow.focus();
 }
 // launch the calSelect pop-up window for selecting a calendar when creating,
 // editing, and importing events
 function launchCalSelectWindow(URL) {
-  calSelect = window.open(URL, "calSelect", "width=500,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
-  window.calSelect.focus();
+  let calSelect = window.open(URL, "calSelect", "width=500,height=600,scrollbars=yes,resizable=yes,alwaysRaised=yes,menubar=no,toolbar=no");
+  calSelect.focus();
 }
 // used to update the calendar in various forms from
 // the calSelect pop-up window.  We must do two things: update the hidden calendar
@@ -172,8 +171,8 @@ function updateEventFormCalendar(newCalPath,calDisplay) {
 // used to update a calendar subscription (alias) We must do two things: update the hidden
 // calendar input field and update the displayed text
 function updatePublicCalendarAlias(newCalPath,calDisplay,calendarCollection) {
-  var calendarAliasHolder = document.getElementById("publicAliasHolder");
-  var bwCalDisplay = document.getElementById("bwPublicCalDisplay");
+  const calendarAliasHolder = document.getElementById("publicAliasHolder");
+  const bwCalDisplay = document.getElementById("bwPublicCalDisplay");
   calendarAliasHolder.value = newCalPath;
   bwCalDisplay.innerHTML = '<strong>' + calDisplay + '</strong> <button type="button" onclick="showPublicCalAliasTree();">change</button>';
   changeClass("publicSubscriptionTree","invisible");
@@ -193,7 +192,7 @@ function setCalendarAlias(formObj) {
 
     // set the aliasUri to an empty string.  Only set it if user
     // has requested a subscription.
-    formObj.aliasUri.value === "";
+    formObj.aliasUri.value = "";
 
     if (formObj.type.value === "folder") {
       formObj.calendarCollection.value = "false";
@@ -220,7 +219,7 @@ function setCalendarAlias(formObj) {
   }
 }
 function exportCalendar(formId,name,calPath) {
-  var formObj = document.getElementById(formId);
+  const formObj = document.getElementById(formId);
   formObj.calPath.value = calPath;
   formObj.contentName.value = name + '.ics';
   formObj.submit();
@@ -231,17 +230,18 @@ function exportCalendar(formId,name,calPath) {
 // hidden.  When a checkbox from one collection is changed, the corresponding
 // checkbox should be changed in the other set if it exists.
 function setCatChBx(thiscat,othercat) {
-  thisCatCheckBox = document.getElementById(thiscat);
+  let thisCatCheckBox = document.getElementById(thiscat);
+  let otherCatCheckBox;
   if (document.getElementById(othercat)) {
     otherCatCheckBox = document.getElementById(othercat);
-    otherCatCheckBox.checked =  thisCatCheckBox.checked;
+    otherCatCheckBox.checked = thisCatCheckBox.checked;
   }
 }
 function checkPrefCategories(formObj){
-  var hasACat = false;
+  let hasACat = false;
 
   if (typeof formObj.defaultCategory.length != 'undefined') {
-    for (i = 0; i < formObj.defaultCategory.length; i++) {
+    for (let i = 0; i < formObj.defaultCategory.length; i++) {
       if (formObj.defaultCategory[i].checked) {
         hasACat = true;
         break;
@@ -252,7 +252,7 @@ function checkPrefCategories(formObj){
     // no category is checked;
     // create an empty catUid element to alert the backend
     // so we can clear the cats
-    var hiddenCat = document.createElement("div");
+    const hiddenCat = document.createElement("div");
     hiddenCat.innerHTML = '<input type="hidden" name="defaultCategory" value=""/>';
     formObj.appendChild(hiddenCat);
   }
@@ -262,36 +262,38 @@ function checkPrefCategories(formObj){
 // In future releases, we will go further and only allow
 // alphanumerics and dashes and underscores.
 function validateCalName(nameObj) {
-  if(nameObj.value.indexOf("'") === -1 &&
-    nameObj.value.indexOf('"') === -1 &&
-    nameObj.value.indexOf("&") === -1 &&
-    nameObj.value.indexOf("/") === -1) {
+  const nmVal = nameObj.value;
+  if (nmVal.indexOf("'") === -1 &&
+    nmVal.indexOf('"') === -1 &&
+    nmVal.indexOf("&") === -1 &&
+    nmVal.indexOf("/") === -1) {
     return true;
-  } else { // we have bad characters
-    var badChars = "";
-   if(nameObj.value.indexOf("'") !== -1) {
-      badChars += " ' ";
-    }
-   if(nameObj.value.indexOf('"') !== -1) {
-      badChars += ' \" ';
-    }
-   if(nameObj.value.indexOf("&") !== -1) {
-      badChars += " & ";
-    }
-   if(nameObj.value.indexOf("/") !== -1) {
-      badChars += " / ";
-    }
-    alert("System Names may not include the following characters: " + badChars);
-    nameObj.focus();
-    return false;
   }
+
+  // we have bad characters
+  let badChars = "";
+  if (nmVal.indexOf("'") !== -1) {
+    badChars += " ' ";
+  }
+  if (nmVal.indexOf('"') !== -1) {
+    badChars += ' \" ';
+  }
+  if (nmVal.indexOf("&") !== -1) {
+    badChars += " & ";
+  }
+  if (nmVal.indexOf("/") !== -1) {
+    badChars += " / ";
+  }
+  alert("System Names may not include the following characters: " + badChars);
+  nameObj.focus();
+  return false;
 }
 // set category filters on calendar collections
 function setCatFilters(formObj) {
   if (typeof formObj.filterCatUid.length != 'undefined') {
-    var filterExpression = "catuid=(";
-    var filterExists = false;
-    for (i = 0; i < formObj.filterCatUid.length; i++) {
+    let filterExpression = "catuid=(";
+    let filterExists = false;
+    for (let i = 0; i < formObj.filterCatUid.length; i++) {
       if (formObj.filterCatUid[i].checked) {
         filterExists = true;
         filterExpression += "'" + formObj.filterCatUid[i].value + "',";
@@ -325,9 +327,9 @@ function setSuggestListDateToday(dateString,formObj) {
 // Change the event list widgets (for the main modify events listing)
 function setEventList(formObj, changed, value) {
   let fa=formObj.appvar;
-  var doSubmit = true;
-  var catFilter = "";
-  var groupFilter = "";
+  let doSubmit = true;
+  let catFilter = "";
+  let groupFilter = "";
   if (formObj.catFilter.value !== "") {
     catFilter = "categories.href=\"" + formObj.catFilter.value + "\" and ";
   }
@@ -338,7 +340,7 @@ function setEventList(formObj, changed, value) {
   formObj.fexpr.value = '(' + catFilter + groupFilter + 'colPath="' + formObj.colPath.value + '" and (entity_type="event" or entity_type="todo"))';
   switch (changed) {
     case "allGroups":
-      var val;
+      let val;
       if (formObj.sg.checked) {
         val = "**allGroups**";
       } else {
