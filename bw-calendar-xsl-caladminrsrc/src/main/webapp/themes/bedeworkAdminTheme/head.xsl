@@ -66,6 +66,7 @@
           <!-- load the bedework event form scripts -->
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js?v=2.0.8">/* Bedework Event Form Functions */</script>
+          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompletSearch.js">/* Bedework Event Form Autocomplete */</script>
           <script type="text/javascript" src="/javascript/bedework/bedeworkXProperties.js">/* Bedework X-Property Handling */</script>
           <script type="text/javascript" src="/javascript/bedework/bwClock.js">/* Bedework clock widget */</script>
           <link rel="stylesheet" href="/javascript/bedework/bwClock.css"/>
@@ -217,18 +218,8 @@
                 var locOptionsPrimary = processLocationsPrimary(data.locations,selectedLocUid);
                 $("#bwLocationsPrimary").append(locOptionsPrimary);
 
-                // setup the secondary locations
-                var locKey = $("#bwLocationsPrimary option:selected").text();
-                var locEmptyStr = "<xsl:value-of select="$bwStr-AEEF-None"/>";
-                var locOptionsSecondary = processLocationsSecondary(data.locations,locKey,locEmptyStr,selectedLocUid);
-                $("#bwLocationsSecondary").html(locOptionsSecondary);
-
                 // turn both select boxes into select/search combos
                 $("#bwLocationsPrimary").select2({
-                  placeholder: selectOrSearchStr,
-                  width: "600"
-                });
-                $("#bwLocationsSecondary").select2({
                   placeholder: selectOrSearchStr,
                   width: "600"
                 });
@@ -237,18 +228,6 @@
                 $("#bwLocationsPrimary").on("change",function() {
                   var locKey = $("#bwLocationsPrimary option:selected").text();
                   var locEmptyStr = "<xsl:value-of select="$bwStr-AEEF-None"/>";
-                  var locOptionsSecondary = processLocationsSecondary(data.locations,locKey,locEmptyStr,selectedLocUid);
-                  $("#bwLocationsSecondary").html(locOptionsSecondary);
-                  $("#bwLocationsSecondary").select2("destroy"); // destroy and re-init to reset the options
-                  $("#bwLocationsSecondary").select2({
-                    placeholder: selectOrSearchStr,
-                    width: "600"
-                  });
-                  $("#bwLocation").val($("#bwLocationsSecondary option:selected").val());
-                  $("#bwLocationsSecondaryContainer").show();
-                });
-                $("#bwLocationsSecondary").on("change",function() {
-                  $("#bwLocation").val($(this).val());
                 });
               })
               .fail(function(jqxhr, textStatus, error ) {
@@ -403,6 +382,7 @@
                       /bedework/page='eventList'">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js">/* Bedework Event Form Functions */</script>
+          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompletSearch.js">/* Bedework Event Form Autocomplete */</script>
           <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">/* Bedework Utilities */</script>
         </xsl:if>
         <xsl:if test="/bedework/page='calendarDescriptions' or /bedework/page='displayCalendar'">

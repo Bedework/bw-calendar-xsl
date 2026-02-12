@@ -870,9 +870,6 @@ label.interiorLabel {
 #bwLocationsPrimaryContainer {
   margin: 0 0.25em 0.25em 0;
 }
-#bwLocationsSecondaryContainer {
-  margin: 0;
-}
 #bwContactsCell label {
   display: block;
 }
