@@ -18,6 +18,8 @@ include::introduction.adoc[]
 
 :sectnums:
 
+include::migrateTo3.0.adoc[]
+
 include::caladminrsrc.adoc[]
 
 include::calfeedrsrc-MainCampus.adoc[]

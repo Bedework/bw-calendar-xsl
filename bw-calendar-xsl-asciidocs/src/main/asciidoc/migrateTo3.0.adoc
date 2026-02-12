@@ -1,0 +1,7 @@
+[[migrateTo3.0]]
+== Migrating to XSL 3.0
+So far, it's not clear any changes MUST be made to migrate. However, 3.0 offers some features which should be used and may be used.
+
+. Use global static variables wherever possible - in particular for the string values. This may allow substitution once, at stylesheet compilation.
+
+. Use iteration to build items such as the options for recurrences.
