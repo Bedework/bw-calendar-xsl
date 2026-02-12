@@ -123,6 +123,10 @@
   <xsl:variable name="evlistShowDescription"
                 select="false()"/>
 
+  <!-- Flags to suppress or enable event form fields -->
+  <xsl:variable name="evFormShowVirtualReg"
+                select="true()"/>
+
   <xsl:variable name="calendarPath">
     <xsl:choose>
       <xsl:when test="/bedework/appvar[key='calendarPath']/value">

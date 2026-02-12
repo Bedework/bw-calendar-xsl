@@ -2350,7 +2350,9 @@
         </tr>
         <!-- Virtual registration link -->
         <tr class="optional">
-          <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
+          <xsl:if test="not($canEdit) or not($evFormShowVirtualReg)">
+            <xsl:attribute name="class">invisible</xsl:attribute>
+          </xsl:if>
           <td class="fieldName">
             <xsl:copy-of select="$bwStr-AEEF-VirtualRegURL"/>
           </td>
