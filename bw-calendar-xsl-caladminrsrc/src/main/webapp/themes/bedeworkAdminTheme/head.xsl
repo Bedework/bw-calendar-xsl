@@ -66,7 +66,7 @@
           <!-- load the bedework event form scripts -->
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js?v=2.0.8">/* Bedework Event Form Functions */</script>
-          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompletSearch.js">/* Bedework Event Form Autocomplete */</script>
+          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompleteSearch.js">/* Bedework Event Form Autocomplete */</script>
           <script type="text/javascript" src="/javascript/bedework/bedeworkXProperties.js">/* Bedework X-Property Handling */</script>
           <script type="text/javascript" src="/javascript/bedework/bwClock.js">/* Bedework clock widget */</script>
           <link rel="stylesheet" href="/javascript/bedework/bwClock.css"/>
@@ -382,7 +382,7 @@
                       /bedework/page='eventList'">
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedework.js">/* Bedework */</script>
           <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkEventForm.js">/* Bedework Event Form Functions */</script>
-          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompletSearch.js">/* Bedework Event Form Autocomplete */</script>
+          <script type="text/javascript" src="{$resourcesRoot}/javascript/bedeworkAutocompleteSearch.js">/* Bedework Event Form Autocomplete */</script>
           <script type="text/javascript" src="/javascript/bedework/bedeworkUtil.js">/* Bedework Utilities */</script>
         </xsl:if>
         <xsl:if test="/bedework/page='calendarDescriptions' or /bedework/page='displayCalendar'">
