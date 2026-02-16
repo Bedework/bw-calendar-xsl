@@ -31,10 +31,28 @@
   <xsl:template name="locationList">
     <div class="mgmtHeading">
       <h2><xsl:copy-of select="$bwStr-LoLi-ManageLocations"/></h2>
-      <input type="button" name="return" value="{$bwStr-LoLi-AddNewLocation}" onclick="javascript:location.replace('{$location-initAdd}')"/>
-      <p>
+      <div>
+        <input type="button" name="return"
+               value="{$bwStr-LoLi-AddNewLocation}"
+               onclick="javascript:location.replace('{$location-initAdd}')"/>
         <xsl:copy-of select="$bwStr-LoLi-SelectLocationToUpdate"/>
-      </p>
+        <xsl:choose>
+          <xsl:when test="/bedework/locations/includeArchived = 'true'">
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Exclude-Archived}"
+                   onclick="javascript:location.replace('{$showLocationsTab}')">
+            </input>
+          </xsl:when>
+          <xsl:otherwise>
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Include-Archived}"
+                   onclick="javascript:location.replace('{$showLocationsTab}&amp;includeArchived=true')">
+            </input>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
     </div>
 
     <table id="commonListTable">
@@ -51,8 +69,8 @@
       <xsl:for-each select="/bedework/locations/location">
         <xsl:variable name="statusVal">
           <xsl:choose>
-            <xsl:when test="status='deleted'">archived</xsl:when>
-            <xsl:otherwise><xsl:value-of select="status"/></xsl:otherwise>
+            <xsl:when test="archived='true'">archived</xsl:when>
+            <xsl:otherwise> </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <tr>
@@ -269,11 +287,11 @@
         <xsl:if test="$isSuperUser">
           <tr>
             <td>
-              <label for="locDeleted"><xsl:copy-of select="$bwStr-MoLo-Deleted"/></label>
+              <label for="locArchived"><xsl:copy-of select="$bwStr-Archived"/></label>
             </td>
             <td>
-              <input type="checkbox" name="deleted" id="locDeleted" value="true">
-                <xsl:if test="/bedework/formElements/form/status/input/@value = 'deleted'">
+              <input type="checkbox" name="archived" id="locArchived" value="true">
+                <xsl:if test="/bedework/formElements/form/archived/input/@checked = 'checked'">
                   <xsl:attribute name="checked">true</xsl:attribute>
                 </xsl:if>
               </input>

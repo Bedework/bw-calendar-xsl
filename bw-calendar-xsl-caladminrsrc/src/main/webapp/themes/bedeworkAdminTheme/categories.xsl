@@ -29,10 +29,28 @@
   <xsl:template name="categoryList">
     <div class="mgmtHeading">
       <h2><xsl:copy-of select="$bwStr-CtgL-ManageCategories"/></h2>
-      <input type="button" name="return" value="{$bwStr-CtgL-AddNewCategory}" onclick="javascript:location.replace('{$category-initAdd}')"/>
-      <p>
+      <div>
+        <input type="button" name="return"
+               value="{$bwStr-CtgL-AddNewCategory}"
+               onclick="javascript:location.replace('{$category-initAdd}')"/>
         <xsl:copy-of select="$bwStr-CtgL-SelectCategory"/>
-      </p>
+        <xsl:choose>
+          <xsl:when test="/bedework/categories/includeArchived = 'true'">
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Exclude-Archived}"
+                   onclick="javascript:location.replace('{$showCategoriesTab}')">
+            </input>
+          </xsl:when>
+          <xsl:otherwise>
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Include-Archived}"
+                   onclick="javascript:location.replace('{$showCategoriesTab}&amp;includeArchived=true')">
+            </input>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
     </div>
 
     <table id="commonListTable">
@@ -47,8 +65,8 @@
       <xsl:for-each select="/bedework/categories/category">
         <xsl:variable name="statusVal">
           <xsl:choose>
-            <xsl:when test="status='deleted'">archived</xsl:when>
-            <xsl:otherwise><xsl:value-of select="status"/></xsl:otherwise>
+            <xsl:when test="archived='true'">archived</xsl:when>
+            <xsl:otherwise> </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <xsl:variable name="catUid" select="uid"/>
@@ -131,11 +149,11 @@
             <xsl:if test="$isSuperUser">
               <tr>
                 <td>
-                  <label for="catDeleted"><xsl:copy-of select="$bwStr-MoCa-Deleted"/></label>
+                  <label for="catArchived"><xsl:copy-of select="$bwStr-Archived"/></label>
                 </td>
                 <td>
-                  <input type="checkbox" name="deleted" id="catDeleted" value="true">
-                    <xsl:if test="/bedework/formElements/form/status/input/@value = 'deleted'">
+                  <input type="checkbox" name="archived" id="catArchived" value="true">
+                    <xsl:if test="/bedework/currentCategory/category/archived/input/@checked = 'checked'">
                       <xsl:attribute name="checked">true</xsl:attribute>
                     </xsl:if>
                   </input>

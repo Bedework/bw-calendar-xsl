@@ -24,6 +24,11 @@
   <xsl:include href="/approots/bedework-common/es_ES/default/messages.xsl" />
   <xsl:include href="/approots/bedework-common/es_ES/default/bedeworkAccessStrings.xsl"/>
 
+  <!--  Generally used strings -->
+  <xsl:variable name="bwStr-Archived">Archived:</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-Exclude-Archived">Exclude Archived</xsl:variable><!-- XXX translate -->
+  <xsl:variable name="bwStr-Include-Archived">Include Archived</xsl:variable><!-- XXX translate -->
+
   <!--  xsl:template match="/" -->
   <xsl:variable name="bwStr-Root-PageTitle">Administración de calendario: Administración de eventos públicos</xsl:variable>
   <xsl:variable name="bwStr-Root-NoAdminGroup">Ningún grupo administrativo</xsl:variable>
@@ -492,7 +497,7 @@
 
   <!--  xsl:template name="contactList" -->
   <xsl:variable name="bwStr-Cont-ManageContacts">Gestionar contactos</xsl:variable>
-  <xsl:variable name="bwStr-Cont-SelectContact">Seleccionar el contacto que desea actualizar:</xsl:variable>
+  <xsl:variable name="bwStr-Cont-SelectContact"> o seleccionar el contacto que desea actualizar.</xsl:variable>
   <xsl:variable name="bwStr-Cont-Name">Nombre</xsl:variable>
   <xsl:variable name="bwStr-Cont-Phone">Teléfono</xsl:variable>
   <xsl:variable name="bwStr-Cont-Email">Email</xsl:variable>
@@ -510,7 +515,6 @@
   <xsl:variable name="bwStr-MdCo-ContactURL">URL del contacto:</xsl:variable>
   <xsl:variable name="bwStr-MdCo-ContactURL-Placeholder">link to more information</xsl:variable>
   <xsl:variable name="bwStr-MdCo-ContactEmail">Dirección de Email del contacto:</xsl:variable>
-  <xsl:variable name="bwStr-MdCo-ContactDeleted">Borrado:</xsl:variable>
   <xsl:variable name="bwStr-MdCo-Optional">(opcional)</xsl:variable>
 
   <!--  xsl:template name="deleteContactConfirm" -->
@@ -533,7 +537,7 @@
 
   <!--  xsl:template name="locationList" -->
   <xsl:variable name="bwStr-LoLi-ManageLocations">Gestionar localizaciones</xsl:variable>
-  <xsl:variable name="bwStr-LoLi-SelectLocationToUpdate">Seleccionar la localización que desearía actualizar:</xsl:variable>
+  <xsl:variable name="bwStr-LoLi-SelectLocationToUpdate">o seleccionar la localización que desearía actualizar.</xsl:variable>
   <xsl:variable name="bwStr-LoLi-Name">Nombre</xsl:variable>
   <xsl:variable name="bwStr-LoLi-Room">Room</xsl:variable> <!-- XXX Translate -->
   <xsl:variable name="bwStr-LoLi-Address">Dirección</xsl:variable>
@@ -576,7 +580,6 @@
   <xsl:variable name="bwStr-MoLo-LocationAccessible">Wheelchair accessible</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-MoLo-GeoUri">GEO URI:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-MoLo-GeoUri-Placeholder"></xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Deleted">Borrado:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-DeleteLocation">Borrar localización</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Cancel">Cancelar</xsl:variable>
 
@@ -595,7 +598,7 @@
 
   <!--  xsl:template name="categoryList" -->
   <xsl:variable name="bwStr-CtgL-ManageCategories">Gestionar categorías</xsl:variable>
-  <xsl:variable name="bwStr-CtgL-SelectCategory">Seleccione la categoría que desearía actualizar:</xsl:variable>
+  <xsl:variable name="bwStr-CtgL-SelectCategory"> o seleccione la categoría que desearía actualizar.</xsl:variable>
   <xsl:variable name="bwStr-CtgL-AddNewCategory">Añadir nueva categoría</xsl:variable>
   <xsl:variable name="bwStr-CtgL-Keyword">Nombre clave</xsl:variable>
   <xsl:variable name="bwStr-CtgL-Description">Descripción</xsl:variable>
@@ -605,7 +608,6 @@
   <xsl:variable name="bwStr-MoCa-AddCategory">Añadir categoría</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Keyword">Nombre clave:</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Description">Descripción:</xsl:variable>
-  <xsl:variable name="bwStr-MoCa-Deleted">Borrado:</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Cancel">Cancelar</xsl:variable>
   <xsl:variable name="bwStr-MoCa-UpdateCategory">Actualizar categoría</xsl:variable>
   <xsl:variable name="bwStr-MoCa-DeleteCategory">Borrar categoría</xsl:variable>

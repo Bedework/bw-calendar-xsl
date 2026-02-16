@@ -24,6 +24,11 @@
   <xsl:include href="/approots/bedework-common/default/default/messages.xsl" />
   <xsl:include href="/approots/bedework-common/default/default/bedeworkAccessStrings.xsl"/>
 
+  <!--  Generally used strings -->
+  <xsl:variable name="bwStr-Archived">Archived:</xsl:variable>
+  <xsl:variable name="bwStr-Exclude-Archived">Exclude Archived</xsl:variable>
+  <xsl:variable name="bwStr-Include-Archived">Include Archived</xsl:variable>
+
   <!--  xsl:template match="/" -->
   <xsl:variable name="bwStr-Root-PageTitle">Calendar Admin: Public Events Administration</xsl:variable>
   <xsl:variable name="bwStr-Root-NoAdminGroup">No administrative group</xsl:variable>
@@ -496,7 +501,7 @@
 
   <!--  xsl:template name="contactList" -->
   <xsl:variable name="bwStr-Cont-ManageContacts">Manage Contacts</xsl:variable>
-  <xsl:variable name="bwStr-Cont-SelectContact">Select the contact you would like to update:</xsl:variable>
+  <xsl:variable name="bwStr-Cont-SelectContact"> or select the contact you would like to update.</xsl:variable>
   <xsl:variable name="bwStr-Cont-Name">Name</xsl:variable>
   <xsl:variable name="bwStr-Cont-Phone">Phone</xsl:variable>
   <xsl:variable name="bwStr-Cont-Email">Email</xsl:variable>
@@ -514,7 +519,6 @@
   <xsl:variable name="bwStr-MdCo-ContactURL">Contact's URL:</xsl:variable>
   <xsl:variable name="bwStr-MdCo-ContactURL-Placeholder">link to more information</xsl:variable>
   <xsl:variable name="bwStr-MdCo-ContactEmail">Contact Email Address:</xsl:variable>
-  <xsl:variable name="bwStr-MdCo-ContactDeleted">Deleted:</xsl:variable>
   <xsl:variable name="bwStr-MdCo-Optional">(optional)</xsl:variable>
 
   <!--  xsl:template name="deleteContactConfirm" -->
@@ -537,7 +541,7 @@
 
   <!--  xsl:template name="locationList" -->
   <xsl:variable name="bwStr-LoLi-ManageLocations">Manage Locations</xsl:variable>
-  <xsl:variable name="bwStr-LoLi-SelectLocationToUpdate">Select the location that you would like to update:</xsl:variable>
+  <xsl:variable name="bwStr-LoLi-SelectLocationToUpdate"> or select the location that you would like to update.</xsl:variable>
   <xsl:variable name="bwStr-LoLi-Name">Name</xsl:variable>
   <xsl:variable name="bwStr-LoLi-Room">Room</xsl:variable>
   <xsl:variable name="bwStr-LoLi-Address">Address</xsl:variable>
@@ -579,7 +583,6 @@
   <xsl:variable name="bwStr-MoLo-LocationURL-Placeholder">link to more information</xsl:variable>
   <xsl:variable name="bwStr-MoLo-GeoUri">GEO URI:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-GeoUri-Placeholder"></xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Deleted">Deleted:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-LocationAccessible">Wheelchair accessible</xsl:variable>
   <xsl:variable name="bwStr-MoLo-DeleteLocation">Delete Location</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Cancel">Cancel</xsl:variable>
@@ -599,7 +602,7 @@
 
   <!--  xsl:template name="categoryList" -->
   <xsl:variable name="bwStr-CtgL-ManageCategories">Manage Categories</xsl:variable>
-  <xsl:variable name="bwStr-CtgL-SelectCategory">Select the category you would like to update:</xsl:variable>
+  <xsl:variable name="bwStr-CtgL-SelectCategory"> or select the category you would like to update.</xsl:variable>
   <xsl:variable name="bwStr-CtgL-AddNewCategory">Add new category</xsl:variable>
   <xsl:variable name="bwStr-CtgL-Keyword">Keyword</xsl:variable>
   <xsl:variable name="bwStr-CtgL-Description">Description</xsl:variable>
@@ -609,7 +612,6 @@
   <xsl:variable name="bwStr-MoCa-AddCategory">Add Category</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Keyword">Keyword:</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Description">Description:</xsl:variable>
-  <xsl:variable name="bwStr-MoCa-Deleted">Deleted:</xsl:variable>
   <xsl:variable name="bwStr-MoCa-Cancel">Cancel</xsl:variable>
   <xsl:variable name="bwStr-MoCa-UpdateCategory">Update Category</xsl:variable>
   <xsl:variable name="bwStr-MoCa-DeleteCategory">Delete Category</xsl:variable>

@@ -29,10 +29,26 @@
   <xsl:template name="contactList">
     <div class="mgmtHeading">
       <h2><xsl:copy-of select="$bwStr-Cont-ManageContacts"/></h2>
-      <input type="button" name="return" value="{$bwStr-Cont-AddNewContact}" onclick="javascript:location.replace('{$contact-initAdd}')"/>
-      <p>
+      <div>
+        <input type="button" name="return" value="{$bwStr-Cont-AddNewContact}" onclick="javascript:location.replace('{$contact-initAdd}')"/>
         <xsl:copy-of select="$bwStr-Cont-SelectContact"/>
-      </p>
+        <xsl:choose>
+          <xsl:when test="/bedework/contacts/includeArchived = 'true'">
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Exclude-Archived}"
+                   onclick="javascript:location.replace('{$showContactsTab}')">
+            </input>
+          </xsl:when>
+          <xsl:otherwise>
+            <input type="button" name="includeArchived"
+                   id="includeArchived"
+                   value="{$bwStr-Include-Archived}"
+                   onclick="javascript:location.replace('{$showContactsTab}&amp;includeArchived=true')">
+            </input>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
     </div>
 
     <table id="commonListTable" title="{$bwStr-Cont-ListOfContacts}">
@@ -49,8 +65,8 @@
       <xsl:for-each select="/bedework/contacts/contact">
         <xsl:variable name="statusVal">
           <xsl:choose>
-            <xsl:when test="status='deleted'">archived</xsl:when>
-            <xsl:otherwise><xsl:value-of select="status"/></xsl:otherwise>
+            <xsl:when test="archived='true'">archived</xsl:when>
+            <xsl:otherwise> </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
         <tr>
@@ -141,11 +157,11 @@
         <xsl:if test="$isSuperUser">
           <tr>
             <td>
-              <label for="contactDeleted"><xsl:copy-of select="$bwStr-MdCo-ContactDeleted"/></label>
+              <label for="contactArchived"><xsl:copy-of select="$bwStr-Archived"/></label>
             </td>
             <td>
-              <input type="checkbox" name="deleted" id="contactDeleted" value="true">
-                <xsl:if test="/bedework/formElements/form/status/input/@value = 'deleted'">
+              <input type="checkbox" name="archived" id="contactArchived" value="true">
+                <xsl:if test="/bedework/formElements/form/archived/input/@checked = 'checked'">
                   <xsl:attribute name="checked">true</xsl:attribute>
                 </xsl:if>
               </input>
