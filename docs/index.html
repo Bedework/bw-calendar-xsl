@@ -16,13 +16,14 @@
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#xsl">Bedework XSL</a></li>
-<li><a href="#caladminrsrc">1. caladminrsrc</a></li>
-<li><a href="#calfeedrsrc-MainCampus">2. calfeedrsrc-MainCampus</a></li>
-<li><a href="#calrsrc-MainCampus">3. calrsrc-MainCampus</a></li>
-<li><a href="#calrsrc-SoEDepartmental">4. calrsrc-SoEDepartmental</a></li>
-<li><a href="#common">5. common</a></li>
-<li><a href="#eventsubmitrsrc">6. eventsubmitrsrc</a></li>
-<li><a href="#ucalrsrc">7. ucalrsrc</a></li>
+<li><a href="#migrateTo3.0">1. Migrating to XSL 3.0</a></li>
+<li><a href="#caladminrsrc">2. caladminrsrc</a></li>
+<li><a href="#calfeedrsrc-MainCampus">3. calfeedrsrc-MainCampus</a></li>
+<li><a href="#calrsrc-MainCampus">4. calrsrc-MainCampus</a></li>
+<li><a href="#calrsrc-SoEDepartmental">5. calrsrc-SoEDepartmental</a></li>
+<li><a href="#common">6. common</a></li>
+<li><a href="#eventsubmitrsrc">7. eventsubmitrsrc</a></li>
+<li><a href="#ucalrsrc">8. ucalrsrc</a></li>
 </ul>
 </div>
 </div>
@@ -39,7 +40,25 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="caladminrsrc">1. caladminrsrc</h2>
+<h2 id="migrateTo3.0">1. Migrating to XSL 3.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So far, it&#8217;s not clear any changes MUST be made to migrate. However, 3.0 offers some features which should be used and may be used.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use global static variables wherever possible - in particular for the string values. This may allow substitution once, at stylesheet compilation.</p>
+</li>
+<li>
+<p>Use iteration to build items such as the options for recurrences.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="caladminrsrc">2. caladminrsrc</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides the admin client UI for bedework</p>
@@ -47,7 +66,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="calfeedrsrc-MainCampus">2. calfeedrsrc-MainCampus</h2>
+<h2 id="calfeedrsrc-MainCampus">3. calfeedrsrc-MainCampus</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides the feeder views for bedework.</p>
@@ -55,7 +74,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="calrsrc-MainCampus">3. calrsrc-MainCampus</h2>
+<h2 id="calrsrc-MainCampus">4. calrsrc-MainCampus</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides the main public calendar view for bedework.</p>
@@ -63,7 +82,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="calrsrc-SoEDepartmental">4. calrsrc-SoEDepartmental</h2>
+<h2 id="calrsrc-SoEDepartmental">5. calrsrc-SoEDepartmental</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides an example public departmental calendar view for bedework.</p>
@@ -74,7 +93,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="common">5. common</h2>
+<h2 id="common">6. common</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides some common XSL support for bedework</p>
@@ -85,7 +104,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="eventsubmitrsrc">6. eventsubmitrsrc</h2>
+<h2 id="eventsubmitrsrc">7. eventsubmitrsrc</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides the UI for the bedework event submission client. These events are added to a pending queue and claimed and published by administrators.</p>
@@ -93,7 +112,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="ucalrsrc">7. ucalrsrc</h2>
+<h2 id="ucalrsrc">8. ucalrsrc</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Provides the UI for the bedework user client.</p>
@@ -103,7 +122,7 @@
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-07-22 23:15:09 -0400
+Last updated 2026-01-31 23:29:10 -0500
 </div>
 </div>
 </body>
