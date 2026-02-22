@@ -87,6 +87,9 @@
     <div id="siteLogo">
       <a href="/bedework">
         <img src="/images/common/bedework.png" width="243" height="40" alt="Bedework Calendar"/>
+        <xsl:if test="$bedeworkDevSystem">
+          <xsl:text> Dev System</xsl:text>
+        </xsl:if>
       </a>
     </div>
   </xsl:variable>
@@ -109,21 +112,23 @@
     <a href="https://bedework.github.io/">
       <xsl:copy-of select="$bwStr-Foot-BedeworkCalendarSystem" />
     </a>
-    |
-    <a
-        href="http://www.jasig.org/bedework/whosusing">
-      <xsl:copy-of select="$bwStr-Foot-ProductionExamples" />
-    </a>
-    |
-    <a href="?noxslt=yes">
-      <xsl:copy-of select="$bwStr-Foot-ShowXML" />
-    </a>
-    |
-    <a href="?refreshXslt=yes">
-      <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
-    </a>
-    <br/>
-    <!--xsl:copy-of select="$bwStr-Foot-Credits" /-->
+    <xsl:if test="$bedeworkDevSystem">
+      |
+      <a
+          href="http://www.jasig.org/bedework/whosusing">
+        <xsl:copy-of select="$bwStr-Foot-ProductionExamples" />
+      </a>
+      |
+      <a href="?noxslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-ShowXML" />
+      </a>
+      |
+      <a href="?refreshXslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
+      </a>
+      <br/>
+      <!--xsl:copy-of select="$bwStr-Foot-Credits" /-->
+    </xsl:if>
   </xsl:template>
 
 
@@ -148,6 +153,13 @@
       <li>
         <a href="http://www.jasig.org/bedework/documentation"><xsl:copy-of select="$bwStr-LCol-Help"/></a>
       </li>
+      <xsl:if test="$bedeworkDevSystem">
+        <li>
+          <a href="?refreshXslt=yes">
+            <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
+          </a>
+        </li>
+      </xsl:if>
     </ul>
   </xsl:template>
 

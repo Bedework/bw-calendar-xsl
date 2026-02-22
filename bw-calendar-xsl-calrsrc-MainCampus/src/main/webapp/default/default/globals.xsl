@@ -19,7 +19,9 @@
 <xsl:stylesheet
   version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns="http://www.w3.org/1999/xhtml">
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:bwxsl="https://bedework.org/schema/xsl"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <!-- DEFINE GLOBAL INCLUDES -->
   <xsl:include href="/approots/bedework-common/default/default/util.xsl" />
@@ -28,6 +30,10 @@
   <xsl:include href="/approots/bedework-common/default/default/errors.xsl" />
   <xsl:include href="/approots/bedework-common/default/default/messages.xsl" />
 
+
+  <xsl:variable name="bedeworkDevSystem" select="true()" />
+  <!--
+  select="system-property('bwxsl:devSystem') = 'true'" /> -->
 
   <!-- ======================= -->
   <!-- DEFINE GLOBAL CONSTANTS -->

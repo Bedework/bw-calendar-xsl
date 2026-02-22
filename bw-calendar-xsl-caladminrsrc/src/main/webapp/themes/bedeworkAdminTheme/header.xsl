@@ -32,6 +32,9 @@
       </a>
       <h1>
         <xsl:copy-of select="$bwStr-Head-BedeworkPubEventsAdmin"/>
+        <xsl:if test="$bedeworkDevSystem">
+          <xsl:text> Development System</xsl:text>
+        </xsl:if>
       </h1>
     </div>
     <div id="statusBar">

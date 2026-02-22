@@ -16,12 +16,19 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:bwxsl="https://bedework.org/schema/xsl"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <!-- GENERATE KEYS -->
   <!-- Pick out unique categories from a collection of events
        for filtering in the manage event list. -->
   <xsl:key name="catUid" match="category" use="uid"/>
+
+  <xsl:variable name="bedeworkDevSystem" select="true()" />
+                <!--
+                select="system-property('bwxsl:devSystem') = 'true'" /> -->
 
   <xsl:variable name="bedeworkCommon">/approots/bedework-common</xsl:variable>
 
