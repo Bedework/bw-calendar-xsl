@@ -23,6 +23,7 @@
       <iframe id="homeContent"
               title="Bedework Home"
               src="/approots/caladminrsrc/default/homeContent.html">
+        <xsl:comment /><!-- Prevent self-closing element -->
       </iframe>
     </div>
   </xsl:template>

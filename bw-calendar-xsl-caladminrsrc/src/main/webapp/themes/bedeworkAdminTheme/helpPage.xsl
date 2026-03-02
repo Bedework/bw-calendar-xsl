@@ -23,6 +23,7 @@
       <iframe id="helpContent"
               title="Bedework Help"
               src="https://nashville-public-library.github.io/bedework-docs/">
+        <xsl:comment /><!-- Prevent self-closing element -->
       </iframe>
     </div>
   </xsl:template>
