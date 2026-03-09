@@ -301,27 +301,10 @@
   <xsl:variable name="bwStr-Stat-FetchStats">recopilar estadísticas</xsl:variable>
   <xsl:variable name="bwStr-Stat-DumpStats">volcar estadísticas al log</xsl:variable>
 
-  <!--  xsl:template name="footer" -->
-  <xsl:variable name="bwStr-Foot-DemonstrationCalendar">Agenda de Ejemplo; poner información de pie de página aquí.</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BedeworkWebsite">Sitio Web de Bedework</xsl:variable>
+  <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">Mostrar XML</xsl:variable>
   <xsl:variable name="bwStr-Foot-RefreshXSLT">Refrescar XSLT</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BasedOnThe">Basado en</xsl:variable>
+  <xsl:variable name="bwStr-Foot-BasedOnThe">Basado en el</xsl:variable>
   <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Sistema de Agenda Bedework</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ProductionExamples">Ejemplos en Producción</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleStyles">estilos de ejemplo</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Green">verde</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Red">rojo</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Blue">azúl</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ResetSkin">Restablecer Máscara</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleSkins">temas/máscaras de ejemplo:</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BwClassic">Bedework Clásico</xsl:variable>
-  <xsl:variable name="bwStr-Foot-RSSNext3Days">RSS: siguientes 3 días</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptNext3Days">JSON: siguientes 3 días</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptTodaysEvents">javascript: eventos para hoy</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ForMobileBrowsers">Bedework iPhone/Móvil</xsl:variable>
-  <xsl:variable name="bwStr-Foot-VideoFeed">hoja de video</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ResetToCalendarDefault">Bedework por Defecto</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Credits">Este tema está basado en el trabajo de las Universidades Duke y Yale, agradeciendo igualmente la colaboración de la Universidad de Chicago</xsl:variable>
 
 </xsl:stylesheet>

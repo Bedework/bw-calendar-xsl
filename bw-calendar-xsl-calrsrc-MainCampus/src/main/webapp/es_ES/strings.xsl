@@ -274,12 +274,10 @@
   <xsl:variable name="bwStr-exSu-WidgetCode">Widget Code:</xsl:variable>
   <xsl:variable name="bwStr-exSu-Close">Close</xsl:variable>
 
-  <!--  xsl:template name="footer" -->
-  <xsl:variable name="bwStr-Foot-BasedOnThe">Basado en el</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Sistema de Agenda Bedework</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ProductionExamples">Ejemplos en Producción</xsl:variable>
+  <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">Mostrar XML</xsl:variable>
   <xsl:variable name="bwStr-Foot-RefreshXSLT">Refrescar XSLT</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Credits">Este tema está basado en el trabajo de las Universidades Duke y Yale, agradeciendo igualmente la colaboración de la Universidad de Chicago</xsl:variable>
+  <xsl:variable name="bwStr-Foot-BasedOnThe">Basado en el</xsl:variable>
+  <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Sistema de Agenda Bedework</xsl:variable>
 
 </xsl:stylesheet>

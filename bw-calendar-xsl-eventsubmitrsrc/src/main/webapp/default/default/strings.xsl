@@ -210,10 +210,9 @@
   <xsl:variable name="bwStr-TiFo-AM">AM</xsl:variable>
   <xsl:variable name="bwStr-TiFo-PM">PM</xsl:variable>
 
-  <!-- xsl:template name="footer" -->
-  <xsl:variable name="bwStr-Foot-BasedOnThe">Based on the</xsl:variable>
+  <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">show XML</xsl:variable>
   <xsl:variable name="bwStr-Foot-RefreshXSLT">refresh XSLT</xsl:variable>
+  <xsl:variable name="bwStr-Foot-BasedOnThe">Based on the</xsl:variable>
   <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Bedework Calendar System</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ProductionExamples">Production Examples</xsl:variable>
 </xsl:stylesheet>

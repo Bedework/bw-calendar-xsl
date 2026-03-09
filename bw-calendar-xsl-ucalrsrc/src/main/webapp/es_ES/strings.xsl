@@ -1157,24 +1157,10 @@
   <xsl:variable name="bwStr-TiFo-AM">AM</xsl:variable>
   <xsl:variable name="bwStr-TiFo-PM">PM</xsl:variable>
 
-  <!-- xsl:template name="footer"  -->
-  <xsl:variable name="bwStr-Foot-DemonstrationCalendar">Agenda de prueba; poner información de pie de página aqui.</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BedeworkWebsite">Sito Web Bedework</xsl:variable>
+  <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">Mostrar XML</xsl:variable>
-  <xsl:variable name="bwStr-Foot-RefreshXSLT">refrescar XSLT</xsl:variable>
+  <xsl:variable name="bwStr-Foot-RefreshXSLT">Refrescar XSLT</xsl:variable>
   <xsl:variable name="bwStr-Foot-BasedOnThe">Basado en el</xsl:variable>
   <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Sistema de Agenda Bedework</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ProductionExamples">ejemplos en producción</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleStyles">estilos de ejemplo</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Green">verde</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Red">rojo</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Blue">azúl</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleSkins">máscaras de ejemplo</xsl:variable>
-  <xsl:variable name="bwStr-Foot-RSSNext3Days">rss: siguientes 3 días</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptNext3Days">javascript: siguientes 3 días</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptTodaysEvents">javascript: eventos para hoy</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ForMobileBrowsers">para navegadores móviles</xsl:variable>
-  <xsl:variable name="bwStr-Foot-VideoFeed">hoja de video</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ResetToCalendarDefault">restablecer a agenda por defecto</xsl:variable>
 
 </xsl:stylesheet>

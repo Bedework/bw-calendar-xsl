@@ -1213,9 +1213,9 @@
   <xsl:variable name="bwStr-Srch-ColScopeAll">all calendars</xsl:variable>
   <xsl:variable name="bwStr-Srch-ColScopeMain">main calendar</xsl:variable>
 
-  <!--  xsl:template name="footer" -->
-  <xsl:variable name="bwStr-Foot-BedeworkWebsite">Bedework Website</xsl:variable>
+  <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">show XML</xsl:variable>
   <xsl:variable name="bwStr-Foot-RefreshXSLT">refresh XSLT</xsl:variable>
-
+  <xsl:variable name="bwStr-Foot-BasedOnThe">Based on the</xsl:variable>
+  <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Bedework Calendar System</xsl:variable>
 </xsl:stylesheet>

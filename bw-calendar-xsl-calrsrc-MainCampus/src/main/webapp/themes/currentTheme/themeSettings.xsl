@@ -114,11 +114,6 @@
     </a>
     <xsl:if test="$bedeworkDevSystem">
       |
-      <a
-          href="http://www.jasig.org/bedework/whosusing">
-        <xsl:copy-of select="$bwStr-Foot-ProductionExamples" />
-      </a>
-      |
       <a href="?noxslt=yes">
         <xsl:copy-of select="$bwStr-Foot-ShowXML" />
       </a>
@@ -127,10 +122,8 @@
         <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
       </a>
       <br/>
-      <!--xsl:copy-of select="$bwStr-Foot-Credits" /-->
     </xsl:if>
   </xsl:template>
-
 
   <!-- LEFT COLUMN TEXT -->
   <!-- custom text in the left column -->
@@ -231,9 +224,6 @@
   <xsl:variable name="featuredEventsForMonth">false</xsl:variable>
   <xsl:variable name="featuredEventsForYear">false</xsl:variable>
   <xsl:variable name="featuredEventsForCalList">false</xsl:variable>
-
-
-
 
   <!-- ONGOING EVENTS -->
   <!-- Use the ongoing events sidebar? -->

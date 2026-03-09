@@ -23,6 +23,31 @@
 
   <!--==== THEME SETTINGS ====-->
 
+  <!-- FOOTER TEXT/LINKS -->
+  <!-- Show the skin select box in the footer?
+  You may also opt to remove the form in footer.xsl. -->
+  <xsl:variable name="showFootForm">true</xsl:variable>
+
+  <!-- text in the footer -->
+  <xsl:template name="footerText">
+    <xsl:copy-of select="$bwStr-Foot-BasedOnThe" />
+    <xsl:text> </xsl:text>
+    <a href="https://bedework.github.io/">
+      <xsl:copy-of select="$bwStr-Foot-BedeworkCalendarSystem" />
+    </a>
+    <xsl:if test="$bedeworkDevSystem">
+      |
+      <a href="?noxslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-ShowXML" />
+      </a>
+      |
+      <a href="?refreshXslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
+      </a>
+      <br/>
+    </xsl:if>
+  </xsl:template>
+
   <script type="text/javascript">
     <xsl:comment>
     var featureFlags = <xsl:value-of select="/bedework/featureFlags"/>;

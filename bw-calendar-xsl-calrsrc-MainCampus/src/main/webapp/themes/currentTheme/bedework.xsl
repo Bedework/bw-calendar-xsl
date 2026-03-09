@@ -235,7 +235,6 @@
           <footer id="footer" class="row">
             <xsl:call-template name="footerText"/>  <!-- in themeSettings.xsl -->
           </footer>
-
         </div><!-- /container -->
 
       </body>

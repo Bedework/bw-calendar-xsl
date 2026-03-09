@@ -61,7 +61,6 @@
   <xsl:include href="accessControl.xsl" />
   <xsl:include href="searchResults.xsl" />
   <xsl:include href="showPage.xsl" />
-  <xsl:include href="footer.xsl" />
 
   <!-- THEME GLOBAL VARIABLES -->
 
@@ -275,8 +274,11 @@
               </table>
             </xsl:otherwise>
           </xsl:choose>
-          <!-- footer -->
-          <xsl:call-template name="footer"/>
+
+          <!-- FOOTER -->
+          <footer id="footer" class="row">
+            <xsl:call-template name="footerText"/>  <!-- in themeSettings.xsl -->
+          </footer>
         </div>
       </body>
     </html>

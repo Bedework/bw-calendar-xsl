@@ -326,27 +326,10 @@
   <xsl:variable name="bwStr-Stat-FetchStats">fetch statistics</xsl:variable>
   <xsl:variable name="bwStr-Stat-DumpStats">dump stats to log</xsl:variable>
 
-  <!--  xsl:template name="footer" -->
-  <xsl:variable name="bwStr-Foot-DemonstrationCalendar">Demonstration calendar; place footer information here.</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BedeworkWebsite">Bedework Website</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ShowXML">Show XML</xsl:variable>
-  <xsl:variable name="bwStr-Foot-RefreshXSLT">Refresh XSLT</xsl:variable>
+  <!--  xsl:template name="footerText" -->
+  <xsl:variable name="bwStr-Foot-ShowXML">show XML</xsl:variable>
+  <xsl:variable name="bwStr-Foot-RefreshXSLT">refresh XSLT</xsl:variable>
   <xsl:variable name="bwStr-Foot-BasedOnThe">Based on the</xsl:variable>
   <xsl:variable name="bwStr-Foot-BedeworkCalendarSystem">Bedework Calendar System</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ProductionExamples">Production Examples</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleStyles">example styles</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Green">green</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Red">red</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Blue">blue</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ResetSkin">Reset Skin</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ExampleSkins">example themes/skins:</xsl:variable>
-  <xsl:variable name="bwStr-Foot-BwClassic">Bedework Classic</xsl:variable>
-  <xsl:variable name="bwStr-Foot-RSSNext3Days">RSS: next 3 days</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptNext3Days">JSON: next 3 days</xsl:variable>
-  <xsl:variable name="bwStr-Foot-JavascriptTodaysEvents">javascript: today's events</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ForMobileBrowsers">Bedework iPhone/Mobile</xsl:variable>
-  <xsl:variable name="bwStr-Foot-VideoFeed">video feed</xsl:variable>
-  <xsl:variable name="bwStr-Foot-ResetToCalendarDefault">Bedework Default</xsl:variable>
-  <xsl:variable name="bwStr-Foot-Credits">This theme is based on work by Duke and Yale Universities with thanks also to the University of Chicago</xsl:variable>
 
 </xsl:stylesheet>

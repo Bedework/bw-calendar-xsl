@@ -3237,10 +3237,19 @@
           <span class="claimButtons">
             <xsl:choose>
               <xsl:when test="form/xproperties/X-BEDEWORK-SUBMISSION-CLAIMANT/values/text = /bedework/userInfo/group">
-                <input type="submit" name="updateSubmitEvent" value="{$bwStr-SEBu-ReleaseEvent}" onclick="releasePendingEvent();" class="noFocus"/>
+                <input type="submit"
+                       id="releasePendingEvent"
+                       name="updateSubmitEvent"
+                       value="{$bwStr-SEBu-ReleaseEvent}"
+                       onclick="releasePendingEvent();"
+                       class="noFocus"/>
               </xsl:when>
               <xsl:otherwise>
-                <input type="submit" name="updateSubmitEvent" value="{$bwStr-SEBu-ClaimEvent}" class="noFocus">
+                <input type="submit"
+                       id="claimPendingEvent"
+                       name="updateSubmitEvent"
+                       value="{$bwStr-SEBu-ClaimEvent}"
+                       class="noFocus">
                   <xsl:attribute name="onclick">claimPendingEvent('<xsl:value-of select="/bedework/userInfo/group"/>','<xsl:value-of select="/bedework/userInfo/currentUser"/>');</xsl:attribute>
                 </input>
               </xsl:otherwise>

@@ -49,11 +49,6 @@
       <xsl:copy-of select="$bwStr-Foot-BedeworkCalendarSystem" />
     </a>
     |
-    <a
-        href="http://www.jasig.org/bedework/whosusing">
-      <xsl:copy-of select="$bwStr-Foot-ProductionExamples" />
-    </a>
-    |
     <a href="?noxslt=yes">
       <xsl:copy-of select="$bwStr-Foot-ShowXML" />
     </a>

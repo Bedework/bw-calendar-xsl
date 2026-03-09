@@ -38,4 +38,24 @@
        Leave this value false if you are not using SSO or if you are
        not using the event registration system. -->
   <xsl:variable name="eventRegSsoEnabled">false</xsl:variable>
+
+  <!-- text in the footer -->
+  <xsl:template name="footerText">
+    <xsl:copy-of select="$bwStr-Foot-BasedOnThe" />
+    <xsl:text> </xsl:text>
+    <a href="https://bedework.github.io/">
+      <xsl:copy-of select="$bwStr-Foot-BedeworkCalendarSystem" />
+    </a>
+    <xsl:if test="$bedeworkDevSystem">
+      |
+      <a href="?noxslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-ShowXML" />
+      </a>
+      |
+      <a href="?refreshXslt=yes">
+        <xsl:copy-of select="$bwStr-Foot-RefreshXSLT" />
+      </a>
+      <br/>
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>

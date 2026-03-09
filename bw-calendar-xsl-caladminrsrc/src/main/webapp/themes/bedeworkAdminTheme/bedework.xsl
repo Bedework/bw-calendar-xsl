@@ -63,7 +63,6 @@
   <xsl:include href="upload.xsl" />
   <xsl:include href="timezones.xsl" />
   <xsl:include href="stats.xsl" />
-  <xsl:include href="footer.xsl" />
 
   <!--==== MAIN TEMPLATE  ====-->
   <xsl:template match="/">
@@ -74,6 +73,7 @@
         <div id="bedework"><!-- main wrapper div to keep styles encapsulated -->
         <xsl:choose>
           <xsl:when test="/bedework/page='selectCalForEvent'">
+            <!-- No footer -->
             <xsl:call-template name="selectCalForEvent"/>
           </xsl:when>
           <xsl:otherwise>
@@ -286,8 +286,11 @@
                 </xsl:otherwise>
               </xsl:choose>
             </div>
-            <!-- footer -->
-            <xsl:call-template name="footer"/>
+
+            <!-- FOOTER -->
+            <footer id="footer" class="row">
+              <xsl:call-template name="footerText"/>  <!-- in themeSettings.xsl -->
+            </footer>
           </xsl:otherwise>
         </xsl:choose>
         </div>

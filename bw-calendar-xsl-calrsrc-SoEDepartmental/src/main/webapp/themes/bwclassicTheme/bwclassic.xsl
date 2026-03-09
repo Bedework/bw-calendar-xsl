@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
     Licensed to Jasig under one or more contributor license
     agreements. See the NOTICE file distributed with this work
     for additional information regarding copyright ownership.
@@ -7,9 +7,9 @@
     Version 2.0 (the "License"); you may not use this file
     except in compliance with the License. You may obtain a
     copy of the License at:
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on
     an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -17,19 +17,12 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<xsl:stylesheet
-  version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output
-  method="xml"
-  indent="no"
-  media-type="text/html"
-  doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
-  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
-  standalone="yes"
-  omit-xml-declaration="yes"/>
+  <!--  <xsl:output method="xml" indent="yes" media-type="text/html"
+    standalone="yes" omit-xml-declaration="yes" />
+    -->
 
 <!-- =========================================================
 
@@ -64,7 +57,6 @@
   <xsl:include href="calendarList.xsl" />
   <xsl:include href="search.xsl" />
   <xsl:include href="stats.xsl" />
-  <xsl:include href="footer.xsl" />
 
   <!-- MAIN TEMPLATE -->
   <xsl:template match="/">
@@ -139,8 +131,11 @@
             </xsl:choose>
           </xsl:otherwise>
         </xsl:choose>
-        <!-- footer -->
-        <xsl:call-template name="footer"/>
+
+        <!-- FOOTER -->
+        <footer id="footer" class="row">
+          <xsl:call-template name="footerText"/>  <!-- in themeSettings.xsl -->
+        </footer>
       </body>
     </html>
   </xsl:template>
