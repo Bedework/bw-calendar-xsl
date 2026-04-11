@@ -77,9 +77,11 @@
           <xsl:with-param name="href" select="$href"/>
         </xsl:call-template><!--
              -->
-        <xsl:call-template name="changeStatusTentative">
-          <xsl:with-param name="href" select="$href"/>
-        </xsl:call-template>
+        <xsl:if test="$evStatusAllowTentative" >
+          <xsl:call-template name="changeStatusTentative">
+            <xsl:with-param name="href" select="$href"/>
+          </xsl:call-template>
+        </xsl:if>
       </xsl:when>
       <xsl:when test="$status = 'TENTATIVE'"><!--
             CONFIRMED and CANCELLED buttons -->
@@ -97,9 +99,11 @@
           <xsl:with-param name="href" select="$href"/>
         </xsl:call-template><!--
              -->
-        <xsl:call-template name="changeStatusTentative">
-          <xsl:with-param name="href" select="$href"/>
-        </xsl:call-template>
+        <xsl:if test="$evStatusAllowTentative" >
+          <xsl:call-template name="changeStatusTentative">
+            <xsl:with-param name="href" select="$href"/>
+          </xsl:call-template>
+        </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template><!--
@@ -551,12 +555,14 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="substring(created,10,2)"/>:<xsl:value-of select="substring(created,12,2)"/> utc
       </td>
-      <td class="statusButtons">
-        <xsl:call-template name="changeStatusButtons">
-          <xsl:with-param name="status" select="status"/>
-          <xsl:with-param name="href" select="$href" />
-        </xsl:call-template>
-      </td>
+      <xsl:if test="$evStatusAllowUnapprovers or $isApproverUser">
+        <td class="statusButtons">
+          <xsl:call-template name="changeStatusButtons">
+            <xsl:with-param name="status" select="status"/>
+            <xsl:with-param name="href" select="$href" />
+          </xsl:call-template>
+        </td>
+      </xsl:if>
     </tr>
   </xsl:template>
 

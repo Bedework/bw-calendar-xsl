@@ -134,6 +134,15 @@
   <xsl:variable name="evFormShowVirtualReg"
                 select="true()"/>
 
+  <!-- Flag to suppress or enable setting of event status
+       by unapprovers -->
+  <xsl:variable name="evStatusAllowUnapprovers"
+                select="true()"/>
+
+  <!-- Flag to suppress tentative event status -->
+  <xsl:variable name="evStatusAllowTentative"
+                select="true()"/>
+
   <xsl:variable name="calendarPath">
     <xsl:choose>
       <xsl:when test="/bedework/appvar[key='calendarPath']/value">

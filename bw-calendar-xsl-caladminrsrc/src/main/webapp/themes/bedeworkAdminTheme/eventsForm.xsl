@@ -2264,12 +2264,14 @@
               <label for="bwStatusConfirmedButton">
                 <xsl:copy-of select="$bwStr-AEEF-Confirmed"/>
               </label>
-              <input type="radio" name="eventStatus" id="bwStatusTentativeButton" value="TENTATIVE">
-                <xsl:if test="form/status = 'TENTATIVE'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-              </input>
-              <label for="bwStatusTentativeButton">
-                <xsl:copy-of select="$bwStr-AEEF-Tentative"/>
-              </label>
+              <xsl:if test="$evStatusAllowTentative" >
+                <input type="radio" name="eventStatus" id="bwStatusTentativeButton" value="TENTATIVE">
+                  <xsl:if test="form/status = 'TENTATIVE'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+                </input>
+                <label for="bwStatusTentativeButton">
+                  <xsl:copy-of select="$bwStr-AEEF-Tentative"/>
+                </label>
+              </xsl:if>
               <input type="radio" name="eventStatus" id="bwStatusCancelledButton" value="CANCELLED">
                 <xsl:if test="form/status = 'CANCELLED'"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
               </input>

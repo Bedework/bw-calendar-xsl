@@ -140,12 +140,14 @@
         </div>
       </xsl:when>
       <xsl:when test="$displayForNonApprover">
-        <div id="confirmButtons">
-          <xsl:call-template name="changeStatusButtons">
-            <xsl:with-param name="status" select="status"/>
-            <xsl:with-param name="href" select="$href" />
-          </xsl:call-template>
-        </div>
+        <xsl:if test="$evStatusAllowUnapprovers">
+          <div id="confirmButtons">
+            <xsl:call-template name="changeStatusButtons">
+              <xsl:with-param name="status" select="status"/>
+              <xsl:with-param name="href" select="$href" />
+            </xsl:call-template>
+          </div>
+        </xsl:if>
       </xsl:when>
       <xsl:otherwise>
         <h2><xsl:copy-of select="$bwStr-DsEv-EventInfo"/></h2>
