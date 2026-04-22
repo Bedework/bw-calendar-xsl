@@ -96,7 +96,7 @@
   <xsl:variable name="bwStr-SgEv-Canceled">ABBRUCH:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Event">Veranstaltung</xsl:variable>
   <xsl:variable name="bwStr-SgEv-NoTitle">kein Titel</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-Download">Herunterladen</xsl:variable>
+  <xsl:variable name="bwStr-SgEv-Download">Herunterladen</xsl:variable> <!-- XXX translate from English version-->
   <xsl:variable name="bwStr-SgEv-EventLink">Verweis zur Veranstaltung:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-When">Wann:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AllDay">(ganzt&#228;gig)</xsl:variable>

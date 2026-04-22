@@ -96,7 +96,7 @@
   <xsl:variable name="bwStr-SgEv-Canceled">CANCELED:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Event">Event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-NoTitle">no title</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-Download">Download</xsl:variable>
+  <xsl:variable name="bwStr-SgEv-Download">Download event as an ics file</xsl:variable>
   <xsl:variable name="bwStr-SgEv-EventLink">Event Link:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-When">When:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AllDay">(all day)</xsl:variable>

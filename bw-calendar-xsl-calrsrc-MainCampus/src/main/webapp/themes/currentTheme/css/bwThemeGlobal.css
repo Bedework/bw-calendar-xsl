@@ -993,12 +993,12 @@ div.yearMonthRow {
   clear: both;
   padding: 5px 10px;
   margin-bottom: 2em;
-  color: #a1a1a1;
+  color: #131313;
   font-size: .8em;
   border-top: 1px solid #ddd;
 }
 #footer a {
-  color: #a1a1a1;
+  color: #131313;
 }
 #footer a:hover {
   color: #666;
