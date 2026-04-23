@@ -887,7 +887,7 @@
     </xsl:variable>
     <li>
       <!-- <a href="{$eventView}&amp;calPath={$calPath}&amp;guid={$guid}&amp;recurrenceId={$recurrenceId}" class="{$eventClass} {$subscriptionClass}"> -->
-    <a "href={$bwCacheHostUrl}/v1.0/htmlEvent/list-html/{$recurrenceId}/{$guid}.html" class="{$eventClass} {$subscriptionClass}">
+    <a href="{$bwCacheHostUrl}/v1.0/htmlEvent/list-html/{$recurrenceId}/{$guid}.html" class="{$eventClass} {$subscriptionClass}">
       <xsl:if test="status='CANCELLED'"><xsl:copy-of select="$bwStr-EvCG-CanceledColon"/><xsl:text> </xsl:text></xsl:if>
       <xsl:choose>
         <xsl:when test="start/shortdate != ../shortdate">
@@ -905,53 +905,54 @@
         <xsl:choose>
           <xsl:when test="$dayPos &gt; 5">
           eventTipReverse
-        </xsl:when>
+          </xsl:when>
           <xsl:otherwise>
           eventTip
-        </xsl:otherwise>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
-        <span class="{$eventTipClass}">
-          <xsl:if test="status='CANCELLED'"><span class="eventTipStatusCancelled"><xsl:copy-of select="$bwStr-EvCG-CanceledColon"/></span></xsl:if>
-          <xsl:if test="status='TENTATIVE'"><span class="eventTipStatusTentative"><xsl:copy-of select="$bwStr-EvCG-Tentative"/></span></xsl:if>
-          <strong><xsl:value-of select="summary"/></strong><br/>
-          <xsl:copy-of select="$bwStr-EvCG-Time"/>
-          <xsl:choose>
-            <xsl:when test="start/allday = 'true'">
-              <xsl:copy-of select="$bwStr-EvCG-AllDay"/>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:if test="start/shortdate != ../shortdate">
-                <xsl:value-of select="start/month"/>/<xsl:value-of select="start/day"/>
+      <span class="{$eventTipClass}">
+        <xsl:if test="status='CANCELLED'"><span class="eventTipStatusCancelled"><xsl:copy-of select="$bwStr-EvCG-CanceledColon"/></span></xsl:if>
+        <xsl:if test="status='TENTATIVE'"><span class="eventTipStatusTentative"><xsl:copy-of select="$bwStr-EvCG-Tentative"/></span>
+        </xsl:if>
+        <strong><xsl:value-of select="summary"/></strong><br/>
+        <xsl:copy-of select="$bwStr-EvCG-Time"/>
+        <xsl:choose>
+          <xsl:when test="start/allday = 'true'">
+            <xsl:copy-of select="$bwStr-EvCG-AllDay"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:if test="start/shortdate != ../shortdate">
+              <xsl:value-of select="start/month"/>/<xsl:value-of select="start/day"/>
+              <xsl:text> </xsl:text>
+            </xsl:if>
+            <xsl:value-of select="start/time"/>
+            <xsl:if test="(start/time != end/time) or (start/shortdate != end/shortdate)">
+              -
+              <xsl:if test="end/shortdate != ../shortdate">
+                <xsl:value-of select="end/month"/>/<xsl:value-of select="end/day"/>
                 <xsl:text> </xsl:text>
               </xsl:if>
-              <xsl:value-of select="start/time"/>
-              <xsl:if test="(start/time != end/time) or (start/shortdate != end/shortdate)">
-                -
-                <xsl:if test="end/shortdate != ../shortdate">
-                  <xsl:value-of select="end/month"/>/<xsl:value-of select="end/day"/>
-                  <xsl:text> </xsl:text>
-                </xsl:if>
-                <xsl:value-of select="end/time"/>
-              </xsl:if>
-            </xsl:otherwise>
-          </xsl:choose>
-          <br/>
-          <xsl:if test="location/address">
-            <xsl:copy-of select="$bwStr-EvCG-Location"/><xsl:text> </xsl:text><xsl:value-of select="location/address"/><br/>
-          </xsl:if>
-          <xsl:if test="xproperties/X-BEDEWORK-ALIAS">
-            <xsl:copy-of select="$bwStr-EvCG-TopicalArea"/>
-              <xsl:for-each select="xproperties/X-BEDEWORK-ALIAS">
-                <xsl:call-template name="substring-afterLastInstanceOf">
-                  <xsl:with-param name="string" select="values/text"/>
-                  <xsl:with-param name="char">/</xsl:with-param>
-                </xsl:call-template>
-                <xsl:if test="position()!=last()">, </xsl:if>
-              </xsl:for-each>
-          </xsl:if>
-        </span>
-      </a>
+              <xsl:value-of select="end/time"/>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+        <br/>
+        <xsl:if test="location/address">
+          <xsl:copy-of select="$bwStr-EvCG-Location"/><xsl:text> </xsl:text><xsl:value-of select="location/address"/><br/>
+        </xsl:if>
+        <xsl:if test="xproperties/X-BEDEWORK-ALIAS">
+          <xsl:copy-of select="$bwStr-EvCG-TopicalArea"/>
+          <xsl:for-each select="xproperties/X-BEDEWORK-ALIAS">
+            <xsl:call-template name="substring-afterLastInstanceOf">
+              <xsl:with-param name="string" select="values/text"/>
+              <xsl:with-param name="char">/</xsl:with-param>
+            </xsl:call-template>
+            <xsl:if test="position()!=last()">, </xsl:if>
+          </xsl:for-each>
+        </xsl:if>
+      </span>
+    </a>
     </li>
   </xsl:template>
 
