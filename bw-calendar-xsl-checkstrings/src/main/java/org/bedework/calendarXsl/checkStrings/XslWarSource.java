@@ -7,8 +7,6 @@ import org.bedework.util.logging.Logged;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EnumSet;
 
 /** Bedework war files have a set of language specific directories
@@ -26,29 +24,8 @@ import java.util.EnumSet;
  * <p>There is also usually a globals.xsl
  */
 public class XslWarSource implements Logged {
-  /**
-   * A WarItem is either a file or a directory
-   */
-  public static class WarItem {
-    final Path path;
-    final Collection<WarItem> dirEntries;
-    final XslFile aFile;
-
-    public WarItem(final Path path) {
-      this.path = path;
-      aFile = null;
-      dirEntries = new ArrayList<>();
-    }
-
-    public WarItem(final Path path,
-                   final XslFile theFile) {
-      this.path = path;
-      aFile = theFile;
-      dirEntries = null;
-    }
-  }
-
   final WarItem warRoot;
+  private WarSourceScanner scanner;
 
   public XslWarSource(final Path path) {
     warRoot = new WarItem(path);
@@ -59,17 +36,39 @@ public class XslWarSource implements Logged {
       debug("Processing war source: " + warRoot.path);
     }
 
-    final WarSourceScanner scanner =
-        new WarSourceScanner(this);
+    scanner = new WarSourceScanner(this);
     final EnumSet<FileVisitOption> opts = EnumSet.of(
         FileVisitOption.FOLLOW_LINKS);
     try {
       Files.walkFileTree(warRoot.path, opts,
                          Integer.MAX_VALUE,
-                         new WarSourceScanner(this));
+                         scanner);
     } catch (final Throwable t) {
       throw new BedeworkException(t);
     }
+
+    info("Found " + scanner.numberXsl + " xsl files");
+    if (scanner.fileErrors == 1) {
+      info("1 file error");
+    } else {
+      info(scanner.fileErrors + " file errors");
+    }
+  }
+
+  public long getNumberXsl() {
+    if (scanner == null) {
+      return 0;
+    }
+
+    return scanner.numberXsl;
+  }
+
+  public long getFileErrors() {
+    if (scanner == null) {
+      return 0;
+    }
+
+    return scanner.fileErrors;
   }
 
   /* ==============================================================

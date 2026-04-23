@@ -11,6 +11,8 @@ import java.util.Collection;
 
 public class CheckStrings implements Logged {
   final Collection<XslWarSource> warSources = new ArrayList<>();
+  long numberXsl;
+  long fileErrors;
 
   public void addWarSource(final String pathStr) {
     final var warSourcePath = Paths.get(pathStr);
@@ -23,8 +25,19 @@ public class CheckStrings implements Logged {
   }
 
   final void process() {
+    numberXsl = 0;
+    fileErrors = 0;
     for (final var ws: warSources) {
       ws.process();
+      numberXsl += ws.getNumberXsl();
+      fileErrors += ws.getFileErrors();
+    }
+
+    info("Total: " + numberXsl + " xsl files");
+    if (fileErrors == 1) {
+      info("1 file error in total");
+    } else {
+      info(fileErrors + " file errors in total");
     }
   }
 
