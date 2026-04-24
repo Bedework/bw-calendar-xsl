@@ -8,7 +8,8 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
@@ -16,10 +17,11 @@ import static java.nio.file.FileVisitResult.SKIP_SUBTREE;
 public class WarSourceScanner
     implements Logged, FileVisitor<Path> {
   final XslWarSource theWar;
-  final Stack<WarItem> currentDir = new Stack<>();
+  final Deque<WarItem> currentDir = new ArrayDeque<>();
   long skippedDirs;
   long numberXsl;
   long fileErrors;
+  XslFile defaultStringsXsl;
 
   public WarSourceScanner(final XslWarSource theWar) {
     this.theWar = theWar;
@@ -55,8 +57,9 @@ public class WarSourceScanner
       return CONTINUE;
     }
 
+    final XslFile xslFile;
     try {
-      final var xslFile = new XslFile(file);
+      xslFile = new XslFile(file);
       currentDir.peek().dirEntries.
           add(new WarItem(file, xslFile));
       numberXsl++;
@@ -64,6 +67,12 @@ public class WarSourceScanner
       error("Unable to parse " + file);
       error(t);
       fileErrors++;
+
+      return CONTINUE;
+    }
+
+    if (xslFile.defaultStrings) {
+      defaultStringsXsl = xslFile;
     }
 
     return CONTINUE;

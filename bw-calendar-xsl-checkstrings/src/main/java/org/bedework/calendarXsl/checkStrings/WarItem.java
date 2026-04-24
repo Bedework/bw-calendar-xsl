@@ -24,4 +24,8 @@ public class WarItem {
     aFile = theFile;
     dirEntries = null;
   }
+
+  public boolean isDir() {
+    return dirEntries != null;
+  }
 }

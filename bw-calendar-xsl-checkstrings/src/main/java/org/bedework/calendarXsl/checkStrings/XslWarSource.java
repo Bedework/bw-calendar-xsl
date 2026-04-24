@@ -71,6 +71,35 @@ public class XslWarSource implements Logged {
     return scanner.fileErrors;
   }
 
+  public void matchStrings() {
+    for (final var wi: warRoot.dirEntries) {
+      if (wi.isDir()) {
+        matchStringsInDir(wi, scanner.defaultStringsXsl);
+      }
+    }
+  }
+
+  public void matchStringsInDir(final WarItem dir,
+                                final XslFile vars) {
+    for (final var wi: dir.dirEntries) {
+      if (wi.isDir()) {
+        matchStringsInDir(wi, vars);
+      } else {
+        matchStringsInFile(wi, vars);
+      }
+    }
+  }
+
+  public void matchStringsInFile(final WarItem file,
+                                 final XslFile vars) {
+    final var theXsl = file.aFile;
+    if (theXsl.isStringsXsl) {
+      return;
+    }
+
+    theXsl.matchVariables(vars);
+  }
+
   /* ==============================================================
    *                   Logged methods
    * ============================================================== */
