@@ -53,7 +53,6 @@
   <xsl:variable name="bwStr-Head-PendingEvents">Cola pendiente</xsl:variable>
   <xsl:variable name="bwStr-Head-ApprovalQueueEvents">Cola de aprobación</xsl:variable>
   <xsl:variable name="bwStr-Head-SuggestionQueueEvents">Cola de sugerencia</xsl:variable>
-  <xsl:variable name="bwStr-Head-SearchResult">Search</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-Head-Users">Usuarios y grupos</xsl:variable>
   <xsl:variable name="bwStr-Head-System">Sistema</xsl:variable>
   <xsl:variable name="bwStr-Head-Contacts">Contactos</xsl:variable>
@@ -64,7 +63,6 @@
   <xsl:variable name="bwStr-Notification-SuggestionTo">Sugerencia a</xsl:variable>
   <xsl:variable name="bwStr-Notification-Awaiting">Espera de aprobación:</xsl:variable>
   <xsl:variable name="bwStr-Notification-Accepted">aceptado</xsl:variable>
-  <xsl:variable name="bwStr-Notification-Rejected">rechazar</xsl:variable>
   <xsl:variable name="bwStr-Notification-DeclinedLower">rechazar</xsl:variable>
   <xsl:variable name="bwStr-Notification-AcceptedResp">Aceptado:</xsl:variable>
   <xsl:variable name="bwStr-Notification-Declined">Rechazar:</xsl:variable>
@@ -76,22 +74,7 @@
   <!--  xsl:template name="messagesAndErrors" -->
 
   <!--  xsl:template name="mainMenu" -->
-  <xsl:variable name="bwStr-MMnu-LoggedInAs">Está conectado como superusuario.</xsl:variable>
   <xsl:variable name="bwStr-MMnu-YouMustBeOperating">Debe estar operando en el contexto de un calendar suite\n para añadir o gestionar eventos.\n\nSu grupo actual no está asociado con un calendar suite\no un hijo de un grupo asociado con un calendar suite.</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-AddEvent">Añadir evento</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-AddContact">Añadir contacto</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-AddLocation">Añadir localización</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-AddCategory">Añadir categoría</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-ManageEvents">Gestionar eventos</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-ManageContacts">Gestionar contactos</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-ManageLocations">Gestionar localizaciones</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-ManageCategories">Gestionar categorías</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-EventSearch">Búsqueda de eventos:</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-Go">ir</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-Limit">Limitar:</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-TodayForward">de hoy en adelante</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-PastDates">fechas pasadas</xsl:variable>
-  <xsl:variable name="bwStr-MMnu-AddDates">todas las fechas</xsl:variable>
 
   <!--  xsl:template name="tabPendingEvents" -->
   <xsl:variable name="bwStr-TaPE-PendingEvents">Cola de pendientes</xsl:variable>
@@ -130,11 +113,8 @@
   <!--  xsl:template name="tabSystem" -->
   <xsl:variable name="bwStr-TaSy-ManageSys">Gestionar sistema</xsl:variable>
   <xsl:variable name="bwStr-TaSy-ManageCalsAndFolders">Gestionar calendarios y carpetas</xsl:variable>
-  <xsl:variable name="bwStr-TaSy-ManageCategories">Gestionar categorías</xsl:variable>
   <xsl:variable name="bwStr-TaSy-ManageCalSuites">Gestionar calendar suites</xsl:variable>
   <xsl:variable name="bwStr-TaSy-UploadICalFile">Cargar archivo ical</xsl:variable>
-  <xsl:variable name="bwStr-TaSy-ManageSysPrefs">Gestionar preferencias del sistema</xsl:variable>
-  <xsl:variable name="bwStr-TaSy-ManageSysTZs">Gestionar zonas horarias del sistema</xsl:variable>
   <xsl:variable name="bwStr-TaSy-Stats">Estadísticas:</xsl:variable>
   <xsl:variable name="bwStr-TaSy-AdminWebClient">Cliente web administración</xsl:variable>
   <xsl:variable name="bwStr-TaSy-PublicWebClient">Cliente web público</xsl:variable>
@@ -142,13 +122,10 @@
   <xsl:variable name="bwStr-TaSy-ManageGlobalResources">Manage global resources</xsl:variable>
 
   <!--  xsl:template name="eventList" -->
-  <xsl:variable name="bwStr-EvLs-SelectEvent">Seleccione el evento que desearía actualizar:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-AddEvent">Añadir nuevo evento</xsl:variable>
   <xsl:variable name="bwStr-EvLs-StartDate">Fecha de inicio:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Today">Hoy</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Days">Día:</xsl:variable>
-  <xsl:variable name="bwStr-EvLs-Show">Mostrar:</xsl:variable>
-  <xsl:variable name="bwStr-EvLs-Active">Activo</xsl:variable>
   <xsl:variable name="bwStr-EvLs-All">Todo</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Calendar">Calendar:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-FilterBy">Filtrar por:</xsl:variable>
@@ -173,8 +150,6 @@
   <xsl:variable name="bwStr-EvLC-Group">Group</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-CalSuite">Suite</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ClaimedBy">Solicitado por</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-Start">Comienzo</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-End">Final</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Lastmod">Last modified:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Created">Created:</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Suggested">Sugerido</xsl:variable>
@@ -197,7 +172,6 @@
   <xsl:variable name="bwStr-EvLC-Unclaimed">sin solicitante</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ThisEventCrossTagged">Este evento tiene referencias cruzadas en sus etiquetas.</xsl:variable>
   <xsl:variable name="bwStr-EvLC-ShowTagsByOtherGroups">Mostrar etiquetas por otros grupos</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-RecurringEventEdit">Evento recurrente. Editar:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EditMaster">Editar&#160;maestro</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EditInstance">Editar instance</xsl:variable>
   <xsl:variable name="bwStr-EvLC-EditEvent">Editar evento</xsl:variable>
@@ -209,7 +183,6 @@
   <xsl:variable name="bwStr-EvLC-ApproveDDD">Approve...</xsl:variable><!-- XXX translate -->
   <xsl:variable name="bwStr-EvLC-Cancelled">CANCELLED:</xsl:variable>
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
-  <xsl:variable name="bwStr-EvLC-ShowPublicLink">mostrar enlace pública</xsl:variable>
 
   <!--  xsl:template match="formElements" mode="modEvent" -->
   <xsl:variable name="bwStr-AEEF-Recurrence">recurrencia</xsl:variable>
@@ -226,11 +199,8 @@
   <xsl:variable name="bwStr-AEEF-Title">Título:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Deleted">Eliminado:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Type">Tipo:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Calendar">Calendario:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SelectColon">Seleccionar:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-SubmittedEvents">eventos remitidos</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Preferred">preferido</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-All">todos</xsl:variable>
   <xsl:variable name="bwStr-AEEF-DateAndTime">Fecha y hora:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AllDay">todo el día</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Floating">flotante</xsl:variable>
@@ -254,21 +224,12 @@
   <xsl:variable name="bwStr-AEEF-Minutes">minutos</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Or">o</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Weeks">semanas</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-This">Este</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Task">tarea</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Event">evento</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Deadline">plazo de entrega</xsl:variable>
   <xsl:variable name="bwStr-AEEF-HasNoDurationEndDate">no tiene duración / fecha de finalización</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ThisEventHasNoDurationEndDate">Este evento no tiene duración / fecha de finalización</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Complete">Completo:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AffectsFreeBusy">Afecta libre/ocupado:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Yes">sí</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Transparent">(transparente: el estado del evento no afecta su libre/ocupado)</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-No">no</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Opaque">(opaco: el estado del evento afecta su libre/ocupado)</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Categories">Categorías:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-NoCategoriesDefined">no hay categorías definidas</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddCategory">añadir categoría</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SelectTimezone">seleccionar zona horaria...</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ThisEventRecurrenceInstance">Este evento es una instancia de recurrencia.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-EditMasterEvent">editar evento maestro</xsl:variable>
@@ -279,7 +240,6 @@
   <xsl:variable name="bwStr-AEEF-ChangeRecurrenceRules">cambiar reglas de recurrencia</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ShowAdvancedRecurrenceRules">mostrar reglas de recurrencia avanzadas</xsl:variable>
   <xsl:variable name="bwStr-AEEF-And">y</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-EVERY">Cada</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Every">cada</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Day">día(s)</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Hour">hora(s)</xsl:variable>
@@ -331,7 +291,6 @@
   <xsl:variable name="bwStr-AEEF-NoExceptionDates">Sin fechas de excepción</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ExceptionDatesMayBeCreated">Las fechas de excepción pueden crearse borrando una instancia de un evento recurrente.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddRecurance">añadir recurrencia</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddException">añadir excepción</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Status">Estado:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Confirmed">confirmado</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Tentative">tentativa</xsl:variable>
@@ -339,7 +298,7 @@
   <xsl:variable name="bwStr-AEEF-YesOpaque">sí(opaco)</xsl:variable>
   <xsl:variable name="bwStr-AEEF-NoTransparent">no (transparente)</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Description">Descripción:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-EnterPertientInfo">Introduzca toda la información pertinente</xsl:variable>
+  <xsl:variable name="bwStr-AEEF-EnterPertinentInfo">Introduzca toda la información pertinente</xsl:variable>
   <xsl:variable name="bwStr-AEEF-CharsMax">caracteres max.)</xsl:variable>
   <xsl:variable name="bwStr-AEEF-CharsRemaining">caracter(es) remanente.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Cost">Coste:</xsl:variable>
@@ -356,17 +315,13 @@
   <xsl:variable name="bwStr-AEEF-ImageAlt">Texto alt:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-OptionalEventImage">opcional: para incluir una imagen</xsl:variable>
   <xsl:variable name="bwStr-AEEF-OptionalEventThumbImage">Enlace opcional de miniatura para listas de eventos, 80px ancho</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-UseExisting">Uso existente...</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Overwrite">Sobreescribir</xsl:variable>
   <xsl:variable name="bwStr-AEEF-OptionalImageUpload">Cargas pueden ser JPG, PNG o GIF y sobreponen a las URL de imagen y miniatura.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-RemoveImages">Quitar las imágenes</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Location">Localización:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Add">añadir</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddC">Añadir:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Address">Dirección:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-IncludeRoom">Por favor, incluir sala, edificio y campus.</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-LocationURL">URL de la localización:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-OptionalLocaleInfo">(opcional: para información de la localización)</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Contact">Contacto:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Creator">Creador</xsl:variable>
   <xsl:variable name="bwStr-AEEF-TopicalArea">Area tópica:</xsl:variable>
@@ -395,14 +350,9 @@
   <xsl:variable name="bwStr-AEEF-CustomFieldsSelect">select custom field collection</xsl:variable>
   <xsl:variable name="bwStr-AEEF-CustomFieldsShowUnpublished">show unpublished</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ViewRegistrations">View event registrations</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-DownloadRegistrations">Download registrations</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Optional">(opcional)</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Loading">cargando...</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddressPrimary">Dirección principal:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddressSecondary">Dirección secundaria:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SelectOrSearch">Seleccionar o Buscar</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddRoom">Añadir Habitación</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddSecAddress">añadir una nueva dirección de secundaria</xsl:variable>
   <xsl:variable name="bwStr-AEEF-RoomSuiteArea">habitación, suite o área</xsl:variable>
   <xsl:variable name="bwStr-AEEF-To">De:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SuggestTo">Sugieren a:</xsl:variable>
@@ -414,15 +364,11 @@
   <!--  xsl:template match="calendar" mode="showEventFormAliases" -->
 
   <!--  xsl:template name="submitEventButtons" -->
-  <xsl:variable name="bwStr-SEBu-SelectPublishCalendar">Seleccionar un calendario para publicar este evento:</xsl:variable>
-  <xsl:variable name="bwStr-SEBu-Select">Seleccionar:</xsl:variable>
   <xsl:variable name="bwStr-SEBu-SubmittedEvents">eventos remitidos</xsl:variable>
-  <xsl:variable name="bwStr-SEBu-CalendarDescriptions">descripción de calendarios</xsl:variable>
   <xsl:variable name="bwStr-SEBu-DeleteEvent">Borrar evento</xsl:variable>
   <xsl:variable name="bwStr-SEBu-MarkEventDeleted">Marcar eliminado</xsl:variable>
   <xsl:variable name="bwStr-SEBu-ReturnToList">Volver a la lista</xsl:variable>
   <xsl:variable name="bwStr-SEBu-UpdateEvent">Actualizar evento</xsl:variable>
-  <xsl:variable name="bwStr-SEBu-PublishEvent">Publicar evento</xsl:variable>
   <xsl:variable name="bwStr-SEBu-ApproveEvent">Aprobar el evento</xsl:variable>
   <xsl:variable name="bwStr-SEBu-AcceptEvent">Aceptar el evento</xsl:variable>
   <xsl:variable name="bwStr-SEBu-RejectEvent">Rechazar el evento</xsl:variable>
@@ -454,15 +400,6 @@
   <!--  xsl:template name="buildRecurFields" -->
   <xsl:variable name="bwStr-BuRF-And">y</xsl:variable>
 
-  <!--  xsl:template name="buildNumberOptions" -->
-
-  <!--  xsl:template name="clock" -->
-  <xsl:variable name="bwStr-Cloc-Bedework24HourClock">Reloj de 24 horas de Bedework</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Type">tipo</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-SelectTime">seleccionar hora</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Switch">intercambiar</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Close">cerrar</xsl:variable>
-
   <!-- xsl:template name="newclock" -->
   <xsl:variable name="bwStr-Cloc-Hour">Hora</xsl:variable>
   <xsl:variable name="bwStr-Cloc-Minute">Minuto</xsl:variable>
@@ -474,7 +411,6 @@
   <xsl:variable name="bwStr-DsEv-NoteDontEncourageDeletes">Nota: no se recomienda borrar los eventos antiguos pero correctos; es preferible mantener los eventos antiguos por motivos históricos. Por favor, borre sólo los eventos que son erróneos.</xsl:variable>
   <xsl:variable name="bwStr-DsEv-AllDay">(todo el día)</xsl:variable>
   <xsl:variable name="bwStr-DsEv-YouDeletingPending">Está borrando un evento pendiente.</xsl:variable>
-  <xsl:variable name="bwStr-DsEv-YouDeletingApprovalQueue">Se trata de eliminar una entrada en la cola de aprobación.</xsl:variable>
   <xsl:variable name="bwStr-DsEv-SendNotification">Enviar notificación al remitente</xsl:variable>
   <xsl:variable name="bwStr-DsEv-Reason">Razón (dejar en blanco para excluir):</xsl:variable>
   <xsl:variable name="bwStr-DsEv-EventInfo">Información de evento</xsl:variable>
@@ -550,7 +486,6 @@
   <xsl:variable name="bwStr-MoLo-AddLocation">Añadir localización</xsl:variable>
   <xsl:variable name="bwStr-MoLo-UpdateLocation">Actualizar localización</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Name-Placeholder">building or location name</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address">Dirección:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address-Placeholder">nombre del edificio o ubicación</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address-Info"></xsl:variable>
@@ -662,7 +597,6 @@
   <xsl:variable name="bwStr-CuCa-Folder">carpeta</xsl:variable>
   <xsl:variable name="bwStr-CuCa-FOLDER">Carpeta</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Subscription">suscripción</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-SubscriptionCanCreateEprops">Allow Location etc create?</xsl:variable>
   <xsl:variable name="bwStr-CuCa-SubscriptionXcategories">Process categories?</xsl:variable>
   <xsl:variable name="bwStr-CuCa-SubscriptionXlocXcontact">Process Locations and Contacts?</xsl:variable>
   <xsl:variable name="bwStr-CuCa-SubscriptionDeleteSuppressed">Suppress deletion of events?</xsl:variable>
@@ -857,7 +791,6 @@
   <xsl:variable name="bwStr-ModRes-FePanels">Triptych panels:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeImageUrl">Image URL:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeLink">Link:</xsl:variable>
-  <xsl:variable name="bwStr-ModRes-FeTooltip">Tooltip:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeAlt">Alt:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeTitle">Title:</xsl:variable>
   <xsl:variable name="bwStr-ModRes-FeCaption">Caption:</xsl:variable>
@@ -921,7 +854,6 @@
   <xsl:variable name="bwStr-Upld-Canceled">cancelado</xsl:variable>
   <xsl:variable name="bwStr-Upld-Continue">Continuar</xsl:variable>
   <xsl:variable name="bwStr-Upld-Cancel">Cancelar</xsl:variable>
-  <xsl:variable name="bwStr-Upld-DefaultCalendar">calendario por defecto</xsl:variable>
   <xsl:variable name="bwStr-Upld-Status">Estado:</xsl:variable>
 
   <!--  xsl:template name="modSyspars" -->
@@ -936,8 +868,6 @@
   <xsl:variable name="bwStr-MdSP-CommaSeparatedList">Lista de superusuarios separados por coma. Sin espacios.</xsl:variable>
   <xsl:variable name="bwStr-MdSP-SystemID">ID del sistema:</xsl:variable>
   <xsl:variable name="bwStr-MdSP-SystemIDNote">ID del sistema usado cuando se construyen uids y se identifican usuarios. No debería cambiarse.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-Indexing">Indexado:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-IndexingNote">Verdadero si el sistema indexa internamente. Generalmente falso para indexado externo.</xsl:variable>
 
 
   <xsl:variable name="bwStr-MdSP-DefaultFBPeriod">Días libre/ocupado por defecto:</xsl:variable>
@@ -1079,8 +1009,6 @@
 
   <!--  xsl:template name="fixTimezones" -->
   <xsl:variable name="bwStr-UpTZ-ManageTZ">Gestionar zonas horarias</xsl:variable>
-  <xsl:variable name="bwStr-UpTZ-UploadTZ">Actualizar zonas horarias</xsl:variable>
-  <xsl:variable name="bwStr-UpTZ-Cancel">Cancelar</xsl:variable>
   <xsl:variable name="bwStr-UpTZ-FixTZ">Reparar zonas horarias</xsl:variable>
   <xsl:variable name="bwStr-UpTZ-RecalcUTC">(recalcular valores UTC)</xsl:variable>
   <xsl:variable name="bwStr-UpTZ-FixTZNote">Ejecute esto para asegurarse de que no hay valores UTC que hayan cambiado debido a esta actualización (p.ej. cambios DST).</xsl:variable>
@@ -1200,12 +1128,7 @@
 
   <!--  xsl:template name="searchResult" -->
   <xsl:variable name="bwStr-Srch-Search">Buscar:</xsl:variable>
-  <xsl:variable name="bwStr-Srch-Go">ir</xsl:variable>
-  <xsl:variable name="bwStr-Srch-ScopeLocal">este grupo</xsl:variable>
-  <xsl:variable name="bwStr-Srch-ScopeMine">mis grupos</xsl:variable>
   <xsl:variable name="bwStr-Srch-ScopeAll">todos los grupos</xsl:variable>
-  <xsl:variable name="bwStr-Srch-ColScopeAll">all calendars</xsl:variable>
-  <xsl:variable name="bwStr-Srch-ColScopeMain">main calendar</xsl:variable>
 
   <!--  xsl:template name="footerText" -->
   <xsl:variable name="bwStr-Foot-ShowXML">Mostrar XML</xsl:variable>

@@ -2308,7 +2308,7 @@
             <xsl:copy-of select="$bwStr-AEEF-Description"/>
           </td>
           <td>
-            <textarea name="description" id="description" cols="80" rows="8" placeholder="{$bwStr-AEEF-EnterPertientInfo}" required="required">
+            <textarea name="description" id="description" cols="80" rows="8" placeholder="{$bwStr-AEEF-EnterPertinentInfo}" required="required">
               <xsl:if test="not($canEdit)"><xsl:attribute name="class">invisible</xsl:attribute></xsl:if>
               <xsl:value-of select="form/desc/textarea"/>
               <xsl:if test="form/desc/textarea = ''"><xsl:text> </xsl:text></xsl:if>
@@ -2424,7 +2424,6 @@
               <xsl:text> </xsl:text>
               <input type="file" name="imageUpload" id="eventImageUpload" size="45"/>
               <input type="checkbox" name="replaceImage" id="replaceImage" value="true"/><label for="replaceImage"><xsl:copy-of select="$bwStr-AEEF-Overwrite"/></label>
-              <!-- button name="eventImageUseExisting" id="eventImageUseExisting"><xsl:copy-of select="$bwStr-AEEF-UseExisting"/></button-->
               <br/>
               <div class="fieldInfoAlone">
                 <xsl:copy-of select="$bwStr-AEEF-OptionalImageUpload"/>
@@ -2915,7 +2914,6 @@
                             test="form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']">&amp;formName=<xsl:value-of select="substring-after(form/xproperties/node()[name()='X-BEDEWORK-REGISTRATION-FORM']/values/text,'|')"/></xsl:if></xsl:variable>
                     <xsl:variable name="registrationsHref"><xsl:value-of select="eventRegAdminUrl"/>/showRegistrations.do?href=<xsl:value-of select="form/calendar/event/encodedPath"/>/<xsl:value-of select="name"/>&amp;calsuite=/principals/users/<xsl:value-of
                             select="/bedework/userInfo/user"/></xsl:variable>
-                    <!--<button onclick="location.href='{$registrationsDownloadHref}';return false;"><xsl:copy-of select="$bwStr-AEEF-DownloadRegistrations"/></button>-->
                     <a href="{$registrationsHref}" target="_blank" rel="noopener noreferrer">
                       <xsl:copy-of select="$bwStr-AEEF-ViewRegistrations"/>
                     </a>
