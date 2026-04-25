@@ -31,6 +31,30 @@ public class XslFile implements Logged {
   final static QName xslCopyOf =
       new QName(nsXSL, "copy-of");
 
+  final static QName xslValueOf =
+      new QName(nsXSL, "value-of");
+
+  final static QName xslWithParam =
+      new QName(nsXSL, "with-param");
+
+  final static QName htmlA =
+      new QName(null, "a");
+
+  final static QName htmlImg =
+      new QName(null, "img");
+
+  final static QName htmlTextArea =
+      new QName(null, "textarea");
+
+  final static QName htmlTable =
+      new QName(null, "table");
+
+  final static QName htmlSelect =
+      new QName(null, "select");
+
+  final static QName htmlInput =
+      new QName(null, "input");
+
   final Path path;
   final Document xsl;
   final Element root;
@@ -38,7 +62,10 @@ public class XslFile implements Logged {
   final boolean isStringsXsl;
   final boolean defaultStrings;
 
-  long noSelectCopyOf;
+  long noSelect;
+  long noTitle;
+
+  long unreffedCount;
 
   final Map<String, XslVariable> variables = new HashMap<>();
 
@@ -74,7 +101,7 @@ public class XslFile implements Logged {
                          .getNodeValue();
       variables.put(name,
                     new XslVariable(name,
-                                    XmlUtil.getElementContent(nd)));
+                                    nd.getTextContent()));
     }
   }
 
@@ -84,26 +111,87 @@ public class XslFile implements Logged {
     }
   }
 
+  private void matchSelect(final Node nd,
+                           final XslFile vars) {
+    matchAttr(nd, vars, "select");
+  }
+
+  private void matchAlt(final Node nd,
+                        final XslFile vars) {
+    matchAttr(nd, vars, "alt");
+  }
+
+  private void matchTitle(final Node nd,
+                          final XslFile vars) {
+    matchAttr(nd, vars, "title");
+  }
+
+  private void matchValue(final Node nd,
+                          final XslFile vars) {
+    matchAttr(nd, vars, "value");
+  }
+
+  private void matchPlaceholder(final Node nd,
+                                final XslFile vars) {
+    matchAttr(nd, vars, "placeholder");
+  }
+
+  private void matchAttr(final Node nd,
+                         final XslFile vars,
+                         final String attrName) {
+    final var attr = nd.getAttributes()
+                       .getNamedItem(attrName);
+    if (attr == null) {
+      return;
+    }
+
+    final var val = attr.getNodeValue();
+    final String trimVal;
+
+    if (val.startsWith("{$") && val.endsWith("}")) {
+      trimVal = val.substring(2, val.length() - 1);
+    } else if (val.startsWith("$")) {
+      trimVal = val.substring(1);
+    } else {
+      return;
+    }
+
+    final var variable = vars.variables.get(trimVal);
+    if (variable != null) {
+      variable.setReferenced(true);
+    }
+  }
+
   private void matchVariables(final Node nd,
                               final XslFile vars) {
     if (XmlUtil.nodeMatches(nd, xslCopyOf)) {
-      final var selectAttr = nd.getAttributes()
-                               .getNamedItem("select");
-      if (selectAttr == null) {
-        noSelectCopyOf++;
-        if (debug()) {
-          debug("No select for " + nd.getLocalName() +
-              " in " + path);
-        }
-        return;
-      }
-
-      final var variable =
-          vars.variables.get(selectAttr.getNodeValue());
-      if (variable != null) {
-        variable.setReferenced(true);
-      }
+      matchSelect(nd, vars);
       return;
+    }
+
+    if (XmlUtil.nodeMatches(nd, xslValueOf)) {
+      matchSelect(nd, vars);
+      return;
+    }
+
+    if (XmlUtil.nodeMatches(nd, xslWithParam)) {
+      matchSelect(nd, vars);
+      return;
+    }
+
+    if (XmlUtil.nodeMatches(nd, htmlA)) {
+      matchTitle(nd, vars);
+    } else if (XmlUtil.nodeMatches(nd, htmlImg)) {
+      matchAlt(nd, vars);
+    } else if (XmlUtil.nodeMatches(nd, htmlSelect)) {
+      matchTitle(nd, vars);
+    } else if (XmlUtil.nodeMatches(nd, htmlTable)) {
+      matchTitle(nd, vars);
+    } else if (XmlUtil.nodeMatches(nd, htmlTextArea)) {
+      matchPlaceholder(nd, vars);
+    } else if (XmlUtil.nodeMatches(nd, htmlInput)) {
+      matchValue(nd, vars);
+      matchPlaceholder(nd, vars);
     }
 
     final var children = nd.getChildNodes();
@@ -126,12 +214,17 @@ public class XslFile implements Logged {
         continue;
       }
 
+      unreffedCount++;
       info("Unreffed " + v.name + ": \"" + v.value + "\"");
     }
   }
 
-  public long getNoSelectCopyOf() {
-    return noSelectCopyOf;
+  public long getNoSelect() {
+    return noSelect;
+  }
+
+  public long getUnreffedCount() {
+    return unreffedCount;
   }
 
   /* ==============================================================

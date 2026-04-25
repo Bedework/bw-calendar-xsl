@@ -13,7 +13,7 @@ public class CheckStrings implements Logged {
   final Collection<XslWarSource> warSources = new ArrayList<>();
   long numberXsl;
   long fileErrors;
-  long noSelectCopyOf;
+  long unreffedCount;
 
   public void addWarSource(final String pathStr) {
     final var warSourcePath = Paths.get(pathStr);
@@ -32,12 +32,12 @@ public class CheckStrings implements Logged {
       ws.process();
       numberXsl += ws.getNumberXsl();
       fileErrors += ws.getFileErrors();
-      noSelectCopyOf += ws.getNoSelectCopyOf();
+      unreffedCount += ws.getUnreffedCount();
     }
 
     total("xsl file", numberXsl);
     total("file error", fileErrors);
-    total("No select in copy-of element", noSelectCopyOf);
+    total("Unreffed variable", unreffedCount);
   }
 
   private void total(final String title, final long count) {

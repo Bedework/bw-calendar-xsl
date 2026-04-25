@@ -39,9 +39,9 @@ public class WarSourceScanner
       return SKIP_SUBTREE;
     }
 
-    if (debug()) {
-      debug("Previsit dir " + dir);
-    }
+    //if (debug()) {
+    //  debug("Previsit dir " + dir);
+    //}
     final var warItem = new WarItem(dir);
     currentDir.peek().dirEntries.add(warItem);
     currentDir.push(warItem);

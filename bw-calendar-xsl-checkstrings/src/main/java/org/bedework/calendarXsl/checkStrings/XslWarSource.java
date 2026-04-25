@@ -27,8 +27,6 @@ public class XslWarSource implements Logged {
   final WarItem warRoot;
   private WarSourceScanner scanner;
 
-  long noSelectCopyOf;
-
   public XslWarSource(final Path path) {
     warRoot = new WarItem(path);
   }
@@ -57,6 +55,7 @@ public class XslWarSource implements Logged {
     }
 
     matchStrings();
+    showUnreffed();
   }
 
   public long getNumberXsl() {
@@ -73,10 +72,6 @@ public class XslWarSource implements Logged {
     }
 
     return scanner.fileErrors;
-  }
-
-  public long getNoSelectCopyOf() {
-    return noSelectCopyOf;
   }
 
   public void matchStrings() {
@@ -106,9 +101,14 @@ public class XslWarSource implements Logged {
     }
 
     theXsl.matchVariables(vars);
+  }
 
-    noSelectCopyOf += theXsl.getNoSelectCopyOf();
+  public void showUnreffed() {
+    scanner.defaultStringsXsl.showUnreffed();
+  }
 
+  public long getUnreffedCount() {
+    return scanner.defaultStringsXsl.getUnreffedCount();
   }
 
   /* ==============================================================
