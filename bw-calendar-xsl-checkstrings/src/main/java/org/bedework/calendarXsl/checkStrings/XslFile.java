@@ -7,6 +7,7 @@ import org.bedework.util.xml.FromXml;
 import org.bedework.util.xml.XmlUtil;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.io.FileNotFoundException;
@@ -32,9 +33,12 @@ public class XslFile implements Logged {
 
   final Path path;
   final Document xsl;
+  final Element root;
   final boolean isStylesheet;
   final boolean isStringsXsl;
   final boolean defaultStrings;
+
+  long noSelectCopyOf;
 
   final Map<String, XslVariable> variables = new HashMap<>();
 
@@ -48,8 +52,9 @@ public class XslFile implements Logged {
       throw new BedeworkException(e);
     }
 
+    root = xsl.getDocumentElement();
     // Root should be xsl:stylesheet
-    if (!XmlUtil.nodeMatches(xsl, xslStylesheet)) {
+    if (!XmlUtil.nodeMatches(root, xslStylesheet)) {
       isStylesheet = false;
       return;
     }
@@ -60,7 +65,7 @@ public class XslFile implements Logged {
       return;
     }
 
-    for (final var nd: XmlUtil.getNodes(xsl)) {
+    for (final var nd: XmlUtil.getNodes(root)) {
       if (!XmlUtil.nodeMatches(nd, xslVariable)) {
         continue;
       }
@@ -69,12 +74,12 @@ public class XslFile implements Logged {
                          .getNodeValue();
       variables.put(name,
                     new XslVariable(name,
-                                    nd.getNodeValue()));
+                                    XmlUtil.getElementContent(nd)));
     }
   }
 
   public void matchVariables(final XslFile vars) {
-    for (final var nd: XmlUtil.getNodes(xsl)) {
+    for (final var nd: XmlUtil.getNodes(root)) {
       matchVariables(nd, vars);
     }
   }
@@ -82,19 +87,32 @@ public class XslFile implements Logged {
   private void matchVariables(final Node nd,
                               final XslFile vars) {
     if (XmlUtil.nodeMatches(nd, xslCopyOf)) {
-      final var select = nd.getAttributes()
-                           .getNamedItem("select")
-                           .getNodeValue();
+      final var selectAttr = nd.getAttributes()
+                               .getNamedItem("select");
+      if (selectAttr == null) {
+        noSelectCopyOf++;
+        if (debug()) {
+          debug("No select for " + nd.getLocalName() +
+              " in " + path);
+        }
+        return;
+      }
 
-      final var variable = vars.variables.get(select);
+      final var variable =
+          vars.variables.get(selectAttr.getNodeValue());
       if (variable != null) {
         variable.setReferenced(true);
       }
       return;
     }
 
-    for (final var child: XmlUtil.getNodes(xsl)) {
-      matchVariables(child, vars);
+    final var children = nd.getChildNodes();
+
+    for (int i = 0; i < children.getLength(); i++) {
+      final var child = children.item(i);
+      if (child.getNodeType() == Node.ELEMENT_NODE) {
+        matchVariables(child, vars);
+      }
     }
   }
 
@@ -110,6 +128,10 @@ public class XslFile implements Logged {
 
       info("Unreffed " + v.name + ": \"" + v.value + "\"");
     }
+  }
+
+  public long getNoSelectCopyOf() {
+    return noSelectCopyOf;
   }
 
   /* ==============================================================

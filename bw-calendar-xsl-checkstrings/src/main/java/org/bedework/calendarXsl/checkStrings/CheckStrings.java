@@ -13,6 +13,7 @@ public class CheckStrings implements Logged {
   final Collection<XslWarSource> warSources = new ArrayList<>();
   long numberXsl;
   long fileErrors;
+  long noSelectCopyOf;
 
   public void addWarSource(final String pathStr) {
     final var warSourcePath = Paths.get(pathStr);
@@ -31,13 +32,19 @@ public class CheckStrings implements Logged {
       ws.process();
       numberXsl += ws.getNumberXsl();
       fileErrors += ws.getFileErrors();
+      noSelectCopyOf += ws.getNoSelectCopyOf();
     }
 
-    info("Total: " + numberXsl + " xsl files");
-    if (fileErrors == 1) {
-      info("1 file error in total");
+    total("xsl file", numberXsl);
+    total("file error", fileErrors);
+    total("No select in copy-of element", noSelectCopyOf);
+  }
+
+  private void total(final String title, final long count) {
+    if (count == 1) {
+      info(title + ": " + count);
     } else {
-      info(fileErrors + " file errors in total");
+      info(title + "s: " + count);
     }
   }
 
