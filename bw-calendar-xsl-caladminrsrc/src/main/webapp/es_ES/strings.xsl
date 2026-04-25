@@ -125,7 +125,6 @@
   <xsl:variable name="bwStr-EvLs-AddEvent">Añadir nuevo evento</xsl:variable>
   <xsl:variable name="bwStr-EvLs-StartDate">Fecha de inicio:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Today">Hoy</xsl:variable>
-  <xsl:variable name="bwStr-EvLs-Days">Día:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-All">Todo</xsl:variable>
   <xsl:variable name="bwStr-EvLs-Calendar">Calendar:</xsl:variable>
   <xsl:variable name="bwStr-EvLs-FilterBy">Filtrar por:</xsl:variable>
@@ -185,7 +184,6 @@
   <xsl:variable name="bwStr-EvLC-Tentative">TENTATIVE:</xsl:variable>
 
   <!--  xsl:template match="formElements" mode="modEvent" -->
-  <xsl:variable name="bwStr-AEEF-Recurrence">recurrencia</xsl:variable>
   <xsl:variable name="bwStr-AEEF-RECURRANCE">Recurrencia:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-EventInfo">Información del evento</xsl:variable>
   <xsl:variable name="bwStr-AEEF-YouMayTag">Puede etiquetar este evento seleccionando áreas tópicas debajo.</xsl:variable>
@@ -207,12 +205,10 @@
   <xsl:variable name="bwStr-AEEF-StoreAsUTC">almacenar en UTC</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Start">Comienzo:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Date">Fecha</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-EndDate">end date</xsl:variable><!-- trans needed -->
   <xsl:variable name="bwStr-AEEF-StartDateHour">start date hour</xsl:variable><!-- trans needed -->
   <xsl:variable name="bwStr-AEEF-StartDateMinute">start date minute</xsl:variable><!-- trans needed -->
   <xsl:variable name="bwStr-AEEF-StartDateAmPm">start date am/pm</xsl:variable><!-- trans needed -->
   <xsl:variable name="bwStr-AEEF-StartDateTimezone">start date timezone</xsl:variable><!-- trans needed -->
-  <xsl:variable name="bwStr-AEEF-Due">Debido a:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-End">Fin:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-EndDateHour">end date hour</xsl:variable><!-- trans needed -->
   <xsl:variable name="bwStr-AEEF-EndDateMinute">end date minute</xsl:variable><!-- trans needed -->
@@ -224,10 +220,8 @@
   <xsl:variable name="bwStr-AEEF-Minutes">minutos</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Or">o</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Weeks">semanas</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-Task">tarea</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Event">evento</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Deadline">plazo de entrega</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-HasNoDurationEndDate">no tiene duración / fecha de finalización</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ThisEventHasNoDurationEndDate">Este evento no tiene duración / fecha de finalización</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AffectsFreeBusy">Afecta libre/ocupado:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SelectTimezone">seleccionar zona horaria...</xsl:variable>
@@ -321,7 +315,6 @@
   <xsl:variable name="bwStr-AEEF-Location">Localización:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Add">añadir</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddC">Añadir:</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-IncludeRoom">Por favor, incluir sala, edificio y campus.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Contact">Contacto:</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Creator">Creador</xsl:variable>
   <xsl:variable name="bwStr-AEEF-TopicalArea">Area tópica:</xsl:variable>
@@ -364,7 +357,6 @@
   <!--  xsl:template match="calendar" mode="showEventFormAliases" -->
 
   <!--  xsl:template name="submitEventButtons" -->
-  <xsl:variable name="bwStr-SEBu-SubmittedEvents">eventos remitidos</xsl:variable>
   <xsl:variable name="bwStr-SEBu-DeleteEvent">Borrar evento</xsl:variable>
   <xsl:variable name="bwStr-SEBu-MarkEventDeleted">Marcar eliminado</xsl:variable>
   <xsl:variable name="bwStr-SEBu-ReturnToList">Volver a la lista</xsl:variable>
