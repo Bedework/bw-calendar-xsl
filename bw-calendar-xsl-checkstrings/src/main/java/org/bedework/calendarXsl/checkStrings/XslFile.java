@@ -72,7 +72,7 @@ public class XslFile implements Logged {
   public XslFile(final Path path) {
     this.path = path;
     isStringsXsl = path.endsWith("strings.xsl");
-    defaultStrings = path.endsWith("default/strings.xsl");
+    defaultStrings = path.endsWith("webapp/default/strings.xsl");
     try {
       xsl = FromXml.parseXml(new FileReader(path.toFile()));
     } catch (final FileNotFoundException e) {
