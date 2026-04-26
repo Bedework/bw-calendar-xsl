@@ -17,7 +17,9 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:CSS="http://calendarserver.org/ns/" xmlns:DAV="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav" xmlns:BW="http://bedeworkcalserver.org/ns/" xmlns:BSS="http://bedework.org/ns/">
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml">
 
   <!--==== BANNER and MENU TABS  ====-->
 
