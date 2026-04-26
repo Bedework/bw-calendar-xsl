@@ -150,15 +150,6 @@
   <!-- xsl:template name="buildRecurFields" -->
   <xsl:variable name="bwStr-BReF-And">y</xsl:variable>
 
-  <!-- xsl:template name="buildNumberOptions" -->
-
-  <!-- xsl:template name="clock" -->
-  <xsl:variable name="bwStr-Cloc-Bedework24HourClock">Reloj de 24 horas de Bedework</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Type">tipo</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-SelectTime">seleccione hora</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Switch">cambiar</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Close">cerrar</xsl:variable>
-  
   <!-- xsl:template name="newclock" -->
   <xsl:variable name="bwStr-Cloc-Hour">Hora</xsl:variable>
   <xsl:variable name="bwStr-Cloc-Minute">Minuto</xsl:variable>

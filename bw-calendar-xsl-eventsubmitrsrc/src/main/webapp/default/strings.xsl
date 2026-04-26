@@ -106,8 +106,6 @@
   <xsl:variable name="bwStr-FoEl-EventURLOptional">optional: for more information about the event</xsl:variable>
   <xsl:variable name="bwStr-FoEl-ImageURL">Image URL:</xsl:variable>
   <xsl:variable name="bwStr-FoEl-ImageURLOptional">optional: to include an image with the event description</xsl:variable>
-  <xsl:variable name="bwStr-FoEl-ImageAlt">Image description:</xsl:variable>
-  <xsl:variable name="bwStr-FoEl-ImageAltDesc">will be used as image alt tag</xsl:variable>
   <xsl:variable name="bwStr-FoEl-MustSelectLocation">You must either select a location or suggest one below.</xsl:variable>
   <xsl:variable name="bwStr-FoEl-SelectExistingLocation">select an existing location...</xsl:variable>
   <xsl:variable name="bwStr-FoEl-DidntFindLocation">Didn't find the location?  Suggest a new one:</xsl:variable>
@@ -153,15 +151,6 @@
   <!-- xsl:template name="buildRecurFields" -->
   <xsl:variable name="bwStr-BReF-And">and</xsl:variable>
 
-  <!-- xsl:template name="buildNumberOptions" -->
-
-  <!-- xsl:template name="clock" -->
-  <xsl:variable name="bwStr-Cloc-Bedework24HourClock">Bedework 24-Hour Clock</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Type">type</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-SelectTime">select time</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Switch">switch</xsl:variable>
-  <xsl:variable name="bwStr-Cloc-Close">close</xsl:variable>
-  
   <!-- xsl:template name="newclock" -->
   <xsl:variable name="bwStr-Cloc-Hour">Hour</xsl:variable>
   <xsl:variable name="bwStr-Cloc-Minute">Minute</xsl:variable>

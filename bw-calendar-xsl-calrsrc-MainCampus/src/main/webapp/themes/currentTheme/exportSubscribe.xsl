@@ -180,7 +180,7 @@
                 <label for="bwExpJsShowLimitListTrue"><xsl:copy-of select="$bwStr-exSu-True"/></label>
                 <input type="radio" id="bwExpJsShowLimitListFalse" class="bwExpTrigger" name="jsLimitList" onclick="updateUrlDisplay();" value="false" checked="checked"/>
                 <label for="bwExpJsShowLimitListFalse"><xsl:copy-of select="$bwStr-exSu-False"/></label>
-                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse "/></em>
+                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse"/></em>
                 <div id="bwExpWidgetLimit" class="bwExpSubField">
                   <label for="bwExpJsLimit"><xsl:copy-of select="$bwStr-exSu-LimitToColon"/></label>
                   <input onblur="updateUrlDisplay();" type="text" size="3" id="bwExpJsLimit" name="jsLimit" value="5"/>
@@ -207,20 +207,20 @@
               <div class="bwExpOptionName"><xsl:copy-of select="$bwStr-exSu-HighlightDatesOrTitles"/></div>
               <div class="bwExpOptionFields">
                 <input type="radio" id="bwJsDisplayByTitle" name="jsDisplayDateOrTitle" onclick="updateUrlDisplay();" value="byTitle" checked="checked"/>
-                <label for="bwJsDisplayByTitle"><xsl:copy-of select="$bwStr-exSu-ByTitle  "/></label>
+                <label for="bwJsDisplayByTitle"><xsl:copy-of select="$bwStr-exSu-ByTitle"/></label>
                 <input type="radio" id="bwJsDisplayByDate" name="jsDisplayDateOrTitle" onclick="updateUrlDisplay();" value="byDate"/>
-                <label for="bwJsDisplayByDate"><xsl:copy-of select="$bwStr-exSu-ByDate   "/></label>
+                <label for="bwJsDisplayByDate"><xsl:copy-of select="$bwStr-exSu-ByDate"/></label>
                 <em><xsl:copy-of select="$bwStr-exSu-DefaultByTitle"/></em>
               </div>
             </li>
             <li>
-              <div class="bwExpOptionName"><xsl:copy-of select="$bwStr-exSu-ShowDescription   "/></div>
+              <div class="bwExpOptionName"><xsl:copy-of select="$bwStr-exSu-ShowDescription"/></div>
               <div class="bwExpOptionFields">
                 <input type="radio" id="bwJsDisplayDescriptionTrue" name="jsDisplayDescription" onclick="updateUrlDisplay();" value="true"/>
                 <label for="bwJsDisplayDescriptionTrue"><xsl:copy-of select="$bwStr-exSu-True"/></label>
                 <input type="radio" id="bwJsDisplayDescriptionFalse" name="jsDisplayDescription" onclick="updateUrlDisplay();" value="false" checked="checked"/>
                 <label for="bwJsDisplayDescriptionFalse"><xsl:copy-of select="$bwStr-exSu-False"/></label>
-                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse "/></em>
+                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse"/></em>
               </div>
             </li>
             <li>
@@ -250,7 +250,7 @@
                 <label for="bwJsDisplayLocationTrue"><xsl:copy-of select="$bwStr-exSu-True"/></label>
                 <input type="radio" id="bwJsDisplayLocationFalse" name="jsDisplayLocation" onclick="updateUrlDisplay();" value="false" checked="checked"/>
                 <label for="bwJsDisplayLocationFalse"><xsl:copy-of select="$bwStr-exSu-False"/></label>
-                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse "/></em>
+                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse"/></em>
               </div>
             </li>
             <!--
@@ -259,7 +259,7 @@
               <div class="bwExpOptionFields">
                 <input type="radio" id="bwJsDisplayInlineTrue" class="bwExpTrigger" name="jsDisplayInline" onclick="updateUrlDisplay();" value="true"/><xsl:copy-of select="$bwStr-exSu-True"/>
                 <input type="radio" id="bwJsDisplayInlineFalse" class="bwExpTrigger" name="jsDisplayInline" onclick="updateUrlDisplay();" value="false" checked="checked"/><xsl:copy-of select="$bwStr-exSu-False"/>
-                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse "/></em>
+                <em><xsl:copy-of select="$bwStr-exSu-DefaultFalse"/></em>
               </div>
 
               <ul id="bwJsWidgetOptionsInline">
@@ -288,7 +288,7 @@
                   </div>
                 </li>
                 <li>
-                  <div class="bwExpOptionName"><xsl:copy-of select="$bwStr-exSu-DisplayTimeZone"/></div>
+                  <div class="bwExpOptionName"><xsl:copy-of select="$bwStr-exSu-DisplayTimezone"/></div>
                   <div class="bwExpOptionFields">
                     <input type="radio" id="bwJsDisplayTimezoneTrue" name="jsDisplayTimezone" onclick="updateUrlDisplay();" value="true" checked="checked"/><xsl:copy-of select="$bwStr-exSu-True"/>
                     <input type="radio" id="bwJsDisplayTimezoneFalse" name="jsDisplayTimezone" onclick="updateUrlDisplay();" value="false"/><xsl:copy-of select="$bwStr-exSu-False"/>

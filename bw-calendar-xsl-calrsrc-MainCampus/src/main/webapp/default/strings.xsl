@@ -36,7 +36,6 @@
   <xsl:variable name="bwStr-HdBr-UniversityHome">University Home</xsl:variable>
   <xsl:variable name="bwStr-HdBr-OtherLink">Other Link</xsl:variable>
   <xsl:variable name="bwStr-HdBr-ExportSubscribe">Export/Subscribe</xsl:variable>
-  <xsl:variable name="bwStr-HdBr-EventInformation">Event Information</xsl:variable>
   <xsl:variable name="bwStr-HdBr-BackLink">(return to events)</xsl:variable>
 
   <!-- ongoing events -->
@@ -49,23 +48,17 @@
   <xsl:variable name="bwStr-Deadline-NoEvents">There are no deadlines in this time period or view</xsl:variable>
 
   <!--  xsl:template name="tabs" -->
-  <xsl:variable name="bwStr-Tabs-LoggedInAs">logged in as</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-Logout">logout</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Today">TODAY</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Upcoming">UPCOMING</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Day">DAY</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Week">WEEK</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Month">MONTH</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Year">YEAR</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-List">LIST</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-Search">search</xsl:variable>
   <xsl:variable name="bwStr-Tabs-AdvSearch">advanced</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-JumpToDate">Jump To Date</xsl:variable>
 
   <!--  xsl:template name="datePicker" -->
   <xsl:variable name="bwStr-DatePicker-Today">today</xsl:variable>
   <xsl:variable name="bwStr-DatePicker-Upcoming">upcoming</xsl:variable>
-  <xsl:variable name="bwStr-DatePicker-Range">range</xsl:variable>
   <xsl:variable name="bwStr-DatePicker-Day">day</xsl:variable>
   <xsl:variable name="bwStr-DatePicker-Week">week</xsl:variable>
   <xsl:variable name="bwStr-DatePicker-Month">month</xsl:variable>
@@ -78,10 +71,6 @@
   <!--  xsl:template name="searchBar" -->
   <xsl:variable name="bwStr-SrcB-SearchForEvents">Search for events:</xsl:variable>
   <xsl:variable name="bwStr-SrcB-ApplyFilter">apply filter</xsl:variable>
-  <xsl:variable name="bwStr-Util-List">LIST</xsl:variable>
-  <xsl:variable name="bwStr-Util-Cal">CAL</xsl:variable>
-  <xsl:variable name="bwStr-Util-Summary">SUMMARY</xsl:variable>
-  <xsl:variable name="bwStr-Util-Details">DETAILS</xsl:variable>
   <xsl:variable name="bwStr-SrcB-Summary">Summary</xsl:variable>
   <xsl:variable name="bwStr-SrcB-Details">Details</xsl:variable>
 
@@ -94,10 +83,8 @@
 
   <!--  xsl:template match="event" -->
   <xsl:variable name="bwStr-SgEv-Canceled">CANCELED:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-Event">Event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-NoTitle">no title</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Download">Download event as an ics file</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-EventLink">Event Link:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-When">When:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AllDay">(all day)</xsl:variable>
   <xsl:variable name="bwStr-SgEv-FloatingTime">Floating time</xsl:variable>
@@ -105,9 +92,7 @@
   <xsl:variable name="bwStr-SgEv-Start">Start:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-End">End:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-DueBy">Due By</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddToMyCalendar">add to my calendar</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AddEventToMyCalendar">Add to MyCalendar</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddToFacebook">Add to Facebook</xsl:variable>
   <xsl:variable name="bwStr-SgEv-AddToGoogleCalendar">Add to Google Calendar</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Where">Where:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Location-Accessible">(This venue is wheelchair accessible)</xsl:variable>
@@ -121,24 +106,16 @@
   <xsl:variable name="bwStr-SgEv-Comments">Comments:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Categories">Categories:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-TopicalArea">Topical Areas:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-Calendars">Calendars:</xsl:variable>
 
   <!--  xsl:template name="listView" -->
   <xsl:variable name="bwStr-LsVw-NoEventsToDisplay">No events found.  Please try a different view or time period.</xsl:variable>
   <xsl:variable name="bwStr-LsVw-NoEventsToDisplayWithOngoing">No non-ongoing events found.  Please try a different view or time period or look in the Ongoing events list.</xsl:variable>
   <xsl:variable name="bwStr-LsVw-NoEventsFromSelection">Your selection returns no results.</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-Add">add...</xsl:variable>
   <xsl:variable name="bwStr-LsVw-AllDay">All Day</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-At">at</xsl:variable>
   <xsl:variable name="bwStr-LsVw-Today">Today</xsl:variable>
   <xsl:variable name="bwStr-LsVw-AddEventToMyCalendar">Add to MyCalendar</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-DownloadEvent">Download ical</xsl:variable>
   <xsl:variable name="bwStr-LsVw-Canceled">CANCELED:</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-NoTitle">no title</xsl:variable>
   <xsl:variable name="bwStr-LsVw-Contact">Contact:</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-DispEventsForCal">Displaying Events for Calendar</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-DispEventsForView">Displaying Events for View</xsl:variable>
-  <xsl:variable name="bwStr-LsVw-ShowAll">(show all)</xsl:variable>
   <xsl:variable name="bwStr-LsVw-TopicalArea">Topical Areas:</xsl:variable>
   <xsl:variable name="bwStr-LsVw-Location">Location:</xsl:variable>
   <xsl:variable name="bwStr-LsVw-Cost">Cost:</xsl:variable>
@@ -149,24 +126,15 @@
   <!--  xsl:template match="events" mode="eventList" -->
   <xsl:variable name="bwStr-LsEv-Event">event returned</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Events">events returned</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Next7Days">Next 7 Days</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-NoEventsToDisplay">No events to display.</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-ContinueFrom">Continue from </xsl:variable>
   <xsl:variable name="bwStr-LsEv-ShowMore">Show more events</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ReturnToToday">Return to Today</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Calendars">Calendars:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ClearFilters">(clear all)</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Search">Search:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Filter">Filter:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-ClearSearch">(clear)</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-DownloadEvent">Download ical</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Categories">Categories:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Contact">Contact:</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Canceled">CANCELED:</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Tentative">TENTATIVE:</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-EventList">Event List</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Upcoming">Upcoming Events</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Starting">Starting</xsl:variable>
 
   <!--  xsl:template match="event" mode="calendarLayout" -->
   <xsl:variable name="bwStr-EvCG-CanceledColon">CANCELED:</xsl:variable>
@@ -238,7 +206,6 @@
   <xsl:variable name="bwStr-exSu-Details">Details</xsl:variable>
   <xsl:variable name="bwStr-exSu-Summary">Summary</xsl:variable>
   <xsl:variable name="bwStr-exSu-Timeframe">Time frame</xsl:variable>
-  <xsl:variable name="bwStr-exSu-UseDefaultListing">Use the default listing, limit the number of days (from the current date), or provide a start date and an end date.</xsl:variable>
   <xsl:variable name="bwStr-exSu-Default">Default: pull events from "today" forward</xsl:variable>
   <xsl:variable name="bwStr-exSu-LimitTo">Limit to</xsl:variable>
   <xsl:variable name="bwStr-exSu-DaysFromToday">days from "today"</xsl:variable>

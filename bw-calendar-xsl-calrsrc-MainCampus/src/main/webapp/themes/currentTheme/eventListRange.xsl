@@ -39,7 +39,7 @@
       });
     </script>
 
-    <table class="eventList" desc="{$bwStr-LsVw-ListWithinTimeRange}">
+    <table class="eventList" title="{$bwStr-LsVw-ListWithinTimeRange}">
 
       <tr id="noResultsMsg" class="invisible">
         <td colspan="3"><xsl:copy-of select="$bwStr-LsVw-NoEventsFromSelection"/></td>

@@ -31,7 +31,6 @@
   <xsl:template name="eventList">
     <div class="secondaryColHeader">
       <h2>
-        <!--<xsl:copy-of select="$bwStr-LsEv-Starting"/><xsl:text> </xsl:text>-->
         <span id="bwStartDate"><xsl:value-of select="/bedework/currentdate/longdate"/></span>
       </h2>
 
