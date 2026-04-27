@@ -22,6 +22,9 @@ public class XslFile implements Logged {
   final static String nsXSL =
       "http://www.w3.org/1999/XSL/Transform";
 
+  final static String nsHTML =
+      "http://www.w3.org/1999/xhtml";
+
   final static QName xslStylesheet =
       new QName(nsXSL, "stylesheet");
 
@@ -38,22 +41,28 @@ public class XslFile implements Logged {
       new QName(nsXSL, "with-param");
 
   final static QName htmlA =
-      new QName(null, "a");
+      new QName(nsHTML, "a");
+
+  final static QName htmlArea =
+      new QName(nsHTML, "area");
+
+  final static QName htmlDiv =
+      new QName(nsHTML, "div");
 
   final static QName htmlImg =
-      new QName(null, "img");
+      new QName(nsHTML, "img");
 
   final static QName htmlTextArea =
-      new QName(null, "textarea");
+      new QName(nsHTML, "textarea");
 
   final static QName htmlTable =
-      new QName(null, "table");
+      new QName(nsHTML, "table");
 
   final static QName htmlSelect =
-      new QName(null, "select");
+      new QName(nsHTML, "select");
 
   final static QName htmlInput =
-      new QName(null, "input");
+      new QName(nsHTML, "input");
 
   final Path path;
   final Document xsl;
@@ -67,12 +76,15 @@ public class XslFile implements Logged {
 
   long unreffedCount;
 
+  boolean traceInput;
+
   final Map<String, XslVariable> variables = new HashMap<>();
 
   public XslFile(final Path path) {
     this.path = path;
     isStringsXsl = path.endsWith("strings.xsl");
     defaultStrings = path.endsWith("webapp/default/strings.xsl");
+    traceInput = path.endsWith("webapp/themes/bedeworkTheme/searchResults.xsl");
     try {
       xsl = FromXml.parseXml(new FileReader(path.toFile()));
     } catch (final FileNotFoundException e) {
@@ -111,38 +123,43 @@ public class XslFile implements Logged {
     }
   }
 
-  private void matchSelect(final Node nd,
+  private boolean matchSelect(final Node nd,
+                              final XslFile vars) {
+    return matchAttr(nd, vars, "select");
+  }
+
+  private boolean matchAlt(final Node nd,
                            final XslFile vars) {
-    matchAttr(nd, vars, "select");
+    return matchAttr(nd, vars, "alt");
   }
 
-  private void matchAlt(final Node nd,
-                        final XslFile vars) {
-    matchAttr(nd, vars, "alt");
+  private boolean matchName(final Node nd,
+                            final XslFile vars) {
+    return matchAttr(nd, vars, "name");
   }
 
-  private void matchTitle(final Node nd,
-                          final XslFile vars) {
-    matchAttr(nd, vars, "title");
+  private boolean matchTitle(final Node nd,
+                             final XslFile vars) {
+    return matchAttr(nd, vars, "title");
   }
 
-  private void matchValue(final Node nd,
-                          final XslFile vars) {
-    matchAttr(nd, vars, "value");
+  private boolean matchValue(final Node nd,
+                             final XslFile vars) {
+    return matchAttr(nd, vars, "value");
   }
 
-  private void matchPlaceholder(final Node nd,
-                                final XslFile vars) {
-    matchAttr(nd, vars, "placeholder");
+  private boolean matchPlaceholder(final Node nd,
+                                   final XslFile vars) {
+    return matchAttr(nd, vars, "placeholder");
   }
 
-  private void matchAttr(final Node nd,
-                         final XslFile vars,
-                         final String attrName) {
+  private boolean matchAttr(final Node nd,
+                            final XslFile vars,
+                            final String attrName) {
     final var attr = nd.getAttributes()
                        .getNamedItem(attrName);
     if (attr == null) {
-      return;
+      return false;
     }
 
     final var val = attr.getNodeValue();
@@ -153,13 +170,62 @@ public class XslFile implements Logged {
     } else if (val.startsWith("$")) {
       trimVal = val.substring(1);
     } else {
-      return;
+      return false;
     }
 
     final var variable = vars.variables.get(trimVal);
     if (variable != null) {
       variable.setReferenced(true);
+      return true;
     }
+
+    return false;
+  }
+
+  private boolean hasAttr(final Node nd,
+                          final String attrName,
+                          final String val) {
+    final var attr = nd.getAttributes()
+                       .getNamedItem(attrName);
+    if (attr == null) {
+      return false;
+    }
+
+    return val.equals(attr.getNodeValue());
+  }
+
+  private boolean matchOnclick(final Node nd,
+                               final XslFile vars) {
+    final var attr = nd.getAttributes()
+                       .getNamedItem("onclick");
+    if (attr == null) {
+      return false;
+    }
+
+    final var val = attr.getNodeValue();
+
+    if (val == null) {
+      return false;
+    }
+
+    var matched = false;
+    int st = val.indexOf("{$");
+    while (st >= 0) {
+      final var end = val.indexOf("}", st);
+      if (end == -1) {
+        return matched;
+      }
+
+      final var variable = vars.variables.get(
+          val.substring(st + 2, end));
+      if (variable != null) {
+        variable.setReferenced(true);
+        matched = true;
+      }
+      st = val.indexOf("{$", end);
+    }
+
+    return matched;
   }
 
   private void matchVariables(final Node nd,
@@ -179,18 +245,21 @@ public class XslFile implements Logged {
       return;
     }
 
-    if (XmlUtil.nodeMatches(nd, htmlA)) {
-      matchTitle(nd, vars);
-    } else if (XmlUtil.nodeMatches(nd, htmlImg)) {
+    if (XmlUtil.nodeMatches(nd, htmlDiv) &&
+        hasAttr(nd, "id", "bwEventTab-Recurrence")) {
+      debug("Found");
+    }
+
+    matchName(nd, vars);
+    matchTitle(nd, vars);
+    matchValue(nd, vars);
+    matchOnclick(nd, vars);
+
+    if (XmlUtil.nodeMatches(nd, htmlImg)) {
       matchAlt(nd, vars);
-    } else if (XmlUtil.nodeMatches(nd, htmlSelect)) {
-      matchTitle(nd, vars);
-    } else if (XmlUtil.nodeMatches(nd, htmlTable)) {
-      matchTitle(nd, vars);
     } else if (XmlUtil.nodeMatches(nd, htmlTextArea)) {
       matchPlaceholder(nd, vars);
     } else if (XmlUtil.nodeMatches(nd, htmlInput)) {
-      matchValue(nd, vars);
       matchPlaceholder(nd, vars);
     }
 
