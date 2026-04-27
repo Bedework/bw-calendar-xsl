@@ -30,7 +30,6 @@
   <!--  xsl:template name="headBar" -->
   <xsl:variable name="bwStr-HdBr-PublicCalendar">&#214;ffentlicher Kalender</xsl:variable>
   <xsl:variable name="bwStr-HdBr-PersonalCalendar">Pers&#246;nlicher Kalender</xsl:variable>
-  <xsl:variable name="bwStr-HdBr-UniversityHome">Startseite Universit&#228;t</xsl:variable>
   <xsl:variable name="bwStr-HdBr-SchoolHome">Startseite Schule</xsl:variable>
   <xsl:variable name="bwStr-HdBr-OtherLink">Andere Verkn&#252;pfungen</xsl:variable>
   <xsl:variable name="bwStr-HdBr-ExampleCalendarHelp">Kalender Hilfe</xsl:variable>
@@ -42,8 +41,6 @@
   <!--  xsl:template name="sideBar" -->
   <xsl:variable name="bwStr-SdBr-Views">Ansicht</xsl:variable>
   <xsl:variable name="bwStr-SdBr-NoViews">keine Ansicht</xsl:variable>
-  <xsl:variable name="bwStr-SdBr-SubscribeToCalendarsOrICalFeeds">Abonnieren von Kalendern oder iCal Feeds</xsl:variable>
-  <xsl:variable name="bwStr-SdBr-Subscribe">abonnieren</xsl:variable>
   <xsl:variable name="bwStr-SdBr-ManageCalendarsAndSubscriptions">Verwaltung Kalender und Abonnements</xsl:variable>
   <xsl:variable name="bwStr-SdBr-Manage">Verwaltung</xsl:variable>
   <xsl:variable name="bwStr-SdBr-Calendars">Kalender</xsl:variable>
@@ -61,8 +58,6 @@
   <xsl:variable name="bwStr-Tabs-Week">WOCHE</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Month">MONAT</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Year">JAHR</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-List">LISTE</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-Agenda">AGENDA</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Upcoming">AKTUELLE</xsl:variable>
 
   <!--  xsl:template name="navigation" -->
@@ -74,9 +69,6 @@
   <!--  xsl:template name="utilBar" -->
   <xsl:variable name="bwStr-Util-EventsTitle">Veranstaltung</xsl:variable>
   <xsl:variable name="bwStr-Util-Add">hinzuf&#252;gen...</xsl:variable>
-  <xsl:variable name="bwStr-Util-View">Ansicht</xsl:variable>
-  <xsl:variable name="bwStr-Util-DefaultView">Standardansicht</xsl:variable>
-  <xsl:variable name="bwStr-Util-AllTopicalAreas">Alle Themengebiete</xsl:variable>
   <xsl:variable name="bwStr-Util-Search">Suchen</xsl:variable>
   <xsl:variable name="bwStr-Util-Go">weiter</xsl:variable>
   <xsl:variable name="bwStr-Util-List">LISTE</xsl:variable>
@@ -130,7 +122,6 @@
 
   <!-- xsl:template match="events" mode="eventList" -->
   <xsl:variable name="bwStr-LsEv-Upcoming">Aktuelle Veranstaltungen</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Next7Days">N&#228;chsten 7 Tage</xsl:variable>
   <xsl:variable name="bwStr-LsEv-NoEventsToDisplay">Keine Veranstaltung darstellbar</xsl:variable>
   <xsl:variable name="bwStr-LsEv-DownloadEvent">Veranstaltung herunterladen als ical - z.B. f&#252;r Outlook, PDAs, iCal oder andere Arbeitsplatz-Kalender</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Categories">Kategorien:</xsl:variable>
@@ -152,7 +143,6 @@
   <xsl:variable name="bwStr-EvCG-Time">Zeit:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-AllDay">ganzt&#228;gig</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Location">Veranstaltungsort:</xsl:variable>
-  <xsl:variable name="bwStr-EvCG-TopicalArea">Themengebiet:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Calendar">Kalender:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Type">Typ:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Task">Aufgabe</xsl:variable>
@@ -204,11 +194,7 @@
   <xsl:variable name="bwStr-TskE-Start">Start:</xsl:variable>
   <xsl:variable name="bwStr-TskE-Due">F&#228;lligkeit:</xsl:variable>
 
-  <!-- <xsl:template match="event" mode="schedNotifications" -->
-
   <!-- <xsl:template match="event" -->
-  <xsl:variable name="bwStr-SgEv-GenerateLinkToThisEvent">Verkn&#252;pfung zu dieser Veranstaltung erzeugen</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-LinkToThisEvent">Verkn&#252;pfung zu dieser Veranstaltung</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Canceled">ANNULIERT:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Event">Veranstaltung</xsl:variable>
   <xsl:variable name="bwStr-SgEv-NoTitle">kein Titel</xsl:variable>
@@ -230,7 +216,6 @@
   <xsl:variable name="bwStr-SgEv-CopyEvent">Veranstaltung kopieren</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Edit">Bearbeiten</xsl:variable>
   <xsl:variable name="bwStr-SgEv-EditMaster">Haupteintrag bearbeiten (wiederkehrende Veranstaltung)</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-EditThisInstance">Diesen Eintrag bearbeiten (wiederkehrende Veranstaltung)</xsl:variable>
   <xsl:variable name="bwStr-SgEv-EditEvent">Veranstaltung bearbeiten</xsl:variable>
   <xsl:variable name="bwStr-SgEv-DownloadEvent">Veranstaltung herunterladen als ical - z.B. f&#252;r Outlook, PDAs, iCal oder andere Arbeitsplatz-Kalender</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Download">Herunterladen</xsl:variable>
@@ -250,8 +235,6 @@
   <xsl:variable name="bwStr-SgEv-LocalTime">Ortszeit</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Start">Start:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-End">Ende:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddToMyCalendar">Eintragen in Pers&#246;nlicher Kalender</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddEventToMyCalendar">Veranstaltung eintragen in Pers&#246;nlicher Kalender</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Where">Wo:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Complete">% Vollst&#228;ndig:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-ORGANIZER">Veranstalter:</xsl:variable>
@@ -268,7 +251,6 @@
   <xsl:variable name="bwStr-SgEv-Calendar">Kalender:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Categories">Kategorien:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Comments">Kommentar:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-TopicalArea">Themengebiete:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Email">Email</xsl:variable>
 
   <!-- <xsl:template match="formElements" mode="addEvent" -->
@@ -418,23 +400,11 @@
   <xsl:variable name="bwStr-AEEF-AddRecurance">hinzuf&#252;gen Wiederholung</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddException">hinzuf&#252;gen Ausnahme</xsl:variable>
 
-  <!-- Access tab -->
-
   <!-- Scheduling tab -->
-  <xsl:variable name="bwStr-AEEF-EditAttendees">Teilnehmer bearbeiten</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-ChangeMyStatus">Meinen Status &#228;ndern</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-ScheduleThisTask">Aufgabe mit anderen Teilnehmern zusammen planen</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-MakeIntoMeeting">Sitzung planen - Teilnehmer einladen</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Save">abspeichern</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SaveDraft">abspeichern Vorlage</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SaveAndSendInvites">senden</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Clear">Nachricht vom Eingang entfernen</xsl:variable>
-
-  <!-- xsl:template match="val" mode="weekMonthYearNumbers" -->
-
-  <!-- xsl:template name="byDayChkBoxList" -->
-
-  <!-- xsl:template name="buildCheckboxList" -->
 
   <!-- xsl:template name="recurrenceDayPosOptions" -->
   <xsl:variable name="bwStr-RCPO-TheFirst">Erster</xsl:variable>
@@ -470,7 +440,6 @@
   <xsl:variable name="bwStr-Atnd-SchedulMeetingOrTask">Ansetzen Sitzung oder Aufgabe</xsl:variable>
   <xsl:variable name="bwStr-Atnd-AddAttendees">Teilnehmer hinzuf&#252;gen</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Add">hinzuf&#252;gen</xsl:variable>
-  <xsl:variable name="bwStr-Atnd-Recipients">Empf&#228;nger</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Attendee">Teilnehmer</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Attendees">Teilnehmer</xsl:variable>
   <xsl:variable name="bwStr-Atnd-RoleColon">Funktion:</xsl:variable>
@@ -589,15 +558,11 @@
   <xsl:variable name="bwStr-SCPA-SelectACalendar">Kalender ausw&#228;hlen</xsl:variable>
   <xsl:variable name="bwStr-SCPA-Close">schliessen</xsl:variable>
 
-  <!--  xsl:template match="calendar" mode="selectCalForPublicAliasCalTree" -->
-
   <!--  xsl:template match="currentCalendar" mode="addCalendar" -->
   <xsl:variable name="bwStr-CuCa-AddCalOrFolder">Hinzuf&#252;gen Kalender oder Ordner</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddSubscription">Hinzuf&#252;gen Abonnement</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-AddCalFolderOrSubscription">Hinzuf&#252;gen Kalender, Ordner oder Abonnement</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddCalText">hinzuf&#252;gen</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddCalTextLabel">Hinzuf&#252;gen:</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-AddSubText">Hinzuf&#252;gen abonnement</xsl:variable>
   <xsl:variable name="bwStr-CuCa-HttpStatus">HTTP Status:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Name">Name:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Summary">Kurzfassung:</xsl:variable>
@@ -652,7 +617,6 @@
   <xsl:variable name="bwStr-CuCa-Pending">pending</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Declined">declined</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Accepted">accepted</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-DefaultSchedNotShared">This calendar is the default scheduling calendar; it may not be shared.</xsl:variable>
   <xsl:variable name="bwStr-CuCa-CurrentAccess">Aktuelle Zugriffsrechte:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AccessNote"><p><strong>Anmerkung:</strong> Advanced access controls can break standard sharing.</p><p>Wenn sie f&#252;r einen anderen Benutzer Vollzugriff auf einen Kalender gew&#228;hren und sie wollen die vom anderen Benutzer in ihren Kalender eingetragenen Termine bearbeiten k&#246;nnen,<strong>dann m&#252;ssen sie sich selber ebenfalls Vollzugriff auf ihren eigenen Kalender eintragen.</strong> Tragen sie bitte ihre eigenen Benutzerkennung als Benutzer im Feld "Who" ein und w&#228;hlen sie "All" aus im Feld "Rights". Dies liegt an der Standard Rechteverwaltung. Der genaue Grund wieso sie Eintr&#228;ge von anderen Benutzern in ihrem eigenen (freigegebenen) Kalender sonst nicht sehen k&#246;nnen liegt darin, dass Eintr&#228;ge von zu Veranstaltungen immer mit dem Zugriffsrecht "owner" (Eigner) versehen ist und somit in ihrem Kalender auch die Eintr&#228;ge der anderen Benutzer auch den anderen Benutzern geh&#246;ren.</p></xsl:variable>
   <xsl:variable name="bwStr-CuCa-WriteAccess">grant write access</xsl:variable>
@@ -676,8 +640,6 @@
 
   <!--  xsl:template name="colorPicker"  -->
   <xsl:variable name="bwStr-CoPi-Pick">ausw&#228;hlen</xsl:variable>
-  <xsl:variable name="bwStr-CoPi-UseDefaultColors">Standardfarben verwenden</xsl:variable>
-  <xsl:variable name="bwStr-CoPi-SelectColor">Bitte eine Farbe ausw&#228;hlen</xsl:variable>
 
 <!--  xsl:template name="calendarList"  -->
   <xsl:variable name="bwStr-CaLi-ManagingCalendars">Verwaltung von Kalendern &amp; Abonnements</xsl:variable>
@@ -710,9 +672,6 @@
 
   <!--  xsl:template match="calendars" mode="exportCalendars" -->
   <xsl:variable name="bwStr-Cals-ExportCals">Kalender herunterladen als iCal</xsl:variable>
-  <xsl:variable name="bwStr-Cals-CalendarToExport">Kalender zum herunterladen:</xsl:variable>
-  <xsl:variable name="bwStr-Cals-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-Cals-Path">Pfad:</xsl:variable>
   <xsl:variable name="bwStr-Cals-EventDateLimits">Befristung:</xsl:variable>
   <xsl:variable name="bwStr-Cals-TodayForward">ab heute</xsl:variable>
   <xsl:variable name="bwStr-Cals-AllDates">alle Termine</xsl:variable>
@@ -733,20 +692,6 @@
   <xsl:variable name="bwStr-SuMe-SubscribeToUserCalendar">Abonnieren von einem pers&#246;nlichen Kalender</xsl:variable>
   <xsl:variable name="bwStr-SuMe-SubscribeToExternalCalendar">Abonnieren von einem externen Kalender</xsl:variable>
 
-  <!--  xsl:template name="addPublicAlias"  -->
-  <xsl:variable name="bwStr-AdPA-SubscribeToPublicCal">Abonnieren von eimem &#246;ffentlichen Kalender</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AddPublicSubscription">Hinzuf&#252;gen von einem &#246;ffentlichen Abonnement</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-SubscriptionNote">*ein Abonnementsname darf nur einmal vorkommen</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Calendar">Kalender:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AffectsFreeBusy">Betrifft Frei/Gebucht:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Yes">ja</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-No">nein</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Style">Stil:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Default">default</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AddSubscription">Hinzuf&#252;gen Abonnement</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Cancel">Abbrechen</xsl:variable>
-
   <!--  xsl:template match="calendar" mode="subscribe" -->
   <xsl:variable name="bwStr-Calr-Folder">Ordner</xsl:variable>
   <xsl:variable name="bwStr-Calr-Calendar">Kalender</xsl:variable>
@@ -764,7 +709,6 @@
   <xsl:variable name="bwStr-AddA-AffectsFreeBusy">Betrifft Frei/Gebucht:</xsl:variable>
   <xsl:variable name="bwStr-AddA-Yes">ja</xsl:variable>
   <xsl:variable name="bwStr-AddA-No">nein</xsl:variable>
-  <xsl:variable name="bwStr-AddA-Style">Stil:</xsl:variable>
   <xsl:variable name="bwStr-AddA-Default">Standard</xsl:variable>
   <xsl:variable name="bwStr-AddA-NoteAboutAccess"><ul class="note" style="margin-left: 2em;">
       <li>Sie m&#252;ssen mindestens Lesezugriff auf den Kalender eines anderen Benutzers eingerichtet bekommen haben um ihn abbonieren zu k&#246;nnen.</li>
@@ -914,7 +858,6 @@
   <xsl:variable name="bwStr-AtRe-MeetingCanceled">Sitzung annuliert</xsl:variable>
   <xsl:variable name="bwStr-AtRe-MeetingCounterDeclined">Sitzungs Einwand ablehnen.</xsl:variable>
   <xsl:variable name="bwStr-AtRe-MeetingRequest">Sitzungsanfrage</xsl:variable>
-  <xsl:variable name="bwStr-AtRe-Update">(aktualisieren)</xsl:variable>
   <xsl:variable name="bwStr-AtRe-Organizer">Veranstalter:</xsl:variable>
   <xsl:variable name="bwStr-AtRe-ThisMeetingCanceled">Diese Sitzung wurde annuliert.</xsl:variable>
   <xsl:variable name="bwStr-AtRe-CounterReqDeclined">Ihre Einwand/Anfrage wurde abgelehnt.</xsl:variable>
@@ -928,7 +871,6 @@
   <xsl:variable name="bwStr-AtRe-Tentative">vorl&#228;ufig</xsl:variable>
   <xsl:variable name="bwStr-AtRe-DelegateTo">&#252;bertragen an</xsl:variable>
   <xsl:variable name="bwStr-AtRe-URIOrAccount">(Uri oder Benutzerkennung)</xsl:variable>
-  <xsl:variable name="bwStr-AtRe-CounterSuggest">Einwand (anderen Tag, andere Uhrzeit und/oder Veranstaltungsort vorschlagen)</xsl:variable>
   <xsl:variable name="bwStr-AtRe-NewDateTime">Neues Datum/Uhrzeit:</xsl:variable>
   <xsl:variable name="bwStr-AtRe-Invisible">unsichtbar</xsl:variable>
   <xsl:variable name="bwStr-AtRe-TimeFields">Zeitfelder</xsl:variable>
@@ -1066,7 +1008,6 @@
   <xsl:variable name="bwStr-ScPr-False">falsch</xsl:variable>
   <xsl:variable name="bwStr-ScPr-AcceptDoubleBookings">Akzeptieren Doppelbuchungen:</xsl:variable>
   <xsl:variable name="bwStr-ScPr-CancelProcessing">Abbruch Bearbeitung:</xsl:variable>
-  <xsl:variable name="bwStr-ScPr-DoNothing">nichts veranlassen</xsl:variable>
   <xsl:variable name="bwStr-ScPr-SetToCanceled">Status der Veranstaltung setzen auf ABBRUCH</xsl:variable>
   <xsl:variable name="bwStr-ScPr-DeleteEvent">L&#246;schen der Veranstaltung</xsl:variable>
   <xsl:variable name="bwStr-ScPr-ReponseProcessing">R&#252;ckantwort bearbeiten:</xsl:variable>
@@ -1074,7 +1015,6 @@
   <xsl:variable name="bwStr-ScPr-ProcessAccepts">Abarbeiten "Akzeptieren" Antworten - restliche Nachrichten im Eingang belassen</xsl:variable>
   <xsl:variable name="bwStr-ScPr-TryToProcessAll">Versuchen alle Antworten automatisch abzuarbeiten</xsl:variable>
   <xsl:variable name="bwStr-ScPr-UpdateSchedulingProcessing">Aktualisieren Terminplanung mit automatischer Bearbeitung</xsl:variable>
-  <xsl:variable name="bwStr-ScPr-Cancel">abbrechen</xsl:variable>
 
   <!-- xsl:template name="buildWorkdayOptionsList" -->
 
@@ -1112,14 +1052,6 @@
   <xsl:variable name="bwStr-Srch-Calendar">Kalender</xsl:variable>
   <xsl:variable name="bwStr-Srch-Location">Veranstaltungsort</xsl:variable>
   <xsl:variable name="bwStr-Srch-NoTitle">kein Titel</xsl:variable>
-
-  <!-- xsl:template name="searchResultPageNav" -->
-
-  <!-- xsl:template match="calendar" mode="sideList" -->
-
-  <!-- xsl:template name="selectPage" -->
-
-  <!-- xsl:template name="noPage" -->
 
   <!-- xsl:template name="timeFormatter" -->
   <xsl:variable name="bwStr-TiFo-AM">vorm.</xsl:variable>

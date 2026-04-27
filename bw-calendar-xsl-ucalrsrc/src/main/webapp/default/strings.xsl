@@ -30,7 +30,6 @@
   <!--  xsl:template name="headBar" -->
   <xsl:variable name="bwStr-HdBr-PublicCalendar">Public Calendar</xsl:variable>
   <xsl:variable name="bwStr-HdBr-PersonalCalendar">Personal Calendar</xsl:variable>
-  <xsl:variable name="bwStr-HdBr-UniversityHome">University Home</xsl:variable>
   <xsl:variable name="bwStr-HdBr-SchoolHome">School Home</xsl:variable>
   <xsl:variable name="bwStr-HdBr-OtherLink">Other Link</xsl:variable>
   <xsl:variable name="bwStr-HdBr-ExampleCalendarHelp">Example Calendar Help</xsl:variable>
@@ -42,8 +41,6 @@
   <!--  xsl:template name="sideBar" -->
   <xsl:variable name="bwStr-SdBr-Views">views</xsl:variable>
   <xsl:variable name="bwStr-SdBr-NoViews">no views</xsl:variable>
-  <xsl:variable name="bwStr-SdBr-SubscribeToCalendarsOrICalFeeds">subscribe to calendars or iCal feeds</xsl:variable>
-  <xsl:variable name="bwStr-SdBr-Subscribe">subscribe</xsl:variable>
   <xsl:variable name="bwStr-SdBr-ManageCalendarsAndSubscriptions">manage calendars and subscriptions</xsl:variable>
   <xsl:variable name="bwStr-SdBr-Manage">manage</xsl:variable>
   <xsl:variable name="bwStr-SdBr-Calendars">calendars</xsl:variable>
@@ -61,8 +58,6 @@
   <xsl:variable name="bwStr-Tabs-Week">WEEK</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Month">MONTH</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Year">YEAR</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-List">LIST</xsl:variable>
-  <xsl:variable name="bwStr-Tabs-Agenda">AGENDA</xsl:variable>
   <xsl:variable name="bwStr-Tabs-Upcoming">UPCOMING</xsl:variable>
 
   <!--  xsl:template name="navigation" -->
@@ -74,9 +69,6 @@
   <!--  xsl:template name="utilBar" -->
   <xsl:variable name="bwStr-Util-EventsTitle">events</xsl:variable>
   <xsl:variable name="bwStr-Util-Add">add...</xsl:variable>
-  <xsl:variable name="bwStr-Util-View">View</xsl:variable>
-  <xsl:variable name="bwStr-Util-DefaultView">default view</xsl:variable>
-  <xsl:variable name="bwStr-Util-AllTopicalAreas">all topical areas</xsl:variable>
   <xsl:variable name="bwStr-Util-Search">Search</xsl:variable>
   <xsl:variable name="bwStr-Util-Go">go</xsl:variable>
   <xsl:variable name="bwStr-Util-List">LIST</xsl:variable>
@@ -130,7 +122,6 @@
 
   <!-- xsl:template match="events" mode="eventList" -->
   <xsl:variable name="bwStr-LsEv-Upcoming">Upcoming Events</xsl:variable>
-  <xsl:variable name="bwStr-LsEv-Next7Days">Next 7 Days</xsl:variable>
   <xsl:variable name="bwStr-LsEv-NoEventsToDisplay">No events to Display</xsl:variable>
   <xsl:variable name="bwStr-LsEv-DownloadEvent">Download event as ical - for Outlook, PDAs, iCal, and other desktop calendars</xsl:variable>
   <xsl:variable name="bwStr-LsEv-Categories">Categories:</xsl:variable>
@@ -152,7 +143,6 @@
   <xsl:variable name="bwStr-EvCG-Time">Time:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-AllDay">all day</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Location">Location:</xsl:variable>
-  <xsl:variable name="bwStr-EvCG-TopicalArea">Topical Area:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Calendar">Calendar:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Type">Type:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Task">task</xsl:variable>
@@ -204,11 +194,7 @@
   <xsl:variable name="bwStr-TskE-Start">Start:</xsl:variable>
   <xsl:variable name="bwStr-TskE-Due">Due:</xsl:variable>
 
-  <!-- <xsl:template match="event" mode="schedNotifications" -->
-
   <!-- <xsl:template match="event" -->
-  <xsl:variable name="bwStr-SgEv-GenerateLinkToThisEvent">generate link to this event</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-LinkToThisEvent">link to this event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Canceled">CANCELED:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Event">Event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-NoTitle">no title</xsl:variable>
@@ -230,7 +216,6 @@
   <xsl:variable name="bwStr-SgEv-CopyEvent">copy event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Edit">Edit</xsl:variable>
   <xsl:variable name="bwStr-SgEv-EditMaster">edit master (recurring event)</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-EditThisInstance">edit this instance (recurring event)</xsl:variable>
   <xsl:variable name="bwStr-SgEv-EditEvent">edit event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-DownloadEvent">Download event as ical - for Outlook, PDAs, iCal, and other desktop calendars</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Download">Download</xsl:variable>
@@ -250,8 +235,6 @@
   <xsl:variable name="bwStr-SgEv-LocalTime">Local time</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Start">Start:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-End">End:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddToMyCalendar">add to my calendar</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-AddEventToMyCalendar">Add event to MyCalendar</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Where">Where:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Complete">% Complete:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-ORGANIZER">Organizer:</xsl:variable>
@@ -268,7 +251,6 @@
   <xsl:variable name="bwStr-SgEv-Calendar">Calendar:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Categories">Categories:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Comments">Comments:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-TopicalArea">Topical Area:</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Email">email</xsl:variable>
 
   <!-- <xsl:template match="formElements" mode="addEvent" -->
@@ -418,13 +400,7 @@
   <xsl:variable name="bwStr-AEEF-AddRecurance">add recurrence</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddException">add exception</xsl:variable>
 
-  <!-- Access tab -->
-
   <!-- Scheduling tab -->
-  <xsl:variable name="bwStr-AEEF-EditAttendees">edit attendees</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-ChangeMyStatus">change my status</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-ScheduleThisTask">schedule this task with other users</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-MakeIntoMeeting">make into meeting - invite attendees</xsl:variable>
   <xsl:variable name="bwStr-AEEF-Save">save</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SaveDraft">save draft</xsl:variable>
   <xsl:variable name="bwStr-AEEF-SaveAndSendInvites">send</xsl:variable>
@@ -432,12 +408,6 @@
 
   <!-- Attachments tab -->
   <xsl:variable name="bwStr-AEEF-Attachment">attachment</xsl:variable>
-
-  <!-- xsl:template match="val" mode="weekMonthYearNumbers" -->
-
-  <!-- xsl:template name="byDayChkBoxList" -->
-
-  <!-- xsl:template name="buildCheckboxList" -->
 
   <!-- xsl:template name="recurrenceDayPosOptions" -->
   <xsl:variable name="bwStr-RCPO-TheFirst">the first</xsl:variable>
@@ -473,7 +443,6 @@
   <xsl:variable name="bwStr-Atnd-SchedulMeetingOrTask">Schedule Meeting or Task</xsl:variable>
   <xsl:variable name="bwStr-Atnd-AddAttendees">Add attendees</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Add">add</xsl:variable>
-  <xsl:variable name="bwStr-Atnd-Recipients">Recipients</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Attendee">attendee</xsl:variable>
   <xsl:variable name="bwStr-Atnd-Attendees">Attendees</xsl:variable>
   <xsl:variable name="bwStr-Atnd-RoleColon">role:</xsl:variable>
@@ -592,15 +561,11 @@
   <xsl:variable name="bwStr-SCPA-SelectACalendar">select a calendar</xsl:variable>
   <xsl:variable name="bwStr-SCPA-Close">close</xsl:variable>
 
-  <!--  xsl:template match="calendar" mode="selectCalForPublicAliasCalTree" -->
-
   <!--  xsl:template match="currentCalendar" mode="addCalendar" -->
   <xsl:variable name="bwStr-CuCa-AddCalOrFolder">Add Calendar or Folder</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddSubscription">Add Subscription</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-AddCalFolderOrSubscription">Add Calendar, Folder, or Subscription</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddCalText">add</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AddCalTextLabel">Add:</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-AddSubText">Add subscription</xsl:variable>
   <xsl:variable name="bwStr-CuCa-HttpStatus">HTTP Status:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Name">System Name:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Summary">Display Name:</xsl:variable>
@@ -655,7 +620,6 @@
   <xsl:variable name="bwStr-CuCa-Pending">pending</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Declined">declined</xsl:variable>
   <xsl:variable name="bwStr-CuCa-Accepted">accepted</xsl:variable>
-  <xsl:variable name="bwStr-CuCa-DefaultSchedNotShared">This calendar is the default scheduling calendar; it may not be shared.</xsl:variable>
   <xsl:variable name="bwStr-CuCa-CurrentAccess">Current Access:</xsl:variable>
   <xsl:variable name="bwStr-CuCa-AccessNote"><p><strong>Note:</strong> Advanced access controls can break standard sharing.  Use this feature with care.</p><p>If you grant write access to another user, and you wish to see events added by that user in your calendar, <strong>you must explicitly grant yourself access to the same calendar.</strong>  Enter your UserID as a user in the "Who" box with "All" set in the "Rights" box. This is standard access control; the reason you will not see the other user's events without doing this is that the default access is grant:all to "owner" - and you don't own the other user's events.</p></xsl:variable>
   <xsl:variable name="bwStr-CuCa-WriteAccess">grant write access</xsl:variable>
@@ -679,8 +643,6 @@
 
   <!--  xsl:template name="colorPicker"  -->
   <xsl:variable name="bwStr-CoPi-Pick">pick</xsl:variable>
-  <xsl:variable name="bwStr-CoPi-UseDefaultColors">use default colors</xsl:variable>
-  <xsl:variable name="bwStr-CoPi-SelectColor">Select a color</xsl:variable>
 
 <!--  xsl:template name="calendarList"  -->
   <xsl:variable name="bwStr-CaLi-ManagingCalendars">Managing Calendars &amp; Subscriptions</xsl:variable>
@@ -713,9 +675,6 @@
 
   <!--  xsl:template match="calendars" mode="exportCalendars" -->
   <xsl:variable name="bwStr-Cals-ExportCals">Export Calendars as iCal</xsl:variable>
-  <xsl:variable name="bwStr-Cals-CalendarToExport">Calendar to export:</xsl:variable>
-  <xsl:variable name="bwStr-Cals-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-Cals-Path">Path:</xsl:variable>
   <xsl:variable name="bwStr-Cals-EventDateLimits">Event date limits:</xsl:variable>
   <xsl:variable name="bwStr-Cals-TodayForward">today forward</xsl:variable>
   <xsl:variable name="bwStr-Cals-AllDates">all dates</xsl:variable>
@@ -736,20 +695,6 @@
   <xsl:variable name="bwStr-SuMe-SubscribeToUserCalendar">subscribe to a user calendar</xsl:variable>
   <xsl:variable name="bwStr-SuMe-SubscribeToExternalCalendar">subscribe to an external calendar</xsl:variable>
 
-  <!--  xsl:template name="addPublicAlias"  -->
-  <xsl:variable name="bwStr-AdPA-SubscribeToPublicCal">Subscribe to a Public Calendar</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AddPublicSubscription">Add a public subscription</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-SubscriptionNote">*the subscription name must be unique</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Calendar">Calendar:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AffectsFreeBusy">Affects Free/Busy:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Yes">yes</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-No">no</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Style">Style:</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Default">default</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-AddSubscription">Add Subscription</xsl:variable>
-  <xsl:variable name="bwStr-AdPA-Cancel">cancel</xsl:variable>
-
   <!--  xsl:template match="calendar" mode="subscribe" -->
   <xsl:variable name="bwStr-Calr-Folder">folder</xsl:variable>
   <xsl:variable name="bwStr-Calr-Calendar">calendar</xsl:variable>
@@ -767,7 +712,6 @@
   <xsl:variable name="bwStr-AddA-AffectsFreeBusy">Affects Free/Busy:</xsl:variable>
   <xsl:variable name="bwStr-AddA-Yes">yes</xsl:variable>
   <xsl:variable name="bwStr-AddA-No">no</xsl:variable>
-  <xsl:variable name="bwStr-AddA-Style">Style:</xsl:variable>
   <xsl:variable name="bwStr-AddA-Default">default</xsl:variable>
   <xsl:variable name="bwStr-AddA-NoteAboutAccess"><ul class="note" style="margin-left: 2em;">
       <li>You must be granted at least read access to the other user's calendar to subscribe to it.</li>
@@ -855,12 +799,8 @@
   <xsl:variable name="bwStr-ModL-Cancel">cancel</xsl:variable>
 
   <xsl:variable name="bwStr-MoLo-Name">Name:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Name-Placeholder">building or location name</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address">Address:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Address-Placeholder"></xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Address-Info"></xsl:variable>
-  <xsl:variable name="bwStr-MoLo-SubAddress">Subaddress:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-SubAddress-Placeholder">supplemental address information</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Street">Street:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Street-Placeholder"></xsl:variable>
   <xsl:variable name="bwStr-MoLo-City">City:</xsl:variable>
@@ -873,12 +813,6 @@
   <xsl:variable name="bwStr-MoLo-Room-Placeholder">room number, suite number, or area</xsl:variable>
   <xsl:variable name="bwStr-MoLo-Optional"> </xsl:variable>
   <xsl:variable name="bwStr-MoLo-Required">(required)</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Code">Building/Location ID:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-Code-Placeholder"></xsl:variable>
-  <xsl:variable name="bwStr-MoLo-AlternateAddress">Alternate address:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-AlternateAddress-Placeholder">alternate address information</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-SubField1">Subfield 1:</xsl:variable>
-  <xsl:variable name="bwStr-MoLo-SubField1-Placeholder"></xsl:variable>
   <xsl:variable name="bwStr-MoLo-SubField2">Map URL:</xsl:variable>
   <xsl:variable name="bwStr-MoLo-SubField2-Placeholder">full URL to map</xsl:variable>
   <xsl:variable name="bwStr-MoLo-LocationURL">Location's URL:</xsl:variable>
@@ -951,7 +885,6 @@
   <xsl:variable name="bwStr-AtRe-MeetingCanceled">Meeting Canceled</xsl:variable>
   <xsl:variable name="bwStr-AtRe-MeetingCounterDeclined">Meeting Counter Declined</xsl:variable>
   <xsl:variable name="bwStr-AtRe-MeetingRequest">Meeting Request</xsl:variable>
-  <xsl:variable name="bwStr-AtRe-Update">(update)</xsl:variable>
   <xsl:variable name="bwStr-AtRe-Organizer">Organizer:</xsl:variable>
   <xsl:variable name="bwStr-AtRe-ThisMeetingCanceled">This meeting has been canceled.</xsl:variable>
   <xsl:variable name="bwStr-AtRe-CounterReqDeclined">Your counter request has been declined.</xsl:variable>
@@ -965,7 +898,6 @@
   <xsl:variable name="bwStr-AtRe-Tentative">tentative</xsl:variable>
   <xsl:variable name="bwStr-AtRe-DelegateTo">delegate to</xsl:variable>
   <xsl:variable name="bwStr-AtRe-URIOrAccount">(uri or account)</xsl:variable>
-  <xsl:variable name="bwStr-AtRe-CounterSuggest">counter (suggest a different date, time, and/or location)</xsl:variable>
   <xsl:variable name="bwStr-AtRe-NewDateTime">New Date/Time:</xsl:variable>
   <xsl:variable name="bwStr-AtRe-Invisible">invisible</xsl:variable>
   <xsl:variable name="bwStr-AtRe-TimeFields">timeFields</xsl:variable>
@@ -1102,7 +1034,6 @@
   <xsl:variable name="bwStr-ScPr-False">false</xsl:variable>
   <xsl:variable name="bwStr-ScPr-AcceptDoubleBookings">Accept double-bookings:</xsl:variable>
   <xsl:variable name="bwStr-ScPr-CancelProcessing">Cancel processing:</xsl:variable>
-  <xsl:variable name="bwStr-ScPr-DoNothing">do nothing</xsl:variable>
   <xsl:variable name="bwStr-ScPr-SetToCanceled">set event status to CANCELED</xsl:variable>
   <xsl:variable name="bwStr-ScPr-DeleteEvent">delete the event</xsl:variable>
   <xsl:variable name="bwStr-ScPr-ReponseProcessing">Response processing:</xsl:variable>
@@ -1110,7 +1041,6 @@
   <xsl:variable name="bwStr-ScPr-ProcessAccepts">process "Accept" responses - leave the rest in Inbox</xsl:variable>
   <xsl:variable name="bwStr-ScPr-TryToProcessAll">try to process all responses</xsl:variable>
   <xsl:variable name="bwStr-ScPr-UpdateSchedulingProcessing">Update scheduling auto-processing</xsl:variable>
-  <xsl:variable name="bwStr-ScPr-Cancel">cancel</xsl:variable>
 
   <!-- xsl:template name="buildWorkdayOptionsList" -->
 
