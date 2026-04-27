@@ -29,7 +29,6 @@
   <xsl:variable name="bwStr-SgEv-GenerateLinkToThisEvent">generate link to this event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-LinkToThisEvent">link to this event</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Canceled">CANCELED:</xsl:variable>
-  <xsl:variable name="bwStr-SgEv-All">all</xsl:variable>
   <!--Link, add master event reference to a calendar, add this event reference to a calendar, add event reference to a calendar -->
   <xsl:variable name="bwStr-SgEv-DownloadEvent">Download event as ical - for Outlook, PDAs, iCal, and other desktop calendars</xsl:variable>
   <xsl:variable name="bwStr-SgEv-Download">Download</xsl:variable>
