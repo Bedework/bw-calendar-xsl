@@ -70,9 +70,6 @@
   <xsl:variable name="bwStr-Notification-ViewEvent">view event</xsl:variable>
   <xsl:variable name="bwStr-Notification-EventRemoved">--event removed--</xsl:variable>
 
-  <!--  xsl:template name="messagesAndErrors" -->
-  <!--  See bedework/resources/xsl for common library -->
-
   <!--  xsl:template name="mainMenu" -->
   <xsl:variable name="bwStr-MMnu-YouMustBeOperating">You must be operating in the context of a calendar suite\nto add or manage events.\n\nYour current group is neither associated with a calendar suite\nnor a child of a group associated with a calendar suite.</xsl:variable>
 
@@ -376,13 +373,6 @@
   <xsl:variable name="bwStr-SEBu-Accept">Accept</xsl:variable>
   <xsl:variable name="bwStr-SEBu-Reject">Reject</xsl:variable>
 
-
-  <!--  xsl:template match="val" mode="weekMonthYearNumbers" -->
-
-  <!--  xsl:template name="byDayChkBoxList" -->
-
-  <!--  xsl:template name="buildCheckboxList" -->
-
   <!--  xsl:template name="recurrenceDayPosOptions" -->
   <xsl:variable name="bwStr-RCPO-TheFirst">the first</xsl:variable>
   <xsl:variable name="bwStr-RCPO-TheSecond">the second</xsl:variable>
@@ -573,10 +563,6 @@
   <xsl:variable name="bwStr-Cals-Calendar">calendar</xsl:variable>
   <xsl:variable name="bwStr-Cals-Add">add a calendar or folder</xsl:variable>
 
-  <!--  xsl:template match="calendar" mode="listForDisplay" -->
-
-  <!--  xsl:template match="calendar" mode="listForMove" -->
-
   <!--  xsl:template match="currentCalendar" mode="addCalendar" -->
   <xsl:variable name="bwStr-CuCa-AddCalFileOrSub">Add Calendar, Folder, or Subscription</xsl:variable>
   <xsl:variable name="bwStr-CuCa-NoteAccessSet">Note: Access may be set on a calendar after it is created.</xsl:variable>
@@ -664,8 +650,6 @@
   <xsl:variable name="bwStr-SCFE-SelectCal">Select a calendar</xsl:variable>
   <xsl:variable name="bwStr-SCFE-Calendars">Calendars</xsl:variable>
 
-  <!--  xsl:template match="calendar" mode="selectCalForEventCalTree" -->
-
   <!--  xsl:template name="calendarMove" -->
   <xsl:variable name="bwStr-CaMv-MoveCalendar">Move Calendar/Folder</xsl:variable>
   <xsl:variable name="bwStr-CaMv-CurrentPath">Current Path:</xsl:variable>
@@ -705,8 +689,6 @@
   <xsl:variable name="bwStr-ACLs-Deny">deny:</xsl:variable>
   <xsl:variable name="bwStr-ACLs-Local">local</xsl:variable>
 
-  <!--  xsl:template match="calendars" mode="subscriptions" -->
-
   <!--  xsl:template name="subscriptionIntro" -->
   <xsl:variable name="bwStr-Subs-Subscriptions">Subscriptions</xsl:variable>
   <xsl:variable name="bwStr-Subs-ManagingSubscriptions">Managing Subscriptions</xsl:variable>
@@ -736,8 +718,6 @@
 
   <!--  xsl:template match="calendar" mode="selectCalForPublicAliasCalTree" -->
   <xsl:variable name="bwStr-Cals-Trash">trash</xsl:variable>
-
-  <!--  xsl:template match="currentCalendar" mode="deleteSubConfirm" -->
 
   <!-- xsl:template name="listResources" -->
   <xsl:variable name="bwStr-Resource-ManageResources">Manage Resources</xsl:variable>
@@ -851,98 +831,6 @@
   <xsl:variable name="bwStr-Upld-Continue">Continue</xsl:variable>
   <xsl:variable name="bwStr-Upld-Cancel">Cancel</xsl:variable>
   <xsl:variable name="bwStr-Upld-Status">Status:</xsl:variable>
-
-  <!--  xsl:template name="modSyspars" -->
-  <xsl:variable name="bwStr-MdSP-ManageSysParams">Manage System Preferences/Parameters</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DoNotChangeUnless">Do not change unless you know what you're doing.<br/>Changes to these parameters have wide impact on the system.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SystemName">System name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SystemNameCannotBeChanged">Name for this system. Cannot be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultTimezone">Default timezone:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SelectTimeZone">select timezone...</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultNormallyLocal">Default timezone id for date/time values. This should normally be your local timezone.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SuperUsers">Super Users:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-CommaSeparatedList">Comma separated list of super users. No spaces.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SystemID">System id:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SystemIDNote">System id used when building uids and identifying users. Should not be changed.</xsl:variable>
-
-
-  <xsl:variable name="bwStr-MdSP-DefaultFBPeriod">Default Freebusy days:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultFBPeriodNote">The default freebusy fetch period</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxFBPeriod">Max. Freebusy days:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxFBPeriodNote">The maximum freebusy fetch period (for non-super user)</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultWebCalPeriod">Default webcal days:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultWebCalPeriodNote">The default webcal fetch period</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxWebCalPeriod">Max. webcal days:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxWebCalPeriodNote">The maximum webcal fetch period (for non-super user)</xsl:variable>
-
-
-
-  <xsl:variable name="bwStr-MdSP-PubCalendarRoot">Public Calendar Root:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-PubCalendarRootNote">Name for public calendars root directory. Should not be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserCalendarRoot">User Calendar Root:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserCalendarRootNote">Name for user calendars root directory. Should not be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserCalendarDefaultName">User Calendar Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserCalendarDefaultNameNote">efault name for user calendar. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-TrashCalendarDefaultName">Trash Calendar Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-TrashCalendarDefaultNameNote">Default name for user trash calendar. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-InboxNote">Default name for user inbox. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserInboxDefaultName">User Inbox Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserOutboxDefaultName">User Outbox Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserOutboxDefaultNameNote">Default name for user outbox. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserDeletedCalendarDefaultName">User Deleted Calendar Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserDeletedCalendarDefaultNameNote">Default name for user calendar used to hold deleted items. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserBusyCalendarDefaultName">User Busy Calendar Default name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserBusyCalendarDefaultNameNote">Default name for user busy time calendar. Used when initializing user. Possibly can be changed.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultUserViewName">Default user view name:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultUserViewNameNote">Name used for default view created when a new user is added</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxAttendees">Maximum attendees:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxAttendeesNote">Maximum number of event attendees (for personal client scheduling)</xsl:variable>
-  <!--  Following not used
-  <xsl:variable name="bwStr-MdSP-HTTPConnectionsPerUser">Http connections per user:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-HTTPConnectionsPerHost">Http connections per host:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-TotalHTTPConnections">Total http connections:</xsl:variable>
-  -->
-  <xsl:variable name="bwStr-MdSP-MaxLengthPubEventDesc">Maximum length of public event description:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxLengthUserEventDesc">Maximum length of user event description:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxSizeUserEntity">Maximum size of a user entity:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultUserQuota">Default user quota:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxRecurringInstances">Max recurring instances:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxRecurringInstancesNote">Used to limit recurring events to reasonable numbers of instances.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxRecurringYears">Max recurring years:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MaxRecurringYearsNotes">Used to limit recurring events to reasonable period of time.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserAuthClass">User authorization class:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserAuthClassNote">Class used to determine authorization (not authentication) for administrative users. Should probably only be changed on rebuild.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MailerClass">Mailer class:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-MailerClassNote">Class used to mail events. Should probably only be changed on rebuild.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-AdminGroupsClass">Admin groups class:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-AdminGroupsClassNote">Class used to query and maintain groups for administrative users. Should probably only be changed on rebuild.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserGroupsClass">User groups class:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UserGroupsClassNote">Class used to query and maintain groups for non-administrative users. Should probably only be changed on rebuild.</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DirBrowseDisallowd">Directory browsing disallowed:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DirBrowseDisallowedNote">True if the server hosting the xsl disallows directory browsing.</xsl:variable>
-
-  <xsl:variable name="bwStr-MdSP-EvregAdmTkn">Eventreg admin token:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-EvregAdmTknNote">Token for event registration. Must be identical to token set in event reg JMX service</xsl:variable>
-
-  <xsl:variable name="bwStr-MdSP-GblResPath">Global resources path:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-GblResPathNote">Path for global resources</xsl:variable>
-
-  <xsl:variable name="bwStr-MdSP-IndexRoot">Index root:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-IndexRootNote">Root for the event indexes. Should only be changed if the indexes are moved/copied</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UseSolr">Use Solr for public indexing:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-UseSolrNote">Use Solr for public indexing:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrURL">Solr Server URL:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrURLNote">Solr Server URL:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrCoreAdmin">Solr Server core admin path:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrCoreAdminNote">Solr Server core admin path:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrDefaultCore">Solr Server Default Core:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SolrDefaultCoreNote">Solr Server Default Core:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-SupportedLocales">Supported Locales:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-ListOfSupportedLocales">List of supported locales. The format is a rigid, comma separated list of 2 letter language, underscore, 2 letter country. No spaces. Example: en_US,fr_CA</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-Update">Update</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-Cancel">Cancel</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultNotifications">Default Receive Notifications:</xsl:variable>
-  <xsl:variable name="bwStr-MdSP-DefaultNotificationsNote">Default when user has not specified if they wish to receive change notifications for a collection</xsl:variable>
 
   <!--  xsl:template match="calSuites" mode="calSuiteList" -->
   <xsl:variable name="bwStr-CalS-ManageCalendarSuites">Manage Calendar Suites</xsl:variable>

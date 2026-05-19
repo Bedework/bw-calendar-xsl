@@ -141,7 +141,6 @@
   <xsl:variable name="bwStr-EvCG-Tentative">INTENTO:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Cont">(cont)</xsl:variable>
   <xsl:variable name="bwStr-EvCG-AllDayColon">todo el día:</xsl:variable>
-  <xsl:variable name="bwStr-EvCG-NoTitle">sin título</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Time">Hora:</xsl:variable>
   <xsl:variable name="bwStr-EvCG-AllDay">todo el día</xsl:variable>
   <xsl:variable name="bwStr-EvCG-Location">Lugar:</xsl:variable>
@@ -168,8 +167,8 @@
   <xsl:variable name="bwStr-Srch-TodayForward">de hoy en adelante</xsl:variable>
   <xsl:variable name="bwStr-Srch-PastDates">fechas pasadas</xsl:variable>
   <xsl:variable name="bwStr-Srch-AllDates">todas las fechas</xsl:variable>
+  <xsl:variable name="bwStr-Srch-Location">location</xsl:variable>
   <xsl:variable name="bwStr-Srch-SearchResults">Resultados de la Búsqueda</xsl:variable>
-  <xsl:variable name="bwStr-Srch-NoTitle">sin título</xsl:variable>
   <xsl:variable name="bwStr-Srch-NoQuery">no hay consulta</xsl:variable>
   <xsl:variable name="bwStr-Srch-Result">resultado</xsl:variable>
   <xsl:variable name="bwStr-Srch-Results">resultados</xsl:variable>

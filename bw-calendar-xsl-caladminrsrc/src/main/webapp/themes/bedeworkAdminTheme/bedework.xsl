@@ -60,7 +60,6 @@
   <xsl:include href="userPrefs.xsl" />
   <xsl:include href="adminGroups.xsl" />
   <xsl:include href="systemMain.xsl" />
-  <xsl:include href="systemParams.xsl" />
   <xsl:include href="filters.xsl" />
   <xsl:include href="upload.xsl" />
   <xsl:include href="timezones.xsl" />
@@ -209,9 +208,6 @@
                   <xsl:call-template name="listResources">
                     <xsl:with-param name="global" select="'true'" />
                   </xsl:call-template>
-                </xsl:when>
-                <xsl:when test="/bedework/page='modSyspars'">
-                  <xsl:call-template name="modSyspars"/>
                 </xsl:when>
                 <xsl:when test="/bedework/page='calSuiteList'">
                   <xsl:apply-templates select="/bedework/calSuites" mode="calSuiteList"/>

@@ -398,7 +398,6 @@
   <xsl:variable name="bwStr-AEEF-NoExceptionDates">No hay fechas de excepción</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ExceptionDatesMayBeCreated">Las fechas de excepción pueden crearse al borrar una ocurrencia de un evento repetitivo.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddRecurance">añadir repetición</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddException">añadir excepción</xsl:variable>
 
   <!-- Scheduling tab -->
   <xsl:variable name="bwStr-AEEF-Save">guardar</xsl:variable>

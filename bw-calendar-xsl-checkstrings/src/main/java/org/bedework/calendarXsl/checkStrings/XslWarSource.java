@@ -7,7 +7,12 @@ import org.bedework.util.logging.Logged;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+
+import static java.lang.String.format;
 
 /** Bedework war files have a set of language specific directories
  * with the 5 character locale name and a default directory used
@@ -24,6 +29,9 @@ import java.util.EnumSet;
  * <p>There is also usually a globals.xsl
  */
 public class XslWarSource implements Logged {
+  public final List<String> locales =
+      Arrays.asList("de_DE", "es_ES");
+
   final WarItem warRoot;
   private WarSourceScanner scanner;
 
@@ -32,9 +40,8 @@ public class XslWarSource implements Logged {
   }
 
   public void process() {
-    if (debug()) {
-      debug("Processing war source: " + warRoot.path);
-    }
+    info("Processing war source: " + warRoot.path +
+        " -------------------");
 
     scanner = new WarSourceScanner(this);
     final EnumSet<FileVisitOption> opts = EnumSet.of(
@@ -55,7 +62,46 @@ public class XslWarSource implements Logged {
     }
 
     matchStrings();
+    info("------------- List of unreffed string variables");
     showUnreffed();
+    info("------------- Matching supported locales");
+    checkLocales();
+  }
+
+  private void checkLocales() {
+    // Ensure each locale has the same variables defined
+    final var defaultStringsMap =
+        scanner.defaultStringsXsl.variables;
+
+    for (final var locale: locales) {
+      final var wi = findWarItem(
+          "src", "main", "webapp", locale, "strings.xsl");
+      if (wi == null) {
+        continue;
+      }
+
+      info("Checking locale " + locale);
+      final var lvars =
+          new HashSet<>(wi.aFile.variables.keySet());
+      if (lvars.isEmpty()) {
+        info("No variables defined for " + locale);
+      }
+
+      final var dvars =
+          new HashSet<>(defaultStringsMap.keySet());
+
+      for (final var dvar: dvars) {
+        if (!lvars.remove(dvar)) {
+          info(format("Variable %s in defaults but not in %s",
+                      dvar, locale));
+        }
+      }
+
+      for (final var lvar: lvars) {
+        info(format("Variable %s in %s but not in defaults",
+                    lvar, locale));
+      }
+    }
   }
 
   public long getNumberXsl() {
@@ -111,9 +157,23 @@ public class XslWarSource implements Logged {
     return scanner.defaultStringsXsl.getUnreffedCount();
   }
 
-  /* ==============================================================
+  private WarItem findWarItem(final String... pathElements) {
+    // Top level is the module
+    var current = warRoot.dirEntries.getFirst();
+
+    for (final var el: pathElements) {
+      current = current.find(el);
+      if (current == null) {
+        return null;
+      }
+    }
+
+    return current;
+  }
+
+  /* =========================================================
    *                   Logged methods
-   * ============================================================== */
+   * ========================================================= */
 
   private final BwLogger logger = new BwLogger();
 

@@ -398,7 +398,6 @@
   <xsl:variable name="bwStr-AEEF-NoExceptionDates">kein Ausnahmetag</xsl:variable>
   <xsl:variable name="bwStr-AEEF-ExceptionDatesMayBeCreated">Ausnahmetage k&#246;nnen erzeugt werden wenn ein wiederkehrender Eintrag gel&#246;scht wird.</xsl:variable>
   <xsl:variable name="bwStr-AEEF-AddRecurance">hinzuf&#252;gen Wiederholung</xsl:variable>
-  <xsl:variable name="bwStr-AEEF-AddException">hinzuf&#252;gen Ausnahme</xsl:variable>
 
   <!-- Scheduling tab -->
   <xsl:variable name="bwStr-AEEF-Save">abspeichern</xsl:variable>
